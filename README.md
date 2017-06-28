@@ -1,11 +1,11 @@
 # YWC15
 Website for YWC#15 Powered by React with Server-Side Rendered by Next.js
 
-## #WeAreHiring
+#WeAreHiring
 
 ## What you need to do first
 - Simply `npm install` (or `yarn`)
-- Then `yarn dev`
+- Then `npm run dev` (or `yarn dev`)
 - Go to `http://localhost:3000`
 - If apps is come with no error...You are good to go!
 

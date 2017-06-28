@@ -1,0 +1,29 @@
+{
+  "name": "YWC15",
+  "version": "1.0.0",
+  "description": "Website for YWC#15",
+  "main": "index.js",
+  "repository": "https://MicroBenz@github.com/MicroBenz/YWC15.git",
+  "author": "Tananan Tangthanachaikul <microbenz.prob@gmail.com>",
+  "scripts": {
+    "dev": "node index.js",
+    "start": "node index.js",
+    "build": "next build"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "next": "^2.4.5",
+    "next-redux-wrapper": "^1.1.3",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.5",
+    "redux": "^3.7.1",
+    "redux-define": "^1.1.1",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-stage-0": "^6.24.1"
+  }
+}

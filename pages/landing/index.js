@@ -10,7 +10,7 @@ import Api from '../../utils/api';
 )
 export default class LandingPage extends Component {
   componentDidMount() {
-    Api.get('http://api.fixer.io/latest')
+    Api.get('/api/test')
       .then(res => console.log(res))
   }
 

@@ -1,10 +1,16 @@
 const express = require('express');
+
+const { User } = require('../models');
 const slack = require('../utils/slack');
 
 const testRoutes = express.Router();
 
-testRoutes.get('/', (req, res) => res.send({ data: 'test api' }));
+testRoutes.get('/', testMongoose);
 testRoutes.post('/slack/:id', testSlack);
+
+function testMongoose(req, res) {
+  User.find().then(user => res.send(user));
+}
 
 function testSlack(req, res) {
   let promise;

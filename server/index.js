@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const config = require('./config');
 
 const app = express();
 
@@ -7,4 +8,4 @@ app.use(bodyParser.json());
 
 app.use('/', require('./api'));
 
-app.listen(3001, () => console.log('API Start at Port 3001'));
+app.listen(config.port, () => console.log(`API Start at Port ${config.port}`));

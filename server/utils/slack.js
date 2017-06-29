@@ -1,6 +1,7 @@
 const { IncomingWebhook } = require('@slack/client');
+const config = require('../config');
 
-const url = 'https://hooks.slack.com/services/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';
+const url = config.SLACK_WEB_HOOK;
 const webhook = new IncomingWebhook(url);
 
 const sendMessage = (message) => (
@@ -15,5 +16,19 @@ const sendMessage = (message) => (
 );
 
 module.exports = {
-  sendTestMessage: () => sendMessage('Hello')
+  sendTestMessage: () => sendMessage({
+      "text": "I am a test message http://slack.com",
+      "attachments": [
+          {
+              "text": "And here’s an attachment!"
+          }
+      ]
+  }),
+  sendMessage: (message) => sendMessage(message),
+  triggerRegister: () => sendMessage({
+    text: ':writing_hand: Someone has begin registration for <<Role>>'
+  }),
+  completeRegistration: () => sendMessage({
+    text: ':tada: <<User>> <<Role>> has completed registration!'
+  })
 }

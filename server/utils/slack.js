@@ -15,20 +15,22 @@ const sendMessage = (message) => (
   })
 );
 
+const roleSymbol = {
+  programmer: ':desktop_computer: *Programmer*',
+  designer: ':art: *Designer*',
+  marketing: ':moneybag: *Marketing*',
+  content: ':clipboard: *Content*'
+};
+
 module.exports = {
-  sendTestMessage: () => sendMessage({
-      "text": "I am a test message http://slack.com",
-      "attachments": [
-          {
-              "text": "And here’s an attachment!"
-          }
-      ]
+  triggerRegister: (role) => sendMessage({
+    text: `:writing_hand: Someone has begin registration for ${roleSymbol[role]} (100 so far)`
   }),
-  sendMessage: (message) => sendMessage(message),
-  triggerRegister: () => sendMessage({
-    text: ':writing_hand: Someone has begin registration for <<Role>>'
+  completeRegistration: (user, role) => sendMessage({
+    text: `:tada: *${user}* has completed registration for ${roleSymbol[role]}  (90 so far)`
   }),
-  completeRegistration: () => sendMessage({
-    text: ':tada: <<User>> <<Role>> has completed registration!'
+  reportRegistrationStat: () => sendMessage({
+    text: `:chart_with_upwards_trend: *Registration Stat Report* | *Programmer*: 10 | *Designer*: 11 | *Content*: 12 | :*Marketing*: 13 | *Not completed*: 20
+    `
   })
 }

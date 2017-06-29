@@ -14,6 +14,7 @@
     "@slack/client": "^3.10.0",
     "axios": "^0.16.2",
     "body-parser": "^1.17.2",
+    "cron": "^1.2.1",
     "express": "^4.15.3",
     "next": "^2.4.5",
     "next-redux-wrapper": "^1.1.3",

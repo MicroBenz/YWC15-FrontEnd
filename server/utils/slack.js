@@ -1,5 +1,6 @@
 const { IncomingWebhook } = require('@slack/client');
 const config = require('../config');
+const registerStat = require('../utils/registerStat');
 
 const url = config.SLACK_WEB_HOOK;
 const webhook = new IncomingWebhook(url);
@@ -29,8 +30,11 @@ module.exports = {
   completeRegistration: (user, role) => sendMessage({
     text: `:tada: *${user}* has completed registration for ${roleSymbol[role]}  (90 so far)`
   }),
-  reportRegistrationStat: () => sendMessage({
-    text: `:chart_with_upwards_trend: *Registration Stat Report* | *Programmer*: 10 | *Designer*: 11 | *Content*: 12 | :*Marketing*: 13 | *Not completed*: 20
-    `
-  })
+  reportRegistrationStat: () => (
+    registerStat.getRegistrantReport()
+      .then(stat => sendMessage({
+        text: `:chart_with_upwards_trend: *Registration Stat Report* | *Programmer*: ${stat.programmer} | *Designer*: ${stat.designer} | *Content*: ${stat.content} | :*Marketing*: ${stat.marketing} | *Not completed*: ${stat.notCompleted}
+        `
+      }))
+  )
 }

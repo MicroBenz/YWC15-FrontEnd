@@ -5,6 +5,7 @@ console.log('ENVIRONMENT:', process.env.NODE_ENV);
 const commonConfig = {
   isProduction: !_DEV_,
   port: 3000,
+  facebookAppsID: '326628934402249',
 };
 
 const developmentConfig = {

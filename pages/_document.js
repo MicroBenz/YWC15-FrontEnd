@@ -1,5 +1,6 @@
 import Document, { Head, Main, NextScript } from 'next/document';
 import flush from 'styled-jsx/server';
+import config from '../config';
 
 export default class MyDocument extends Document {
   static getInitialProps ({ renderPage }) {
@@ -18,6 +19,27 @@ export default class MyDocument extends Document {
        <body>
          <Main />
          <NextScript />
+         <script
+            dangerouslySetInnerHTML={{ __html: `
+              window.fbAsyncInit = function() {
+                FB.init({
+                  appId            : '${config.facebookAppsID}',
+                  autoLogAppEvents : true,
+                  xfbml            : true,
+                  version          : 'v2.9'
+                });
+                FB.AppEvents.logPageView();
+              };
+
+              (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+              }(document, 'script', 'facebook-jssdk'));
+            ` }}
+          />
        </body>
      </html>
     )

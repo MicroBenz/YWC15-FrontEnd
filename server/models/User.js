@@ -10,7 +10,14 @@ const userSchema = new Schema({
   name: {
     first: String,
     last: String
-  }
+  },
+  avatar_image: String,
+  is_camper: Boolean,
+  role: {
+    type: String,
+    enum: ['programmer', 'designer', 'marketing', 'content']
+  },
+  is_grader: Boolean
 }, { timestamps: true, collection: 'users' });
 
 module.exports = mongoose.model('User', userSchema);

@@ -23,8 +23,8 @@ const roleSymbol = {
 };
 
 module.exports = {
-  triggerRegister: (role) => sendMessage({
-    text: `:writing_hand: Someone has begin registration for ${roleSymbol[role]} (100 so far)`
+  triggerRegister: (role, count) => sendMessage({
+    text: `:writing_hand: Someone has begin registration for ${roleSymbol[role]} (${count} so far)`
   }),
   completeRegistration: (user, role) => sendMessage({
     text: `:tada: *${user}* has completed registration for ${roleSymbol[role]}  (90 so far)`

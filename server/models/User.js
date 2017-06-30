@@ -17,6 +17,7 @@ const userSchema = new Schema({
     type: String,
     enum: ['programmer', 'designer', 'marketing', 'content']
   },
+  is_completed_registration: Boolean,
   is_grader: Boolean
 }, { timestamps: true, collection: 'users' });
 

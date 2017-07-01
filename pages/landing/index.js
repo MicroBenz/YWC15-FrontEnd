@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import connect from '../../store/connect';
-import Api from '../../utils/api';
+import LoginButton from '../../component/Login/LoginButton';
 
 @connect(
   ({ test }) => ({
@@ -9,14 +9,14 @@ import Api from '../../utils/api';
   })
 )
 export default class LandingPage extends Component {
-  componentDidMount() {
-    Api.get('/api/test')
-      .then(res => console.log(res))
-  }
-
   render() {
     return (
-      <h1>Say Hi to Next.js <i className="fa fa-facebook"/> And this shouldBeOne = {this.props.test}</h1>
+      <div>
+        <LoginButton role="programmer" />
+        <LoginButton role="designer" />
+        <LoginButton role="marketing" />
+        <LoginButton role="content" />
+      </div>
     )
   }
 }

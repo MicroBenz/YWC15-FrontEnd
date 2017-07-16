@@ -6,7 +6,7 @@
   "repository": "https://MicroBenz@github.com/MicroBenz/YWC15.git",
   "author": "Tananan Tangthanachaikul <microbenz.prob@gmail.com>",
   "scripts": {
-    "dev": "npm-run-all --parallel start-client start-api",
+    "dev": "node index.js",
     "start-client": "node index.js",
     "start-api": "node server/index.js",
     "build": "next build"

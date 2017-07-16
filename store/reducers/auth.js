@@ -8,6 +8,7 @@ const LOGIN_REJECTED = authAction('LOGIN_REJECTED');
 
 const initialState = {
   isLogin: false,
+  user: {}
 };
 
 export default (state = initialState, action) => {
@@ -15,8 +16,7 @@ export default (state = initialState, action) => {
     case LOGIN_RESOLVED:
       return {
         ...state,
-        role: action.role,
-        token: action.token,
+        user: action.user,
         isLogin: true
       };
     default: return state;
@@ -24,17 +24,20 @@ export default (state = initialState, action) => {
 }
 
 export const actions = {
-  loginSuccess: (role, token) => ({
+  loginSuccess: (user, token) => ({
     type: LOGIN_RESOLVED,
-    role,
-    token,
+    user,
   }),
   camperLogin: (role) => (dispatch) => {
     FB.login((fbResponse) => {
       if (fbResponse) {
         const { accessToken } = fbResponse.authResponse;
-        api.post('/auth/login/camper', { role }, { 'Authorization': `Bearer ${accessToken}`})
-          .then((token) => dispatch(actions.loginSuccess(role, token)));
+        api.post('/auth/login', { accessToken })
+          .then(({ token }) => {
+            window.localStorage.setItem('ywc15Token', token);
+            return api.get('/auth/me');
+          })
+          .then((user) => dispatch(actions.loginSuccess(user)));
       }
     })
   }

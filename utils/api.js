@@ -2,9 +2,15 @@
 import axios from 'axios';
 import config from '../config';
 
-const apiInstance = axios.create({
-  baseURL: '/api',
-});
+let apiInstance;
+if (process.browser) {
+  apiInstance = axios.create({
+    baseURL: '/api',
+    headers: {
+      'x-access-token': window.localStorage.getItem('ywc15Token') || ''
+    }
+  });
+}
 
 function handleResponse(response) {
   if (response.statusText === 'OK' && response.data) {

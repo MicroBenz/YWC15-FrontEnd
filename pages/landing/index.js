@@ -4,14 +4,16 @@ import connect from '../../store/connect';
 import LoginButton from '../../component/Login/LoginButton';
 
 @connect(
-  ({ test }) => ({
-    test: test.shouldBeOne
+  ({ auth }) => ({
+    user: auth.user
   })
 )
 export default class LandingPage extends Component {
   render() {
+    const { user } = this.props;
     return (
       <div>
+        {JSON.stringify(user)}
         <LoginButton role="programmer" />
         <LoginButton role="designer" />
         <LoginButton role="marketing" />

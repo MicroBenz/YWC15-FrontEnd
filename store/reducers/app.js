@@ -21,4 +21,4 @@ export default (state = initialState, action) => {
 
 export const actions = {
   doneFirstLoad: () => ({ type: DONE_FIRSTLOAD })
-}
+};

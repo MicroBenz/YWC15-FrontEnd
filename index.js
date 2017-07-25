@@ -22,7 +22,7 @@ app.prepare().then(() => {
     });
   });
 
-  server.get('/', (req, res) => app.render(req, res, '/landing'));
+  server.get('/', (req, res) => app.render(req, res, '/coming-soon'));
   server.get('/register', (req, res) => app.render(req, res, '/registration'));
 
   server.get('*', (req, res) => handle(req, res));

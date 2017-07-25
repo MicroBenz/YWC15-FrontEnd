@@ -5,7 +5,7 @@ import reducers from './reducers/index';
 
 let middlewares;
 
-if (global.window && global.window.__REDUX_DEVTOOLS_EXTENSION__ ) {
+if (global.window && global.window.__REDUX_DEVTOOLS_EXTENSION__ && process.env.NODE_ENV !== 'production') {
   middlewares = compose(
     applyMiddleware(thunk),
     global.window.__REDUX_DEVTOOLS_EXTENSION__ && global.window.__REDUX_DEVTOOLS_EXTENSION__()

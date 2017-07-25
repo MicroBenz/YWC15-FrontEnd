@@ -9,6 +9,7 @@
     "dev": "node index.js",
     "start-client": "node index.js",
     "start-api": "node server/index.js",
+    "start": "pm2 start pm2.json --env production",
     "build": "next build"
   },
   "dependencies": {

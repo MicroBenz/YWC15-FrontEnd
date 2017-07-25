@@ -1,0 +1,16 @@
+{
+  "apps": [
+    {
+      "exec_mode": "fork_mode",
+      "script": "./index.js",
+      "name": "ywc15-registration-frontend",
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "env_production" : {
+        "NODE_ENV": "production"
+      },
+      "log_date_format"  : "YYYY-MM-DD HH:mm Z"
+    }
+  ]
+}

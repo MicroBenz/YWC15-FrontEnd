@@ -12,7 +12,8 @@ const developmentConfig = {
 
 const productionConfig = {
   apiPath: 'http://localhost:3001',
-  facebookAppsID: '715340261988670'
+  facebookAppsID: '715340261988670',
+  port: 12345
 };
 
 module.exports = Object.assign(commonConfig, _DEV_ ? developmentConfig : productionConfig);

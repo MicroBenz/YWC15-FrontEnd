@@ -26,5 +26,5 @@ app.prepare().then(() => {
   server.get('/register', (req, res) => app.render(req, res, '/registration'));
 
   server.get('*', (req, res) => handle(req, res));
-  server.listen(3000, () => console.log('YWC15 Registration Front-End is started'));
+  server.listen(config.port, () => console.log(`YWC15 Registration Front-End is started at port ${config.port}`));
 });

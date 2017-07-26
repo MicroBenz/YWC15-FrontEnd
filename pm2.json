@@ -1,9 +1,9 @@
 {
   "apps": [
     {
+      "name": "ywc15-frontend",
       "exec_mode": "fork_mode",
       "script": "./index.js",
-      "name": "ywc15-frontend",
       "env": {
         "NODE_ENV": "staging"
       },

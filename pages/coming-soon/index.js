@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import ReactGA from 'react-ga';
 import Head from 'next/head';
 
-import { isMobile } from '../../utils/helpers';
+import config from '../../config';
 
+const IMAGE_COUNT = 19;
 export default class ComingSoon extends Component {
   constructor(props) {
     super(props);
@@ -13,17 +15,18 @@ export default class ComingSoon extends Component {
 
   componentWillMount() {
     if (!process.browser) return;
-    new Array(52).forEach((idx) => {
-      const image = new Image(); // eslint-disable-line
-      image.src = `/static/img/coming-soon/gallery/${idx + 1}.jpg`;
+    [...Array(IMAGE_COUNT)].forEach((a, idx) => {
+      (new Image()).src = `/static/img/coming-soon/gallery/${idx + 1}.jpg`; // eslint-disable-line
     });
   }
 
   componentDidMount() {
+    ReactGA.initialize(config.gaTrackingID);
+    ReactGA.pageview(window.location.pathname);
     this.interval = setInterval(() => {
       const { currentIndex } = this.state;
-      this.setState({ currentIndex: currentIndex + 1 <= 52 ? currentIndex + 1 : 1 });
-    }, 2000);
+      this.setState({ currentIndex: currentIndex + 1 <= IMAGE_COUNT ? currentIndex + 1 : 1 });
+    }, 3000);
   }
 
   componentWillUnmount() {
@@ -32,7 +35,7 @@ export default class ComingSoon extends Component {
 
   render() {
     return (
-      <div className={`coming-soon-container`} style={{ backgroundImage: `url('/static/img/coming-soon/gallery/${this.state.currentIndex}.jpg')` }}>
+      <div className="coming-soon-container">
         <Head>
           <title>YWC#15 is coming</title>
           <meta name="description" content="YWC#15 กำลังจะมาแล้ว!!!!!" />
@@ -41,6 +44,8 @@ export default class ComingSoon extends Component {
             content="ywc,jwc,website,web content,web design, web marketing, web programming"
           />
         </Head>
+        <div style={{ backgroundImage: `url('/static/img/coming-soon/gallery/${this.state.currentIndex}.jpg')` }} className="slideshow" />
+        <div className="overlay" />
         <div className="logo-container">
           <img
             src="/static/img/coming-soon/logo.png"
@@ -48,11 +53,11 @@ export default class ComingSoon extends Component {
             className="logo"
           />
           <h1 className="title f2 coming-soon">Coming Soon.</h1>
-          <a href="https://th-th.facebook.com/ywcth/" target="_blank" rel="noopener noreferrer">
-            <img src="/static/img/coming-soon/fb.png" alt="ywc-page" className="social" />
+          <a href="https://th-th.facebook.com/ywcth/" target="_blank" rel="noopener noreferrer" style={{ marginRight: '15px' }}>
+            <i className="fa fa-facebook icon facebook" aria-hidden="true" />
           </a>
-          <a href="#" target="_blank" rel="noopener noreferrer">
-            <img src="/static/img/coming-soon/twitter.png" alt="ywc-page" className="social" />
+          <a href="https://th-th.facebook.com/ywcth/" target="_blank" rel="noopener noreferrer">
+            <i className="fa fa-twitter icon twitter" aria-hidden="true" />
           </a>
         </div>
         <style jsx global>{`
@@ -66,22 +71,32 @@ export default class ComingSoon extends Component {
             display: flex;
             align-items: center;
             justify-content: center;
-            background-size: cover;
+            .slideshow {
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-blend-mode: darken;
+              background-size: cover;
+              background-position: center center;
+              transition: 1s;
+            }
+            .overlay {
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-color: rgba(0, 0, 0, 0.5);
+            }
             .logo-container {
+              z-index: 10;
               text-align: center;
               @media(max-width: 768px) {
-              width: 100%;
+                width: 100%;
               }
             }
-          }
-          .bg-1 {
-            background-image: url('/static/img/coming-soon/1.jpg');
-          }
-          .bg-2 {
-            background-image: url('/static/img/coming-soon/2.jpg');
-          }
-          .bg-3 {
-            background-image: url('/static/img/coming-soon/3.jpg');
           }
           img.logo {
             display: block;
@@ -119,10 +134,41 @@ export default class ComingSoon extends Component {
             letter-spacing: .3em;
             white-space: nowrap;
             overflow: hidden;
-            -webkit-animation: typing 2.5s steps(13, end) alternate, blink-caret .5s step-end infinite alternate;
+            -webkit-animation: typing 5s steps(13, end) alternate, blink-caret .5s step-end infinite alternate;
             @media(max-width: 768px) {
               font-size: 26px;
               width: 80%;
+            }
+          }
+          .icon {
+            display: inline-block;
+            border-radius: 50%;
+            background-color: white;
+            color: #333;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 30px;
+            transform: perspective(1px) translateZ(0);
+            transition-property: color;
+            transition-duration: 1s;
+            @media(max-widyh: 768px) {
+              width: 40px;
+              height: 40px;
+              line-height: 40px;
+              font-size: 22px;
+            }
+            &.facebook {
+              &:hover {
+                background-color: #3b5998;
+                color: white;
+              }
+            }
+            &.twitter {
+              &:hover {
+                background-color: #4099ff;
+                color: white;
+              }
             }
           }
         `}</style>

@@ -3,11 +3,16 @@
     {
       "exec_mode": "fork_mode",
       "script": "./index.js",
-      "name": "ywc15-registration-frontend",
+      "name": "ywc15-frontend",
       "env": {
-        "NODE_ENV": "development"
+        "NODE_ENV": "staging"
+      },
+      "env_staging": {
+        "name": "frontend-staging",
+        "NODE_ENV": "staging"
       },
       "env_production" : {
+        "name": "frontend-production",
         "NODE_ENV": "production"
       },
       "log_date_format"  : "YYYY-MM-DD HH:mm Z"

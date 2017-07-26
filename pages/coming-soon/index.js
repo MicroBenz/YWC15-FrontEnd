@@ -56,7 +56,7 @@ export default class ComingSoon extends Component {
           <a href="https://th-th.facebook.com/ywcth/" target="_blank" rel="noopener noreferrer" style={{ marginRight: '15px' }}>
             <i className="fa fa-facebook icon facebook" aria-hidden="true" />
           </a>
-          <a href="https://th-th.facebook.com/ywcth/" target="_blank" rel="noopener noreferrer">
+          <a href="https://twitter.com/ywcth" target="_blank" rel="noopener noreferrer">
             <i className="fa fa-twitter icon twitter" aria-hidden="true" />
           </a>
         </div>

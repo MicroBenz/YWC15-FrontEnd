@@ -12,6 +12,7 @@ const environmentConfig = {
     isProduction: true
   },
   production: {
+    isProduction: true,
     facebookAppsID: '715340261988670',
     gaTrackingID: 'UA-103240510-2',
     port: 12346

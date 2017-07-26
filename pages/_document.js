@@ -15,13 +15,12 @@ export default class MyDocument extends Document {
       <html lang="th">
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link rel="stylesheet" href="/static/libs/bulma/bulma.css" />
+          <link rel="stylesheet" href="/static/libs/bulma/bulma.min.css" />
           <link
             rel="stylesheet"
             href="/static/libs/font-awesome/css/font-awesome.min.css"
           />
-          <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet" />
-          <link href="https://fonts.googleapis.com/css?family=Megrim|Rajdhani|Ubuntu|Mitr:300" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css?family=Rajdhani:300" rel="stylesheet" />
         </Head>
         <body style={{ width: '100%', height: '100%' }}>
           <Main />

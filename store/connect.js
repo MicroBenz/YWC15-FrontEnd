@@ -2,7 +2,6 @@ import React from 'react';
 import withRedux from 'next-redux-wrapper';
 
 import App from '../component/App';
-import Nav from '../component/Nav/Nav';
 import createStore from './createStore';
 
 export default (mapStateToProps, mapDispatchToProps) => (Comp) => {

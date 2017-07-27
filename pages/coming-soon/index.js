@@ -13,12 +13,12 @@ export default class ComingSoon extends Component {
     };
   }
 
-  componentWillMount() {
-    if (!process.browser) return;
-    [...Array(IMAGE_COUNT)].forEach((a, idx) => {
-      (new Image()).src = `/static/img/coming-soon/gallery/${idx + 1}.jpg`; // eslint-disable-line
-    });
-  }
+  // componentWillMount() {
+  //   if (!process.browser) return;
+  //   [...Array(IMAGE_COUNT)].forEach((a, idx) => {
+  //     (new Image()).src = `/static/img/coming-soon/gallery/${idx + 1}.jpg`; // eslint-disable-line
+  //   });
+  // }
 
   componentDidMount() {
     ReactGA.initialize(config.gaTrackingID);
@@ -44,6 +44,9 @@ export default class ComingSoon extends Component {
             content="ywc,jwc,website,web content,web design, web marketing, web programming"
           />
         </Head>
+        {[...Array(IMAGE_COUNT)].map((a, idx) => (
+          <div style={{ backgroundImage: `url('/static/img/coming-soon/gallery/${idx + 1}.jpg')`, display: 'none' }} />
+        ))}
         <div style={{ backgroundImage: `url('/static/img/coming-soon/gallery/${this.state.currentIndex}.jpg')` }} className="slideshow" />
         <div className="overlay" />
         <div className="logo-container">
@@ -122,9 +125,9 @@ export default class ComingSoon extends Component {
             color: #ffffff;
             text-shadow: 0 0 10px #636363;
             font-weight: 700;
-            margin: 15px auto;
+            margin: 15px auto !important;
             @media(max-width: 768px) {
-              margin: 10px auto;
+              margin: 10px auto !important;
             }
           }
           .coming-soon {

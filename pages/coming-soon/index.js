@@ -4,7 +4,7 @@ import Head from 'next/head';
 
 import config from '../../config';
 
-const IMAGE_COUNT = 19;
+const IMAGE_COUNT = 16;
 export default class ComingSoon extends Component {
   constructor(props) {
     super(props);
@@ -26,7 +26,7 @@ export default class ComingSoon extends Component {
     this.interval = setInterval(() => {
       const { currentIndex } = this.state;
       this.setState({ currentIndex: currentIndex + 1 <= IMAGE_COUNT ? currentIndex + 1 : 1 });
-    }, 3000);
+    }, 4000);
   }
 
   componentWillUnmount() {
@@ -122,22 +122,26 @@ export default class ComingSoon extends Component {
             color: #ffffff;
             text-shadow: 0 0 10px #636363;
             font-weight: 700;
+            margin: 15px auto;
+            @media(max-width: 768px) {
+              margin: 10px auto;
+            }
           }
           .coming-soon {
             display: block;
             margin: 0 auto;
-            width: 75%;
+            width: 70%;
             border-right: .1em solid white;
             font-size: 3em;
             text-transform: uppercase;
             margin-top: 0;
-            letter-spacing: .3em;
+            letter-spacing: .2em;
             white-space: nowrap;
             overflow: hidden;
             -webkit-animation: typing 5s steps(13, end) alternate, blink-caret .5s step-end infinite alternate;
             @media(max-width: 768px) {
               font-size: 26px;
-              width: 80%;
+              {/* width: 80%; */}
             }
           }
           .icon {
@@ -145,10 +149,10 @@ export default class ComingSoon extends Component {
             border-radius: 50%;
             background-color: white;
             color: #333;
-            width: 50px;
-            height: 50px;
-            line-height: 50px;
-            font-size: 30px;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 20px;
             transform: perspective(1px) translateZ(0);
             transition-property: color;
             transition-duration: 1s;

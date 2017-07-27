@@ -25,6 +25,7 @@
   "globals": {
     "document": true,
     "pell": true,
-    "window": true
+    "window": true,
+    "FB": true
   }
 }

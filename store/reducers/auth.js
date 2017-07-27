@@ -1,5 +1,8 @@
+import Router from 'next/router';
+
 import actionCreator from '../../utils/actionCreator';
 import api from '../../utils/api';
+import { actions as registerActions } from './register';
 
 const authAction = actionCreator('auth');
 const LOGIN_PENDING = authAction('LOGIN_PENDING');
@@ -21,14 +24,14 @@ export default (state = initialState, action) => {
       };
     default: return state;
   }
-}
+};
 
 export const actions = {
-  loginSuccess: (user, token) => ({
+  loginSuccess: user => ({
     type: LOGIN_RESOLVED,
     user,
   }),
-  camperLogin: (role) => (dispatch) => {
+  camperLogin: major => (dispatch) => {
     FB.login((fbResponse) => {
       if (fbResponse) {
         const { accessToken } = fbResponse.authResponse;
@@ -37,8 +40,12 @@ export const actions = {
             window.localStorage.setItem('ywc15Token', token);
             return api.get('/auth/me');
           })
-          .then((user) => dispatch(actions.loginSuccess(user)));
+          .then((user) => {
+            dispatch(actions.loginSuccess(user));
+            dispatch(registerActions.setField('major', major));
+            Router.push('/registration', '/register');
+          });
       }
-    })
+    });
   }
-}
+};

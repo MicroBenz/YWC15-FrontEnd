@@ -15,10 +15,10 @@ export default class LandingPage extends Component {
       <div>
         {JSON.stringify(user)}
         <Link href={{ pathname: '/registration' }} as="/register"><a>Go to regis</a></Link>
-        <LoginButton role="programmer" />
-        <LoginButton role="designer" />
-        <LoginButton role="marketing" />
-        <LoginButton role="content" />
+        <LoginButton major="programmer" />
+        <LoginButton major="design" />
+        <LoginButton major="marketing" />
+        <LoginButton major="content" />
       </div>
     )
   }

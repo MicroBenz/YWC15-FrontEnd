@@ -27,7 +27,6 @@ export default class MyDocument extends Document {
 
           <meta property="og:title" content="Title Here" />
           <meta property="og:type" content="article" />
-          <meta property="og:url" content="http://www.ywc.in.th/" />
           <meta property="og:image" content="/static/img/social/banner.jpg" />
           <meta property="og:description" content="Description Here" />
           <meta property="og:site_name" content="Young Webmaster Camp 15" />

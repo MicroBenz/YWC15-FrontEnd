@@ -3,6 +3,7 @@ import ReactGA from 'react-ga';
 import Head from 'next/head';
 
 import config from '../../config';
+import seo from '../../seo.json';
 
 const IMAGE_COUNT = 16;
 export default class ComingSoon extends Component {
@@ -37,12 +38,15 @@ export default class ComingSoon extends Component {
     return (
       <div className="coming-soon-container">
         <Head>
-          <title>YWC#15 is coming</title>
-          <meta name="description" content="YWC#15 กำลังจะมาแล้ว!!!!!" />
-          <meta
-            name="keywords"
-            content="ywc,jwc,website,web content,web design, web marketing, web programming"
-          />
+          <title>{seo.comingSoon.title}</title>
+          <meta name="description" content={seo.comingSoon.description} />
+          <meta name="keywords" content={seo.comingSoon.keywords} />
+
+          <meta name="twitter:title" content={seo.comingSoon.title} />
+          <meta name="twitter:description" content={seo.comingSoon.description} />
+
+          <meta property="og:title" content={seo.comingSoon.title} />
+          <meta property="og:description" content={seo.comingSoon.description} />
         </Head>
         {[...Array(IMAGE_COUNT)].map((a, idx) => (
           <div style={{ backgroundImage: `url('/static/img/coming-soon/gallery/${idx + 1}.jpg')`, display: 'none' }} />

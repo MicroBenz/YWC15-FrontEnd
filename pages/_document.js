@@ -2,6 +2,7 @@ import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 import flush from 'styled-jsx/server';
 import config from '../config';
+import seo from '../seo.json';
 
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
@@ -14,21 +15,22 @@ export default class MyDocument extends Document {
     return (
       <html lang="th">
         <Head>
-          <title>Young Webmaster Camp 15</title>
-          <meta name="description" content="Page description. No longer than 155 characters." />
+          <title>{seo.title}</title>
+          <meta name="description" content={seo.description} />
+          <meta name="keywords" content={seo.keywords} />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
 
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:site" content="@publisher_handle" />
-          <meta name="twitter:title" content="Young Web Master Camp" />
-          <meta name="twitter:description" content="Page description less than 200 characters" />
+          <meta name="twitter:title" content={seo.title} />
+          <meta name="twitter:description" content={seo.description} />
           <meta name="twitter:creator" content="@author_handle" />
           <meta name="twitter:image" content="/static/img/social/banner.jpg" />
 
-          <meta property="og:title" content="Title Here" />
+          <meta property="og:title" content={seo.title} />
           <meta property="og:type" content="article" />
           <meta property="og:image" content="/static/img/social/banner.jpg" />
-          <meta property="og:description" content="Description Here" />
+          <meta property="og:description" content={seo.description} />
           <meta property="og:site_name" content="Young Webmaster Camp 15" />
 
           <link rel="stylesheet" href="/static/libs/bulma/bulma.min.css" />

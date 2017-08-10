@@ -1,6 +1,7 @@
 import React from 'react';
 
 import TextInput from '../Form/TextInput';
+import Dropdown from '../Form/Dropdown';
 
 const StepOne = (props) => (
   <form
@@ -9,7 +10,7 @@ const StepOne = (props) => (
       props.onSubmit();
     }}
   >
-    <TextInput field="title" label="คำนำหน้าชื่อ" value={props.title} />
+    <Dropdown field="title" label="คำนำหน้าชื่อ" value={props.title} items={['นาย', 'นางสาว']} />
     <div className="columns">
       <div className="column">
         <TextInput field="firstName" label="ชื่อ" value={props.firstName} />

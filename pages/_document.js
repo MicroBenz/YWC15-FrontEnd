@@ -1,8 +1,10 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 import flush from 'styled-jsx/server';
+
 import config from '../config';
 import seo from '../seo.json';
+import colors from '../utils/colors';
 
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
@@ -56,7 +58,7 @@ export default class MyDocument extends Document {
           <meta name="theme-color" content="#ffffff" />
 
         </Head>
-        <body style={{ width: '100%', height: '100%' }}>
+        <body style={{ width: '100%', height: '100%', backgroundColor: colors.theme, color: colors.white, backgroundImage: `url('/static/img/bg/bg.png')`, backgroundRepeat: 'repeat', backgroundSize: '100%' }}>
           <Main />
           <NextScript />
           <script

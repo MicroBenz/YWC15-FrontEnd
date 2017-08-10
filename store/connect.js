@@ -6,12 +6,9 @@ import createStore from './createStore';
 
 export default (mapStateToProps, mapDispatchToProps) => (Comp) => {
   const PagesLayout = props => (
-    <div>
-      <h1>This Heading is come from connect.js</h1>
-      <App {...props}>
-        <Comp {...props} />
-      </App>
-    </div>
+    <App {...props}>
+      <Comp {...props} />
+    </App>
   );
 
   PagesLayout.getInitialProps = async (data) => {

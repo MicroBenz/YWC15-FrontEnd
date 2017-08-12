@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Guru = () => {
-  return (
-    <div>
-      <h1>Guru</h1>
-    </div>
-  );
-};
+import SectionHeader from './SectionHeader';
+
+const Guru = () => (
+  <div>
+    <SectionHeader title="Guru" subtitle="วิทยากร" />
+  </div>
+);
 
 export default Guru;

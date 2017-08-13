@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Gallery = () => {
-  return (
-    <div>
-      <h1>Gallery</h1>
-    </div>
-  );
-};
+import SectionHeader from './SectionHeader';
+
+const Gallery = () => (
+  <div>
+    <SectionHeader title="Gallery" subtitle="ภาพบรรยากาศค่าย" />
+  </div>
+);
 
 export default Gallery;

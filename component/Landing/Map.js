@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Map = () => {
-  return (
-    <div>
-      <h1>Map</h1>
-    </div>
-  );
-};
+import SectionHeader from './SectionHeader';
+
+const Map = () => (
+  <div>
+    <SectionHeader title="Location" subtitle="แผนที่เดินทาง" />
+  </div>
+);
 
 export default Map;

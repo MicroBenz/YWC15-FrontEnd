@@ -1,3 +1,21 @@
 {
-  "whatIsYwc": "YWC เป็นค่ายที่บลาๆๆ"
+  "whatIsYwc": "YWC เป็นค่ายที่บลาๆๆ",
+  "major": {
+    "programming": {
+      "title": "WEB_PROGRAMMING",
+      "description": "กูโค้ด"
+    },
+    "design": {
+      "title": "WEB_DESIGN",
+      "description": "กูออกแบบ"
+    },
+    "marketing": {
+      "title": "WEB_MARKETING",
+      "description": "กูหาตัง"
+    },
+    "content": {
+      "title": "WEB_CONTENT",
+      "description": "กูโม้"
+    }
+  }
 }

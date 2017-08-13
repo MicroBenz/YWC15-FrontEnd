@@ -1,11 +1,11 @@
 import React from 'react';
 
-const FAQ = () => {
-  return (
-    <div>
-      <h1>FAQ</h1>
-    </div>
-  );
-};
+import SectionHeader from './SectionHeader';
+
+const FAQ = () => (
+  <div>
+    <SectionHeader title="Q & A" subtitle="ถาม - ตอบ" />
+  </div>
+);
 
 export default FAQ;

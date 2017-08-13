@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Timeline = () => {
-  return (
-    <div>
-      <h1>Timeline</h1>
-    </div>
-  );
-};
+import SectionHeader from './SectionHeader';
+
+const Timeline = () => (
+  <div>
+    <SectionHeader title="Timeline" subtitle="ตารางเวลา" />
+  </div>
+);
 
 export default Timeline;

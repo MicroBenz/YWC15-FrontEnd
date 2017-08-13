@@ -16,21 +16,20 @@ export default class MyDocument extends Document {
       <html lang="th">
         <Head>
           <title>{seo.title}</title>
-          <meta name="description" content={seo.description} />
-          <meta name="keywords" content={seo.keywords} />
+          <meta name="description" content={seo.comingSoon.description} />
+          <meta name="keywords" content={seo.comingSoon.keywords} />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-          <meta name="twitter:card" content="summary" />
-          <meta name="twitter:site" content="@publisher_handle" />
-          <meta name="twitter:title" content={seo.title} />
-          <meta name="twitter:description" content={seo.description} />
-          <meta name="twitter:creator" content="@author_handle" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@ywcth" />
+          <meta name="twitter:title" content={seo.comingSoon.title} />
+          <meta name="twitter:description" content={seo.comingSoon.description} />
           <meta name="twitter:image" content="/static/img/social/banner.jpg" />
 
-          <meta property="og:title" content={seo.title} />
+          <meta property="og:title" content={seo.comingSoon.title} />
           <meta property="og:type" content="article" />
           <meta property="og:image" content="/static/img/social/banner.jpg" />
-          <meta property="og:description" content={seo.description} />
+          <meta property="og:description" content={seo.comingSoon.description} />
           <meta property="og:site_name" content="Young Webmaster Camp 15" />
 
           <link rel="stylesheet" href="/static/libs/bulma/bulma.min.css" />

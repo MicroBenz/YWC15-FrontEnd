@@ -27,6 +27,7 @@ const SectionHeader = ({ title = '', subtitle = '' }) => (
         font-family: 'Supermarket';
         font-size: 30px;
         line-height: 32px;
+        color: ${colors.white};
       }
     `}</style>
   </div>

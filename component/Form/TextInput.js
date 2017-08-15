@@ -3,18 +3,43 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { actions as registerActions } from '../../store/reducers/register';
+import colors from '../../utils/colors';
 
 const TextInput = ({ label, field, setField, value }) => (
   <div className="field">
-    <label className="label">{label}</label>
     <div className="control">
       <input
         className="input"
         type="text"
         value={value}
         onChange={e => setField(field, e.target.value)}
+        placeholder={label}
       />
     </div>
+    <style jsx>{`
+      input {
+        font-family: 'Cordia New';
+        font-size: 22px;
+        font-weight: 600;
+        color: ${colors.white};
+        background-color: ${colors.formBg};
+        border: 1px solid ${colors.formBg};
+        border-radius: 0px;
+        box-shadow: none;
+        transition: all 0.30s ease-in-out;
+        &:hover {
+          border: 1px solid ${colors.cyan};
+          box-shadow: 0 0 5px ${colors.darkCyan};
+        }
+        &:focus {
+          border: 1px solid ${colors.cyan};
+          box-shadow: 0 0 5px ${colors.darkCyan};
+        }
+        &::-webkit-input-placeholder {
+          color: ${colors.white};
+        }
+      }
+    `}</style>
   </div>
 );
 

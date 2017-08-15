@@ -28,7 +28,7 @@ export default class App extends Component {
   
   render() {
     return (
-      <div>
+      <div style={{ height: '100vh' }}>
         {this.props.children}
       </div>
     );

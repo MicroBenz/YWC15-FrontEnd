@@ -84,8 +84,8 @@ const Welcoming = () => (
           top: -2px;
           left: 0px;
           position: absolute;
-          border-top: 4px solid #6df8eb;
-          border-left: 4px solid #6df8eb;
+          border-top: 4px solid ${colors.cyan};
+          border-left: 4px solid ${colors.cyan};
         }
         &:after {
           display: block;
@@ -95,12 +95,12 @@ const Welcoming = () => (
           position: absolute;
           top: -2px;
           right: 0px;
-          border-top: 4px solid #6df8eb;
-          border-right: 4px solid #6df8eb;
+          border-top: 4px solid ${colors.cyan};
+          border-right: 4px solid ${colors.cyan};
         }
         .slogan-inner-container {
           padding: 5px 0px;
-          border: 1px solid #83beea;
+          border: 1px solid ${colors.darkCyan};
           &:before {
             display: block;
             content: "";
@@ -109,8 +109,8 @@ const Welcoming = () => (
             position: absolute;
             bottom: -2px;
             left: 0px;
-            border-bottom: 4px solid #6df8eb;
-            border-left: 4px solid #6df8eb;
+            border-bottom: 4px solid ${colors.cyan};
+            border-left: 4px solid ${colors.cyan};
           }
           &:after {
             display: block;
@@ -120,8 +120,8 @@ const Welcoming = () => (
             position: absolute;
             bottom: -2px;
             right: 0px;
-            border-bottom: 4px solid #6df8eb;
-            border-right: 4px solid #6df8eb;
+            border-bottom: 4px solid ${colors.cyan};
+            border-right: 4px solid ${colors.cyan};
           }
           h1 {
             font-size: 22px;

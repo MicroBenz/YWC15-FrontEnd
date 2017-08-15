@@ -37,6 +37,8 @@ export default class MyDocument extends Document {
 
           <link rel="stylesheet" href="/static/libs/bulma/bulma.min.css" />
           <link rel="stylesheet" href="/static/fonts/fonts.css" />
+          <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css" />
+          <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css" />
 
           <link rel="apple-touch-icon" sizes="57x57" href="/static/favicon/apple-icon-57x57.png" />
           <link rel="apple-touch-icon" sizes="60x60" href="/static/favicon/apple-icon-60x60.png" />

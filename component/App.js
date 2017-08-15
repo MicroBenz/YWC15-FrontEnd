@@ -28,7 +28,7 @@ export default class App extends Component {
   
   render() {
     return (
-      <div style={{ height: '100vh' }}>
+      <div style={{ height: '100vh', overflowY: 'scroll' }}>
         {this.props.children}
       </div>
     );

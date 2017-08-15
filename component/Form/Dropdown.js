@@ -10,7 +10,8 @@ const TextInput = ({ label, field, setField, value, items, style }) => (
     <div className="control">
       <div className="select">
         <select className="ywc-select" defaultValue={label} value={value} onChange={e => setField(field, e.target.value)}>
-          {items.map(item => <option key={item}>{item}</option>)}
+          <option value="" disabled>{label}</option>
+          {items.map(item => <option key={item} value={item}>{item}</option>)}
         </select>
       </div>
     </div>
@@ -35,6 +36,10 @@ const TextInput = ({ label, field, setField, value, items, style }) => (
         }
       }
       .select {
+        width: 100%;
+        select {
+          width: 100%;
+        }
         &:after {
           width: 15px;
           height: 15px;

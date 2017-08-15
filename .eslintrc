@@ -24,8 +24,8 @@
   },
   "globals": {
     "document": true,
-    "pell": true,
     "window": true,
-    "FB": true
+    "FB": true,
+    "flatpickr": true
   }
 }

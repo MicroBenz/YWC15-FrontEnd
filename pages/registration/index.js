@@ -6,12 +6,14 @@ import connect from '../../store/connect';
 import colors from '../../utils/colors';
 import Stepper from '../../component/Register/Stepper';
 import StepOne from '../../component/Register/StepOne';
+import { actions as registerActions } from '../../store/reducers/register';
 
 @connect(
   state => ({
     registerData: state.register,
     isLogin: state.auth.isLogin
-  })
+  }),
+  { ...registerActions }
 )
 export default class MainRegistration extends Component {
   static propTypes = {
@@ -26,14 +28,15 @@ export default class MainRegistration extends Component {
   }
 
   render() {
-    const { major, currentStep } = this.props.registerData;
+    const { proceedStepOne, registerData } = this.props;
+    const { major, currentStep } = registerData;
     return (
       <div className="container">
         <div>
           <Stepper step={currentStep} />
           <div className="step-wrapper">
             <div className="step-inner-wrapper">
-              {currentStep === 1 && <StepOne {...this.props.registerData} />}
+              {currentStep === 1 && <StepOne {...registerData} onSubmit={() => proceedStepOne(registerData)} />}
             </div>
             <style jsx>{`
               .step-wrapper {
@@ -62,6 +65,7 @@ export default class MainRegistration extends Component {
                 .step-inner-wrapper {
                   padding: 20px;
                   border: 1px solid #83beea;
+                  pointer-events: none;
                   &:before {
                     display: block;
                     content: "";

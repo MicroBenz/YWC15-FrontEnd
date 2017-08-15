@@ -15,20 +15,23 @@ const initialState = {
   title: '',
   firstName: '',
   lastName: '',
+  firstNameEN: '',
+  lastNameEN: '',
   nickname: '',
+  birthdate: '',
+  sex: '',
+  blood: '',
+  religion: '',
+  university: '',
+  academicYear: '',
   faculty: '',
   department: '',
-  academicYear: '',
-  university: '',
-  sex: '',
-  birthdate: '',
   // Step 2
   address: '',
   province: '',
   postalCode: '',
   phone: '',
   email: '',
-  blood: '',
   foodAllergy: '',
   medAllergy: '',
   disease: '',
@@ -63,29 +66,24 @@ export default (state = initialState, action) => {
   }
 };
 
-// Prepare form function
-const prepareForm = (form, fields) => {
-  const formData = {};
-  fields.forEach((field) => {
-    formData[field] = form[field];
-  });
-  return formData;
-};
-
 const prepareStepOneForm = (form) => {
   const fields = [
     'title',
     'firstName',
     'lastName',
+    'firstNameEN',
+    'lastNameEN',
     'nickname',
+    'birthdate',
+    'sex',
+    'blood',
+    'religion',
+    'university',
+    'academicYear',
     'faculty',
     'department',
-    'academicYear',
-    'university',
-    'sex',
-    'birthdate'
   ];
-  return prepareForm(form, fields);
+  return _.pick(form, fields);
 };
 
 const prepareStepTwoForm = (form) => {
@@ -95,14 +93,12 @@ const prepareStepTwoForm = (form) => {
     'postalCode',
     'phone',
     'email',
-    'blood',
     'foodAllergy',
     'medAllergy',
     'disease'
   ];
-  return prepareForm(form, fields);
+  return _.pick(form, fields);
 };
-
 
 export const actions = {
   setField: (field, value) => ({

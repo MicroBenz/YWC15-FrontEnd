@@ -41,6 +41,7 @@ export default class MainRegistration extends Component {
             <style jsx>{`
               .step-wrapper {
                 position: relative;
+                pointer-events: none;
                 &:before {
                   display: block;
                   content: "";
@@ -65,7 +66,6 @@ export default class MainRegistration extends Component {
                 .step-inner-wrapper {
                   padding: 20px;
                   border: 1px solid #83beea;
-                  pointer-events: none;
                   &:before {
                     display: block;
                     content: "";

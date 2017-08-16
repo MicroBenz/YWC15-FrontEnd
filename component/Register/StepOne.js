@@ -1,8 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import DatePicker from '../Form/DatePicker';
 import TextInput from '../Form/TextInput';
 import Dropdown from '../Form/Dropdown';
+import FileUploader from '../Form/FileUploader';
+import ImagePreview from './ImagePreview';
+import dropdownData from './dropdown-data.json';
+import { getImagePath } from '../../utils/helpers';
 
 const StepOne = props => (
   <form
@@ -13,13 +18,28 @@ const StepOne = props => (
     style={{ pointerEvents: 'auto' }}
   >
     <div className="columns">
-      <div className="column is-one-third">
-        <h1>Hi</h1>
+      <div className="column is-one-third" style={{ textAlign: 'center' }}>
+        <ImagePreview img={getImagePath(props.previewPicture)} />
+        <FileUploader
+          title="UPLOAD PROFILE"
+          style={{ fontFamily: 'Agency FB', fontSize: '26px', marginTop: '15px' }}
+          field="picture"
+          previewField="previewPicture"
+        />
+        <div className="upload-description">
+          <p>ขอเป็นรูปหน้าตรงแต่งกายตามสบาย</p>
+          <p>(ขนาดไฟล์รูปไม่เกิน ...MB)</p>
+        </div>
       </div>
       <div className="column">
         <div className="columns">
           <div className="column">
-            <Dropdown field="title" label="คำนำหน้าชื่อ" value={props.title} items={['นาย', 'นางสาว']} style={{ paddingBottom: '10px' }} />
+            <Dropdown
+              field="title"
+              label="คำนำหน้าชื่อ"
+              value={props.title}
+              items={['นาย', 'นางสาว']}
+            />
           </div>
           <div className="column">
             <TextInput field="firstName" label="ชื่อ" value={props.firstName} />
@@ -46,21 +66,45 @@ const StepOne = props => (
         </div>
         <div className="columns">
           <div className="column">
-            <Dropdown field="sex" label="เพศ" value={props.sex} items={['ชาย', 'หญิง']} />
+            <Dropdown
+              field="sex"
+              label="เพศ"
+              value={props.sex}
+              items={dropdownData.sex}
+            />
           </div>
           <div className="column">
-            <Dropdown field="blood" label="ชื่อเล่น" value={props.blood} items={['A', 'B', 'O', 'AB']} />
+            <Dropdown
+              field="blood"
+              label="กรุ๊ปเลือด"
+              value={props.blood}
+              items={dropdownData.blood}
+            />
           </div>
           <div className="column">
-            <Dropdown field="religion" label="ศาสนา" value={props.religion} items={['พุทธ', 'คริสต์']} />
+            <Dropdown
+              field="religion"
+              label="ศาสนา"
+              value={props.religion}
+              items={dropdownData.religion}
+            />
           </div>
         </div>
         <div className="columns">
           <div className="column">
-            <Dropdown field="university" label="มหาวิทยาลัย" value={props.university} items={['จุฬาลงกรณ์มหาวิทยาลัย']} />
+            <TextInput
+              field="university"
+              label="มหาวิทยาลัย"
+              value={props.university}
+            />
           </div>
           <div className="column">
-            <Dropdown field="academicYear" label="ชั้นปี" value={props.academicYear} items={['ปี 1', 'ปี 2', 'ปี 3', 'ปี 4', 'ปี 5', 'ปี 6', 'ปวส. ปี 1', 'ปวส. ปี 2']} />
+            <Dropdown
+              field="academicYear"
+              label="ชั้นปี"
+              value={props.academicYear}
+              items={dropdownData.academicYear}
+            />
           </div>
         </div>
         <div className="columns">
@@ -74,7 +118,32 @@ const StepOne = props => (
       </div>
     </div>
     <button>Next</button>
+    <style jsx>{`
+      .upload-description {
+        font-family: 'Cordia New';
+        font-weight: 600;
+        font-size: 24px;
+        margin-top: 15px;
+      }
+    `}</style>
   </form>
 );
+
+StepOne.propTypes = {
+  title: PropTypes.string,
+  firstName: PropTypes.string,
+  lastName: PropTypes.string,
+  firstNameEN: PropTypes.string,
+  lastNameEN: PropTypes.string,
+  nickname: PropTypes.string,
+  birthdate: PropTypes.string,
+  sex: PropTypes.string,
+  blood: PropTypes.string,
+  religion: PropTypes.string,
+  university: PropTypes.string,
+  academicYear: PropTypes.string,
+  faculty: PropTypes.string,
+  department: PropTypes.string
+};
 
 export default StepOne;

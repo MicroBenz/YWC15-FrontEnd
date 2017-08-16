@@ -26,6 +26,8 @@ const initialState = {
   academicYear: '',
   faculty: '',
   department: '',
+  picture: {},
+  previewPicture: '',
   // Step 2
   address: '',
   province: '',
@@ -55,7 +57,9 @@ export default (state = initialState, action) => {
     case GET_REGISTER_DATA.RESOLVED:
       return {
         ...state,
-        ..._.omit(action.data, ['_id', 'facebook', 'status'])
+        ..._.omit(action.data, ['_id', 'facebook', 'status']),
+        previewPicture: action.data.picture
+
       };
     case SAVE_STEP_ONE.RESOLVED:
       return {
@@ -64,6 +68,21 @@ export default (state = initialState, action) => {
       };
     default: return state;
   }
+};
+
+const prepareFormData = (form, fields) => {
+  const data = new FormData();
+  console.log(form, fields);
+  fields.forEach((field) => {
+    console.log(field, form[field]);
+    if (field === 'picture') {
+      data.append('profilePic', form[field]);
+    } else {
+      data.append(field, form[field]);
+    }
+  });
+  // console.log(data);
+  return data;
 };
 
 const prepareStepOneForm = (form) => {
@@ -82,8 +101,9 @@ const prepareStepOneForm = (form) => {
     'academicYear',
     'faculty',
     'department',
+    'picture'
   ];
-  return _.pick(form, fields);
+  return prepareFormData(form, fields);
 };
 
 const prepareStepTwoForm = (form) => {
@@ -112,6 +132,7 @@ export const actions = {
   }),
   proceedStepOne: (form) => {
     const formData = prepareStepOneForm(form);
+    console.log(formData);
     return {
       type: SAVE_STEP_ONE,
       promise: api.put('/registration/step1', formData)

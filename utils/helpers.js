@@ -5,3 +5,10 @@ export const isMobile = () => {
   }
   return false;
 };
+
+export const getImagePath = (img) => {
+  if (img.indexOf('uploads') !== -1) {
+    return `/api/${img}`;
+  }
+  return img;
+};

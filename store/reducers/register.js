@@ -7,10 +7,12 @@ const registerAction = actionCreator('auth');
 const GET_REGISTER_DATA = registerAction('GET_REGISTER_DATA', true);
 const SET_FIELD = registerAction('SET_FIELD');
 const SAVE_STEP_ONE = registerAction('SAVE_STEP_ONE', true);
+const SAVE_STEP_TWO = registerAction('SAVE_STEP_TWO', true);
 
 const initialState = {
+  saving: false,
   major: '',
-  currentStep: 1,
+  currentStep: 2,
   // Step 1
   title: '',
   firstName: '',
@@ -32,11 +34,16 @@ const initialState = {
   address: '',
   province: '',
   postalCode: '',
-  phone: '',
   email: '',
+  phone: '',
+  emergencyPhone: '',
+  emergencyPhoneRelated: '',
+  shirtSize: '',
+  food: '',
+  disease: '',
+  med: '',
   foodAllergy: '',
   medAllergy: '',
-  disease: '',
   // Step 3
   knowCamp: '',
   whyJoinYWC: '',
@@ -61,10 +68,23 @@ export default (state = initialState, action) => {
         previewPicture: action.data.picture
 
       };
+    case SAVE_STEP_ONE.PENDING:
+    case SAVE_STEP_TWO.PENDING:
+      return {
+        ...state,
+        saving: true
+      };
     case SAVE_STEP_ONE.RESOLVED:
       return {
         ...state,
+        saving: false,
         currentStep: 2,
+      };
+    case SAVE_STEP_TWO.RESOLVED:
+      return {
+        ...state,
+        saving: false,
+        currentStep: 3
       };
     default: return state;
   }
@@ -72,7 +92,6 @@ export default (state = initialState, action) => {
 
 const prepareFormData = (form, fields) => {
   const data = new FormData();
-  console.log(form, fields);
   fields.forEach((field) => {
     console.log(field, form[field]);
     if (field === 'picture') {
@@ -132,7 +151,14 @@ export const actions = {
   }),
   proceedStepOne: (form) => {
     const formData = prepareStepOneForm(form);
-    console.log(formData);
+    return {
+      type: SAVE_STEP_ONE,
+      promise: api.put('/registration/step1', formData)
+    };
+  },
+  proceedStepTwo: (form) => {
+    const formData = prepareStepTwoForm(form);
+    console.log('step two form', form);
     return {
       type: SAVE_STEP_ONE,
       promise: api.put('/registration/step1', formData)

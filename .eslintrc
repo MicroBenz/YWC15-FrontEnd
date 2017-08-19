@@ -26,6 +26,7 @@
     "document": true,
     "window": true,
     "FB": true,
-    "flatpickr": true
+    "flatpickr": true,
+    "FormData": true
   }
 }

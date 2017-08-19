@@ -6,6 +6,7 @@ import connect from '../../store/connect';
 import colors from '../../utils/colors';
 import Stepper from '../../component/Register/Stepper';
 import StepOne from '../../component/Register/StepOne';
+import StepTwo from '../../component/Register/StepTwo';
 import { actions as registerActions } from '../../store/reducers/register';
 
 @connect(
@@ -28,7 +29,7 @@ export default class MainRegistration extends Component {
   }
 
   render() {
-    const { proceedStepOne, registerData } = this.props;
+    const { proceedStepOne, proceedStepTwo, registerData } = this.props;
     const { major, currentStep } = registerData;
     return (
       <div className="container">
@@ -37,6 +38,7 @@ export default class MainRegistration extends Component {
           <div className="step-wrapper">
             <div className="step-inner-wrapper">
               {currentStep === 1 && <StepOne {...registerData} onSubmit={() => proceedStepOne(registerData)} />}
+              {currentStep === 2 && <StepTwo {...registerData} onSubmit={() => proceedStepTwo(registerData)} />}
             </div>
             <style jsx>{`
               .step-wrapper {

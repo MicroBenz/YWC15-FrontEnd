@@ -50,6 +50,15 @@ export default class MainRegistration extends Component {
                 <FullAreaLoader />
               </div>
             )}
+            <style jsx global>{`
+              .column {
+                padding-top: 8px;
+                padding-bottom: 0;
+                @media(max-width: 768px) {
+                  padding-top: 0.75rem;
+                }
+              }  
+            `}</style>
             <style jsx>{`
               .step-wrapper {
                 position: relative;

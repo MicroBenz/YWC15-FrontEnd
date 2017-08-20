@@ -46,6 +46,30 @@ export default class DatePicker extends Component {
           />
           <label className={value !== '' ? 'active' : ''}>{label}</label>
         </div>
+        <style jsx global>{`
+          .flatpickr-mobile {
+            font-family: 'Cordia New';
+            font-size: 22px !important;
+            font-weight: 600;
+            color: ${colors.white} !important;
+            background-color: ${colors.formBg} !important;
+            border: 1px solid ${colors.formBg} !important;
+            border-radius: 0px !important;
+            box-shadow: none !important;
+            transition: all 0.30s ease-in-out !important;
+            &:hover {
+              border: 1px solid ${colors.cyan} !important;
+              box-shadow: 0 0 5px ${colors.darkCyan} !important;
+            }
+            &:focus {
+              border: 1px solid ${colors.cyan} !important;
+              box-shadow: 0 0 5px ${colors.darkCyan} !important;
+            }
+            &::-webkit-input-placeholder {
+              color: ${colors.white} !important;
+            }
+          }
+        `}</style>
         <style jsx>{`
           .field {
             margin-top: 40px;
@@ -85,6 +109,9 @@ export default class DatePicker extends Component {
             cursor: text;
             pointer-events: none;
             &.active {
+              display: block;
+            }
+            @media(max-width: 768px) {
               display: block;
             }
           }

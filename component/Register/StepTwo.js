@@ -9,7 +9,7 @@ import { actions as registerActions } from '../../store/reducers/register';
 
 @connect(
   null,
-  { setField: registerActions.setField }
+  { setField: registerActions.setField, navigateStep: registerActions.navigateStep }
 )
 export default class StepTwo extends Component {
   constructor(props) {
@@ -99,6 +99,7 @@ export default class StepTwo extends Component {
             </div>
           </div>
         </div>
+        <button type="button" onClick={() => props.navigateStep(1)}>Back</button>
         <button>Next</button>
         <style jsx>{`
           .switcher {

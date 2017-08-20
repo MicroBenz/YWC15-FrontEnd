@@ -69,6 +69,30 @@ export default class DatePicker extends Component {
             }
           }
         `}</style>
+        <style jsx global>{`
+          .flatpickr-mobile {
+            font-family: 'Cordia New';
+            font-size: 22px;
+            font-weight: 600;
+            color: ${colors.white};
+            background-color: ${colors.formBg} !important;
+            border: 1px solid ${colors.formBg};
+            border-radius: 0px;
+            box-shadow: none;
+            transition: all 0.30s ease-in-out;
+            &:hover {
+              border: 1px solid ${colors.cyan};
+              box-shadow: 0 0 5px ${colors.darkCyan};
+            }
+            &:focus {
+              border: 1px solid ${colors.cyan};
+              box-shadow: 0 0 5px ${colors.darkCyan};
+            }
+            &::-webkit-input-placeholder {
+              color: ${colors.white};
+            }
+          }
+        `}</style>
       </div>
     );
   }

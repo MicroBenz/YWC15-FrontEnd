@@ -44,6 +44,9 @@ export default class MainRegistration extends Component {
               .step-wrapper {
                 position: relative;
                 pointer-events: none;
+                @media(max-width: 768px) {
+                  margin: 15px 20px;
+                }
                 &:before {
                   display: block;
                   content: "";

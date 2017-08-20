@@ -6,13 +6,14 @@ import api from '../../utils/api';
 const registerAction = actionCreator('auth');
 const GET_REGISTER_DATA = registerAction('GET_REGISTER_DATA', true);
 const SET_FIELD = registerAction('SET_FIELD');
+const SET_STEP = registerAction('SET_STEP');
 const SAVE_STEP_ONE = registerAction('SAVE_STEP_ONE', true);
 const SAVE_STEP_TWO = registerAction('SAVE_STEP_TWO', true);
 
 const initialState = {
   saving: false,
   major: '',
-  currentStep: 2,
+  currentStep: 1,
   // Step 1
   title: '',
   firstName: '',
@@ -86,6 +87,11 @@ export default (state = initialState, action) => {
         saving: false,
         currentStep: 3
       };
+    case SET_STEP:
+      return {
+        ...state,
+        currentStep: action.step
+      };
     default: return state;
   }
 };
@@ -130,11 +136,16 @@ const prepareStepTwoForm = (form) => {
     'address',
     'province',
     'postalCode',
-    'phone',
     'email',
+    'phone',
+    'emergencyPhone',
+    'emergencyPhoneRelated',
+    'shirtSize',
+    'food',
+    'disease',
+    'med',
     'foodAllergy',
-    'medAllergy',
-    'disease'
+    'medAllergy'
   ];
   return _.pick(form, fields);
 };
@@ -158,10 +169,14 @@ export const actions = {
   },
   proceedStepTwo: (form) => {
     const formData = prepareStepTwoForm(form);
-    console.log('step two form', form);
+    console.log('step two form', formData);
     return {
-      type: SAVE_STEP_ONE,
-      promise: api.put('/registration/step1', formData)
+      type: SAVE_STEP_TWO,
+      promise: api.put('/registration/step2', formData)
     };
-  }
+  },
+  navigateStep: step => ({
+    type: SET_STEP,
+    step
+  })
 };

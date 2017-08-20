@@ -17,6 +17,7 @@ export default class App extends Component {
   componentDidMount() {
     console.log('apps mounted');
     if (this.props.isFirstLoad) {
+      window.localStorage.removeItem('ywc15Token');
       ReactGA.initialize(config.gaTrackingID);
       Router.onRouteChangeComplete = () => {
         console.log('route changed', window.location.pathname);

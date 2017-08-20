@@ -5,6 +5,7 @@ import Router from 'next/router';
 import { actions as authActions } from '../../store/reducers/auth';
 import { actions as registerActions } from '../../store/reducers/register';
 import GlowingButton from '../Core/GlowingButton';
+import Loader from '../Core/Loader';
 
 const camperLogin = (props) => {
   FB.login((fbResponse) => {
@@ -19,21 +20,19 @@ const camperLogin = (props) => {
 };
 
 const LoginButton = (props) => {
-  const { isLogin, major } = props;
-  if (isLogin) {
-    return <GlowingButton>Logout</GlowingButton>;
-  }
+  const { isLogin, isLoggingIn } = props;
   return (
     <GlowingButton
       style={{ width: '160px', margin: '0 auto' }}
-      onClick={() => camperLogin(props)}
-    >APPLY NOW</GlowingButton>
+      onClick={isLoggingIn ? null : () => camperLogin(props)}
+    >{isLoggingIn || isLogin ? <Loader size={15} /> : 'APPLY NOW'}</GlowingButton>
   );
 };
 
 export default connect(
   ({ auth }) => ({
-    isLogin: auth.isLogin
+    isLogin: auth.isLogin,
+    isLoggingIn: auth.isLoggingIn
   }), {
     ...authActions,
     ...registerActions

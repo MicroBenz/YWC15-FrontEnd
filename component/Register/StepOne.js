@@ -6,8 +6,8 @@ import TextInput from '../Form/TextInput';
 import Dropdown from '../Form/Dropdown';
 import FileUploader from '../Form/FileUploader';
 import ImagePreview from './ImagePreview';
-import dropdownData from './dropdown-data.json';
 import { getImagePath } from '../../utils/helpers';
+import dropdownData from './dropdown-data.json';
 
 const StepOne = props => (
   <form
@@ -117,6 +117,7 @@ const StepOne = props => (
         </div>
       </div>
     </div>
+    
     <button>Next</button>
     <style jsx>{`
       .upload-description {

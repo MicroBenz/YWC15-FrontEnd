@@ -34,7 +34,7 @@ export default class DatePicker extends Component {
   }
 
   render() {
-    const { label } = this.props;
+    const { label, value } = this.props;
     return (
       <div className="field">
         <div className="control">
@@ -44,8 +44,12 @@ export default class DatePicker extends Component {
             type="text"
             placeholder={label}
           />
+          <label className={value !== '' ? 'active' : ''}>{label}</label>
         </div>
         <style jsx>{`
+          .field {
+            margin-top: 40px;
+          }
           input {
             font-family: 'Cordia New';
             font-size: 22px;
@@ -68,28 +72,20 @@ export default class DatePicker extends Component {
               color: ${colors.white};
             }
           }
-        `}</style>
-        <style jsx global>{`
-          .flatpickr-mobile {
+          label {
+            display: none;
             font-family: 'Cordia New';
-            font-size: 22px;
             font-weight: 600;
-            color: ${colors.white};
-            background-color: ${colors.formBg} !important;
-            border: 1px solid ${colors.formBg};
-            border-radius: 0px;
-            box-shadow: none;
-            transition: all 0.30s ease-in-out;
-            &:hover {
-              border: 1px solid ${colors.cyan};
-              box-shadow: 0 0 5px ${colors.darkCyan};
-            }
-            &:focus {
-              border: 1px solid ${colors.cyan};
-              box-shadow: 0 0 5px ${colors.darkCyan};
-            }
-            &::-webkit-input-placeholder {
-              color: ${colors.white};
+            font-size: 22px;
+            position: absolute;
+            top: -9px;
+            left: calc(0.625em - 1px);
+            transition: transform .2s ease-out;
+            transform: translateY(-30px) scale(1);
+            cursor: text;
+            pointer-events: none;
+            &.active {
+              display: block;
             }
           }
         `}</style>

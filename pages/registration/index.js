@@ -7,6 +7,7 @@ import colors from '../../utils/colors';
 import Stepper from '../../component/Register/Stepper';
 import StepOne from '../../component/Register/StepOne';
 import StepTwo from '../../component/Register/StepTwo';
+import FullAreaLoader from '../../component/Core/FullAreaLoader';
 import { actions as registerActions } from '../../store/reducers/register';
 
 @connect(
@@ -30,16 +31,25 @@ export default class MainRegistration extends Component {
 
   render() {
     const { proceedStepOne, proceedStepTwo, registerData } = this.props;
-    const { major, currentStep } = registerData;
+    const { major, currentStep, saving } = registerData;
     return (
       <div className="container">
         <div>
           <Stepper step={currentStep} />
           <div className="step-wrapper">
             <div className="step-inner-wrapper">
-              {currentStep === 1 && <StepOne {...registerData} onSubmit={() => proceedStepOne(registerData)} />}
-              {currentStep === 2 && <StepTwo {...registerData} onSubmit={() => proceedStepTwo(registerData)} />}
+              {currentStep === 1 && (
+                <StepOne {...registerData} onSubmit={() => proceedStepOne(registerData)} />
+              )}
+              {currentStep === 2 && (
+                <StepTwo {...registerData} onSubmit={() => proceedStepTwo(registerData)} />
+              )}
             </div>
+            {saving && (
+              <div className="loader-wrapper">
+                <FullAreaLoader />
+              </div>
+            )}
             <style jsx>{`
               .step-wrapper {
                 position: relative;
@@ -71,6 +81,7 @@ export default class MainRegistration extends Component {
                 .step-inner-wrapper {
                   padding: 20px;
                   border: 1px solid #83beea;
+                  position: relative;
                   &:before {
                     display: block;
                     content: "";
@@ -94,6 +105,18 @@ export default class MainRegistration extends Component {
                     border-right: 4px solid ${colors.cyan};
                   }
                 }
+              }
+              .loader-wrapper {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: rgba(0, 0, 0, 0.3);
+                pointer-events: auto;
               }
             `}</style>
           </div>

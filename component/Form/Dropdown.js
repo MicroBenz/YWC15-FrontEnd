@@ -14,8 +14,12 @@ const TextInput = ({ label, field, setField, value, items, style }) => (
           {items.map(item => <option key={item} value={item}>{item}</option>)}
         </select>
       </div>
+      <label className={value !== '' ? 'active' : ''}>{label}</label>
     </div>
     <style jsx>{`
+      .field {
+        margin-top: 40px;
+      }
       .ywc-select {
         font-family: 'Cordia New';
         font-size: 22px;
@@ -46,6 +50,22 @@ const TextInput = ({ label, field, setField, value, items, style }) => (
           border-width: 3px;
           border-color: ${colors.cyan};
           top: 55%;
+        }
+      }
+      label {
+        display: none;
+        font-family: 'Cordia New';
+        font-weight: 600;
+        font-size: 22px;
+        position: absolute;
+        top: -9px;
+        left: calc(0.625em - 1px);
+        transition: transform .2s ease-out;
+        transform: translateY(-30px) scale(1);
+        cursor: text;
+        pointer-events: none;
+        &.active {
+          display: block;
         }
       }
     `}</style>

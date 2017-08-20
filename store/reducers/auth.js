@@ -6,19 +6,29 @@ const LOGIN = authAction('LOGIN', true);
 
 const initialState = {
   isLogin: false,
+  isLoggingIn: false,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case LOGIN.PENDING: {
+      return {
+        ...state,
+        isLoggingIn: true,
+        isLogin: false
+      };
+    }
     case LOGIN.RESOLVED: {
       return {
         ...state,
+        isLoggingIn: false,
         isLogin: true,
       };
     }
     case LOGIN.REJECTED: {
       return {
         ...state,
+        isLoggingIn: false,
         isLogin: false
       };
     }

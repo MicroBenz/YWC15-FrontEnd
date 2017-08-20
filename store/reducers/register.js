@@ -87,6 +87,12 @@ export default (state = initialState, action) => {
         saving: false,
         currentStep: 3
       };
+    case SAVE_STEP_ONE.REJECTED:
+    case SAVE_STEP_TWO.REJECTED:
+      return {
+        ...state,
+        saving: false,
+      };
     case SET_STEP:
       return {
         ...state,

@@ -1,25 +1,19 @@
-import React, { Component } from 'react';
-import Link from 'next/link';
-import connect from '../../store/connect';
-import LoginButton from '../../component/Login/LoginButton';
+import React from 'react';
 
-@connect(
-  ({ auth }) => ({
-    user: auth.user
-  })
-)
-export default class LandingPage extends Component {
+const Hero = props => (
+  <div>Hero</div>
+);
+
+class LandingPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
   render() {
-    const { user } = this.props;
     return (
-      <div>
-        {JSON.stringify(user)}
-        <Link href={{ pathname: '/registration' }} as="/register"><a>Go to regis</a></Link>
-        <LoginButton role="programmer" />
-        <LoginButton role="designer" />
-        <LoginButton role="marketing" />
-        <LoginButton role="content" />
-      </div>
-    )
+      <div>LandingPage</div>
+    );
   }
 }
+
+export default LandingPage;

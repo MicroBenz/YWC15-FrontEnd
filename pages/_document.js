@@ -1,6 +1,7 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 import flush from 'styled-jsx/server';
+import { ServerStyleSheet } from 'styled-components';
 
 import config from '../config';
 import seo from '../seo.json';
@@ -14,6 +15,9 @@ export default class MyDocument extends Document {
   }
 
   render() {
+    const sheet = new ServerStyleSheet();
+    const main = sheet.collectStyles(<Main />);
+    const styleTags = sheet.getStyleElement();
     return (
       <html lang="th">
         <Head>
@@ -56,10 +60,10 @@ export default class MyDocument extends Document {
           <meta name="msapplication-TileColor" content="#ffffff" />
           <meta name="msapplication-TileImage" content="/static/favicon/ms-icon-144x144.png" />
           <meta name="theme-color" content="#ffffff" />
-
+          {styleTags}
         </Head>
         <body style={{ width: '100%', height: '100%', backgroundColor: colors.theme, color: colors.white, backgroundImage: "url('/static/img/bg/bg.png')", backgroundRepeat: 'repeat', backgroundSize: '100%' }}>
-          <Main />
+          {main}
           <NextScript />
           <script
             dangerouslySetInnerHTML={{

@@ -1,8 +1,10 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 import flush from 'styled-jsx/server';
+
 import config from '../config';
 import seo from '../seo.json';
+import colors from '../utils/colors';
 
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
@@ -33,8 +35,9 @@ export default class MyDocument extends Document {
           <meta property="og:site_name" content="Young Webmaster Camp 15" />
 
           <link rel="stylesheet" href="/static/libs/bulma/bulma.min.css" />
-          <link rel="stylesheet" href="/static/libs/font-awesome/css/font-awesome.min.css" />
-          <link href="https://fonts.googleapis.com/css?family=Rajdhani:300" rel="stylesheet" />
+          <link rel="stylesheet" href="/static/fonts/fonts.css" />
+          <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css" />
+          <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css" />
 
           <link rel="apple-touch-icon" sizes="57x57" href="/static/favicon/apple-icon-57x57.png" />
           <link rel="apple-touch-icon" sizes="60x60" href="/static/favicon/apple-icon-60x60.png" />
@@ -55,7 +58,7 @@ export default class MyDocument extends Document {
           <meta name="theme-color" content="#ffffff" />
 
         </Head>
-        <body style={{ width: '100%', height: '100%' }}>
+        <body style={{ width: '100%', height: '100%', backgroundColor: colors.theme, color: colors.white, backgroundImage: "url('/static/img/bg/bg.png')", backgroundRepeat: 'repeat', backgroundSize: '100%' }}>
           <Main />
           <NextScript />
           <script

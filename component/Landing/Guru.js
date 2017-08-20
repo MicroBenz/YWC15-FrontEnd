@@ -1,9 +1,11 @@
 import React from 'react';
 
-const GuruSection = () => (
+import SectionHeader from './SectionHeader';
+
+const Guru = () => (
   <div>
-    GuruSection
+    <SectionHeader title="Guru" subtitle="วิทยากร" />
   </div>
 );
 
-export default GuruSection;
+export default Guru;

@@ -1,51 +1,69 @@
-import React from 'react';
-import { injectGlobal } from 'styled-components';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import Hero from '../../component/Landing/Hero';
-import Whatis from '../../component/Landing/Whatis';
+import connect from '../../store/connect';
+import { actions as appActions } from '../../store/reducers/app';
+
+import Welcoming from '../../component/Landing/Welcoming';
+import WhatIsYWC from '../../component/Landing/WhatIsYWC';
 import Guru from '../../component/Landing/Guru';
-import Categories from '../../component/Landing/Categories';
+import Register from '../../component/Landing/Register';
 import Timeline from '../../component/Landing/Timeline';
-import Galleries from '../../component/Landing/Galleries';
-import Location from '../../component/Landing/Location';
-import QA from '../../component/Landing/QA';
-import Sponser from '../../component/Landing/Sponser';
-import Pr from '../../component/Landing/Pr';
+import Map from '../../component/Landing/Map';
+import Gallery from '../../component/Landing/Gallery';
+import FAQ from '../../component/Landing/FAQ';
+import ContactUs from '../../component/Landing/ContactUs';
 
-import Nav from '../../component/Nav/Nav';
+@connect(
+  () => ({}),
+  { ...appActions }
+)
+export default class LandingPage extends Component {
+  static propTypes = {
+    loadRegisterStat: PropTypes.func
+  };
 
-injectGlobal`
-  body {
-    color: white;
-    background: url('../../static/img/landing/bg-back.png');
-    background-size: cover;
-    background-attachment: fixed;
-  }
-`;
-
-class LandingPage extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {};
+  componentDidMount() {
+    this.props.loadRegisterStat();
   }
 
   render() {
     return (
       <div>
-        {/* <Nav /> */}
-        <Hero />
-        <Whatis />
-        <Guru />
-        <Categories />
-        <Timeline />
-        <Galleries />
-        <Location />
-        <QA />
-        <Sponser />
-        <Pr />
+        <section className="landing-section welcoming-section">
+          <Welcoming />
+        </section>
+        <section className="landing-section what-is-ywc-section">
+          <WhatIsYWC />
+        </section>
+        <section className="landing-section guru-section">
+          <Guru />
+        </section>
+        <section className="landing-section register-section">
+          <Register />
+        </section>
+        <section className="landing-section timeline-section">
+          <Timeline />
+        </section>
+        <section className="landing-section map-section">
+          <Map />
+        </section>
+        <section className="landing-section gallery-section">
+          <Gallery />
+        </section>
+        <section className="landing-section faq-section">
+          <FAQ />
+        </section>
+        <section className="landing-section contactus-section">
+          <ContactUs />
+        </section>
+        <style jsx>{`
+          .landing-section {
+            padding: 50px 0px;
+            text-align: center;
+          }  
+        `}</style>
       </div>
     );
   }
 }
-
-export default LandingPage;

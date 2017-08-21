@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import TextInput from '../Form/TextInput';
 import TextArea from '../Form/TextArea';
 import Dropdown from '../Form/Dropdown';
+import ActionContainer from '../Form/ActionContainer';
+import FormButton from '../Form/FormButton';
 import dropdownData from './dropdown-data.json';
 import { actions as registerActions } from '../../store/reducers/register';
 
@@ -99,8 +101,10 @@ export default class StepTwo extends Component {
             </div>
           </div>
         </div>
-        <button type="button" onClick={() => props.navigateStep(1)}>Back</button>
-        <button>Next</button>
+        <ActionContainer>
+          <FormButton title="Back" left onClick={() => props.navigateStep(1)} />
+          <FormButton title="Next" right onClick={() => props.onSubmit()} />
+        </ActionContainer>
         <style jsx>{`
           .switcher {
             font-family: 'Cordia New';

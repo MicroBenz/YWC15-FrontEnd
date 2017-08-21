@@ -1,22 +1,25 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import DatePicker from '../Form/DatePicker';
 import TextInput from '../Form/TextInput';
 import Dropdown from '../Form/Dropdown';
 import FileUploader from '../Form/FileUploader';
+import FormButton from '../Form/FormButton';
+import ActionContainer from '../Form/ActionContainer';
 import ImagePreview from './ImagePreview';
 import { getImagePath } from '../../utils/helpers';
 import dropdownData from './dropdown-data.json';
 
+const UploadDescriptionContainer = styled.div`
+  font-family: 'Cordia New';
+  font-weight: 600;
+  font-size: 24px;
+  margin-top: 15px;
+`;
+
 const StepOne = props => (
-  <form
-    onSubmit={(e) => {
-      e.preventDefault();
-      props.onSubmit();
-    }}
-    style={{ pointerEvents: 'auto' }}
-  >
+  <form style={{ pointerEvents: 'auto' }}>
     <div className="columns">
       <div className="column is-one-third" style={{ textAlign: 'center' }}>
         <ImagePreview img={getImagePath(props.previewPicture)} />
@@ -26,10 +29,10 @@ const StepOne = props => (
           field="picture"
           previewField="previewPicture"
         />
-        <div className="upload-description">
+        <UploadDescriptionContainer>
           <p>ขอเป็นรูปหน้าตรงแต่งกายตามสบาย</p>
           <p>(ขนาดไฟล์รูปไม่เกิน ...MB)</p>
-        </div>
+        </UploadDescriptionContainer>
       </div>
       <div className="column">
         <div className="columns">
@@ -117,33 +120,10 @@ const StepOne = props => (
         </div>
       </div>
     </div>
-    <button>Next</button>
-    <style jsx>{`
-      .upload-description {
-        font-family: 'Cordia New';
-        font-weight: 600;
-        font-size: 24px;
-        margin-top: 15px;
-      }
-    `}</style>
+    <ActionContainer>
+      <FormButton title="Next" right onClick={() => props.onSubmit()} />
+    </ActionContainer>
   </form>
 );
-
-StepOne.propTypes = {
-  title: PropTypes.string,
-  firstName: PropTypes.string,
-  lastName: PropTypes.string,
-  firstNameEN: PropTypes.string,
-  lastNameEN: PropTypes.string,
-  nickname: PropTypes.string,
-  birthdate: PropTypes.string,
-  sex: PropTypes.string,
-  blood: PropTypes.string,
-  religion: PropTypes.string,
-  university: PropTypes.string,
-  academicYear: PropTypes.string,
-  faculty: PropTypes.string,
-  department: PropTypes.string
-};
 
 export default StepOne;

@@ -14,7 +14,7 @@ const SAVE_STEP_THREE = registerAction('SAVE_STEP_THREE', true);
 const initialState = {
   saving: false,
   major: '',
-  currentStep: 3,
+  currentStep: 1,
   // Step 1
   title: '',
   firstName: '',

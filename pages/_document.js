@@ -39,6 +39,7 @@ export default class MyDocument extends Document {
           <meta property="og:site_name" content="Young Webmaster Camp 15" />
 
           <link rel="stylesheet" href="/static/libs/bulma/bulma.min.css" />
+          <link rel="stylesheet" href="/static/libs/font-awesome/css/font-awesome.min.css" />
           <link rel="stylesheet" href="/static/fonts/fonts.css" />
           <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css" />
           <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css" />

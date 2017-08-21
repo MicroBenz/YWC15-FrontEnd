@@ -76,7 +76,7 @@ const CircleStepper = ({ active = false }) => (
   </div>
 );
 
-const Stepper = ({ step }) => (
+const Stepper = ({ step, major }) => (
   <div>
     <div className="stepper-wrapper">
       <div className="step step-one">
@@ -109,6 +109,11 @@ const Stepper = ({ step }) => (
               return 'ข้อมูลส่วนตัว';
             case 2:
               return 'ข้อมูลการติดต่อ';
+            case 3:
+              return 'คำถามส่วนกลาง';
+            case 4: {
+              return `คำถามเฉพาะสาขา Web ${major.charAt(0).toUpperCase()}${major.slice(1)}`;
+            }
             default:
               return 'ยังไม่มี';
           }

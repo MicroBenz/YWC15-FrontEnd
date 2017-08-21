@@ -7,6 +7,7 @@ import colors from '../../utils/colors';
 import Stepper from '../../component/Register/Stepper';
 import StepOne from '../../component/Register/StepOne';
 import StepTwo from '../../component/Register/StepTwo';
+import StepThree from '../../component/Register/StepThree';
 import FullAreaLoader from '../../component/Core/FullAreaLoader';
 import { actions as registerActions } from '../../store/reducers/register';
 
@@ -30,11 +31,12 @@ export default class MainRegistration extends Component {
   }
 
   render() {
-    const { proceedStepOne, proceedStepTwo, registerData } = this.props;
-    const { currentStep, saving } = registerData;
+    const { proceedStepOne, proceedStepTwo, proceedStepThree, registerData } = this.props;
+    const { currentStep, saving, major } = registerData;
+    console.log(registerData);
     return (
       <div className="container register-container">
-        <Stepper step={currentStep} />
+        <Stepper step={currentStep} major={major} />
         <div className="step-wrapper">
           <div className="step-inner-wrapper">
             {currentStep === 1 && (
@@ -42,6 +44,9 @@ export default class MainRegistration extends Component {
             )}
             {currentStep === 2 && (
               <StepTwo {...registerData} onSubmit={() => proceedStepTwo(registerData)} />
+            )}
+            {currentStep === 3 && (
+              <StepThree {...registerData} onSubmit={() => proceedStepThree(registerData)} navigateStep={this.props.navigateStep} />
             )}
           </div>
           {saving && (

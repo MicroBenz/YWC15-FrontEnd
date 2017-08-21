@@ -5,19 +5,26 @@ import PropTypes from 'prop-types';
 import { actions as registerActions } from '../../store/reducers/register';
 import colors from '../../utils/colors';
 
-const TextInput = ({ label, field, setField, value }) => (
-  <div className="field">
+const TextInput = ({ label, field, setField, value, withLabel = false }) => (
+  <div className={`field ${withLabel && 'normal'}`}>
     <div className="control">
+      {withLabel && <label className="normal-label">{label}</label>}
       <textarea
         className="input"
         value={value}
         onChange={e => setField(field, e.target.value)}
       />
-      <label className={value !== '' ? 'active' : ''}>{label}</label>
+      {!withLabel && <label className={`transform-label ${value !== '' ? 'active' : ''}`}>{label}</label>}
     </div>
     <style jsx>{`
       .field {
         margin-top: 40px;
+        &.normal {
+          margin-top: 0;
+          .input {
+            margin-top: 10px;
+          }
+        }
       }
       textarea {
         font-family: 'Cordia New';
@@ -46,7 +53,7 @@ const TextInput = ({ label, field, setField, value }) => (
           color: ${colors.white};
         }
       }
-      label {
+      .transform-label {
         font-family: 'Cordia New';
         font-weight: 600;
         font-size: 22px;
@@ -59,6 +66,11 @@ const TextInput = ({ label, field, setField, value }) => (
         &.active {
           transform: translateY(-47px) scale(1);
         }
+      }
+      .normal-label {
+        font-family: 'Cordia New';
+        font-weight: 600;
+        font-size: 22px;
       }
     `}</style>
   </div>

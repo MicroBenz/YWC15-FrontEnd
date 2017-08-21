@@ -9,11 +9,12 @@ const SET_FIELD = registerAction('SET_FIELD');
 const SET_STEP = registerAction('SET_STEP');
 const SAVE_STEP_ONE = registerAction('SAVE_STEP_ONE', true);
 const SAVE_STEP_TWO = registerAction('SAVE_STEP_TWO', true);
+const SAVE_STEP_THREE = registerAction('SAVE_STEP_THREE', true);
 
 const initialState = {
   saving: false,
   major: '',
-  currentStep: 1,
+  currentStep: 3,
   // Step 1
   title: '',
   firstName: '',
@@ -57,20 +58,24 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case SET_FIELD:
+    case SET_FIELD: {
+      const newState = _.set(state, action.field, action.value);
       return {
-        ...state,
-        [action.field]: action.value
+        ...newState,
+        generalQuestions: newState.generalQuestions.slice(0),
+        specialQuestions: newState.specialQuestions.slice(0),
       };
+    }
     case GET_REGISTER_DATA.RESOLVED:
       return {
         ...state,
-        ..._.omit(action.data, ['_id', 'facebook', 'status']),
-        previewPicture: action.data.picture
-
+        ..._.omit(action.data, ['_id', 'facebook', 'status', 'questions']),
+        previewPicture: action.data.picture,
+        generalQuestions: action.data.questions.generalQuestions.map(answer => answer.answer)
       };
     case SAVE_STEP_ONE.PENDING:
     case SAVE_STEP_TWO.PENDING:
+    case SAVE_STEP_THREE.PENDING:
       return {
         ...state,
         saving: true
@@ -87,11 +92,19 @@ export default (state = initialState, action) => {
         saving: false,
         currentStep: 3
       };
-    case SAVE_STEP_ONE.REJECTED:
-    case SAVE_STEP_TWO.REJECTED:
+    case SAVE_STEP_THREE.RESOLVED:
       return {
         ...state,
         saving: false,
+        currentStep: 4
+      };
+    case SAVE_STEP_ONE.REJECTED:
+    case SAVE_STEP_TWO.REJECTED:
+    case SAVE_STEP_THREE.REJECTED:
+      return {
+        ...state,
+        saving: false,
+        error: action.error
       };
     case SET_STEP:
       return {
@@ -156,6 +169,10 @@ const prepareStepTwoForm = (form) => {
   return _.pick(form, fields);
 };
 
+const prepareStepThreeForm = form => ({
+  answers: form.generalQuestions
+});
+
 export const actions = {
   setField: (field, value) => ({
     type: SET_FIELD,
@@ -175,10 +192,16 @@ export const actions = {
   },
   proceedStepTwo: (form) => {
     const formData = prepareStepTwoForm(form);
-    console.log('step two form', formData);
     return {
       type: SAVE_STEP_TWO,
       promise: api.put('/registration/step2', formData)
+    };
+  },
+  proceedStepThree: (form) => {
+    const formData = prepareStepThreeForm(form);
+    return {
+      type: SAVE_STEP_THREE,
+      promise: api.put('/registration/step3', formData)
     };
   },
   navigateStep: step => ({

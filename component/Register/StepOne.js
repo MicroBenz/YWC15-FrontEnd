@@ -117,7 +117,6 @@ const StepOne = props => (
         </div>
       </div>
     </div>
-    
     <button>Next</button>
     <style jsx>{`
       .upload-description {

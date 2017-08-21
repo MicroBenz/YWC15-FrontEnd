@@ -14,7 +14,7 @@ const camperLogin = (props) => {
       props.loginWithFacebook(accessToken)
         .then(() => props.setField('major', props.major))
         .then(() => props.getRegisterData())
-        .then(() => Router.push('/registration', '/register'));
+        .then(() => Router.push('/registration', '/register/step1'));
     }
   });
 };

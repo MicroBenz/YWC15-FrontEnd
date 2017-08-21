@@ -35,13 +35,7 @@ export default class StepTwo extends Component {
     const { props } = this;
     const { hasDisease } = this.state;
     return (
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          props.onSubmit();
-        }}
-        style={{ pointerEvents: 'auto' }}
-      >
+      <form style={{ pointerEvents: 'auto' }}>
         <div className="columns">
           <div className="column">
             <TextArea label="ที่อยู่" field="address" value={props.address} />
@@ -102,8 +96,8 @@ export default class StepTwo extends Component {
           </div>
         </div>
         <ActionContainer>
-          <FormButton title="Back" left onClick={() => props.navigateStep(1)} />
-          <FormButton title="Next" right onClick={() => props.onSubmit()} />
+          <FormButton title="Back" left onClick={props.onBack} />
+          <FormButton title="Next" right onClick={props.onSubmit} />
         </ActionContainer>
         <style jsx>{`
           .switcher {

@@ -11,6 +11,8 @@ import StepThree from '../../component/Register/StepThree';
 import FullAreaLoader from '../../component/Core/FullAreaLoader';
 import { actions as registerActions } from '../../store/reducers/register';
 
+const routerNavigate = step => Router.push('/registration', `/register/step${step}`);
+
 @connect(
   state => ({
     registerData: state.register,
@@ -31,22 +33,38 @@ export default class MainRegistration extends Component {
   }
 
   render() {
-    const { proceedStepOne, proceedStepTwo, proceedStepThree, registerData } = this.props;
+    const { proceedStepOne, proceedStepTwo, proceedStepThree, registerData, navigateStep } = this.props;
     const { currentStep, saving, major } = registerData;
-    console.log(registerData);
     return (
       <div className="container register-container">
         <Stepper step={currentStep} major={major} />
         <div className="step-wrapper">
           <div className="step-inner-wrapper">
             {currentStep === 1 && (
-              <StepOne {...registerData} onSubmit={() => proceedStepOne(registerData)} />
+              <StepOne
+                {...registerData}
+                onSubmit={() => proceedStepOne(registerData).then(() => routerNavigate(2))}
+              />
             )}
             {currentStep === 2 && (
-              <StepTwo {...registerData} onSubmit={() => proceedStepTwo(registerData)} />
+              <StepTwo
+                {...registerData}
+                onSubmit={() => proceedStepTwo(registerData).then(() => routerNavigate(3))}
+                onBack={() => {
+                  navigateStep(1);
+                  routerNavigate(1);
+                }}
+              />
             )}
             {currentStep === 3 && (
-              <StepThree {...registerData} onSubmit={() => proceedStepThree(registerData)} navigateStep={this.props.navigateStep} />
+              <StepThree
+                {...registerData}
+                onSubmit={() => proceedStepThree(registerData).then(() => routerNavigate(4))}
+                onBack={() => {
+                  navigateStep(2);
+                  routerNavigate(2);
+                }}
+              />
             )}
           </div>
           {saving && (

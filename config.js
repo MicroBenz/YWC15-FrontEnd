@@ -14,7 +14,7 @@ const environmentConfig = {
   },
   production: {
     isProduction: true,
-    apiPath: 'http://staging.api.ywc15.ywc.in.th',
+    apiPath: 'http://api.ywc15.ywc.in.th',
     facebookAppsID: '715340261988670',
     gaTrackingID: 'UA-103240510-2',
     port: 12346

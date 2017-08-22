@@ -34,6 +34,9 @@ const StepWrapper = styled.div`
     position: absolute;
     border-top: 4px solid ${colors.cyan};
     border-left: 4px solid ${colors.cyan};
+    @media(max-width: 768px) {
+      height: 40px;
+    }
   }
   &:after {
     display: block;
@@ -45,6 +48,9 @@ const StepWrapper = styled.div`
     right: 0px;
     border-top: 4px solid ${colors.cyan};
     border-right: 4px solid ${colors.cyan};
+    @media(max-width: 768px) {
+      height: 40px;
+    }
   }
 `;
 
@@ -62,6 +68,9 @@ const StepInner = styled.div`
     left: 0px;
     border-bottom: 4px solid ${colors.cyan};
     border-left: 4px solid ${colors.cyan};
+    @media(max-width: 768px) {
+      height: 40px;
+    }
   }
   &:after {
     display: block;
@@ -73,6 +82,9 @@ const StepInner = styled.div`
     right: 0px;
     border-bottom: 4px solid ${colors.cyan};
     border-right: 4px solid ${colors.cyan};
+    @media(max-width: 768px) {
+      height: 40px;
+    }
   }
 `;
 

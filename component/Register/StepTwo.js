@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { rgba } from 'polished';
 
 import TextInput from '../Form/TextInput';
 import TextArea from '../Form/TextArea';
@@ -44,12 +45,12 @@ const Switcher = styled.div`
 `;
 
 const SwitchItem = styled.div`
-  background-color: black;
+  background-color: ${colors.formBg};
   width: 50px;
   text-align: center;
   cursor: pointer;
   ${props => props.active && `
-    background-color: ${colors.cyan};
+    background-color: ${rgba(colors.cyan, 0.6)};
   `}
 `;
 

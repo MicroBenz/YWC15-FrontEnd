@@ -3836,6 +3836,10 @@ pmx@^1.2.0:
     json-stringify-safe "^5.0"
     vxx "^1.2.0"
 
+polished@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/polished/-/polished-1.4.1.tgz#8d805293494c3ba5726d077edb99c37ebe116d53"
+
 postcss-advanced-variables@1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/postcss-advanced-variables/-/postcss-advanced-variables-1.2.2.tgz#90a6213262e66a050a368b4a9c5d4778d72dbd74"

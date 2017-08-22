@@ -1,6 +1,4 @@
-// import fetch from 'whatwg-fetch';
 import axios from 'axios';
-// import config from '../config';
 
 function createApiInstance() {
   return axios.create({
@@ -15,11 +13,11 @@ function handleResponse(response) {
   if (response.statusText === 'OK' && response.data) {
     return response;
   }
-  throw new Error(response.error);
+  return Promise.reject(response.error);
 }
 
 function catchError(e) {
-  throw new Error(e);
+  return Promise.reject(e.response.data);
 }
 
 export default {

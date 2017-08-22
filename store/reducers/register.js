@@ -54,6 +54,8 @@ const initialState = {
   generalQuestions: ['', '', ''],
   // Step 5
   specialQuestions: ['', '', ''],
+  error: null,
+  errorValidation: []
 };
 
 export default (state = initialState, action) => {
@@ -78,7 +80,9 @@ export default (state = initialState, action) => {
     case SAVE_STEP_THREE.PENDING:
       return {
         ...state,
-        saving: true
+        saving: true,
+        error: null,
+        errorValidation: []
       };
     case SAVE_STEP_ONE.RESOLVED:
       return {
@@ -104,7 +108,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         saving: false,
-        error: action.error
+        error: action.error,
+        errorValidation: transformValidationError(action.error) // eslint-disable-line
       };
     case SET_STEP:
       return {
@@ -115,10 +120,16 @@ export default (state = initialState, action) => {
   }
 };
 
+const transformValidationError = (errors) => {
+  if (Array.isArray(errors)) {
+    return errors.map(error => error.param);
+  }
+  return [];
+};
+
 const prepareFormData = (form, fields) => {
   const data = new FormData();
   fields.forEach((field) => {
-    console.log(field, form[field]);
     if (field === 'picture') {
       data.append('profilePic', form[field]);
     } else {

@@ -1,35 +1,52 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import colors from '../../utils/colors';
 
-const Parallelogram = ({ style, active }) => (
-  <div className={`parallelogram ${active && 'active'}`} style={style}>
-    <style jsx>{`
-      .parallelogram {
-        display: inline-block;
-        width: 13px;
-        height: 16px;
-        margin-right: 3px;
-        -webkit-transform: skew(-20deg);
-        background-color: ${colors.lightCyan};
-        &.active {
-          background-color: ${colors.cyan};
-        }
-      }
-    `}</style>
-  </div>
-);
+const Parallelogram = styled.div`
+  display: inline-block;
+  width: 13px;
+  height: 16px;
+  margin-right: 3px;
+  -webkit-transform: skew(-20deg);
+  background-color: ${colors.lightCyan};
+  ${props => props.active && `background-color: ${colors.cyan};`}
+  @media(max-width: 768px) {
+    width: 8px;
+    height: 10px;
+  }
+`;
+
+const ParallelogramContainer = styled.div`
+  display: flex;
+`;
+
+const ShortContainer = ParallelogramContainer.extend`
+  ${Parallelogram}:nth-child(n + 3) {
+    @media(max-width: 768px) {
+      display: none;
+    }
+  }
+`;
+
+const LongContainer = ParallelogramContainer.extend`
+${Parallelogram}:nth-child(n + 5) {
+  @media(max-width: 768px) {
+    display: none;
+  }
+}
+`;
 
 const ShortParallelogram = ({ active }) => (
-  <div style={{ display: 'flex' }}>
+  <ShortContainer>
     <Parallelogram active={active} />
     <Parallelogram active={active} />
     <Parallelogram active={active} />
-  </div>
+  </ShortContainer>
 );
 
 const LongParallelogram = ({ active }) => (
-  <div style={{ display: 'flex' }}>
+  <LongContainer>
     <Parallelogram active={active} />
     <Parallelogram active={active} />
     <Parallelogram active={active} />
@@ -40,67 +57,109 @@ const LongParallelogram = ({ active }) => (
     <Parallelogram active={active} />
     <Parallelogram active={active} />
     <Parallelogram active={active} />
-    <Parallelogram active={active} />
-  </div>
+  </LongContainer>
 );
 
+const Circle = styled.div`
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: 1px solid ${colors.cyan};
+  background-color: transparent;
+  border-radius: 50%;
+  position: relative;
+  margin-left: 6px;
+  margin-right: 6px;
+  @media(max-width: 768px) {
+    width: 20px;
+    height: 20px;
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+`;
+
+const InnerCircle = styled.div`
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background-color: ${colors.cyan};
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  @media(max-width: 768px) {
+    width: 8px;
+    height: 8px;
+  }
+`;
+
 const CircleStepper = ({ active = false }) => (
-  <div className="circle">
-    {active && <div className="inside-circle" />}
-    <style jsx>{`
-      .circle {
-        display: inline-block;
-        width: 30px;
-        height: 30px;
-        border: 1px solid ${colors.cyan};
-        background-color: transparent;
-        border-radius: 50%;
-        position: relative;
-        margin-left: 6px;
-        margin-right: 6px;
-      }
-      .inside-circle {
-        display: inline-block;
-        width: 14px;
-        height: 14px;
-        background-color: ${colors.cyan};
-        border-radius: 50%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        margin: auto;
-      }
-    `}</style>
-  </div>
+  <Circle>
+    {active && <InnerCircle />}
+  </Circle>
 );
+
+const StepWrapper = styled.div`
+  display: flex;
+  @media(max-width: 768px) {
+    justify-content: center;
+  }
+`;
+
+const Step = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const StepperTextWrapper = styled.div`
+  padding: 15px 0;
+  @media(max-width: 768px) {
+    text-align: center;
+    padding-bottom: 5px;
+  }
+  > h1 {
+    font-family: 'Agency FB';
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 46px;
+    color: ${colors.cyan};
+    letter-spacing: 3px;
+  }
+  > h2 {
+    font-family: 'Cordia New';
+    font-size: 24px;
+    font-weight: 600;
+  }
+`;
 
 const Stepper = ({ step, major }) => (
   <div>
-    <div className="stepper-wrapper">
-      <div className="step step-one">
+    <StepWrapper>
+      <Step>
         <ShortParallelogram active={step >= 1} />
         <CircleStepper active={step >= 1} />
-      </div>
-      <div className="step step-two">
+      </Step>
+      <Step>
         <LongParallelogram active={step >= 2} />
         <CircleStepper active={step >= 2} />
-      </div>
-      <div className="step step-three">
+      </Step>
+      <Step>
         <LongParallelogram active={step >= 3} />
         <CircleStepper active={step >= 3} />
-      </div>
-      <div className="step step-four">
+      </Step>
+      <Step>
         <LongParallelogram active={step >= 4} />
         <CircleStepper active={step >= 4} />
-      </div>
-      <div className="step step-five">
+      </Step>
+      <Step>
         <LongParallelogram active={step >= 5} />
         <CircleStepper active={step >= 5} />
-      </div>
-    </div>
-    <div className="stepper-text-wrapper">
+      </Step>
+    </StepWrapper>
+    <StepperTextWrapper>
       <h1 className="step-title">STEP {step}</h1>
       <h2 className="step-label">{
         (() => {
@@ -119,32 +178,7 @@ const Stepper = ({ step, major }) => (
           }
         })()
       }</h2>
-    </div>
-    <style jsx>{`
-      .stepper-wrapper {
-        display: flex;
-        .step {
-          display: flex;
-          align-items: center;
-        }
-      }
-      .stepper-text-wrapper {
-        padding: 15px 0;
-        .step-title {
-          font-family: 'Agency FB';
-          font-weight: 600;
-          font-size: 48px;
-          line-height: 46px;
-          color: ${colors.cyan};
-          letter-spacing: 3px;
-        }
-        .step-label {
-          font-family: 'Cordia New';
-          font-size: 24px;
-          font-weight: 600;
-        }
-      }
-    `}</style>
+    </StepperTextWrapper>
   </div>
 );
 

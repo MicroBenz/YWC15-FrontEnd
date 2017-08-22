@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Router from 'next/router';
-import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import connect from '../../store/connect';
 import colors from '../../utils/colors';
@@ -13,19 +13,103 @@ import { actions as registerActions } from '../../store/reducers/register';
 
 const routerNavigate = step => Router.push('/registration', `/register/step${step}`);
 
+const RegisterContainer = styled.div.attrs({
+  className: 'container'
+})`
+  padding: 25px 0;
+`;
+
+const StepWrapper = styled.div`
+  position: relative;
+  pointer-events: none;
+  @media(max-width: 768px) {
+    margin: 15px 20px;
+  }
+  &:before {
+    display: block;
+    content: "";
+    width: 50%;
+    height: 25%;
+    left: 0px;
+    position: absolute;
+    border-top: 4px solid ${colors.cyan};
+    border-left: 4px solid ${colors.cyan};
+  }
+  &:after {
+    display: block;
+    content: "";
+    width: 50%;
+    height: 25%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    border-top: 4px solid ${colors.cyan};
+    border-right: 4px solid ${colors.cyan};
+  }
+`;
+
+const StepInner = styled.div`
+  padding: 30px 20px;
+  border: 1px solid #83beea;
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 50%;
+    height: 25%;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    border-bottom: 4px solid ${colors.cyan};
+    border-left: 4px solid ${colors.cyan};
+  }
+  &:after {
+    display: block;
+    content: "";
+    width: 50%;
+    height: 25%;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    border-bottom: 4px solid ${colors.cyan};
+    border-right: 4px solid ${colors.cyan};
+  }
+`;
+
+const LoaderWrapper = styled.div`
+  z-index: 300;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  ${props => props.error && 'background-color: rgba(0, 0, 0, 0.9);'}
+  pointer-events: auto;
+  p {
+    margin-top: 14px;
+    font-size: 26px;
+    color: ${colors.red};
+  }
+  @media(max-width: 768px) {
+    position: fixed;
+  }
+`;
+
 @connect(
   state => ({
     registerData: state.register,
+    error: state.register.error,
+    errorValidation: state.register.errorValidation,
     isLogin: state.auth.isLogin
   }),
   { ...registerActions }
 )
 export default class MainRegistration extends Component {
-  static propTypes = {
-    registerData: PropTypes.object,
-    isLogin: PropTypes.bool
-  };
-
   componentDidMount() {
     if (!this.props.isLogin) {
       // Router.push('/landing', '/');
@@ -33,13 +117,13 @@ export default class MainRegistration extends Component {
   }
 
   render() {
-    const { proceedStepOne, proceedStepTwo, proceedStepThree, registerData, navigateStep } = this.props;
+    const { proceedStepOne, proceedStepTwo, proceedStepThree, registerData, navigateStep, error, errorValidation } = this.props;
     const { currentStep, saving, major } = registerData;
     return (
-      <div className="container register-container">
+      <RegisterContainer>
         <Stepper step={currentStep} major={major} />
-        <div className="step-wrapper">
-          <div className="step-inner-wrapper">
+        <StepWrapper>
+          <StepInner>
             {currentStep === 1 && (
               <StepOne
                 {...registerData}
@@ -66,16 +150,14 @@ export default class MainRegistration extends Component {
                 }}
               />
             )}
-          </div>
-          {saving && (
-            <div className="loader-wrapper">
+          </StepInner>
+          {(saving || (error && errorValidation.length === 0)) && (
+            <LoaderWrapper error={error}>
               <FullAreaLoader />
-            </div>
+              {error && <p><b>Error:</b> {error.message}</p>}
+            </LoaderWrapper>
           )}
           <style jsx global>{`
-            .register-container {
-              padding: 25px 0;
-            }
             .column {
               padding-top: 8px;
               padding-bottom: 8px;
@@ -85,77 +167,8 @@ export default class MainRegistration extends Component {
               }
             }  
           `}</style>
-          <style jsx>{`
-            .step-wrapper {
-              position: relative;
-              pointer-events: none;
-              @media(max-width: 768px) {
-                margin: 15px 20px;
-              }
-              &:before {
-                display: block;
-                content: "";
-                width: 50%;
-                height: 25%;
-                left: 0px;
-                position: absolute;
-                border-top: 4px solid ${colors.cyan};
-                border-left: 4px solid ${colors.cyan};
-              }
-              &:after {
-                display: block;
-                content: "";
-                width: 50%;
-                height: 25%;
-                position: absolute;
-                top: 0px;
-                right: 0px;
-                border-top: 4px solid ${colors.cyan};
-                border-right: 4px solid ${colors.cyan};
-              }
-              .step-inner-wrapper {
-                padding: 30px 20px;
-                border: 1px solid #83beea;
-                position: relative;
-                &:before {
-                  display: block;
-                  content: "";
-                  width: 50%;
-                  height: 25%;
-                  position: absolute;
-                  bottom: 0px;
-                  left: 0px;
-                  border-bottom: 4px solid ${colors.cyan};
-                  border-left: 4px solid ${colors.cyan};
-                }
-                &:after {
-                  display: block;
-                  content: "";
-                  width: 50%;
-                  height: 25%;
-                  position: absolute;
-                  bottom: 0px;
-                  right: 0px;
-                  border-bottom: 4px solid ${colors.cyan};
-                  border-right: 4px solid ${colors.cyan};
-                }
-              }
-            }
-            .loader-wrapper {
-              position: absolute;
-              left: 0;
-              top: 0;
-              width: 100%;
-              height: 100%;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              background-color: rgba(0, 0, 0, 0.3);
-              pointer-events: auto;
-            }
-          `}</style>
-        </div>
-      </div>
+        </StepWrapper>
+      </RegisterContainer>
     );
   }
 }

@@ -1,13 +1,57 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
 import TextInput from '../Form/TextInput';
 import TextArea from '../Form/TextArea';
 import Dropdown from '../Form/Dropdown';
 import ActionContainer from '../Form/ActionContainer';
 import FormButton from '../Form/FormButton';
+import colors from '../../utils/colors';
 import dropdownData from './dropdown-data.json';
 import { actions as registerActions } from '../../store/reducers/register';
+
+const DiseaseContainer = styled.div`
+  ${props => props.active && `
+    margin-top: 30px;
+    margin-bottom: 13px;
+    padding: 12px 15px;
+    border: 1px solid ${colors.formBg};
+    position: relative;
+  `}
+  ${props => !props.active && `
+    margin: 12px 0px;
+  `}
+`;
+
+const Switcher = styled.div`
+  font-family: 'Cordia New';
+  font-size: 22px;
+  font-weight: 600;
+  > * {
+    display: inline-block;
+  }
+  > p {
+    margin-right: 15px;
+  }
+  ${props => props.active && `
+    position: absolute;
+    top: -19px;
+  `}
+  ${props => !props.active && `
+    padding-left: 16px;
+  `}
+`;
+
+const SwitchItem = styled.div`
+  background-color: black;
+  width: 50px;
+  text-align: center;
+  cursor: pointer;
+  ${props => props.active && `
+    background-color: ${colors.cyan};
+  `}
+`;
 
 @connect(
   null,
@@ -70,16 +114,24 @@ export default class StepTwo extends Component {
               value={props.shirtSize}
               items={dropdownData.shirtSize}
             />
-            <div className="switcher">
-              <p>โรคประจำตัว</p>
-              <div className={`switch-item ${hasDisease && 'active'}`} onClick={() => this.toggleDisease(true)}>
-                <p>มี</p>
-              </div>
-              <div className={`switch-item ${!hasDisease && 'active'}`} onClick={() => this.toggleDisease(false)}>
-                <p>ไม่มี</p>
-              </div>
-            </div>
-            {hasDisease && <h1>มีโรค</h1>}
+            <DiseaseContainer active={hasDisease}>
+              <Switcher active={hasDisease}>
+                <p>โรคประจำตัว</p>
+                <SwitchItem active={hasDisease} onClick={() => this.toggleDisease(true)}>
+                  <p>มี</p>
+                </SwitchItem>
+                <SwitchItem active={!hasDisease} onClick={() => this.toggleDisease(false)}>
+                  <p>ไม่มี</p>
+                </SwitchItem>
+              </Switcher>
+              {hasDisease && (
+                <div>
+                  <TextInput label="โรคประจำตัว" field="disease" value={props.disease} />
+                  <TextInput label="ยาที่ใช้ประจำ" field="med" value={props.med} />
+                  <TextInput label="ยาที่แพ้" field="medAllergy" value={props.medAllergy} />
+                </div>
+              )}
+            </DiseaseContainer>
             <div className="columns">
               <div className="column">
                 <Dropdown
@@ -99,28 +151,6 @@ export default class StepTwo extends Component {
           <FormButton title="Back" left onClick={props.onBack} />
           <FormButton title="Next" right onClick={props.onSubmit} />
         </ActionContainer>
-        <style jsx>{`
-          .switcher {
-            font-family: 'Cordia New';
-            font-size: 22px;
-            font-weight: 600;
-            > * {
-              display: inline-block;
-            }
-            > p {
-              margin-right: 15px;
-            }
-            .switch-item {
-              background-color: black;
-              width: 50px;
-              text-align: center;
-              cursor: pointer;
-              &.active {
-                background-color: red;
-              }
-            }
-          }
-        `}</style>
       </form>
     );
   }

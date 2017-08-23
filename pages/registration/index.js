@@ -8,10 +8,20 @@ import Stepper from '../../component/Register/Stepper';
 import StepOne from '../../component/Register/StepOne';
 import StepTwo from '../../component/Register/StepTwo';
 import StepThree from '../../component/Register/StepThree';
+import StepFour from '../../component/Register/StepFour';
+import StepFive from '../../component/Register/StepFive';
 import FullAreaLoader from '../../component/Core/FullAreaLoader';
 import { actions as registerActions } from '../../store/reducers/register';
 
-const routerNavigate = step => Router.push('/registration', `/register/step${step}`);
+const routerNavigate = (step) => {
+  if (step <= 4) {
+    Router.push('/registration', `/register/step${step}`);
+  } else if (step === 5) {
+    Router.push('/registration', '/register/verify');
+  } else {
+    Router.push('/registration', '/register/completed');
+  }
+};
 
 const RegisterContainer = styled.div.attrs({
   className: 'container'
@@ -129,7 +139,7 @@ export default class MainRegistration extends Component {
   }
 
   render() {
-    const { proceedStepOne, proceedStepTwo, proceedStepThree, registerData, navigateStep, error, errorValidation } = this.props;
+    const { proceedStepOne, proceedStepTwo, proceedStepThree, proceedStepFour, confirm, registerData, navigateStep, error, errorValidation } = this.props;
     const { currentStep, saving, major } = registerData;
     return (
       <RegisterContainer>
@@ -162,6 +172,28 @@ export default class MainRegistration extends Component {
                 }}
               />
             )}
+            {currentStep === 4 && (
+              <StepFour
+                {...registerData}
+                onSubmit={() => proceedStepFour(registerData, major).then(() => routerNavigate(5))}
+                onBack={() => {
+                  navigateStep(3);
+                  routerNavigate(3);
+                }}
+              />
+            )}
+            {currentStep === 5 && (
+              <StepFive
+                {...registerData}
+                onSubmit={() => confirm(major)}
+                onDismissPopup={() => routerNavigate(6)}
+                onBack={() => {
+                  navigateStep(1);
+                  routerNavigate(1);
+                }}
+              />
+            )}
+            {currentStep === 6 && <h1>DONE!!!!!!</h1>}
           </StepInner>
           {(saving || (error && errorValidation.length === 0)) && (
             <LoaderWrapper error={error}>

@@ -10,6 +10,8 @@ const SET_STEP = registerAction('SET_STEP');
 const SAVE_STEP_ONE = registerAction('SAVE_STEP_ONE', true);
 const SAVE_STEP_TWO = registerAction('SAVE_STEP_TWO', true);
 const SAVE_STEP_THREE = registerAction('SAVE_STEP_THREE', true);
+const SAVE_STEP_FOUR = registerAction('SAVE_STEP_FOUR', true);
+const CONFIRM_REGISTER = registerAction('CONFIRM_REGISTER', true);
 
 const initialState = {
   saving: false,
@@ -73,11 +75,13 @@ export default (state = initialState, action) => {
         ...state,
         ..._.omit(action.data, ['_id', 'facebook', 'status', 'questions']),
         previewPicture: action.data.picture,
-        generalQuestions: action.data.questions.generalQuestions.map(answer => answer.answer)
+        generalQuestions: action.data.questions.generalQuestions.map(answer => answer.answer),
+        specialQuestions: action.data.questions.specialQuestions[state.major].map(answer => answer.answer)
       };
     case SAVE_STEP_ONE.PENDING:
     case SAVE_STEP_TWO.PENDING:
     case SAVE_STEP_THREE.PENDING:
+    case SAVE_STEP_FOUR.PENDING:
       return {
         ...state,
         saving: true,
@@ -102,9 +106,16 @@ export default (state = initialState, action) => {
         saving: false,
         currentStep: 4
       };
+    case SAVE_STEP_FOUR.RESOLVED:
+      return {
+        ...state,
+        saving: false,
+        currentStep: 5
+      };
     case SAVE_STEP_ONE.REJECTED:
     case SAVE_STEP_TWO.REJECTED:
     case SAVE_STEP_THREE.REJECTED:
+    case SAVE_STEP_FOUR.REJECTED:
       return {
         ...state,
         saving: false,
@@ -215,6 +226,20 @@ export const actions = {
       promise: api.put('/registration/step3', formData)
     };
   },
+  proceedStepFour: (form, major) => {
+    let answers;
+    if (major === 'programming') {
+      answers = form.specialQuestions;
+    }
+    return {
+      type: SAVE_STEP_FOUR,
+      promise: api.put('/registration/step4', { answers, major })
+    };
+  },
+  confirm: (major) => ({
+    type: CONFIRM_REGISTER,
+    promise: api.post('/registration/confirm', { major })
+  }),
   navigateStep: step => ({
     type: SET_STEP,
     step

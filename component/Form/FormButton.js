@@ -13,6 +13,9 @@ const ButtonContainer = styled.div`
   text-align: center;
   width: 100px;
   margin: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-self: center;
   &:hover {
     background-color: #253b43;
   }
@@ -38,7 +41,22 @@ const ButtonContainer = styled.div`
     border-top: 4px solid ${colors.cyan};
     border-right: 4px solid ${colors.cyan};
   }
+  span, i {
+    display: flex;
+    align-items: center;
+  }
+  i {
+    &.fa-chevron-left {
+      margin-right: 5px;
+    }
+    &.fa-chevron-right {
+      margin-left: 5px;
+    }
+  }
   span {
+    font-family: 'Cordia New';
+    font-weight: 600;
+    font-size: 25px;
     text-align: center;
     &:before {
       display: block;
@@ -62,23 +80,14 @@ const ButtonContainer = styled.div`
       border-bottom: 4px solid ${colors.cyan};
       border-right: 4px solid ${colors.cyan};
     }
-    i {
-      &.fa {
-        display: inline;
-      }
-      &.fa-chevron-left {
-        margin-right: 5px;
-      }
-      &.fa-chevron-right {
-        margin-left: 5px;
-      }
-    }
   }
 `;
 
 const FormButton = props => (
   <ButtonContainer {...props}>
-    <span>{props.left && <i className="fa fa-chevron-left" />}{props.title}{props.right && <i className="fa fa-chevron-right" />}</span>
+    {props.left && <i className="fa fa-chevron-left" />}
+    <span>{props.title}</span>
+    {props.right && <i className="fa fa-chevron-right" />}
   </ButtonContainer>
 );
 

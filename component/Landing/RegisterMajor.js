@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import HeaderArtwork from './HeaderArtwork';
 import GlowingText from '../Core/GlowingText';
@@ -90,10 +89,5 @@ const RegisterMajor = ({ major, count = 0 }) => (
     `}</style>
   </div>
 );
-
-RegisterMajor.propTypes = {
-  major: PropTypes.string,
-  count: PropTypes.number
-};
 
 export default RegisterMajor;

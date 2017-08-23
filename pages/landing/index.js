@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 import connect from '../../store/connect';
 import { actions as appActions } from '../../store/reducers/app';
@@ -19,10 +18,6 @@ import ContactUs from '../../component/Landing/ContactUs';
   { ...appActions }
 )
 export default class LandingPage extends Component {
-  static propTypes = {
-    loadRegisterStat: PropTypes.func
-  };
-
   componentDidMount() {
     this.props.loadRegisterStat();
   }

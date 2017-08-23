@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import colors from '../../utils/colors';
 
@@ -14,9 +13,5 @@ const GlowingText = ({ children }) => (
     `}</style>
   </h2>
 );
-
-GlowingText.propTypes = {
-  children: PropTypes.string
-};
 
 export default GlowingText;

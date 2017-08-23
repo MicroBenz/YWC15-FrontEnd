@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import colors from '../../utils/colors';
 
@@ -14,10 +13,6 @@ const Square = ({ style }) => (
     `}</style>
   </div>
 );
-
-Square.propTypes = {
-  style: PropTypes.object
-};
 
 const Welcoming = () => (
   <div className="welcoming-container">

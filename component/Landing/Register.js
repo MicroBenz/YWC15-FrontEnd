@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 
 import SectionHeader from './SectionHeader';
 import RegisterMajor from './RegisterMajor';
@@ -26,10 +25,6 @@ const Register = ({ registerStat }) => (
     </div>
   </div>
 );
-
-Register.propTypes = {
-  registerStat: PropTypes.object
-};
 
 export default connect(
   state => ({

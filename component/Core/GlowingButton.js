@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import colors from '../../utils/colors';
 
@@ -67,9 +66,5 @@ const GlowingButton = props => (
     `}</style>
   </div>
 );
-
-GlowingButton.propTypes = {
-  children: PropTypes.string
-};
 
 export default GlowingButton;

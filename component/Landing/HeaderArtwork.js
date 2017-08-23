@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import colors from '../../utils/colors';
 
@@ -17,10 +16,6 @@ const Parallelogram = ({ style }) => (
   </div>
 );
 
-Parallelogram.propTypes = {
-  style: PropTypes.object
-};
-
 const Circle = ({ style }) => (
   <div className="circle" style={style}>
     <style jsx>{`
@@ -35,10 +30,6 @@ const Circle = ({ style }) => (
     `}</style>
   </div>
 );
-
-Circle.propTypes = {
-  style: PropTypes.object
-};
 
 const Semicolon = ({ style }) => (
   <div className="semicolon-container" style={style}>
@@ -63,10 +54,6 @@ const Semicolon = ({ style }) => (
   </div>
 );
 
-Semicolon.propTypes = {
-  style: PropTypes.object
-};
-
 const BorderedSqaure = ({ style }) => (
   <div className="bordered-square" style={style}>
     <style jsx>{`
@@ -80,10 +67,6 @@ const BorderedSqaure = ({ style }) => (
     `}</style>
   </div>
 );
-
-BorderedSqaure.propTypes = {
-  style: PropTypes.object
-};
 
 const HeaderArtwork = () => (
   <div className="header-artwork">

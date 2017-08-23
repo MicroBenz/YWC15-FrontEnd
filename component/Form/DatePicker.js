@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import flatpickr from 'flatpickr';
 import { th } from 'flatpickr/dist/l10n/th';
 import moment from 'moment';
-import PropTypes from 'prop-types';
 
 import { actions as registerActions } from '../../store/reducers/register';
 import colors from '../../utils/colors';
@@ -13,14 +12,6 @@ import colors from '../../utils/colors';
   { setField: registerActions.setField }
 )
 export default class DatePicker extends Component {
-  static propTypes = {
-    id: PropTypes.string,
-    value: PropTypes.string,
-    field: PropTypes.string,
-    label: PropTypes.string,
-    setField: PropTypes.func
-  };
-
   componentDidMount() {
     flatpickr(`#${this.props.id}`, {
       locale: th,

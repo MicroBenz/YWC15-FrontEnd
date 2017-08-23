@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import colors from '../../utils/colors';
 import HeaderArtwork from './HeaderArtwork';
@@ -32,10 +31,5 @@ const SectionHeader = ({ title = '', subtitle = '' }) => (
     `}</style>
   </div>
 );
-
-SectionHeader.propTypes = {
-  title: PropTypes.string,
-  subtitle: PropTypes.string
-};
 
 export default SectionHeader;

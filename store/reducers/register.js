@@ -11,6 +11,7 @@ const SAVE_STEP_ONE = registerAction('SAVE_STEP_ONE', true);
 const SAVE_STEP_TWO = registerAction('SAVE_STEP_TWO', true);
 const SAVE_STEP_THREE = registerAction('SAVE_STEP_THREE', true);
 const SAVE_STEP_FOUR = registerAction('SAVE_STEP_FOUR', true);
+const SAVE_STEP_FIVE = registerAction('SAVE_STEP_FIVE', true);
 const CONFIRM_REGISTER = registerAction('CONFIRM_REGISTER', true);
 
 const initialState = {
@@ -48,10 +49,11 @@ const initialState = {
   med: '',
   foodAllergy: '',
   medAllergy: '',
+  skype: '',
   // Step 3
   knowCamp: '',
-  whyJoinYWC: '',
-  expectation: '',
+  activities: '',
+  // whyJoinYWC: '',
   // Step 4
   generalQuestions: ['', '', ''],
   // Step 5
@@ -82,6 +84,7 @@ export default (state = initialState, action) => {
     case SAVE_STEP_TWO.PENDING:
     case SAVE_STEP_THREE.PENDING:
     case SAVE_STEP_FOUR.PENDING:
+    case SAVE_STEP_FIVE.PENDING:
       return {
         ...state,
         saving: true,
@@ -112,10 +115,17 @@ export default (state = initialState, action) => {
         saving: false,
         currentStep: 5
       };
+    case SAVE_STEP_FIVE.RESOLVED:
+      return {
+        ...state,
+        saving: false,
+        currentStep: 6
+      };
     case SAVE_STEP_ONE.REJECTED:
     case SAVE_STEP_TWO.REJECTED:
     case SAVE_STEP_THREE.REJECTED:
     case SAVE_STEP_FOUR.REJECTED:
+    case SAVE_STEP_FIVE.REJECTED:
       return {
         ...state,
         saving: false,
@@ -186,14 +196,33 @@ const prepareStepTwoForm = (form) => {
     'disease',
     'med',
     'foodAllergy',
-    'medAllergy'
+    'medAllergy',
+    'skype'
   ];
   return _.pick(form, fields);
 };
 
-const prepareStepThreeForm = form => ({
+const prepareStepThreeForm = (form) => {
+  const fields = [
+    'knowCamp',
+    'activities'
+  ];
+  return _.pick(form, fields);
+};
+
+const prepareStepFourForm = form => ({
   answers: form.generalQuestions
 });
+
+const prepareStepFiveForm = (form, major) => {
+  let answers;
+  if (major === 'programming' || major === 'marketing' || major === 'content') {
+    answers = form.specialQuestions;
+  } else if (major === 'design') {
+    answers = form.specialQuestions;
+  }
+  return { answers, major };
+};
 
 export const actions = {
   setField: (field, value) => ({
@@ -226,17 +255,21 @@ export const actions = {
       promise: api.put('/registration/step3', formData)
     };
   },
-  proceedStepFour: (form, major) => {
-    let answers;
-    if (major === 'programming') {
-      answers = form.specialQuestions;
-    }
+  proceedStepFour: (form) => {
+    const formData = prepareStepFourForm(form);
     return {
       type: SAVE_STEP_FOUR,
-      promise: api.put('/registration/step4', { answers, major })
+      promise: api.put('/registration/step4', formData)
     };
   },
-  confirm: (major) => ({
+  proceedStepFive: (form, major) => {
+    const formData = prepareStepFiveForm(form, major);
+    return {
+      type: SAVE_STEP_FIVE,
+      promise: api.put('/registration/step5', formData)
+    };
+  },
+  confirm: major => ({
     type: CONFIRM_REGISTER,
     promise: api.post('/registration/confirm', { major })
   }),

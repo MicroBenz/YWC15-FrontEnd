@@ -1,19 +1,17 @@
 import React from 'react';
-import styled from 'styled-components';
 
+import TextArea from '../Form/TextArea';
 import ActionContainer from '../Form/ActionContainer';
 import FormButton from '../Form/FormButton';
-import Programming from './MajorQuestions/Programming';
-import Design from './MajorQuestions/Design';
-import Content from './MajorQuestions/Content';
-import Marketing from './MajorQuestions/Marketing';
+import questions from './questions.json';
+
+const { generalQuestions } = questions;
 
 const StepFour = props => (
   <form style={{ pointerEvents: 'auto' }}>
-    {props.major === 'programming' && <Programming {...props} />}
-    {props.major === 'design' && <Design {...props} />}
-    {props.major === 'content' && <Content {...props} />}
-    {props.major === 'marketing' && <Marketing {...props} />}
+    <TextArea withLabel label={generalQuestions[0]} value={props.generalQuestions[0]} field="generalQuestions[0]" />
+    <TextArea withLabel label={generalQuestions[1]} value={props.generalQuestions[1]} field="generalQuestions[1]" />
+    <TextArea withLabel label={generalQuestions[2]} value={props.generalQuestions[2]} field="generalQuestions[2]" />
     <ActionContainer>
       <FormButton title="Back" left onClick={props.onBack} />
       <FormButton title="Next" right onClick={props.onSubmit} />

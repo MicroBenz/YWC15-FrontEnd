@@ -16,7 +16,7 @@ const camperLogin = (props) => {
         .then(() => props.getRegisterData())
         .then(() => Router.push('/registration', '/register/step1'));
     }
-  });
+  }, { scope: 'public_profile', auth_type: 'reauthenticate' });
 };
 
 const LoginButton = (props) => {

@@ -14,9 +14,15 @@ const camperLogin = (props) => {
       props.loginWithFacebook(accessToken)
         .then(() => props.setField('major', props.major))
         .then(() => props.getRegisterData())
-        .then(() => Router.push('/registration', '/register/step1'));
+        .then(({ data }) => {
+          if (data.status === 'completed') {
+            Router.push('/registration/completed', '/register/completed');
+          } else {
+            Router.push('/registration', '/register/step1');
+          }
+        });
     }
-  }, { scope: 'public_profile', auth_type: 'reauthenticate' });
+  }, { scope: 'email,public_profile', auth_type: 'rerequest' });
 };
 
 const LoginButton = (props) => {

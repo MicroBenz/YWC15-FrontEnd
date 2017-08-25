@@ -169,12 +169,14 @@ const Stepper = ({ step, major }) => (
             case 2:
               return 'ข้อมูลการติดต่อ';
             case 3:
+              return 'ความสามารถพิเศษ';
+            case 4:
               return 'คำถามส่วนกลาง';
-            case 4: {
+            case 5: {
               return `คำถามเฉพาะสาขา Web ${major.charAt(0).toUpperCase()}${major.slice(1)}`;
             }
             default:
-              return 'ยังไม่มี';
+              return '';
           }
         })()
       }</h2>

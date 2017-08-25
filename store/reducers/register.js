@@ -215,13 +215,20 @@ const prepareStepFourForm = form => ({
 });
 
 const prepareStepFiveForm = (form, major) => {
-  let answers;
   if (major === 'programming' || major === 'marketing' || major === 'content') {
-    answers = form.specialQuestions;
+    const answers = form.specialQuestions;
+    return { answers, major };
   } else if (major === 'design') {
-    answers = form.specialQuestions;
+    const answers = [form.specialQuestions[0], form.specialQuestions[1]];
+    const file = form.specialQuestions[2];
+    const data = new FormData();
+    data.append('answers[0]', answers[0]);
+    data.append('answers[1]', answers[1]);
+    data.append('major', major);
+    data.append('file', file);
+    return data;
   }
-  return { answers, major };
+  return null;
 };
 
 export const actions = {

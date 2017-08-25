@@ -1,91 +1,53 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
 import { actions as registerActions } from '../../store/reducers/register';
-import GlowingButton from '../Core/GlowingButton';
+import colors from '../../utils/colors';
 
-@connect(
-  () => ({}),
-  { setField: registerActions.setField }
-)
-export default class FileUploader extends Component {
-  constructor(props) {
-    super(props);
-    this.handleUploadFile = this.handleUploadFile.bind(this);
-  }
+const Label = styled.label`
+  font-family: 'Cordia New';
+  font-size: 22px;
+  font-weight: 600;
+`;
 
-  /*  eslint-disable */
-  getResizedImage(img) {
-    let { width, height } = img;
-    const MAX_WIDTH = 512;
-    const MAX_HEIGHT = 512;
-    if (width > height) {
-      if (height > MAX_HEIGHT) {
-        width *= MAX_HEIGHT / height;
-        height = MAX_HEIGHT;
-      }
-    } else if (width > MAX_WIDTH) {
-      height *= MAX_WIDTH / width;
-      width = MAX_WIDTH;
-    }
-    const tempCanvas = document.createElement('canvas');
-    tempCanvas.width = width;
-    tempCanvas.height = height;
-    const context = tempCanvas.getContext('2d');
-    context.drawImage(img, 0, 0, width, height);
-    return tempCanvas.toDataURL();
+const FileUploader = props => {
+  let fileName = '';
+  if (props.value && props.value.name) {
+    fileName = props.value.name;
+  } else if (props.value) {
+    fileName = props.value;
   }
-
-  handleUploadFile(event) {
-    const files = event.target.files;
-    if (!files) {
-      return;
-    }
-    const file = files[0];
-    this.props.setField(this.props.field, file);
-    console.log(file);
-    if (this.props.previewField) {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = (e) => {
-        const img = new Image();
-        img.src = e.target.result;
-        img.onload = () => {
-          this.props.setField(this.props.previewField, this.getResizedImage(img));
-        };
-      };
-    }
-  }
-  /*  eslint-enable */  
-  render() {
-    return (
-      <div className="upload-button-wrapper" style={this.props.style}>
-        <GlowingButton>{this.props.title}</GlowingButton>
-        <input
-          type="file"
-          accept="image/*"
-          className="hidden-input"
-          onChange={this.handleUploadFile}
-        />
-        <style jsx>{`
-        .upload-button-wrapper {
-          position: relative;
-          display: inline-block;
-          cursor: pointer;
-          width: 200px;
-        }
-        .hidden-input {
-          position: absolute;
-          top: 0;
-          left: 0;
-          opacity: 0;
-          width: 100%;
-          height: 100%;
-          -webkit-appearance: none;
-          cursor: pointer;
-        }
-        `}</style>
+  return (
+    <div>
+      <Label>{props.label}</Label>
+      <div className="file has-name">
+        <label className="file-label">
+          <input
+            className="file-input"
+            type="file"
+            name="resume"
+            onChange={e => props.setField(props.field, e.target.files[0])}
+          />
+          <span className="file-cta">
+            <span className="file-icon">
+              <i className="fa fa-upload" />
+            </span>
+            <span className="file-label">
+              อัพโหลดไฟล์
+            </span>
+          </span>
+          <span className="file-name">
+            {fileName}
+          </span>
+        </label>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+export default connect(
+  null,
+  { setField: registerActions.setField }
+)(FileUploader);
+

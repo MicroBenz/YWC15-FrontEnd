@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import DatePicker from '../Form/DatePicker';
 import TextInput from '../Form/TextInput';
 import Dropdown from '../Form/Dropdown';
-import FileUploader from '../Form/FileUploader';
+import ImageUploader from '../Form/ImageUploader';
 import FormButton from '../Form/FormButton';
 import ActionContainer from '../Form/ActionContainer';
 import ImagePreview from './ImagePreview';
@@ -23,7 +23,7 @@ const StepOne = props => (
     <div className="columns">
       <div className="column is-one-third" style={{ textAlign: 'center' }}>
         <ImagePreview img={getImagePath(props.previewPicture)} />
-        <FileUploader
+        <ImageUploader
           title="UPLOAD PROFILE"
           style={{ fontFamily: 'Agency FB', fontSize: '26px', marginTop: '15px' }}
           field="picture"

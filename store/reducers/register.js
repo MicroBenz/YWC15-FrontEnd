@@ -59,7 +59,8 @@ const initialState = {
   // Step 5
   specialQuestions: ['', '', ''],
   error: null,
-  errorValidation: []
+  errorValidation: [],
+  isShowCompletedModal: false
 };
 
 export default (state = initialState, action) => {
@@ -85,6 +86,7 @@ export default (state = initialState, action) => {
     case SAVE_STEP_THREE.PENDING:
     case SAVE_STEP_FOUR.PENDING:
     case SAVE_STEP_FIVE.PENDING:
+    case CONFIRM_REGISTER.PENDING:
       return {
         ...state,
         saving: true,
@@ -126,6 +128,7 @@ export default (state = initialState, action) => {
     case SAVE_STEP_THREE.REJECTED:
     case SAVE_STEP_FOUR.REJECTED:
     case SAVE_STEP_FIVE.REJECTED:
+    case CONFIRM_REGISTER.REJECTED:
       return {
         ...state,
         saving: false,
@@ -136,6 +139,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         currentStep: action.step
+      };
+    case CONFIRM_REGISTER.RESOLVED:
+      return {
+        ...state,
+        saving: false,
+        isShowCompletedModal: true
       };
     default: return state;
   }

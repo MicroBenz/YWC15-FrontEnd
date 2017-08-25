@@ -20,7 +20,7 @@ const routerNavigate = (step) => {
   } else if (step === 6) {
     Router.push('/registration', '/register/verify');
   } else {
-    Router.push('/registration', '/register/completed');
+    Router.push('/registration/completed', '/register/completed');
   }
 };
 
@@ -135,7 +135,7 @@ const LoaderWrapper = styled.div`
 export default class MainRegistration extends Component {
   componentDidMount() {
     if (!this.props.isLogin) {
-      Router.push('/landing', '/');
+      // Router.push('/landing', '/');
     }
   }
 
@@ -197,7 +197,8 @@ export default class MainRegistration extends Component {
               <StepVerify
                 {...registerData}
                 onSubmit={() => confirm(major)}
-                onDismissPopup={() => routerNavigate(6)}
+                onDismissPopup={() => routerNavigate(7)}
+                isShowPopup={registerData.isShowCompletedModal}
                 onBack={() => {
                   navigateStep(1);
                   routerNavigate(1);

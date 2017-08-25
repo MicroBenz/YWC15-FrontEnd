@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import ActionContainer from '../Form/ActionContainer';
 import FormButton from '../Form/FormButton';
+import FullScreenModal from '../Core/FullScreenModal';
 import colors from '../../utils/colors';
 
 const getMajor = (major) => {
@@ -71,6 +72,21 @@ const DetailColumn = styled.div.attrs({
   align-self: center;
 `;
 
+const ModalContainer = styled.div`
+  background-color: rgba(0,0,0,0.8);
+  width: 100%;
+  padding: 20px 0;
+`;
+
+const ModalTextContainer = styled.div`
+  margin-bottom: 10px;
+  h3 {
+    font-family: 'Cordia New';
+    font-weight: 600;
+    font-size: 26px;
+  }
+`;
+
 const StepVerify = props => (
   <div style={{ pointerEvents: 'auto' }}>
     <DetailContainer>
@@ -90,6 +106,21 @@ const StepVerify = props => (
       <ActionButton title="แก้ไขข้อมูล" onClick={props.onBack} />
     </ActionContainer>
     <ConfirmLabel small>** หากยืนยันแล้วจะไม่สามารถกลับมาแก้ไขข้อมูลได้ **</ConfirmLabel>
+    {props.isShowPopup && (
+      <FullScreenModal>
+        <ModalContainer>
+          <ModalTextContainer>
+            <h3>เสร็จสิ้นการสมัคร คำตอบถูกบันทึกเรียบร้อย</h3>
+            <h3>ไว้เจอกันรอบสัมภาษณ์นะ</h3>
+          </ModalTextContainer>
+          <FormButton
+            title="ตกลง"
+            style={{ margin: '0 auto', padding: '4px 0' }}
+            onClick={props.onDismissPopup}
+          />
+        </ModalContainer>
+      </FullScreenModal>
+    )}
   </div>
 );
 

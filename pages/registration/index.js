@@ -135,7 +135,7 @@ const LoaderWrapper = styled.div`
 export default class MainRegistration extends Component {
   componentDidMount() {
     if (!this.props.isLogin) {
-      // Router.push('/landing', '/');
+      Router.push('/landing', '/');
     }
   }
 

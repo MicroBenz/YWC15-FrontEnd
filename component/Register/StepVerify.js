@@ -73,7 +73,7 @@ const DetailColumn = styled.div.attrs({
 `;
 
 const ModalContainer = styled.div`
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0,0,0,0.9);
   width: 100%;
   padding: 20px 0;
 `;
@@ -85,6 +85,13 @@ const ModalTextContainer = styled.div`
     font-weight: 600;
     font-size: 26px;
   }
+`;
+
+const CompletedImage = styled.img.attrs({
+  src: '/static/img/correct.png',
+  alt: 'สมัครเสร็จสมบูรณ์'
+})`
+  width: 100px;
 `;
 
 const StepVerify = props => (
@@ -110,6 +117,7 @@ const StepVerify = props => (
       <FullScreenModal>
         <ModalContainer>
           <ModalTextContainer>
+            <CompletedImage />
             <h3>เสร็จสิ้นการสมัคร คำตอบถูกบันทึกเรียบร้อย</h3>
             <h3>ไว้เจอกันรอบสัมภาษณ์นะ</h3>
           </ModalTextContainer>

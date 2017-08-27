@@ -18,6 +18,9 @@ const FrameBoxWrapper = styled.div`
     position: absolute;
     border-top: 4px solid ${colors.cyan};
     border-left: 4px solid ${colors.cyan};
+    ${props => props.fullWidth && `
+      width: 51%;
+    `};
   }
   &:after {
     display: block;
@@ -29,6 +32,9 @@ const FrameBoxWrapper = styled.div`
     right: -2px;
     border-top: 4px solid ${colors.cyan};
     border-right: 4px solid ${colors.cyan};
+    ${props => props.fullWidth && `
+      width: 51%;
+    `};
   }
 `;
 
@@ -43,6 +49,9 @@ const FrameBoxInnerWrapper = styled.div`
     left: -2px;
     border-bottom: 4px solid ${colors.cyan};
     border-left: 4px solid ${colors.cyan};
+    ${props => props.fullWidth && `
+      width: 51%;
+    `};
   }
   &:after {
     display: block;
@@ -54,12 +63,15 @@ const FrameBoxInnerWrapper = styled.div`
     right: -2px;
     border-bottom: 4px solid ${colors.cyan};
     border-right: 4px solid ${colors.cyan};
+    ${props => props.fullWidth && `
+      width: 51%;
+    `};
   }
 `;
 
 const FrameBox = props => (
   <FrameBoxWrapper {...props}>
-    <FrameBoxInnerWrapper >
+    <FrameBoxInnerWrapper fullWidth={props.fullWidth} >
       {props.children}
     </FrameBoxInnerWrapper>
   </FrameBoxWrapper>

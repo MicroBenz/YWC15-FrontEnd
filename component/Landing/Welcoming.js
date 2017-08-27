@@ -154,6 +154,15 @@ const CampLocation = styled.h2`
   }
 `;
 
+const ScrollingBar = styled.img.attrs({
+  src: '/static/img/landing/materials/scroll.png'
+})`
+  position: absolute;
+  bottom: -100px;
+  right: 0;
+  z-index: 15;  
+`;
+
 const Welcoming = () => (
   <Container>
     <CampBranding>
@@ -178,6 +187,7 @@ const Welcoming = () => (
         </SloganContainer>
       </CampDetailContainer>
     </CampBranding>
+    <ScrollingBar />
   </Container>
 );
 

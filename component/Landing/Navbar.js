@@ -11,6 +11,13 @@ const NavbarWrapper = styled.nav`
   right: 15px;
   transform: translateY(-50%);
   z-index: 15;
+  transition: all .2s;
+  opacity: ${props => props.active ? 1 : 0};
+  visibility: ${props => props.active ? 'visible' : 'hidden'};
+
+  ul li:first-child {
+    display: none;
+  }
 `;
 
 const NavImg = styled.img`
@@ -90,7 +97,8 @@ class Navbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      current: 'welcoming-section'
+      current: 'welcoming-section',
+      show: false
     };
   }
 
@@ -126,30 +134,40 @@ class Navbar extends React.Component {
     });
   }
 
+  toggleNavbar(to) {
+    if (to === 'welcoming-section') {
+      this.setState({ show: false });
+    } else {
+      this.setState({ show: true });
+    }
+    this.setState({
+      current: to
+    });
+  }
+
   render() {
     return (
-      <NavbarWrapper>
+      <NavbarWrapper active={this.state.show}>
         <NavImg onClick={() => this.handleScroll('top')} src="/static/img/landing/materials/navbar-up.png" alt="" />
         <ul>
           {
-            sections.map(e =>
-              e.href !== 'welcoming-section' && (
-                <li key={e.href}>
-                  <NavLink
-                    activeClass="active"
-                    to={e.href}
-                    spy
-                    smooth
-                    duration={500}
-                    offset={0}
-                  >
-                    <div className="text">
-                      {e.title}
-                    </div>
-                  </NavLink>
-                </li>
-              )
-            )
+            sections.map(e =>(
+              <li key={e.href}>
+                <NavLink
+                  activeClass="active"
+                  to={e.href}
+                  spy
+                  smooth
+                  duration={500}
+                  offset={0}
+                  onSetActive={to => this.toggleNavbar(to)}
+                >
+                  <div className="text">
+                    {e.title}
+                  </div>
+                </NavLink>
+              </li>
+            ))
           }
         </ul>
         <NavImg onClick={() => this.handleScroll('down')} src="/static/img/landing/materials/navbar-down.png" alt="" />

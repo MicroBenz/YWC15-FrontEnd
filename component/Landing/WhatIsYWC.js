@@ -10,7 +10,7 @@ const WhatIsYWC = () => (
         <h1>What is ywc</h1>
       </div>
     </div>
-    <div className="what-is-ywc">
+    <div className="what-is-ywc container">
       <h2>{content.whatIsYwc}</h2>
     </div>
     <style jsx>{`
@@ -18,7 +18,9 @@ const WhatIsYWC = () => (
         font-size: 30px;
       }
       .what-is-ywc {
-        padding: 10px 0px;
+        padding: 30px 0px;
+        font-size: 18px;
+
       }
       .ywc-border {
         width: 500px;

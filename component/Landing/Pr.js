@@ -19,6 +19,9 @@ const Container = styled.div`
 
   .slogan-outer-container {
     position: relative;
+    @media(max-width: 768px) {
+      margin-top: 10px;
+    }
     &:before {
       display: block;
       content: "";
@@ -85,6 +88,9 @@ const PrWarpper = styled.div`
   width: 40%;
   margin: 0 auto;
   position: relative;
+  @media(max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 const Header = styled.h1`
@@ -93,7 +99,21 @@ const Header = styled.h1`
   line-height: 1;
   padding: 2px 14px;
   border-bottom: 1px solid ${colors.cyan};
-`
+  @media(max-width: 768px) {
+    width: 100%;
+  }
+`;
+
+const Column = styled.div.attrs({
+  className: 'column'
+})`
+  p {
+    @media(max-width: 768px) {
+      text-align: center !important;
+      font-size: 24px;
+    }
+  }
+`;
 
 const Pr = () => (
   <PrWarpper className="container">
@@ -107,7 +127,7 @@ const Pr = () => (
       <div className="slogan-outer-container">
         <div className="slogan-inner-container">
           <div className="columns">
-            <div className="column">
+            <Column className="column">
               <p>JWC.in.th</p>
               <p>JWC.in.th</p>
               <p>JWC.in.th</p>
@@ -116,8 +136,8 @@ const Pr = () => (
               <p>JWC.in.th</p>
               <p>JWC.in.th</p>
               <p>JWC.in.th</p>
-            </div>
-            <div className="column">
+            </Column>
+            <Column className="column">
               <p>JWC.in.th</p>
               <p>JWC.in.th</p>
               <p>JWC.in.th</p>
@@ -126,15 +146,15 @@ const Pr = () => (
               <p>JWC.in.th</p>
               <p>JWC.in.th</p>
               <p>JWC.in.th</p>
-            </div>
-            <div className="column">
+            </Column>
+            <Column className="column">
               <p>JWC.in.th</p>
               <p>JWC.in.th</p>
               <p>JWC.in.th</p>
               <p>JWC.in.th</p>
               <p>JWC.in.th</p>
               <p>JWC.in.th</p>
-            </div>
+            </Column>
           </div>
         </div>
       </div>

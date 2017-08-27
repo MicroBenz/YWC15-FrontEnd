@@ -1,42 +1,105 @@
 import React from 'react';
+import styled from 'styled-components';
 
+import FrameBox from '../Core/FrameBox';
 import content from './content.json';
 import colors from '../../utils/colors';
 
-const WhatIsYWC = () => (
-  <div className="welcoming-container">
-    <div className="ywc-border">
-      <div className="text-container">
-        <h1>What is ywc</h1>
-      </div>
-    </div>
-    <div className="what-is-ywc container">
-      <h2>{content.whatIsYwc}</h2>
-    </div>
-    <style jsx>{`
-      h1 {
-        font-size: 30px;
-      }
-      .what-is-ywc {
-        padding: 30px 0px;
-        font-size: 18px;
+const Container = styled.div`
+  width: 80%;
+  margin: 0 auto;
+  @media(max-width: 768px) {
+    width: 90%;
+  }
+`;
 
-      }
-      .ywc-border {
-        width: 500px;
-        margin: 0 auto;
-        border: 6px inset ${colors.cyan};
-        border-left: 0px;
-        border-right: 0px;
-        .text-container {
-          border: 4px solid ${colors.cyan};
-          border-top: none;
-          border-bottom: none;
-          margin: 15px 0px;
-        }
-      }
-    `}</style>
-  </div>
+const SquareRow = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 7px;
+  @media(max-width: 768px) {
+    padding-bottom: 5px;
+  }
+`;
+
+const Square = styled.div`
+  width: 10px;
+  height: 10px;
+  background-color: ${colors.cyan};
+  ${props => props.extraMargin && 'margin-right: 5px;'}
+  @media(max-width: 768px) {
+    width: 7px;
+    height: 7px;
+  }
+`;
+
+const Header = styled.div`
+  width: 550px;
+  margin: 0 auto;
+  text-shadow: 0 0 10px #2eb5db, 0 0 2px #2eb5db, 0 0 2px #2eb5db, 0 0 2px #2eb5db, 0 0 20px #2eb5db;
+  @media(max-width: 768px) {
+    width: 100%;
+  }
+`;
+
+const HeaderBox = styled(FrameBox)`
+  width: 100% !important;
+`;
+
+const WhatIsYWCText = styled.h1`
+  font-size: 53px;
+  padding-top: 10px;
+  @media(max-width: 768px) {
+    font-size: 37px;
+  }
+`;
+
+const ContentContainer = styled.div.attrs({
+  className: 'container'
+})`
+  width: 100%;
+  padding: 30px 0px;
+  font-size: 18px;
+  line-height: 29px;
+  @media(max-width: 768px) {
+    padding: 30px 0;
+  }
+`;
+
+const TitleBorder = styled.div`
+  width: 500px;
+  margin: 0 auto;
+  border: 6px inset ${colors.cyan};
+  border-left: 0px;
+  border-right: 0px;
+  @media(max-width: 768px) {
+    width: 90%;
+  }
+`;
+
+const TextContainer = styled.div`
+  border: 4px solid ${colors.cyan};
+  border-top: none;
+  border-bottom: none;
+  margin: 15px 0px;
+`;
+
+const WhatIsYWC = () => (
+  <Container>
+    <Header>
+      <SquareRow>
+        <Square extraMargin />
+        <Square extraMargin />
+        <Square />
+      </SquareRow>
+      <HeaderBox fullWidth>
+        <WhatIsYWCText>What is YWC</WhatIsYWCText>
+      </HeaderBox>
+    </Header>
+    <ContentContainer>
+      <h2>{content.whatIsYwc}</h2>
+    </ContentContainer>
+  </Container>
 );
 
 export default WhatIsYWC;

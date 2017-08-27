@@ -58,9 +58,9 @@ export default class MyDocument extends Document {
           <link rel="icon" type="image/png" sizes="96x96" href="/static/favicon/favicon-96x96.png" />
           <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png" />
           <link rel="manifest" href="/static/favicon/manifest.json" />
-          <meta name="msapplication-TileColor" content="#ffffff" />
+          <meta name="msapplication-TileColor" content="#1f2833" />
           <meta name="msapplication-TileImage" content="/static/favicon/ms-icon-144x144.png" />
-          <meta name="theme-color" content="#ffffff" />
+          <meta name="theme-color" content="#1f2833" />
           {styleTags}
         </Head>
         <body style={{ width: '100%', height: '100%', backgroundColor: colors.theme, color: colors.white, backgroundImage: "url('/static/img/bg/bg.png')", backgroundRepeat: 'repeat', backgroundSize: '100%' }}>

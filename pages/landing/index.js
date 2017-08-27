@@ -35,6 +35,16 @@ injectGlobal`
 const Section = styled.div`
   padding: 50px 0px;
   text-align: center;
+  @media(max-width: 768px) {
+    padding: 20px 0;
+  }
+`;
+
+const WelcomingSection = Section.extend`
+  padding: 50px 0 0;
+  @media(max-width: 768px) {
+    padding: 20px 0 0;
+  }
 `;
 
 @connect(
@@ -50,9 +60,9 @@ export default class LandingPage extends Component {
     return (
       <div>
         <FreeAll />
-        <Section id="welcoming-section">
+        <WelcomingSection id="welcoming-section">
           <Welcoming />
-        </Section>
+        </WelcomingSection>
         <Section id="what-is-ywc-section">
           <WhatIsYWC />
         </Section>

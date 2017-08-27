@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { darken } from 'polished';
-import { Link } from 'react-scroll';
+import { Link, Events, scrollSpy, scroller } from 'react-scroll';
 
 import colors from '../../utils/colors';
 
@@ -15,6 +15,7 @@ const NavbarWrapper = styled.nav`
 
 const NavImg = styled.img`
   display: block;
+  cursor: pointer;
 `;
 
 const NavLink = styled(Link)`
@@ -72,11 +73,12 @@ const NavLink = styled(Link)`
 `;
 
 const sections = [
+  { href: 'welcoming-section', title: 'WELCOME TO YWC' },
   { href: 'what-is-ywc', title: 'WHAT IS YWC' },
   { href: 'guru', title: 'GURU' },
   { href: 'register', title: 'REGISTER' },
   { href: 'timeline', title: 'TIMELINE' },
-  { href: 'map', title: 'MAP' },
+  { href: 'map', title: 'LOCATION' },
   { href: 'gallery', title: 'GALLERY' },
   { href: 'faq', title: 'Q&A' },
   { href: 'sponsor', title: 'SPONSOR' },
@@ -84,32 +86,76 @@ const sections = [
   { href: 'contactus', title: 'CONTACT US' },
 ];
 
-const Navbar = () => (
-  <NavbarWrapper>
-    <NavImg src="/static/img/landing/materials/navbar-up.png" alt="" />
-    <ul>
-      {
-        sections.map(e => (
-          <li key={e.href}>
-            <NavLink
-              activeClass="active"
-              to={e.href}
-              spy
-              smooth
-              offset={50}
-              duration={500}
-              offset={-50}
-            >
-              <div className="text">
-                {e.title}
-              </div>
-            </NavLink>
-          </li>
-        ))
-      }
-    </ul>
-    <NavImg src="/static/img/landing/materials/navbar-up.png" alt="" />
-  </NavbarWrapper>
-);
+class Navbar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      current: 'welcoming-section'
+    };
+  }
+
+  componentDidMount() {
+    Events.scrollEvent.register('end', (section) => {
+      this.setState({
+        current: section
+      });
+    });
+
+    scrollSpy.update();
+  }
+
+  componentWillUnmount() {
+    Events.scrollEvent.remove('begin');
+    Events.scrollEvent.remove('end');
+  }
+
+  handleScroll(direction) {
+    const current = this.state.current;
+    let targetName;
+
+    if (direction === 'top') {
+      targetName = sections[sections.findIndex(s => s.href === current) - 1].href;
+    } else {
+      targetName = sections[sections.findIndex(s => s.href === current) + 1].href;
+    }
+
+    scroller.scrollTo(targetName, {
+      duration: 500,
+      smooth: true,
+      offset: 0
+    });
+  }
+
+  render() {
+    return (
+      <NavbarWrapper>
+        <NavImg onClick={() => this.handleScroll('top')} src="/static/img/landing/materials/navbar-up.png" alt="" />
+        <ul>
+          {
+            sections.map(e =>
+              e.href !== 'welcoming-section' && (
+                <li key={e.href}>
+                  <NavLink
+                    activeClass="active"
+                    to={e.href}
+                    spy
+                    smooth
+                    duration={500}
+                    offset={0}
+                  >
+                    <div className="text">
+                      {e.title}
+                    </div>
+                  </NavLink>
+                </li>
+              )
+            )
+          }
+        </ul>
+        <NavImg onClick={() => this.handleScroll('down')} src="/static/img/landing/materials/navbar-down.png" alt="" />
+      </NavbarWrapper>
+    );
+  }
+}
 
 export default Navbar;

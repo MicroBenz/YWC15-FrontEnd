@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled, { injectGlobal } from 'styled-components';
-import { Element, Events, scrollSpy } from 'react-scroll';
+import { Element } from 'react-scroll';
 
 import connect from '../../store/connect';
 import { actions as appActions } from '../../store/reducers/app';
@@ -39,7 +39,7 @@ injectGlobal`
 /* eslint-enable */
 
 const Section = styled(Element)`
-  padding: 50px 0px;
+  padding: 80px 0px;
   text-align: center;
   position: relative;
 
@@ -49,7 +49,8 @@ const Section = styled(Element)`
 `;
 
 const WelcomingSection = Section.extend`
-  padding: 50px 0 0;
+  min-height: 100vh;
+  padding: 80px 0 0;
   @media(max-width: 768px) {
     padding: 50px 0 0;
   }
@@ -63,21 +64,6 @@ export default class LandingPage extends Component {
 
   componentDidMount() {
     this.props.loadRegisterStat();
-
-    Events.scrollEvent.register('begin', function() {
-      console.log("begin", arguments);
-    });
-
-    Events.scrollEvent.register('end', function() {
-      console.log("end", arguments);
-    });
-
-    scrollSpy.update();
-  }
-
-  componentWillUnmount() {
-    Events.scrollEvent.remove('begin');
-    Events.scrollEvent.remove('end');
   }
 
   render() {

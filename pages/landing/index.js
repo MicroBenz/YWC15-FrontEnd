@@ -15,22 +15,16 @@ import ContactUs from '../../component/Landing/ContactUs';
 import FreeAll from '../../component/Landing/FreeAll';
 import Sponsor from '../../component/Landing/Sponsor';
 import Pr from '../../component/Landing/Pr';
-import Footer from '../../component/Landing/Footer'
+import Footer from '../../component/Landing/Footer';
 
+/* eslint-disable */
 injectGlobal`
-  
-  @font-face {
-    font-family: 'supermarket';
-    src: local('supermarket'),
-      url('static/fonts/supermarket.ttf') format('ttf');
-  }
-
   body {
-    font-family: 'supermarket';
+    font-family: 'Supermarket';
     letter-spacing: .02em;
   }
-  
 `;
+/* eslint-enable */
 
 const Section = styled.div`
   padding: 50px 0px;
@@ -43,7 +37,7 @@ const Section = styled.div`
 const WelcomingSection = Section.extend`
   padding: 50px 0 0;
   @media(max-width: 768px) {
-    padding: 20px 0 0;
+    padding: 50px 0 0;
   }
 `;
 
@@ -59,8 +53,8 @@ export default class LandingPage extends Component {
   render() {
     return (
       <div>
-        <FreeAll />
-        <WelcomingSection id="welcoming-section">
+        <WelcomingSection id="welcoming-section" style={{ position: 'relative' }}>
+          <FreeAll />
           <Welcoming />
         </WelcomingSection>
         <Section id="what-is-ywc-section">

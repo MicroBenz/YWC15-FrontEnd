@@ -1,7 +1,5 @@
 import React from 'react';
 
-import SectionHeader from './SectionHeader';
-
 const Footer = () => (
   <div className="container">
     <div className="columns">
@@ -21,7 +19,9 @@ const Footer = () => (
         <img src="/static/img/landing/materials/logo_3ds.png" alt="" />
       </div>
     </div>
-    <p>Copyright 2003-1016, Young Webmaster Camp, in association with Thai Webmaster Association. All right reserved.</p>
+    <p>
+      Copyright 2003-2017, Young Webmaster Camp, in association with Thai Webmaster Association. All right reserved.
+    </p>
   </div>
 );
 

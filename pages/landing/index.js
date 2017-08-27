@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import styled, { injectGlobal } from 'styled-components';
 import connect from '../../store/connect';
 import { actions as appActions } from '../../store/reducers/app';
 
@@ -12,6 +12,26 @@ import Map from '../../component/Landing/Map';
 import Gallery from '../../component/Landing/Gallery';
 import FAQ from '../../component/Landing/FAQ';
 import ContactUs from '../../component/Landing/ContactUs';
+import FreeAll from '../../component/Landing/FreeAll'
+
+injectGlobal`
+  
+  @font-face {
+    font-family: 'supermarket';
+    src: local('supermarket'),
+      url('static/fonts/supermarket.ttf') format('ttf');
+  }
+
+  body {
+    font-family: 'supermarket';
+  }
+  
+`;
+
+const Section = styled.div`
+  padding: 50px 0px;
+  text-align: center;
+`;
 
 @connect(
   () => ({}),
@@ -25,39 +45,34 @@ export default class LandingPage extends Component {
   render() {
     return (
       <div>
-        <section className="landing-section welcoming-section">
+        <FreeAll />
+        <Section id="welcoming-section">
           <Welcoming />
-        </section>
-        <section className="landing-section what-is-ywc-section">
+        </Section>
+        <Section id="what-is-ywc-section">
           <WhatIsYWC />
-        </section>
-        <section className="landing-section guru-section">
+        </Section>
+        <Section id="guru-section">
           <Guru />
-        </section>
-        <section className="landing-section register-section">
+        </Section>
+        <Section id="register-section">
           <Register />
-        </section>
-        <section className="landing-section timeline-section">
+        </Section>
+        <Section id="timeline-section">
           <Timeline />
-        </section>
-        <section className="landing-section map-section">
+        </Section>
+        <Section id="map-section">
           <Map />
-        </section>
-        <section className="landing-section gallery-section">
+        </Section>
+        <Section id="gallery-section">
           <Gallery />
-        </section>
-        <section className="landing-section faq-section">
+        </Section>
+        <Section id="faq-section">
           <FAQ />
-        </section>
-        <section className="landing-section contactus-section">
+        </Section>
+        <Section id="contactus-section">
           <ContactUs />
-        </section>
-        <style jsx>{`
-          .landing-section {
-            padding: 50px 0px;
-            text-align: center;
-          }  
-        `}</style>
+        </Section>
       </div>
     );
   }

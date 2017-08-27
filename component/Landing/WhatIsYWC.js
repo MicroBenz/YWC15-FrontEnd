@@ -10,7 +10,7 @@ const WhatIsYWC = () => (
         <h1>What is ywc</h1>
       </div>
     </div>
-    <div className="what-is-ywc">
+    <div className="what-is-ywc container">
       <h2>{content.whatIsYwc}</h2>
     </div>
     <style jsx>{`

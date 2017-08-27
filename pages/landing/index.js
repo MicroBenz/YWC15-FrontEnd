@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled, { injectGlobal } from 'styled-components';
+import { Element, Events, scrollSpy } from 'react-scroll';
 
 import connect from '../../store/connect';
 import { actions as appActions } from '../../store/reducers/app';
@@ -17,43 +18,31 @@ import FreeAll from '../../component/Landing/FreeAll';
 import Sponsor from '../../component/Landing/Sponsor';
 import Pr from '../../component/Landing/Pr';
 import Footer from '../../component/Landing/Footer';
+import Navbar from '../../component/Landing/Navbar';
 
 /* eslint-disable */
 injectGlobal`
-<<<<<<< HEAD
   @font-face {
     font-family: 'supermarket';
     src: local('supermarket'),
       url('static/fonts/supermarket.ttf') format('ttf');
   }
 
-=======
->>>>>>> d36d68dbf88762793346341b985b2c9203295984
   body {
     font-family: 'Supermarket';
     letter-spacing: .02em;
+    -webkit-font-smoothing: antialiased;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 `;
 /* eslint-enable */
 
-const sections = [
-  'welcoming-section',
-  'what-is-ywc-section',
-  'guru-section',
-  'register-section',
-  'timeline-section',
-  'map-section',
-  'gallery-section',
-  'faq-section',
-  'sponsor-section',
-  'pr-section',
-  'contactus-section'
-];
-
-const Section = styled.section`
+const Section = styled(Element)`
   padding: 50px 0px;
-  min-height: 800px;
   text-align: center;
+  position: relative;
+
   @media(max-width: 768px) {
     padding: 20px 0;
   }
@@ -74,49 +63,66 @@ export default class LandingPage extends Component {
 
   componentDidMount() {
     this.props.loadRegisterStat();
+
+    Events.scrollEvent.register('begin', function() {
+      console.log("begin", arguments);
+    });
+
+    Events.scrollEvent.register('end', function() {
+      console.log("end", arguments);
+    });
+
+    scrollSpy.update();
+  }
+
+  componentWillUnmount() {
+    Events.scrollEvent.remove('begin');
+    Events.scrollEvent.remove('end');
   }
 
   render() {
     return (
       <div>
-        <WelcomingSection id="welcoming-section" style={{ position: 'relative' }}>
+        <Navbar />
+        <WelcomingSection name="welcoming-section">
           <FreeAll />
           <Welcoming />
         </WelcomingSection>
-        <Section id="what-is-ywc-section">
+        <Section name="what-is-ywc" className="what-is-ywc">
           <WhatIsYWC />
         </Section>
-        <Section id="guru-section">
+        <Section name="guru" className="guru">
           <Guru />
         </Section>
-        <Section id="register-section">
+        <Section name="register" className="register">
           <Register />
         </Section>
-        <Section id="timeline-section">
+        <Section name="timeline" className="timeline">
           <Timeline />
         </Section>
-        <Section id="map-section">
+        <Section name="map" className="map">
           <Map />
         </Section>
-        <Section id="gallery-section">
+        <Section name="gallery" className="gallery">
           <Gallery />
         </Section>
-        <Section id="faq-section">
+        <Section name="faq" className="faq">
           <FAQ />
         </Section>
-        <Section id="sponsor-section">
+        <Section name="sponsor" className="sponsor">
           <Sponsor />
         </Section>
-        <Section id="pr-section">
+        <Section name="pr" className="pr">
           <Pr />
         </Section>
-        <Section id="contactus-section">
+        <Section name="contactus" className="contactus">
           <ContactUs />
         </Section>
-        <Section id="footer-section">
+        <Section name="footer-section">
           <Footer />
         </Section>
       </div>
     );
   }
 }
+

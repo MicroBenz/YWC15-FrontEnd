@@ -1,8 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
 import { actions as registerActions } from '../../store/reducers/register';
 import GlowingButton from '../Core/GlowingButton';
+
+const UploadButtonWrapper = styled.div`
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  width: 200px;
+`;
+
+const Input = styled.input.attrs({
+  type: 'file',
+  accept: 'image/*',
+})`
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-appearance: none;
+  cursor: pointer;
+`;
 
 @connect(
   () => ({}),
@@ -43,7 +65,6 @@ export default class ImageUploader extends Component {
     }
     const file = files[0];
     this.props.setField(this.props.field, file);
-    console.log(file);
     if (this.props.previewField) {
       const reader = new FileReader();
       reader.readAsDataURL(file);
@@ -59,33 +80,10 @@ export default class ImageUploader extends Component {
   /*  eslint-enable */  
   render() {
     return (
-      <div className="upload-button-wrapper" style={this.props.style}>
+      <UploadButtonWrapper style={this.props.style}>
         <GlowingButton>{this.props.title}</GlowingButton>
-        <input
-          type="file"
-          accept="image/*"
-          className="hidden-input"
-          onChange={this.handleUploadFile}
-        />
-        <style jsx>{`
-        .upload-button-wrapper {
-          position: relative;
-          display: inline-block;
-          cursor: pointer;
-          width: 200px;
-        }
-        .hidden-input {
-          position: absolute;
-          top: 0;
-          left: 0;
-          opacity: 0;
-          width: 100%;
-          height: 100%;
-          -webkit-appearance: none;
-          cursor: pointer;
-        }
-        `}</style>
-      </div>
+        <Input onChange={this.handleUploadFile} />
+      </UploadButtonWrapper>
     );
   }
 }

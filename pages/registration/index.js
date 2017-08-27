@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Router from 'next/router';
-import styled from 'styled-components';
+import styled, { injectGlobal } from 'styled-components';
 
 import connect from '../../store/connect';
 import colors from '../../utils/colors';
@@ -13,6 +13,19 @@ import StepFive from '../../component/Register/StepFive';
 import StepVerify from '../../component/Register/StepVerify';
 import FullAreaLoader from '../../component/Core/FullAreaLoader';
 import { actions as registerActions } from '../../store/reducers/register';
+
+/* eslint-disable */
+injectGlobal`
+  .column {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-bottom: 0;
+    @media(max-width: 768px) {
+      padding-top: 0.75rem;
+    }
+  }
+`;
+/* eslint-enable */
 
 const routerNavigate = (step) => {
   if (step <= 5) {
@@ -212,16 +225,6 @@ export default class MainRegistration extends Component {
               {error && <p><b>Error:</b> {error.message}</p>}
             </LoaderWrapper>
           )}
-          <style jsx global>{`
-            .column {
-              padding-top: 8px;
-              padding-bottom: 8px;
-              margin-bottom: 0;
-              @media(max-width: 768px) {
-                padding-top: 0.75rem;
-              }
-            }  
-          `}</style>
         </StepWrapper>
       </RegisterContainer>
     );

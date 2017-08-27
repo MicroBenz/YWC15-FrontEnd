@@ -22,6 +22,11 @@ export default class MyDocument extends Document {
       <html lang="th">
         <Head>
           <title>{seo.title}</title>
+          <link rel="stylesheet" href="/static/fonts/fonts.css" />
+          <link rel="stylesheet" href="/static/libs/bulma/bulma.min.css" />
+          <link rel="stylesheet" href="/static/libs/font-awesome/css/font-awesome.min.css" />
+          <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css" />
+          <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css" />
           <meta name="description" content={seo.comingSoon.description} />
           <meta name="keywords" content={seo.comingSoon.keywords} />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -38,12 +43,6 @@ export default class MyDocument extends Document {
           <meta property="og:description" content={seo.comingSoon.description} />
           <meta property="og:site_name" content="Young Webmaster Camp 15" />
 
-          <link rel="stylesheet" href="/static/libs/bulma/bulma.min.css" />
-          <link rel="stylesheet" href="/static/libs/font-awesome/css/font-awesome.min.css" />
-          <link rel="stylesheet" href="/static/fonts/fonts.css" />
-          <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css" />
-          <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css" />
-
           <link rel="apple-touch-icon" sizes="57x57" href="/static/favicon/apple-icon-57x57.png" />
           <link rel="apple-touch-icon" sizes="60x60" href="/static/favicon/apple-icon-60x60.png" />
           <link rel="apple-touch-icon" sizes="72x72" href="/static/favicon/apple-icon-72x72.png" />
@@ -58,9 +57,9 @@ export default class MyDocument extends Document {
           <link rel="icon" type="image/png" sizes="96x96" href="/static/favicon/favicon-96x96.png" />
           <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png" />
           <link rel="manifest" href="/static/favicon/manifest.json" />
-          <meta name="msapplication-TileColor" content="#ffffff" />
+          <meta name="msapplication-TileColor" content="#1f2833" />
           <meta name="msapplication-TileImage" content="/static/favicon/ms-icon-144x144.png" />
-          <meta name="theme-color" content="#ffffff" />
+          <meta name="theme-color" content="#1f2833" />
           {styleTags}
         </Head>
         <body style={{ width: '100%', height: '100%', backgroundColor: colors.theme, color: colors.white, backgroundImage: "url('/static/img/bg/bg.png')", backgroundRepeat: 'repeat', backgroundSize: '100%' }}>

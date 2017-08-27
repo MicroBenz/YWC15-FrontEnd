@@ -16,21 +16,25 @@ import ContactUs from '../../component/Landing/ContactUs';
 import FreeAll from '../../component/Landing/FreeAll';
 import Sponsor from '../../component/Landing/Sponsor';
 import Pr from '../../component/Landing/Pr';
-import Footer from '../../component/Landing/Footer'
+import Footer from '../../component/Landing/Footer';
 
+/* eslint-disable */
 injectGlobal`
+<<<<<<< HEAD
   @font-face {
     font-family: 'supermarket';
     src: local('supermarket'),
       url('static/fonts/supermarket.ttf') format('ttf');
   }
 
+=======
+>>>>>>> d36d68dbf88762793346341b985b2c9203295984
   body {
-    font-family: 'supermarket';
+    font-family: 'Supermarket';
     letter-spacing: .02em;
   }
-  
 `;
+/* eslint-enable */
 
 const sections = [
   'welcoming-section',
@@ -50,6 +54,16 @@ const Section = styled.section`
   padding: 50px 0px;
   min-height: 800px;
   text-align: center;
+  @media(max-width: 768px) {
+    padding: 20px 0;
+  }
+`;
+
+const WelcomingSection = Section.extend`
+  padding: 50px 0 0;
+  @media(max-width: 768px) {
+    padding: 50px 0 0;
+  }
 `;
 
 @connect(
@@ -65,55 +79,43 @@ export default class LandingPage extends Component {
   render() {
     return (
       <div>
-        <FreeAll />
-        <ul style={{ position: 'fixed', zIndex: '99' }}>
-          <li>
-            <Link
-              activeClass="active"
-              className={'navbar'}
-              to={'welcoming-section'}
-              spy
-            >welcoming-section</Link>
-          </li>
-        </ul>
-        <div>
-          <Section id="welcoming-section">
-            <Welcoming />
-          </Section>
-          <Section id="what-is-ywc-section">
-            <WhatIsYWC />
-          </Section>
-          <Section id="guru-section">
-            <Guru />
-          </Section>
-          <Section id="register-section">
-            <Register />
-          </Section>
-          <Section id="timeline-section">
-            <Timeline />
-          </Section>
-          <Section id="map-section">
-            <Map />
-          </Section>
-          <Section id="gallery-section">
-            <Gallery />
-          </Section>
-          <Section id="faq-section">
-            <FAQ />
-          </Section>
-          <Section id="sponsor-section">
-            <Sponsor />
-          </Section>
-          <Section id="pr-section">
-            <Pr />
-          </Section>
-          <Section id="contactus-section">
-            <ContactUs />
-          </Section>
-          <Section id="footer-section">
-            <Footer />
-          </Section>
-        </div>
+        <WelcomingSection id="welcoming-section" style={{ position: 'relative' }}>
+          <FreeAll />
+          <Welcoming />
+        </WelcomingSection>
+        <Section id="what-is-ywc-section">
+          <WhatIsYWC />
+        </Section>
+        <Section id="guru-section">
+          <Guru />
+        </Section>
+        <Section id="register-section">
+          <Register />
+        </Section>
+        <Section id="timeline-section">
+          <Timeline />
+        </Section>
+        <Section id="map-section">
+          <Map />
+        </Section>
+        <Section id="gallery-section">
+          <Gallery />
+        </Section>
+        <Section id="faq-section">
+          <FAQ />
+        </Section>
+        <Section id="sponsor-section">
+          <Sponsor />
+        </Section>
+        <Section id="pr-section">
+          <Pr />
+        </Section>
+        <Section id="contactus-section">
+          <ContactUs />
+        </Section>
+        <Section id="footer-section">
+          <Footer />
+        </Section>
       </div>
     );
   }

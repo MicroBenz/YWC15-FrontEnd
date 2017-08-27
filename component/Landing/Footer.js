@@ -1,27 +1,56 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Columns = styled.div.attrs({
+  className: 'columns'
+})`
+  margin-left: 0;
+  margin-right: 0;
+`;
+
+const Column = styled.div.attrs({
+  className: 'column'
+})`
+  padding-left: 0;
+  padding-right: 0;
+`;
+
+const Copyright = styled.p`
+  font-size: 16px;
+  line-height: 21px;
+  i {
+    font-size: 16px;
+    line-height: 16px;
+  }
+`;
+
+const AllRightReserved = styled.p`
+  font-size: 16px;
+`;
 
 const Footer = () => (
   <div className="container">
-    <div className="columns">
-      <div className="column">
+    <Columns>
+      <Column>
         <img src="/static/img/landing/materials/logo_cp.png" alt="" />
-      </div>
-      <div className="column">
+      </Column>
+      <Column>
         <img src="/static/img/landing/materials/logo_scb.png" alt="" />
-      </div>
-      <div className="column">
+      </Column>
+      <Column>
         <img src="/static/img/landing/materials/logo_abac.png" alt="" />
-      </div>
-      <div className="column">
+      </Column>
+      <Column>
         <img src="/static/img/landing/materials/logo_donuts.png" alt="" />
-      </div>
-      <div className="column">
+      </Column>
+      <Column>
         <img src="/static/img/landing/materials/logo_3ds.png" alt="" />
-      </div>
-    </div>
-    <p>
-      Copyright 2003-2017, Young Webmaster Camp, in association with Thai Webmaster Association. All right reserved.
-    </p>
+      </Column>
+    </Columns>
+    <Copyright>
+      <i className="fa fa-copyright" aria-hidden="true" /> Copyright 2003-2017
+    </Copyright>
+    <AllRightReserved>Young Webmaster Camp, in association with Thai Webmaster Association. All right reserved.</AllRightReserved>
   </div>
 );
 

@@ -44,7 +44,7 @@ const Section = styled(Element)`
   position: relative;
 
   @media(max-width: 768px) {
-    padding: 20px 0;
+    padding: 40px 0;
   }
 `;
 
@@ -53,6 +53,7 @@ const WelcomingSection = Section.extend`
   padding: 80px 0 0;
   @media(max-width: 768px) {
     padding: 50px 0 0;
+    min-height: 100%;
   }
 `;
 

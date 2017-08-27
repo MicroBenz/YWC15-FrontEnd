@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
+import Parallax from '../Landing/ParallaxScroll';
 
 import SectionHeader from './SectionHeader';
 import TimelineItem from './TimelineItem';
@@ -17,6 +18,9 @@ const forceTrue = moment().isAfter(moment('8/1/2018'));
 
 const Timeline = () => (
   <div>
+    <Parallax speed={0.05}>
+      <img src="/static/img/landing/materials/bg_whatis.png" alt="" style={{ transform: 'scaleX(-1)' }} />
+    </Parallax>
     <SectionHeader title="Timeline" subtitle="ตารางเวลา" />
     <Container>
       <div className="columns">

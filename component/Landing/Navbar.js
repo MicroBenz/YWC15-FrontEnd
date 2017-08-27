@@ -18,6 +18,11 @@ const NavbarWrapper = styled.nav`
   ul li:first-child {
     display: none;
   }
+  
+  @media(max-width: 768px) {
+    display: none;
+  }
+
 `;
 
 const NavImg = styled.img`

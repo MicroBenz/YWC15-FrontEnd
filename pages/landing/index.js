@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled, { injectGlobal } from 'styled-components';
+
 import connect from '../../store/connect';
 import { actions as appActions } from '../../store/reducers/app';
 
@@ -18,7 +19,6 @@ import Pr from '../../component/Landing/Pr';
 import Footer from '../../component/Landing/Footer'
 
 injectGlobal`
-  
   @font-face {
     font-family: 'supermarket';
     src: local('supermarket'),
@@ -32,8 +32,23 @@ injectGlobal`
   
 `;
 
-const Section = styled.div`
+const sections = [
+  'welcoming-section',
+  'what-is-ywc-section',
+  'guru-section',
+  'register-section',
+  'timeline-section',
+  'map-section',
+  'gallery-section',
+  'faq-section',
+  'sponsor-section',
+  'pr-section',
+  'contactus-section'
+];
+
+const Section = styled.section`
   padding: 50px 0px;
+  min-height: 800px;
   text-align: center;
 `;
 
@@ -42,6 +57,7 @@ const Section = styled.div`
   { ...appActions }
 )
 export default class LandingPage extends Component {
+
   componentDidMount() {
     this.props.loadRegisterStat();
   }
@@ -50,42 +66,54 @@ export default class LandingPage extends Component {
     return (
       <div>
         <FreeAll />
-        <Section id="welcoming-section">
-          <Welcoming />
-        </Section>
-        <Section id="what-is-ywc-section">
-          <WhatIsYWC />
-        </Section>
-        <Section id="guru-section">
-          <Guru />
-        </Section>
-        <Section id="register-section">
-          <Register />
-        </Section>
-        <Section id="timeline-section">
-          <Timeline />
-        </Section>
-        <Section id="map-section">
-          <Map />
-        </Section>
-        <Section id="gallery-section">
-          <Gallery />
-        </Section>
-        <Section id="faq-section">
-          <FAQ />
-        </Section>
-        <Section id="sponsor-section">
-          <Sponsor />
-        </Section>
-        <Section id="pr-section">
-          <Pr />
-        </Section>
-        <Section id="contactus-section">
-          <ContactUs />
-        </Section>
-        <Section id="footer-section">
-          <Footer />
-        </Section>
+        <ul style={{ position: 'fixed', zIndex: '99' }}>
+          <li>
+            <Link
+              activeClass="active"
+              className={'navbar'}
+              to={'welcoming-section'}
+              spy
+            >welcoming-section</Link>
+          </li>
+        </ul>
+        <div>
+          <Section id="welcoming-section">
+            <Welcoming />
+          </Section>
+          <Section id="what-is-ywc-section">
+            <WhatIsYWC />
+          </Section>
+          <Section id="guru-section">
+            <Guru />
+          </Section>
+          <Section id="register-section">
+            <Register />
+          </Section>
+          <Section id="timeline-section">
+            <Timeline />
+          </Section>
+          <Section id="map-section">
+            <Map />
+          </Section>
+          <Section id="gallery-section">
+            <Gallery />
+          </Section>
+          <Section id="faq-section">
+            <FAQ />
+          </Section>
+          <Section id="sponsor-section">
+            <Sponsor />
+          </Section>
+          <Section id="pr-section">
+            <Pr />
+          </Section>
+          <Section id="contactus-section">
+            <ContactUs />
+          </Section>
+          <Section id="footer-section">
+            <Footer />
+          </Section>
+        </div>
       </div>
     );
   }

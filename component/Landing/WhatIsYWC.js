@@ -18,7 +18,9 @@ const WhatIsYWC = () => (
         font-size: 30px;
       }
       .what-is-ywc {
-        padding: 10px 0px;
+        padding: 30px 0px;
+        font-size: 18px;
+
       }
       .ywc-border {
         width: 500px;

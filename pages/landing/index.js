@@ -24,6 +24,7 @@ injectGlobal`
 
   body {
     font-family: 'supermarket';
+    letter-spacing: .02em;
   }
   
 `;

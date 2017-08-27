@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { darken } from 'polished';
 import { Link } from 'react-scroll';
 
 import colors from '../../utils/colors';
@@ -19,16 +20,17 @@ const NavImg = styled.img`
 const NavLink = styled(Link)`
   display: flex;
   justify-content: center;
-  color: ${colors.cyan};
+  color: darken(.4, ${darken(0.6, colors.cyan)});
   margin: 12px 0;
-  opacity: 0.4;
+  opacity: 0.6;
+  transition: all .2s;
 
   &:before {
     content: '';
     height: 10px;
     width: 10px;
     display: flex;
-    border: 1px solid ${colors.cyan};
+    border: 1px solid ${darken(0.4, colors.cyan)};
     border-radius: 50%;
     margin: 5px;
   }
@@ -45,19 +47,26 @@ const NavLink = styled(Link)`
 
   &:hover {
     opacity: 1;
-    
+    &:before {
+      border: 1px solid ${darken(0.3, colors.cyan)};
+    }
+
     .text {
-      color: ${colors.cyan};
       opacity: 1;
+      color: ${darken(0.3, colors.cyan)};
     }
   }
 
   &.active {
     opacity: 1;
     
+    &:before {
+      border: 1px solid ${colors.cyan};
+    }
+
     .text {
-      color: ${colors.cyan};
       opacity: 1;
+      color: ${colors.cyan};
     }
   }
 `;

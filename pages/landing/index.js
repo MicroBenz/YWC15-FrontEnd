@@ -12,7 +12,10 @@ import Map from '../../component/Landing/Map';
 import Gallery from '../../component/Landing/Gallery';
 import FAQ from '../../component/Landing/FAQ';
 import ContactUs from '../../component/Landing/ContactUs';
-import FreeAll from '../../component/Landing/FreeAll'
+import FreeAll from '../../component/Landing/FreeAll';
+import Sponsor from '../../component/Landing/Sponsor';
+import Pr from '../../component/Landing/Pr';
+import Footer from '../../component/Landing/Footer'
 
 injectGlobal`
   
@@ -71,8 +74,17 @@ export default class LandingPage extends Component {
         <Section id="faq-section">
           <FAQ />
         </Section>
+        <Section id="sponsor-section">
+          <Sponsor />
+        </Section>
+        <Section id="pr-section">
+          <Pr />
+        </Section>
         <Section id="contactus-section">
           <ContactUs />
+        </Section>
+        <Section id="footer-section">
+          <Footer />
         </Section>
       </div>
     );

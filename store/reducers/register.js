@@ -51,8 +51,9 @@ const initialState = {
   medAllergy: '',
   skype: '',
   // Step 3
-  knowCamp: '',
+  knowCamp: [],
   activities: '',
+  knowCampOther: '',
   // whyJoinYWC: '',
   // Step 4
   generalQuestions: ['', '', ''],
@@ -77,9 +78,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         ..._.omit(action.data, ['_id', 'facebook', 'status', 'questions']),
-        previewPicture: action.data.picture,
+        previewPicture: action.data.picture || '',
         generalQuestions: action.data.questions.generalQuestions.map(answer => answer.answer),
-        specialQuestions: action.data.questions.specialQuestions[state.major].map(answer => answer.answer)
+        specialQuestions: action.data.questions.specialQuestions[state.major].map(answer => answer.answer),
+        knowCamp: filterKnowCamp(action.data.knowCamp, false), // eslint-disable-line
+        knowCampOther: filterKnowCamp(action.data.knowCamp, true) // eslint-disable-line
       };
     case SAVE_STEP_ONE.PENDING:
     case SAVE_STEP_TWO.PENDING:
@@ -157,6 +160,13 @@ const transformValidationError = (errors) => {
   return [];
 };
 
+const filterKnowCamp = (arr, other) => {
+  if (!other) {
+    return arr.filter(item => item === 'Facebook' || item === 'Twitter' || item === 'Roadshow' || item === 'คนรู้จัก' || item === 'Email');
+  }
+  return arr.filter(item => item !== 'Facebook' && item !== 'Twitter' && item !== 'Roadshow' && item !== 'คนรู้จัก' && item !== 'Email')[0] || null;
+};
+
 const prepareFormData = (form, fields) => {
   const data = new FormData();
   fields.forEach((field) => {
@@ -216,7 +226,12 @@ const prepareStepThreeForm = (form) => {
     'knowCamp',
     'activities'
   ];
-  return _.pick(form, fields);
+  const formData = _.pick(form, fields);
+  if (form.knowCampOther !== null) {
+    formData.knowCamp.push(form.knowCampOther);
+  }
+  console.log(formData);
+  return formData;
 };
 
 const prepareStepFourForm = form => ({

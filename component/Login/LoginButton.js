@@ -26,12 +26,13 @@ const camperLogin = (props) => {
 };
 
 const LoginButton = (props) => {
-  const { isLogin, isLoggingIn } = props;
+  const { isLoggingIn, isLogin } = props;
+  if (isLogin) return null;
   return (
     <GlowingButton
       style={{ width: '160px', margin: '0 auto' }}
       onClick={isLoggingIn ? null : () => camperLogin(props)}
-    >{isLoggingIn || isLogin ? <Loader size={15} /> : 'APPLY NOW'}</GlowingButton>
+    >{isLoggingIn ? <Loader size={15} /> : 'APPLY NOW'}</GlowingButton>
   );
 };
 

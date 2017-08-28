@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import colors from '../../utils/colors';
 
@@ -22,6 +22,11 @@ const CampBranding = styled.div`
   width: 600px;
   margin: 0 auto;
   position: relative;
+
+  ${props => (props.x !== null && props.y !== null) && css`
+    transform: translate3d(${props.x}px, ${props.y}px, 0);
+  `}
+
   @media(max-width: 768px) {
     width: 330px;
   }
@@ -154,31 +159,74 @@ const CampLocation = styled.h2`
   }
 `;
 
-const Welcoming = () => (
-  <Container>
-    <CampBranding>
-      <CentralHexagon />
-      <CampDetailContainer>
-        <CampLogo />
-        <SloganContainer className="slogan-container">
-          <SquareRow>
-            <Square extraMargin />
-            <Square extraMargin />
-            <Square />
-          </SquareRow>
-          <SloganWrapper className="slogan-outer-container">
-            <SloganInnerWrapper className="slogan-inner-container">
-              <SloganText>DIGITAL INNOVATION</SloganText>
-            </SloganInnerWrapper>
-          </SloganWrapper>
-          <div>
-            <CampDate className="camp-date">4-7 JANUARY 2018</CampDate>
-            <CampLocation className="camp-location">@Assumption University (Bangna)</CampLocation>
-          </div>
-        </SloganContainer>
-      </CampDetailContainer>
-    </CampBranding>
-  </Container>
-);
+const ScrollingBar = styled.img.attrs({
+  src: '/static/img/landing/materials/scroll.png'
+})`
+  position: absolute;
+  bottom: -100px;
+  right: 0;
+  z-index: 15;
+
+  @media(max-width: 768px) {
+    width: 15%;
+  }
+`;
+
+class Welcoming extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      x: 0,
+      y: 0,
+      z: 0
+    };
+    this.handleScroll = this.handleScroll.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('mousemove', this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('mousemove', this.handleScroll);
+  }
+
+  handleScroll(e) {
+    this.setState({
+      x: -(e.clientX * 0.02),
+      y: -(e.clientY * 0.02)
+    });
+  }
+
+  render() {
+    return (
+      <Container>
+        <CampBranding x={this.state.x} y={this.state.y} z={this.state.z}>
+          <CentralHexagon />
+          <CampDetailContainer>
+            <CampLogo />
+            <SloganContainer className="slogan-container">
+              <SquareRow>
+                <Square extraMargin />
+                <Square extraMargin />
+                <Square />
+              </SquareRow>
+              <SloganWrapper className="slogan-outer-container">
+                <SloganInnerWrapper className="slogan-inner-container">
+                  <SloganText>DIGITAL INNOVATION</SloganText>
+                </SloganInnerWrapper>
+              </SloganWrapper>
+              <div>
+                <CampDate className="camp-date">4-7 JANUARY 2018</CampDate>
+                <CampLocation className="camp-location">@Assumption University (Bangna)</CampLocation>
+              </div>
+            </SloganContainer>
+          </CampDetailContainer>
+        </CampBranding>
+        <ScrollingBar />
+      </Container>
+    );
+  }
+}
 
 export default Welcoming;

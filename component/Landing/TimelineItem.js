@@ -14,8 +14,8 @@ const TimelineBox = styled(FrameBox)`
 
 const Title = styled.h3`
   color: ${colors.lightCyan};
-  margin: 10px 0 5px;
-  font-size: 22px;
+  margin: 10px 0 0;
+  font-size: 24px;
   font-weight: 600;
   ${props => props.active && `color: ${colors.cyan};`}
   @media(max-width: 768px) {
@@ -28,7 +28,7 @@ const Title = styled.h3`
 `;
 
 const TimelineDate = styled.p`
-  font-size: 14px;
+  font-size: 17px;
   @media(max-width: 768px) {
     font-size: 23px;
   }
@@ -41,24 +41,8 @@ const TimelineItem = props => (
         src={`/static/img/landing/timeline/timeline-${props.item}${props.onTime ? '' : '-o'}.png`}
       />
     </TimelineBox>
-    <Title active={props.onTime}>{'รับสมัคร'}</Title>
-    <TimelineDate>{'วันนี้ - พรุ่งนี้'}</TimelineDate>
-    <style jsx>{`
-      .registrant-count {
-        font-size: 20px;
-        font-family: 'Supermarket';
-        color: ${colors.lightCyan};
-        line-height: 35px;
-        padding-top: 25px;
-        span {
-          font-size: 60px;
-          font-weight: 600;
-        }
-      }
-      .detail {
-        padding-bottom: 20px;
-      }
-    `}</style>
+    <Title active={props.onTime}>{props.title}</Title>
+    <TimelineDate>{props.date}</TimelineDate>
   </Container>
 );
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Router from 'next/router';
-import styled from 'styled-components';
+import styled, { injectGlobal } from 'styled-components';
 
 import connect from '../../store/connect';
 import colors from '../../utils/colors';
@@ -13,6 +13,19 @@ import StepFive from '../../component/Register/StepFive';
 import StepVerify from '../../component/Register/StepVerify';
 import FullAreaLoader from '../../component/Core/FullAreaLoader';
 import { actions as registerActions } from '../../store/reducers/register';
+
+/* eslint-disable */
+injectGlobal`
+  .column {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-bottom: 0;
+    @media(max-width: 768px) {
+      padding-top: 0.75rem;
+    }
+  }
+`;
+/* eslint-enable */
 
 const routerNavigate = (step) => {
   if (step <= 5) {
@@ -135,7 +148,7 @@ const LoaderWrapper = styled.div`
 export default class MainRegistration extends Component {
   componentDidMount() {
     if (!this.props.isLogin) {
-      Router.push('/landing', '/');
+      // Router.push('/landing', '/');
     }
   }
 
@@ -186,7 +199,7 @@ export default class MainRegistration extends Component {
             {currentStep === 5 && (
               <StepFive
                 {...registerData}
-                onSubmit={() => proceedStepFive(registerData, major).routerNavigate(6)}
+                onSubmit={() => proceedStepFive(registerData, major).then(() => routerNavigate(6))}
                 onBack={() => {
                   navigateStep(4);
                   routerNavigate(4);
@@ -205,7 +218,6 @@ export default class MainRegistration extends Component {
                 }}
               />
             )}
-            {currentStep === 7 && <h1>DONE!!!!!!</h1>}
           </StepInner>
           {(saving || (error && errorValidation.length === 0)) && (
             <LoaderWrapper error={error}>
@@ -213,16 +225,6 @@ export default class MainRegistration extends Component {
               {error && <p><b>Error:</b> {error.message}</p>}
             </LoaderWrapper>
           )}
-          <style jsx global>{`
-            .column {
-              padding-top: 8px;
-              padding-bottom: 8px;
-              margin-bottom: 0;
-              @media(max-width: 768px) {
-                padding-top: 0.75rem;
-              }
-            }  
-          `}</style>
         </StepWrapper>
       </RegisterContainer>
     );

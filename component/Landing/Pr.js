@@ -94,7 +94,7 @@ const PrWarpper = styled.div`
 `;
 
 const Header = styled.h1`
-  font-size: 32px;
+  font-size: 36px;
   display: inline-block;
   line-height: 1;
   padding: 2px 14px;

@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import moment from 'moment';
+import Parallax from '../Landing/ParallaxScroll';
 
 import SectionHeader from './SectionHeader';
 import TimelineItem from './TimelineItem';
-import colors from '../../utils/colors';
 
 const Container = styled.div.attrs({
   className: 'container'
@@ -13,25 +14,50 @@ const Container = styled.div.attrs({
   }
 `;
 
+const forceTrue = moment().isAfter(moment('8/1/2018'));
+
 const Timeline = () => (
   <div>
+    <Parallax speed={0.05}>
+      <img src="/static/img/landing/materials/bg_whatis.png" alt="" style={{ transform: 'scaleX(-1)' }} />
+    </Parallax>
     <SectionHeader title="Timeline" subtitle="ตารางเวลา" />
     <Container>
       <div className="columns">
         <div className="column">
-          <TimelineItem item={1} onTime />
+          <TimelineItem item={1} onTime={forceTrue || moment().isBefore(moment('11/5/2017'))} title="รับสมัคร" date="วันนี้ - 5 พฤศจิกายน" />
         </div>
         <div className="column">
-          <TimelineItem item={2} onTime={false} />
+          <TimelineItem
+            item={2}
+            onTime={forceTrue || (moment().isSameOrAfter(moment('11/11/2017')) && moment().isBefore('11/19/2017'))}
+            title="ประกาศผล"
+            date="11 พฤศจิกายน"
+          />
         </div>
         <div className="column">
-          <TimelineItem item={3} onTime={false} />
+          <TimelineItem
+            item={3}
+            onTime={forceTrue || moment().isSame(moment('11/19/2017'))}
+            title="สัมภาษณ์"
+            date="19 พฤศจิกายน"
+          />
         </div>
         <div className="column">
-          <TimelineItem item={4} onTime={false} />
+          <TimelineItem
+            item={4}
+            onTime={forceTrue || moment().isSame(moment('11/26/2017'))}
+            title="ประกาศผลสัมภาษณ์"
+            date="26 พฤศจิกายน"
+          />
         </div>
         <div className="column">
-          <TimelineItem item={5} onTime={false} />
+          <TimelineItem
+            item={5}
+            onTime={forceTrue || (moment().isSameOrAfter(moment('15/12/2017')) && moment().isBefore('1/8/2018'))}
+            title="วันค่าย"
+            date="4 - 7 มกราคม"
+          />
         </div>
       </div>
     </Container>

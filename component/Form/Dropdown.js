@@ -88,7 +88,12 @@ const Dropdown = ({ label, field, setField, value, items, style, errorValidation
           onChange={e => setField(field, e.target.value)}
         >
           <option value="" disabled>{label}</option>
-          {items.map(item => <option key={item} value={item}>{item}</option>)}
+          {items.map((item) => {
+            if (item.label && item.value) {
+              return <option key={item.value} value={item.value}>{item.label}</option>;
+            }
+            return <option key={item} value={item}>{item}</option>;
+          })}
         </Select>
       </SelectContainer>
       <FormLabel active={value !== ''}>{label}</FormLabel>

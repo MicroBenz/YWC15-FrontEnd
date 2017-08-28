@@ -1,15 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Parallax from '../Landing/ParallaxScroll';
 import FrameBox from '../Core/FrameBox';
 import content from './content.json';
 import colors from '../../utils/colors';
 
 const Container = styled.div`
   width: 80%;
-  margin: 0 auto;
+  margin: 180px auto;
   @media(max-width: 768px) {
     width: 90%;
+    margin: 10px auto;
   }
 `;
 
@@ -66,26 +68,11 @@ const ContentContainer = styled.div.attrs({
   }
 `;
 
-const TitleBorder = styled.div`
-  width: 500px;
-  margin: 0 auto;
-  border: 6px inset ${colors.cyan};
-  border-left: 0px;
-  border-right: 0px;
-  @media(max-width: 768px) {
-    width: 90%;
-  }
-`;
-
-const TextContainer = styled.div`
-  border: 4px solid ${colors.cyan};
-  border-top: none;
-  border-bottom: none;
-  margin: 15px 0px;
-`;
-
 const WhatIsYWC = () => (
   <Container>
+    <Parallax speed={0.1}>
+      <img src="/static/img/landing/materials/bg_whatis.png" alt="" />
+    </Parallax>
     <Header>
       <SquareRow>
         <Square extraMargin />

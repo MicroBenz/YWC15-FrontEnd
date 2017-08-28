@@ -19,6 +19,7 @@ import Sponsor from '../../component/Landing/Sponsor';
 import Pr from '../../component/Landing/Pr';
 import Footer from '../../component/Landing/Footer';
 import Navbar from '../../component/Landing/Navbar';
+import MajorModal from '../../component/Landing/MajorModal';
 
 /* eslint-disable */
 injectGlobal`
@@ -58,7 +59,10 @@ const WelcomingSection = Section.extend`
 `;
 
 @connect(
-  () => ({}),
+  state => ({
+    isShowSeeMore: state.app.isShowSeeMore,
+    seeMoreMajor: state.app.seeMoreMajor
+  }),
   { ...appActions }
 )
 export default class LandingPage extends Component {
@@ -108,6 +112,7 @@ export default class LandingPage extends Component {
         <Section name="footer-section">
           <Footer />
         </Section>
+        {this.props.isShowSeeMore && (<MajorModal major={this.props.seeMoreMajor} />)}
       </div>
     );
   }

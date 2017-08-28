@@ -199,7 +199,7 @@ export default class MainRegistration extends Component {
             {currentStep === 5 && (
               <StepFive
                 {...registerData}
-                onSubmit={() => proceedStepFive(registerData, major).routerNavigate(6)}
+                onSubmit={() => proceedStepFive(registerData, major).then(() => routerNavigate(6))}
                 onBack={() => {
                   navigateStep(4);
                   routerNavigate(4);

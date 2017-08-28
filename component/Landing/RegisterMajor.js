@@ -30,14 +30,19 @@ const RegistrantCount = styled.h2`
 `;
 
 const MajorDescription = styled.h3`
+  min-height: 100px;
   @media(max-width: 768px) {
     font-size: 18px;
     margin: 12px 0;
+    min-height: 0px;  
   }
 `;
 
 const MajorSeeMore = styled.p`
   padding-bottom: 20px;
+  font-size: 21px;
+  font-weight: 600;
+  cursor: pointer;
 `;
 
 const Container = styled.div`

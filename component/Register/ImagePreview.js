@@ -15,7 +15,7 @@ const Container = styled.div`
 const ImagePreview = props => (
   <FrameBox center>
     <Container>
-      <img src={props.img} alt="profile" />
+      {props.img && <img src={props.img} alt="profile" />}
     </Container>
   </FrameBox>
 );

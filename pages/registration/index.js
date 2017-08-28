@@ -148,7 +148,7 @@ const LoaderWrapper = styled.div`
 export default class MainRegistration extends Component {
   componentDidMount() {
     if (!this.props.isLogin) {
-      Router.push('/landing', '/');
+      // Router.push('/landing', '/');
     }
   }
 
@@ -218,7 +218,6 @@ export default class MainRegistration extends Component {
                 }}
               />
             )}
-            {currentStep === 7 && <h1>DONE!!!!!!</h1>}
           </StepInner>
           {(saving || (error && errorValidation.length === 0)) && (
             <LoaderWrapper error={error}>

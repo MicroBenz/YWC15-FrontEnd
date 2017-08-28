@@ -8,6 +8,7 @@ import colors from '../../utils/colors';
 import content from './content.json';
 
 const MajorName = GlowingText.extend`
+  font-size: 19px;
   @media(max-width: 768px) {
     font-size: 35px;
   }

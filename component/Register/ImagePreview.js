@@ -1,22 +1,22 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import FrameBox from '../Core/FrameBox';
 
-const ImagePreview = (props) => (
+const Container = styled.div`
+  width: 200px;
+  height: 200px;
+  img {
+    height: 100%;
+    object-fit: cover;
+  }
+`;
+
+const ImagePreview = props => (
   <FrameBox center>
-    <div className="image-preview-wrapper">
-      <img src={props.img} />
-    </div>
-    <style jsx>{`
-      .image-preview-wrapper {
-        width: 200px;
-        height: 200px;
-        img {
-          height: 100%;
-          object-fit: cover;
-        }
-      }
-    `}</style>
+    <Container>
+      <img src={props.img} alt="profile" />
+    </Container>
   </FrameBox>
 );
 

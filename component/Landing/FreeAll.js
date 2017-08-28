@@ -5,11 +5,12 @@ const FreeImage = styled.img.attrs({
   src: '/static/img/landing/welcoming/free.png'
 })`
   width: 170px;
-  position: absolute;
+  position: fixed;
   top: 0px;
   left: 20px;
   z-index: 15;
   @media(max-width: 768px) {
+    position: absolute;  
     width: 95px;
     top: 10px;
     left: 10px;

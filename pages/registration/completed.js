@@ -16,6 +16,9 @@ injectGlobal`
 body {
   height: 100vh !important;
   overflow-y: scroll;
+  @media(max-width: 768px) {
+    height: 100% !important;
+  }
 }
 `;
 /* eslint-enable */

@@ -62,7 +62,7 @@ export default class MyDocument extends Document {
           <meta name="theme-color" content="#1f2833" />
           {styleTags}
         </Head>
-        <body style={{ width: '100%', height: '100%', backgroundColor: colors.theme, color: colors.white, backgroundImage: "url('/static/img/bg/bg.png')", backgroundRepeat: 'repeat', backgroundSize: '50%' }}>
+        <body style={{ width: '100%', height: '100%', backgroundColor: colors.theme, color: colors.white, backgroundImage: "url('/static/img/bg/bg.png')", backgroundRepeat: 'repeat', backgroundSize: '70%' }}>
           {main}
           <NextScript />
           <script

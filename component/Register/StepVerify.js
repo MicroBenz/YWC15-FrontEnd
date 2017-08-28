@@ -1,9 +1,18 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { injectGlobal } from 'styled-components';
 
 import ActionContainer from '../Form/ActionContainer';
 import FormButton from '../Form/FormButton';
 import colors from '../../utils/colors';
+
+/* eslint-disable */
+injectGlobal`
+  body {
+    height: 100vh !important;
+    overflow-y: scroll;
+  }
+`;
+/* eslint-enable */
 
 const getMajor = (major) => {
   if (major === 'programming') return 'WEB PROGRAMMING';

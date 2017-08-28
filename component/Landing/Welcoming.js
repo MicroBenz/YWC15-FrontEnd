@@ -182,20 +182,10 @@ class Welcoming extends React.Component {
     };
   }
 
-  componentDidMount() {
-    window.addEventListener('mousemove', (e) => {
-      console.log(e.clientX, e.clientY);
-      this.setState({
-        x: -(e.clientX * 0.02),
-        y: -(e.clientY * 0.02)
-      });
-    });
-  }
-
   render() {
     return (
       <Container>
-        <CampBranding x={this.state.x} y={this.state.y} z={this.state.z}>
+        <CampBranding>
           <CentralHexagon />
           <CampDetailContainer>
             <CampLogo />

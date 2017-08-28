@@ -30,14 +30,25 @@ const RegistrantCount = styled.h2`
 `;
 
 const MajorDescription = styled.h3`
+  min-height: 100px;
   @media(max-width: 768px) {
     font-size: 18px;
     margin: 12px 0;
+    min-height: 0px;  
   }
 `;
 
 const MajorSeeMore = styled.p`
   padding-bottom: 20px;
+  font-size: 21px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.5s ease-out;
+  width: fit-content;
+  margin: 0 auto;
+  &:hover {
+    color: ${colors.cyan};
+  }
 `;
 
 const Container = styled.div`
@@ -93,7 +104,7 @@ const InnerContainer = styled.div`
   }
 `;
 
-const RegisterMajor = ({ major, count = 0 }) => (
+const RegisterMajor = ({ major, count = 0, onClickSeeMore }) => (
   <Container>
     <InnerContainer>
       <HeaderArtwork />
@@ -101,7 +112,7 @@ const RegisterMajor = ({ major, count = 0 }) => (
       <MajorName>{content.major[major].title}</MajorName>
       <RegistrantCount><span>{count}</span> คน</RegistrantCount>
       <MajorDescription>{content.major[major].description}</MajorDescription>
-      <MajorSeeMore className="detail">[ รายละเอียด ]</MajorSeeMore>
+      <MajorSeeMore onClick={onClickSeeMore}>[ รายละเอียด ]</MajorSeeMore>
       <LoginButton major={major} />
     </InnerContainer>
   </Container>

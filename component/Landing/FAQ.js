@@ -42,10 +42,11 @@ const QuestionBox = styled(FrameBox)`
   margin: 15px 0;
   cursor: pointer;
   opacity: 0.8;
+  transform: scale(.95);
   transition: all .4s;
 
   &.active {
-    transform: scale(1.05);
+    transform: scale(1);
     opacity: 1;
     color: ${colors.cyan};
   }
@@ -90,6 +91,14 @@ const AnswerBox = styled(FrameBox)`
   }
 `;
 
+const Container = styled.div.attrs({
+  className: 'container'
+})`
+  @media(max-width: 768px) {
+    padding: 0 5%;
+  }
+`;
+
 class QA extends React.Component {
   constructor(props) {
     super(props);
@@ -100,7 +109,7 @@ class QA extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <Container>
         <SectionHeader title="Q & A" subtitle="ถาม - ตอบ" />
         <div className="columns">
           <div className="column">
@@ -128,7 +137,7 @@ class QA extends React.Component {
             </AnswerBox>
           </div>
         </div>
-      </div>
+      </Container>
     );
   }
 }

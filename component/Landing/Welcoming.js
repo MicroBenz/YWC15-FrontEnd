@@ -180,12 +180,28 @@ class Welcoming extends React.Component {
       y: 0,
       z: 0
     };
+    this.handleScroll = this.handleScroll.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('mousemove', this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('mousemove', this.handleScroll);
+  }
+
+  handleScroll(e) {
+    this.setState({
+      x: -(e.clientX * 0.02),
+      y: -(e.clientY * 0.02)
+    });
   }
 
   render() {
     return (
       <Container>
-        <CampBranding>
+        <CampBranding x={this.state.x} y={this.state.y} z={this.state.z}>
           <CentralHexagon />
           <CampDetailContainer>
             <CampLogo />

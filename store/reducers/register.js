@@ -51,15 +51,17 @@ const initialState = {
   medAllergy: '',
   skype: '',
   // Step 3
-  knowCamp: '',
+  knowCamp: [],
   activities: '',
+  knowCampOther: '',
   // whyJoinYWC: '',
   // Step 4
   generalQuestions: ['', '', ''],
   // Step 5
   specialQuestions: ['', '', ''],
   error: null,
-  errorValidation: []
+  errorValidation: [],
+  isShowCompletedModal: false
 };
 
 export default (state = initialState, action) => {
@@ -76,15 +78,18 @@ export default (state = initialState, action) => {
       return {
         ...state,
         ..._.omit(action.data, ['_id', 'facebook', 'status', 'questions']),
-        previewPicture: action.data.picture,
+        previewPicture: action.data.picture || '',
         generalQuestions: action.data.questions.generalQuestions.map(answer => answer.answer),
-        specialQuestions: action.data.questions.specialQuestions[state.major].map(answer => answer.answer)
+        specialQuestions: action.data.questions.specialQuestions[state.major].map(answer => answer.answer),
+        knowCamp: filterKnowCamp(action.data.knowCamp, false), // eslint-disable-line
+        knowCampOther: filterKnowCamp(action.data.knowCamp, true) // eslint-disable-line
       };
     case SAVE_STEP_ONE.PENDING:
     case SAVE_STEP_TWO.PENDING:
     case SAVE_STEP_THREE.PENDING:
     case SAVE_STEP_FOUR.PENDING:
     case SAVE_STEP_FIVE.PENDING:
+    case CONFIRM_REGISTER.PENDING:
       return {
         ...state,
         saving: true,
@@ -126,6 +131,7 @@ export default (state = initialState, action) => {
     case SAVE_STEP_THREE.REJECTED:
     case SAVE_STEP_FOUR.REJECTED:
     case SAVE_STEP_FIVE.REJECTED:
+    case CONFIRM_REGISTER.REJECTED:
       return {
         ...state,
         saving: false,
@@ -137,6 +143,12 @@ export default (state = initialState, action) => {
         ...state,
         currentStep: action.step
       };
+    case CONFIRM_REGISTER.RESOLVED:
+      return {
+        ...state,
+        saving: false,
+        isShowCompletedModal: true
+      };
     default: return state;
   }
 };
@@ -146,6 +158,13 @@ const transformValidationError = (errors) => {
     return errors.map(error => error.param);
   }
   return [];
+};
+
+const filterKnowCamp = (arr, other) => {
+  if (!other) {
+    return arr.filter(item => item === 'Facebook' || item === 'Twitter' || item === 'Roadshow' || item === 'คนรู้จัก' || item === 'Email');
+  }
+  return arr.filter(item => item !== 'Facebook' && item !== 'Twitter' && item !== 'Roadshow' && item !== 'คนรู้จัก' && item !== 'Email')[0] || null;
 };
 
 const prepareFormData = (form, fields) => {
@@ -207,7 +226,12 @@ const prepareStepThreeForm = (form) => {
     'knowCamp',
     'activities'
   ];
-  return _.pick(form, fields);
+  const formData = _.pick(form, fields);
+  if (form.knowCampOther !== null) {
+    formData.knowCamp.push(form.knowCampOther);
+  }
+  console.log(formData);
+  return formData;
 };
 
 const prepareStepFourForm = form => ({

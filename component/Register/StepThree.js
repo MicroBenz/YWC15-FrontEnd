@@ -22,6 +22,11 @@ const Label = styled.label`
   font-family: 'Cordia New';
   font-size: 22px;
   font-weight: 600;
+  display: block;
+  margin-bottom: 10px;
+  @media(max-width: 768px) {
+    margin-bottom: 15px;
+  }
 `;
 
 const StepThree = props => (
@@ -72,8 +77,17 @@ const StepThree = props => (
           <div className="column">
             <Checkbox
               label="อื่นๆ"
-              checked={isCheckWithArr(props.knowCamp, 'Email')}
-              onChecked={isCheck => props.setField('knowCamp', createNewKnowCamp(props.knowCamp, 'Email', isCheck))}
+              checked={props.knowCampOther !== null}
+              onChecked={(isCheck) => {
+                if (!isCheck) {
+                  props.setField('knowCampOther', null);
+                } else {
+                  props.setField('knowCampOther', '');
+                }
+              }}
+              withText={props.knowCampOther !== null}
+              text={props.knowCampOther}
+              onChangeText={text => props.setField('knowCampOther', text)}
             />
           </div>
         </div>

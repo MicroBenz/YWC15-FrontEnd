@@ -5,5 +5,6 @@ export default {
   lightCyan: '#49a29e',
   darkCyan: '#83beea',
   formBg: '#374e56',
-  red: '#f73939'
+  red: '#f73939',
+  darkGray: '#1f2833'
 };

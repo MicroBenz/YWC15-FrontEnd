@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Router from 'next/router';
 import styled, { injectGlobal } from 'styled-components';
+import { animateScroll } from 'react-scroll';
 
 import connect from '../../store/connect';
 import colors from '../../utils/colors';
@@ -33,7 +34,7 @@ const routerNavigate = (step) => {
   } else if (step === 6) {
     Router.push('/registration', '/register/verify');
   } else {
-    Router.push('/registration', '/register/completed');
+    Router.push('/registration/completed', '/register/completed');
   }
 };
 
@@ -148,7 +149,7 @@ const LoaderWrapper = styled.div`
 export default class MainRegistration extends Component {
   componentDidMount() {
     if (!this.props.isLogin) {
-      Router.push('/landing', '/');
+      // Router.push('/landing', '/');
     }
   }
 
@@ -163,46 +164,80 @@ export default class MainRegistration extends Component {
             {currentStep === 1 && (
               <StepOne
                 {...registerData}
-                onSubmit={() => proceedStepOne(registerData).then(() => routerNavigate(2))}
+                onSubmit={() => (
+                  proceedStepOne(registerData)
+                    .then(() => {
+                      routerNavigate(2);
+                      animateScroll.scrollToTop();
+                    })
+                )}
               />
             )}
             {currentStep === 2 && (
               <StepTwo
                 {...registerData}
-                onSubmit={() => proceedStepTwo(registerData).then(() => routerNavigate(3))}
+                onSubmit={() => (
+                  proceedStepTwo(registerData)
+                    .then(() => {
+                      routerNavigate(3);
+                      animateScroll.scrollToTop();
+                    })
+                )}
                 onBack={() => {
                   navigateStep(1);
                   routerNavigate(1);
+                  animateScroll.scrollToTop();
                 }}
               />
             )}
             {currentStep === 3 && (
               <StepThree
                 {...registerData}
-                onSubmit={() => proceedStepThree(registerData).then(() => routerNavigate(4))}
+                onSubmit={() => (
+                  proceedStepThree(registerData)
+                    .then(() => {
+                      routerNavigate(4);
+                      animateScroll.scrollToTop();
+                    })
+                )}
                 onBack={() => {
                   navigateStep(2);
                   routerNavigate(2);
+                  animateScroll.scrollToTop();
                 }}
               />
             )}
             {currentStep === 4 && (
               <StepFour
                 {...registerData}
-                onSubmit={() => proceedStepFour(registerData, major).then(() => routerNavigate(5))}
+                onSubmit={() => (
+                  proceedStepFour(registerData, major)
+                    .then(() => {
+                      routerNavigate(5);
+                      animateScroll.scrollToTop();
+                    })
+                )}
                 onBack={() => {
                   navigateStep(3);
                   routerNavigate(3);
+                  animateScroll.scrollToTop();
                 }}
               />
             )}
             {currentStep === 5 && (
               <StepFive
                 {...registerData}
-                onSubmit={() => proceedStepFive(registerData, major).routerNavigate(6)}
+                onSubmit={() => (
+                  proceedStepFive(registerData, major)
+                    .then(() => {
+                      routerNavigate(6);
+                      animateScroll.scrollToTop();
+                    })
+                )}
                 onBack={() => {
                   navigateStep(4);
                   routerNavigate(4);
+                  animateScroll.scrollToTop();
                 }}
               />
             )}
@@ -210,14 +245,18 @@ export default class MainRegistration extends Component {
               <StepVerify
                 {...registerData}
                 onSubmit={() => confirm(major)}
-                onDismissPopup={() => routerNavigate(6)}
+                onDismissPopup={() => {
+                  routerNavigate(7);
+                  animateScroll.scrollToTop();
+                }}
+                isShowPopup={registerData.isShowCompletedModal}
                 onBack={() => {
                   navigateStep(1);
                   routerNavigate(1);
+                  animateScroll.scrollToTop();
                 }}
               />
             )}
-            {currentStep === 7 && <h1>DONE!!!!!!</h1>}
           </StepInner>
           {(saving || (error && errorValidation.length === 0)) && (
             <LoaderWrapper error={error}>

@@ -156,6 +156,8 @@ export default (state = initialState, action) => {
 const transformValidationError = (errors) => {
   if (Array.isArray(errors)) {
     return errors.map(error => error.param);
+  } else if (errors.message === 'require file') {
+    return ['profileImg'];
   }
   return [];
 };

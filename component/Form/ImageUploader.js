@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import { actions as registerActions } from '../../store/reducers/register';
 import GlowingButton from '../Core/GlowingButton';
+import colors from '../../utils/colors';
 
 const UploadButtonWrapper = styled.div`
   position: relative;
@@ -26,8 +27,17 @@ const Input = styled.input.attrs({
   cursor: pointer;
 `;
 
+const ErrorUpload = styled.p`
+  font-family: 'Cordia New';
+  color: ${colors.red};
+  font-weight: 600;
+  font-size: 22px;
+`;
+
 @connect(
-  () => ({}),
+  state => ({
+    errorValidation: state.register.errorValidation
+  }),
   { setField: registerActions.setField }
 )
 export default class ImageUploader extends Component {
@@ -79,11 +89,15 @@ export default class ImageUploader extends Component {
   }
   /*  eslint-enable */  
   render() {
+    const isError = this.props.errorValidation.indexOf('profileImg') !== -1;
     return (
-      <UploadButtonWrapper style={this.props.style}>
-        <GlowingButton>{this.props.title}</GlowingButton>
-        <Input onChange={this.handleUploadFile} />
-      </UploadButtonWrapper>
+      <div>
+        <UploadButtonWrapper style={this.props.style}>
+          <GlowingButton>{this.props.title}</GlowingButton>
+          <Input onChange={this.handleUploadFile} />
+        </UploadButtonWrapper>
+        {isError && <ErrorUpload>กรุณาอัพโหลดภาพ</ErrorUpload>}
+      </div>
     );
   }
 }

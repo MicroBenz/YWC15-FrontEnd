@@ -89,7 +89,6 @@ export default class ImageUploader extends Component {
   }
   /*  eslint-enable */  
   render() {
-    console.log(this.props.errorValidation);
     const isError = this.props.errorValidation.indexOf('profileImg') !== -1;
     return (
       <div>

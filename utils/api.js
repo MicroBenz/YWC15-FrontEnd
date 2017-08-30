@@ -10,6 +10,7 @@ function createApiInstance() {
 }
 
 function handleResponse(response) {
+  console.log('success:', response);
   if (response.statusText === 'OK' && response.data) {
     return response;
   }
@@ -17,6 +18,7 @@ function handleResponse(response) {
 }
 
 function catchError(e) {
+  console.log('error', e);
   return Promise.reject(e.response.data);
 }
 

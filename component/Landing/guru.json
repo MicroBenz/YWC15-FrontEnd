@@ -1,0 +1,44 @@
+[
+  {
+    "name": "อภิรักษ์ ปนาทกูล",
+    "nickname": "พี่แบงค์",
+    "jobPosition": "",
+    "major": "designer",
+    "image": "/static/img/landing/guru/bank-design.jpg"
+  },
+  {
+    "name": "ปัญจมพงศ์ เสริมสวัสดิ์ศรี",
+    "nickname": "พี่ปันเจ",
+    "jobPosition": "CTO at TakeMeTour",
+    "major": "programming",
+    "image": "/static/img/landing/guru/panj-programming.jpg"
+  },
+  {
+    "name": "จักรกฤษณ์ ตาฬวัฒน์",
+    "nickname": "พี่เม่น",
+    "jobPosition": "กรรมการผู้จัดการบริษัท ซี้ด ธีมส์ จำกัด (SeedThemes.com)",
+    "major": "designer",
+    "image": "/static/img/landing/guru/men-design.jpg"
+  },
+  {
+    "name": "อภิรักษ์ ปนาทกูล",
+    "nickname": "พี่แบงค์",
+    "jobPosition": "",
+    "major": "designer",
+    "image": "/static/img/landing/guru/bank-design.jpg"
+  },
+  {
+    "name": "ปัญจมพงศ์ เสริมสวัสดิ์ศรี",
+    "nickname": "พี่ปันเจ",
+    "jobPosition": "CTO at TakeMeTour",
+    "major": "programming",
+    "image": "/static/img/landing/guru/panj-programming.jpg"
+  },
+  {
+    "name": "จักรกฤษณ์ ตาฬวัฒน์",
+    "nickname": "พี่เม่น",
+    "jobPosition": "กรรมการผู้จัดการบริษัท ซี้ด ธีมส์ จำกัด (SeedThemes.com)",
+    "major": "designer",
+    "image": "/static/img/landing/guru/men-design.jpg"
+  }
+]

@@ -31,7 +31,7 @@ const StepOne = props => (
         />
         <UploadDescriptionContainer>
           <p>ขอเป็นรูปหน้าตรงแต่งกายตามสบาย</p>
-          <p>(ขนาดไฟล์รูปไม่เกิน ...MB)</p>
+          <p>(ขนาดไฟล์รูปไม่เกิน 2MB)</p>
         </UploadDescriptionContainer>
       </div>
       <div className="column">

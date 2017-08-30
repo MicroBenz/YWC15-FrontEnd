@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { rgba } from 'polished';
 
 import SectionHeader from './SectionHeader';
 import FrameBox from '../Core/FrameBox';
@@ -20,6 +21,7 @@ const QuestionBox = styled(FrameBox)`
     transform: scale(1);
     opacity: 1;
     color: ${colors.cyan};
+    background-color: ${rgba(colors.darkCyan2, 0.4)};
   }
 
   h1 {
@@ -40,6 +42,7 @@ const AnswerBox = styled(FrameBox)`
   padding: 15px;
   text-align: left;
   margin: 15px 0;
+  background-color: ${rgba(colors.darkCyan2, 0.4)};
 
   h3 {
     color: ${colors.cyan};

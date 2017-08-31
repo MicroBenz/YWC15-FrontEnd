@@ -129,7 +129,7 @@ class Gallery extends React.Component {
           </Columns>
           <AllImageColumns>
             {
-              _.range(1, 18).map((x, i) => (
+              _.range(1, 19).map((x, i) => (
                 <AllImageColumn key={`gallery-${i}`}>
                   <GalleryItem
                     img={`/static/img/gallery/${i + 1}.jpg`}

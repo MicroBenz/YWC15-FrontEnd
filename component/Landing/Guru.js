@@ -25,6 +25,8 @@ const Columns = styled.div.attrs({
     overflow-x: scroll;
     margin-left: 0;
     margin-right: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 `;
 
@@ -56,20 +58,20 @@ export default class Guru extends Component {
         newIdx = 0;
       }
       this.setState({ idx: newIdx });
-      this.scroll(newIdx);
-    }, 2000);
+      // this.scroll(newIdx);
+    }, 5000);
   }
 
   componentWillUnmount() {
     window.clearInterval(this.interval);
   }
 
-  scroll(index) {
-    const scrollElem = document.getElementById('scroller');
-    const toScrollElem = scrollElem.getElementsByClassName('scroller-item')[index];
-    console.log(toScrollElem.offsetLeft);
-    scrollElem.scrollLeft = toScrollElem.offsetLeft;
-  }
+  // scroll(index) {
+  //   const scrollElem = document.getElementById('scroller');
+  //   const toScrollElem = scrollElem.getElementsByClassName('scroller-item')[index];
+  //   console.log(toScrollElem.offsetLeft);
+  //   scrollElem.scrollLeft = toScrollElem.offsetLeft;
+  // }
 
   render() {
     return (

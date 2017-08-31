@@ -25,7 +25,7 @@ const Timeline = () => (
     <Container>
       <div className="columns">
         <div className="column">
-          <TimelineItem item={1} onTime={forceTrue || moment().isBefore(moment('11/5/2017'))} title="รับสมัคร" date="วันนี้ - 5 พฤศจิกายน" />
+          <TimelineItem item={1} onTime={forceTrue || moment().isBefore(moment('11/5/2017'))} title="รับสมัคร" date="7 กันยายน - 5 พฤศจิกายน" />
         </div>
         <div className="column">
           <TimelineItem

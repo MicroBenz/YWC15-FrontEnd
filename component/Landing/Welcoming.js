@@ -1,7 +1,18 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
+import Typist from 'react-typist';
 
 import colors from '../../utils/colors';
+
+const Flash = keyframes`
+  0%,50%,to {
+    opacity: 1
+  }
+
+  25%,75% {
+    opacity: 0
+  }
+`;
 
 const Square = styled.div`
   width: 10px;
@@ -134,9 +145,14 @@ const SloganInnerWrapper = styled.div`
 const SloganText = styled.h1`
   font-size: 26px;
   letter-spacing: 1.8px;
+
   @media(max-width: 768px) {
     font-size: 15px;
     letter-spacing: 1.5px;
+  }
+
+  .Cursor {
+    animation: ${Flash} .5s infinite;
   }
 `;
 
@@ -192,10 +208,10 @@ class Welcoming extends React.Component {
   }
 
   handleScroll(e) {
-    this.setState({
-      x: -(e.clientX * 0.02),
-      y: -(e.clientY * 0.02)
-    });
+    // this.setState({
+    //   x: -(e.clientX * 0.02),
+    //   y: -(e.clientY * 0.02)
+    // });
   }
 
   render() {
@@ -213,12 +229,28 @@ class Welcoming extends React.Component {
               </SquareRow>
               <SloganWrapper className="slogan-outer-container">
                 <SloganInnerWrapper className="slogan-inner-container">
-                  <SloganText>DIGITAL INNOVATION</SloganText>
+                  <SloganText>
+                    <Typist cursor={{ element: '_' }}>DIGITAL INNOVATION</Typist>
+                  </SloganText>
                 </SloganInnerWrapper>
               </SloganWrapper>
               <div>
-                <CampDate className="camp-date">4-7 JANUARY 2018</CampDate>
-                <CampLocation className="camp-location">@Assumption University (Bangna)</CampLocation>
+                <CampDate className="camp-date">
+                  <Typist
+                    cursor={{
+                      show: false
+                    }}
+                  >4-7 JANUARY 2018</Typist>
+                </CampDate>
+                <CampLocation className="camp-location">
+                  <Typist
+                    cursor={{
+                      show: false
+                    }}
+                  >
+                    @Assumption University (Bangna)
+                  </Typist>
+                </CampLocation>
               </div>
             </SloganContainer>
           </CampDetailContainer>

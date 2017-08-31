@@ -28,6 +28,7 @@
     "react-ga": "^2.2.0",
     "react-redux": "^5.0.5",
     "react-scroll": "^1.5.4",
+    "react-typist": "^1.1.1",
     "redux": "^3.7.1",
     "redux-define": "^1.1.1",
     "redux-thunk": "^2.2.0",

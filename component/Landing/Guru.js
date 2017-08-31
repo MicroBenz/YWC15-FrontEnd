@@ -47,9 +47,13 @@ const ItemWrapper = styled.div`
 `;
 
 export default class Guru extends Component {
-  state = {
-    idx: 0
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      idx: 0
+    };
+    this.resetInterval = this.resetInterval.bind(this);
+  }
 
   componentDidMount() {
     this.interval = window.setInterval(() => {
@@ -65,6 +69,25 @@ export default class Guru extends Component {
     window.clearInterval(this.interval);
   }
 
+  resetInterval() {
+    window.clearInterval(this.interval);
+    this.interval = window.setInterval(() => {
+      let newIdx = this.state.idx + 1;
+      if (newIdx >= gurus.length) {
+        newIdx = 0;
+      }
+      this.setState({ idx: newIdx });
+      // this.scroll(newIdx);
+    }, 5000);
+  }
+
+  // scroll(index) {
+  //   const scrollElem = document.getElementById('scroller');
+  //   const toScrollElem = scrollElem.getElementsByClassName('scroller-item')[index];
+  //   console.log(toScrollElem.offsetLeft);
+  //   scrollElem.scrollLeft = toScrollElem.offsetLeft;
+  // }
+
   render() {
     return (
       <div>
@@ -78,7 +101,10 @@ export default class Guru extends Component {
                   <GuruItem
                     active={idx === this.state.idx}
                     {...guru}
-                    onClick={() => this.setState({ idx })}
+                    onClick={() => {
+                      this.setState({ idx });
+                      this.resetInterval();
+                    }}
                   />
                 </ItemWrapper>
               </Column>

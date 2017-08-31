@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import _ from 'lodash';
 
 import SectionHeader from './SectionHeader';
 import FrameBox from '../Core/FrameBox';
@@ -88,12 +89,12 @@ class Gallery extends React.Component {
           </div>
           <div className="columns is-multiline">
             {
-              [...Array(52)].map((x, i) => (
-                <div className="column is-2 is-half-mobile">
+              _.range(1, 52).map((x, i) => (
+                <div className="column is-2 is-half-mobile" key={`gallery-${i}`}>
                   <GalleryItem
                     img={`/static/img/gallery/${i + 1}.jpg`}
                     onClick={() => this.onClick(i)}
-                    className={ i === this.state.ctx ? 'active' : '' }
+                    className={i === this.state.ctx ? 'active' : ''}
                   />
                 </div>
               ))

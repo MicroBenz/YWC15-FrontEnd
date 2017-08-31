@@ -81,6 +81,11 @@ const ContactSection = Section.extend`
   padding-bottom: 0;
 `;
 
+const Foreground = styled.div`
+  background-image: url('/static/img/bg-front.png');
+  background-size: 100% auto;
+`;
+
 @connect(
   state => ({
     isShowSeeMore: state.app.isShowSeeMore,
@@ -95,7 +100,7 @@ export default class LandingPage extends Component {
 
   render() {
     return (
-      <div>
+      <Foreground>
         <Navbar />
         <WelcomingSection name="welcoming-section">
           <FreeAll />
@@ -135,7 +140,7 @@ export default class LandingPage extends Component {
           <Footer />
         </Section>
         {this.props.isShowSeeMore && (<MajorModal major={this.props.seeMoreMajor} />)}
-      </div>
+      </Foreground>
     );
   }
 }

@@ -61,7 +61,7 @@ class Gallery extends React.Component {
         newIdx = 0;
       }
       this.setState({ ctx: newIdx });
-    }, 4000);
+    }, 3000);
   }
 
   onClick(no) {

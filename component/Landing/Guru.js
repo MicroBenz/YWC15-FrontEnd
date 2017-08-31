@@ -34,7 +34,7 @@ const Column = styled.div.attrs({
   @media(max-width: 768px) {
     padding: 0;
     margin-right: 20px;
-    width: 30%;
+    width: 35% !important;
     &:first-child {
       margin-left: 5%;
     }

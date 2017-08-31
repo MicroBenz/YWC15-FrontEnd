@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { connect } from 'react-redux';
 
 import { actions as appActions } from '../../store/reducers/app';
@@ -8,11 +8,22 @@ import { majorAsText } from '../../utils/helpers';
 import colors from '../../utils/colors';
 import content from '../../component/Landing/content.json';
 
+const showing = keyframes`
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+`;
+
 const Container = styled.div`
   background-color: rgba(0, 0, 0, 0.8);
   width: 100%;
   position: relative;
   padding: 25px 0;
+  animation: ${showing} .8s;
 `;
 
 const MajorName = styled.h2`

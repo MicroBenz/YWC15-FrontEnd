@@ -1,7 +1,17 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import colors from '../../utils/colors';
+
+const showing = keyframes`
+0% {
+  opacity: 0;
+}
+
+100% {
+  opacity: 1;
+}
+`;
 
 const Container = styled.div`
   position: fixed;
@@ -14,6 +24,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: ${showing} .3s;
 `;
 
 const ModalContainer = styled.div`

@@ -25,6 +25,8 @@ const Columns = styled.div.attrs({
     overflow-x: scroll;
     margin-left: 0;
     margin-right: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 `;
 

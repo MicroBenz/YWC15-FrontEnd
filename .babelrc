@@ -1,7 +1,7 @@
 {
   "presets": [
-    "stage-0",
-    "./babel-preset"
+    "next/babel",    
+    "stage-0"
   ],
   "plugins": [
     "transform-decorators-legacy",

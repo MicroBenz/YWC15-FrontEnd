@@ -1,6 +1,5 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
-import flush from 'styled-jsx/server';
 import { ServerStyleSheet } from 'styled-components';
 
 import config from '../config';
@@ -10,8 +9,7 @@ import colors from '../utils/colors';
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
     const { html, head, errorHtml, chunks } = renderPage();
-    const styles = flush();
-    return { html, head, errorHtml, chunks, styles };
+    return { html, head, errorHtml, chunks };
   }
 
   render() {
@@ -28,20 +26,20 @@ export default class MyDocument extends Document {
           <link rel="stylesheet" href="/static/libs/flatpickr/flatpickr.css" async />
           <link rel="stylesheet" href="/static/libs/flatpickr/dark.css" async />
 
-          <meta name="description" content={seo.comingSoon.description} />
-          <meta name="keywords" content={seo.comingSoon.keywords} />
+          <meta name="description" content={seo.description} />
+          <meta name="keywords" content={seo.keywords} />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
 
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="@ywcth" />
-          <meta name="twitter:title" content={seo.comingSoon.title} />
-          <meta name="twitter:description" content={seo.comingSoon.description} />
-          <meta name="twitter:image" content="/static/img/social/banner.jpg" />
+          <meta name="twitter:title" content={seo.title} />
+          <meta name="twitter:description" content={seo.description} />
+          <meta name="twitter:image" content={`${config.baseURL}/static/img/social/banner.jpg`} />
 
-          <meta property="og:title" content={seo.comingSoon.title} />
+          <meta property="og:title" content={seo.title} />
           <meta property="og:type" content="article" />
-          <meta property="og:image" content="/static/img/social/banner.jpg" />
-          <meta property="og:description" content={seo.comingSoon.description} />
+          <meta property="og:image" content={`${config.baseURL}/static/img/social/banner.jpg`} />
+          <meta property="og:description" content={seo.description} />
           <meta property="og:site_name" content="Young Webmaster Camp 15" />
 
           <link rel="apple-touch-icon" sizes="57x57" href="/static/favicon/apple-icon-57x57.png" />

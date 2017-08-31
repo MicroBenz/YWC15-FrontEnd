@@ -14,18 +14,21 @@ const GalleryContainer = styled.div.attrs({
 `;
 
 const GalleryItem = styled(FrameBox)`
-  width: 100% !important;
-  padding: 15px;
-  text-align: left;
-  margin: 15px 0;
-  cursor: pointer;
-  transition: all .4s;
+  position: relative;
+  background-image: url(${props => props.img});
+  height: 140px;
+  width: 100%;
+  background-size: cover;
+  background-position: 50% 50%;
 `;
 
 const GalleryHero = styled(FrameBox)`
   width: 100% !important;
   padding: 50px;
   height: 500px;
+  background-image: url(${props => props.img});
+  background-size: cover;
+  background-position: 50% 50%;
 `;
 
 const Gallery = () => (
@@ -34,16 +37,14 @@ const Gallery = () => (
     <GalleryContainer>
       <div className="columns">
         <div className="column">
-          <GalleryHero />
+          <GalleryHero img={'/static/img/gallery/mockup.jpg'} />
         </div>
       </div>
       <div className="columns is-multiline">
         {
-          [1,2,3,4,5,6,7,8,0].map(e => (
+          [1,2,3,4,5,6,7,8,0,1,2,3].map(e => (
             <div className="column is-2 is-half-mobile">
-              <GalleryItem>
-                <h1>{`Gallery ${e}`}</h1>
-              </GalleryItem>
+              <GalleryItem img={'/static/img/gallery/mockup.jpg'} />
             </div>
           ))
         }

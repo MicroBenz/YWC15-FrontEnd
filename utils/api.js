@@ -1,26 +1,26 @@
 import axios from 'axios';
 
-function createApiInstance() {
+const createApiInstance = () => {
   return axios.create({
     baseURL: '/api',
     headers: {
       'x-access-token': window.localStorage.getItem('ywc15Token') || ''
     }
   });
-}
+};
 
-function handleResponse(response) {
+const handleResponse = (response) => {
   console.log('success:', response);
   if (response.statusText === 'OK' && response.data) {
     return response;
   }
-  return Promise.reject(response.error);
-}
+  return Promise.reject(response);
+};
 
-function catchError(e) {
+const catchError = (e) => {
   console.log('error', e);
   return Promise.reject(e.response.data);
-}
+};
 
 export default {
   get: path => (

@@ -55,7 +55,7 @@ const MajorModal = props => (
     <Container>
       <img src={`/static/img/roles/${props.major}.png`} alt={props.major} />
       <MajorName>{majorAsText(props.major)}</MajorName>
-      <MajorDetail>{content.major[props.major].description}</MajorDetail>
+      <MajorDetail>{content.major[props.major].fullDescription}</MajorDetail>
       <CloseButton onClick={props.hideModal}><i className="fa fa-times" /></CloseButton>
     </Container>
   </FullScreenModal>

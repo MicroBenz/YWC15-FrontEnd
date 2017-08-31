@@ -11,8 +11,8 @@ const createApiInstance = () => {
 
 const handleResponse = (response) => {
   console.log('success:', response);
-  if (response.statusText === 'OK' && response.data) {
-    return response;
+  if (response.data) {
+    return Promise.resolve(response);
   }
   return Promise.reject(response);
 };

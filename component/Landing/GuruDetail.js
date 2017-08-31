@@ -6,7 +6,7 @@ import colors from '../../utils/colors';
 import FrameBox from '../Core/FrameBox';
 
 const FrameBoxWrapper = styled.div`
-  width: 70%;
+  width: 700px;
   border: 1px solid ${colors.cyan};
   position: relative;
   ${props => props.center && 'margin: 0 auto;'}

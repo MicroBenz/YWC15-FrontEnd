@@ -30,7 +30,7 @@ const AllRightReserved = styled.p`
 
 const Footer = () => (
   <div className="container">
-    <Columns>
+    {false && <Columns>
       <Column>
         <img src="/static/img/landing/materials/logo_cp.png" alt="" />
       </Column>
@@ -46,7 +46,7 @@ const Footer = () => (
       <Column>
         <img src="/static/img/landing/materials/logo_3ds.png" alt="" />
       </Column>
-    </Columns>
+    </Columns>}
     <Copyright>
       <i className="fa fa-copyright" aria-hidden="true" /> Copyright 2003-2017
     </Copyright>

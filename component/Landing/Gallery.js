@@ -110,7 +110,7 @@ class Gallery extends React.Component {
     window.clearInterval(this.interval);
     this.interval = window.setInterval(() => {
       let newIdx = this.state.ctx + 1;
-      if (newIdx >= 52) {
+      if (newIdx >= 18) {
         newIdx = 0;
       }
       this.setState({ ctx: newIdx });
@@ -129,7 +129,7 @@ class Gallery extends React.Component {
           </Columns>
           <AllImageColumns>
             {
-              _.range(1, 52).map((x, i) => (
+              _.range(1, 18).map((x, i) => (
                 <AllImageColumn key={`gallery-${i}`}>
                   <GalleryItem
                     img={`/static/img/gallery/${i + 1}.jpg`}

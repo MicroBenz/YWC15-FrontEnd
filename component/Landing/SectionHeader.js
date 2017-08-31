@@ -17,6 +17,10 @@ const Title = styled.h1`
   text-transform: uppercase;
   font-weight: 600;
   padding: 7px 0px;
+  @media(max-width: 768px) {
+    padding-top: 18px;
+    line-height: 38px;
+  }
 `;
 
 const Subtitle = styled.h2`

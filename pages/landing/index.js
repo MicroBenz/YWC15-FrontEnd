@@ -62,6 +62,25 @@ const WelcomingSection = Section.extend`
   }
 `;
 
+const WhatISYWCSection = Section.extend`
+  padding-bottom: 0;
+`;
+
+const GuruSection = Section.extend`
+  padding-bottom: 0;
+  @media(max-width: 768px) {
+    padding-top: 0;
+  }
+`;
+
+const MapSection = Section.extend`
+  padding-bottom: 0;
+`;
+
+const ContactSection = Section.extend`
+  padding-bottom: 0;
+`;
+
 @connect(
   state => ({
     isShowSeeMore: state.app.isShowSeeMore,
@@ -70,7 +89,6 @@ const WelcomingSection = Section.extend`
   { ...appActions }
 )
 export default class LandingPage extends Component {
-
   componentDidMount() {
     this.props.loadRegisterStat();
   }
@@ -83,21 +101,21 @@ export default class LandingPage extends Component {
           <FreeAll />
           <Welcoming />
         </WelcomingSection>
-        <Section name="what-is-ywc" className="what-is-ywc">
+        <WhatISYWCSection name="what-is-ywc" className="what-is-ywc">
           <WhatIsYWC />
-        </Section>
-        <Section name="guru" className="guru">
+        </WhatISYWCSection>
+        <GuruSection name="guru" className="guru">
           <Guru />
-        </Section>
+        </GuruSection>
         <Section name="register" className="register">
           <Register />
         </Section>
         <Section name="timeline" className="timeline">
           <Timeline />
         </Section>
-        <Section name="map" className="map">
+        <MapSection name="map" className="map">
           <Map />
-        </Section>
+        </MapSection>
         <Section name="gallery" className="gallery">
           <Gallery />
         </Section>
@@ -107,12 +125,12 @@ export default class LandingPage extends Component {
         <Section name="sponsor" className="sponsor">
           <Sponsor />
         </Section>
-        <Section name="pr" className="pr">
+        {false && <Section name="pr" className="pr">
           <Pr />
-        </Section>
-        <Section name="contactus" className="contactus">
+        </Section>}
+        <ContactSection name="contactus" className="contactus">
           <ContactUs />
-        </Section>
+        </ContactSection>
         <Section name="footer-section">
           <Footer />
         </Section>

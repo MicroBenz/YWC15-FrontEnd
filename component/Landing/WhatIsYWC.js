@@ -8,7 +8,7 @@ import colors from '../../utils/colors';
 
 const Container = styled.div`
   width: 80%;
-  margin: 180px auto;
+  margin: 80px auto;
   @media(max-width: 768px) {
     width: 90%;
     margin: 10px auto;

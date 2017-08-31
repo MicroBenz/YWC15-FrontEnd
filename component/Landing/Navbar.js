@@ -94,7 +94,7 @@ const sections = [
   { href: 'gallery', title: 'GALLERY' },
   { href: 'faq', title: 'Q&A' },
   { href: 'sponsor', title: 'SPONSOR' },
-  { href: 'pr', title: 'PR' },
+  // { href: 'pr', title: 'PR' },
   { href: 'contactus', title: 'CONTACT US' },
 ];
 

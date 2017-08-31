@@ -42,10 +42,6 @@
     "eslint-config-airbnb": "^15.0.2",
     "eslint-plugin-import": "^2.6.1",
     "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-react": "^7.1.0",
-    "postcss-cssnext": "^2.10.0",
-    "postcss-scss": "^0.4.1",
-    "precss": "^1.4.0",
-    "styled-jsx-postcss": "^0.2.0"
+    "eslint-plugin-react": "^7.1.0"
   }
 }

@@ -22,11 +22,12 @@ export default class MyDocument extends Document {
       <html lang="th">
         <Head>
           <title>{seo.title}</title>
-          <link rel="stylesheet" href="/static/fonts/fonts.css" />
-          <link rel="stylesheet" href="/static/libs/bulma/bulma.min.css" />
-          <link rel="stylesheet" href="/static/libs/font-awesome/css/font-awesome.min.css" />
-          <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css" />
-          <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css" />
+          <link rel="stylesheet" href="/static/fonts/fonts.css" defer />
+          <link rel="stylesheet" href="/static/libs/bulma/bulma.min.css" defer />
+          <link rel="stylesheet" href="/static/libs/font-awesome/css/font-awesome.min.css" defer />
+          <link rel="stylesheet" href="/static/libs/flatpickr/flatpickr.css" defer />
+          <link rel="stylesheet" href="/static/libs/flatpickr/dark.css" defer />
+
           <meta name="description" content={seo.comingSoon.description} />
           <meta name="keywords" content={seo.comingSoon.keywords} />
           <meta name="viewport" content="width=device-width, initial-scale=1" />

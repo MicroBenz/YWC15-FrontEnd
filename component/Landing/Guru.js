@@ -47,9 +47,6 @@ const ItemWrapper = styled.div`
 `;
 
 export default class Guru extends Component {
-  state = {
-    idx: 0
-  };
   constructor(props) {
     super(props);
     this.state = {

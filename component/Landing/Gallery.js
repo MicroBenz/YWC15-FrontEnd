@@ -12,7 +12,7 @@ const GalleryContainer = styled.div.attrs({
 })`
   padding: 40px 0;
   @media(max-width: 768px) {
-    
+    padding: 20px 0;
   }
 `;
 
@@ -45,6 +45,42 @@ const GalleryHero = styled(FrameBox)`
   background-size: cover;
   background-position: 50% 50%;
   transition: all .3s;
+  @media(max-width: 768px) {
+    height: 270px;
+  }
+`;
+
+const Columns = styled.div.attrs({
+  className: 'columns'
+})`
+  @media(max-width: 768px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+`;
+
+const AllImageColumns = styled.div.attrs({
+  className: 'columns is-multiline'
+})`
+  @media(max-width: 768px) {
+    flex-wrap: nowrap !important;
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+`;
+
+const AllImageColumn = styled.div.attrs({
+  className: 'column is-2 is-half-mobile'
+})`
+  @media(max-width: 768px) {
+    width: 40% !important;
+    padding-right: 0;
+  }
 `;
 
 class Gallery extends React.Component {
@@ -53,6 +89,7 @@ class Gallery extends React.Component {
     this.state = {
       ctx: 0
     };
+    this.resetInterval = this.resetInterval.bind(this);
   }
 
   componentDidMount() {
@@ -65,9 +102,12 @@ class Gallery extends React.Component {
     }, 3000);
   }
 
-  onClick(no) {
-    this.setState({ ctx: no });
-    clearInterval(this.interval);
+  componentWillUnmount() {
+    window.clearInterval(this.interval);
+  }
+
+  resetInterval() {
+    window.clearInterval(this.interval);
     this.interval = window.setInterval(() => {
       let newIdx = this.state.ctx + 1;
       if (newIdx >= 52) {
@@ -82,24 +122,27 @@ class Gallery extends React.Component {
       <div>
         <SectionHeader title="Gallery" subtitle="ภาพบรรยากาศค่าย" />
         <GalleryContainer>
-          <div className="columns">
+          <Columns>
             <div className="column">
               <GalleryHero img={`/static/img/gallery/${this.state.ctx + 1}.jpg`} />
             </div>
-          </div>
-          <div className="columns is-multiline">
+          </Columns>
+          <AllImageColumns>
             {
               _.range(1, 52).map((x, i) => (
-                <div className="column is-2 is-half-mobile" key={`gallery-${i}`}>
+                <AllImageColumn key={`gallery-${i}`}>
                   <GalleryItem
                     img={`/static/img/gallery/${i + 1}.jpg`}
-                    onClick={() => this.onClick(i)}
+                    onClick={() => {
+                      this.setState({ ctx: i });
+                      this.resetInterval();
+                    }}
                     className={i === this.state.ctx ? 'active' : ''}
                   />
-                </div>
+                </AllImageColumn>
               ))
             }
-          </div>
+          </AllImageColumns>
         </GalleryContainer>
       </div>
     );

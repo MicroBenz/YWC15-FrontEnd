@@ -62,8 +62,7 @@ export default class Guru extends Component {
         newIdx = 0;
       }
       this.setState({ idx: newIdx });
-      // this.scroll(newIdx);
-    }, 5000);
+    }, 7000);
   }
 
   componentWillUnmount() {

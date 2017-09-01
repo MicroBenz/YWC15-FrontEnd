@@ -40,6 +40,9 @@ const Column = styled.div.attrs({
     &:first-child {
       margin-left: 5%;
     }
+    &:last-child {
+      margin-right: 0;
+    }
   }
 `;
 

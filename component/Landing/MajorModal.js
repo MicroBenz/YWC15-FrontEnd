@@ -31,12 +31,18 @@ const MajorName = styled.h2`
   font-weight: 600;
   margin-top: -15px;
   color: ${colors.cyan};
+  @media(max-width: 768px) {
+    font-size: 32px;
+  }
 `;
 
 const MajorDetail = styled.h3`
   font-size: 23px;
   width: 80%;
   margin: 0 auto;
+  @media(max-width: 768px) {
+    font-size: 18px;
+  }
 `;
 
 const CloseButton = styled.div`

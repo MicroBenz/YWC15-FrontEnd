@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-
+import styled, { keyframes } from 'styled-components';
+import colors from '../../utils/colors'
 const FreeImage = styled.img.attrs({
   alt: 'ฟรีตลอดค่าย',
   src: '/static/img/landing/welcoming/free.png'
@@ -17,4 +17,57 @@ const FreeImage = styled.img.attrs({
   }
 `;
 
-export default FreeImage;
+const rolling = keyframes`
+  0% { transform-origin: center; transform: rotate(-360deg); }
+  to { transform-origin: center; transform: none; }
+`;
+
+const reverseRolling = keyframes`
+0% { transform-origin: center; transform: rotate(360deg); }
+to { transform-origin: center; transform: none; }
+`;
+
+const FreeContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 20px;
+  display: block;
+  height: 200px;
+  width: 200px;
+  text-shadow: 0px 0px 12px ${colors.cyan};
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  h1 {
+    font-size: 58px;
+    padding-top: 61px;
+    line-height: 1;
+  }
+
+  h2 {
+    line-height: 1;
+    font-size: 24px;
+    margin-top: -12px;
+  }
+
+  .circle-1 { animation: ${rolling} 2s infinite linear; }
+  .circle-3 { animation: ${reverseRolling} 2.5s infinite linear; }
+`;
+
+const FreeAll = () => {
+  return (
+    <FreeContainer>
+      <img className="circle-1" src="/static/img/landing/materials/free1.png" alt="" />
+      <img className="circle-2" src="/static/img/landing/materials/free2.png" alt="" />
+      <img className="circle-3" src="/static/img/landing/materials/free3.png" alt="" />
+      <h1>ฟรี</h1>
+      <h2>ตลอดค่าย</h2>
+    </FreeContainer>
+  );
+};
+
+export default FreeAll;

@@ -64,6 +64,10 @@ const AnswerBox = styled(FrameBox)`
     text-indent: 15px;
     white-space: pre-line;
   }
+
+  @media(max-width: 768px) {
+    display: none;
+  }
 `;
 
 const Container = styled.div.attrs({
@@ -71,6 +75,29 @@ const Container = styled.div.attrs({
 })`
   @media(max-width: 768px) {
     padding: 0 5%;
+  }
+`;
+
+const MobileAnswerCollapse = styled(FrameBox)`
+  display:none;
+
+  @media(max-width: 768px) {
+    display: block;
+  }
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all .8s;
+  transform: scale(.98);
+
+  p {
+    padding: 10px;
+  }
+
+  &.active {
+    max-height: 500px;
+    opacity: 1;
+    background-color: ${rgba(colors.darkCyan2, 0.4)};
   }
 `;
 
@@ -90,14 +117,21 @@ class QA extends React.Component {
           <div className="column">
             {
               content.qa.map((q, key) => (
-                <QuestionBox
-                  onClick={() => this.setState({ current: key })}
-                  className={this.state.current === key && 'active'}
-                  key={key} // eslint-disable-line
-                >
-                  <h1>QUESTION</h1>
-                  <h2>{q.q}</h2>
-                </QuestionBox>
+                <div>
+                  <QuestionBox
+                    onClick={() => this.setState({ current: key })}
+                    className={this.state.current === key && 'active'}
+                    key={key} // eslint-disable-line
+                  >
+                    <h1>QUESTION</h1>
+                    <h2>{q.q}</h2>
+                  </QuestionBox>
+                  <MobileAnswerCollapse
+                    className={this.state.current === key && 'active'}
+                  >
+                    <p>{ content.qa[this.state.current].a }</p>
+                  </MobileAnswerCollapse>
+                </div>
               ))
             }
           </div>

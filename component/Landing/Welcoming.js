@@ -196,7 +196,6 @@ class Welcoming extends React.Component {
       x: 0,
       y: 0,
       z: 0,
-      timer: 10
     };
     this.handleScroll = this.handleScroll.bind(this);
   }
@@ -244,7 +243,6 @@ class Welcoming extends React.Component {
                       show: false
                     }}
                   >4-7 JANUARY 2018</Typist>
-                  {this.state.timer}
                 </CampDate>
                 <CampLocation className="camp-location">
                   <Typist

@@ -18,6 +18,8 @@ const GurusContainer = styled.div.attrs({
 const Columns = styled.div.attrs({
   className: 'columns is-multiline'
 })`
+  justify-content: center;
+  
   @media(max-width: 768px) {
     flex-wrap: nowrap !important;
     display: flex;
@@ -65,7 +67,7 @@ export default class Guru extends Component {
         newIdx = 0;
       }
       this.setState({ idx: newIdx });
-    }, 7000);
+    }, 3500);
   }
 
   componentWillUnmount() {
@@ -81,7 +83,7 @@ export default class Guru extends Component {
       }
       this.setState({ idx: newIdx });
       // this.scroll(newIdx);
-    }, 5000);
+    }, 3500);
   }
 
   // scroll(index) {

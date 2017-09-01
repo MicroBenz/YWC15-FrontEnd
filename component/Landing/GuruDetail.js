@@ -131,6 +131,7 @@ const GuruImage = styled.img.attrs({
   alt: props => props.name
 })`
   display: block;
+  transition: all .4s;
 `;
 
 const Header = styled.div`

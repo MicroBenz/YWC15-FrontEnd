@@ -11,7 +11,7 @@ const GuruContainer = styled(FrameBox)`
 
 const GuruImage = styled.img`
   display: block;
-  transition: all .2s;
+  transition: all .4s;
   
   &.active {
     box-shadow: 0 0 15px ${colors.cyan};

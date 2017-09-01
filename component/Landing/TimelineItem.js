@@ -18,7 +18,7 @@ const TimelineBox = styled(FrameBox)`
 const Title = styled.h3`
   color: ${colors.lightCyan};
   margin: 10px 0 0;
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 600;
   ${props => props.active && `color: ${colors.cyan};`}
   @media(max-width: 768px) {
@@ -31,7 +31,7 @@ const Title = styled.h3`
 `;
 
 const TimelineDate = styled.p`
-  font-size: 17px;
+  font-size: 19px;
   @media(max-width: 768px) {
     font-size: 23px;
   }

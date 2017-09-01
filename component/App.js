@@ -17,6 +17,7 @@ export default class App extends Component {
     if (this.props.isFirstLoad) {
       window.localStorage.removeItem('ywc15Token');
       ReactGA.initialize(config.gaTrackingID);
+      ReactGA.pageview(window.location.pathname);
       Router.onRouteChangeComplete = () => {
         ReactGA.pageview(window.location.pathname);
       };

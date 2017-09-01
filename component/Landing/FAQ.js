@@ -117,11 +117,12 @@ class QA extends React.Component {
           <div className="column">
             {
               content.qa.map((q, key) => (
-                <div>
+                <div
+                  key={key} // eslint-disable-line
+                >
                   <QuestionBox
                     onClick={() => this.setState({ current: key })}
                     className={this.state.current === key && 'active'}
-                    key={key} // eslint-disable-line
                   >
                     <h1>QUESTION</h1>
                     <h2>{q.q}</h2>

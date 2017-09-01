@@ -19,7 +19,6 @@ const Columns = styled.div.attrs({
   className: 'columns is-multiline'
 })`
   justify-content: center;
-  
   @media(max-width: 768px) {
     flex-wrap: nowrap !important;
     display: flex;
@@ -29,6 +28,7 @@ const Columns = styled.div.attrs({
     margin-right: 0;
     padding-top: 10px;
     padding-bottom: 10px;
+    justify-content: flex-start;
   }
 `;
 

@@ -1,40 +1,46 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
-import flush from 'styled-jsx/server';
+import { ServerStyleSheet } from 'styled-components';
+
 import config from '../config';
 import seo from '../seo.json';
+import colors from '../utils/colors';
 
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
     const { html, head, errorHtml, chunks } = renderPage();
-    const styles = flush();
-    return { html, head, errorHtml, chunks, styles };
+    return { html, head, errorHtml, chunks };
   }
 
   render() {
+    const sheet = new ServerStyleSheet();
+    const main = sheet.collectStyles(<Main />);
+    const styleTags = sheet.getStyleElement();
     return (
       <html lang="th">
         <Head>
           <title>{seo.title}</title>
-          <meta name="description" content={seo.comingSoon.description} />
-          <meta name="keywords" content={seo.comingSoon.keywords} />
+          <link rel="stylesheet" href="/static/fonts/fonts.css" async />
+          <link rel="stylesheet" href="/static/libs/bulma/bulma.min.css" async />
+          <link rel="stylesheet" href="/static/libs/font-awesome/css/font-awesome.min.css" async />
+          <link rel="stylesheet" href="/static/libs/flatpickr/flatpickr.css" async />
+          <link rel="stylesheet" href="/static/libs/flatpickr/dark.css" async />
+
+          <meta name="description" content={seo.description} />
+          <meta name="keywords" content={seo.keywords} />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
 
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="@ywcth" />
-          <meta name="twitter:title" content={seo.comingSoon.title} />
-          <meta name="twitter:description" content={seo.comingSoon.description} />
-          <meta name="twitter:image" content="/static/img/social/banner.jpg" />
+          <meta name="twitter:title" content={seo.title} />
+          <meta name="twitter:description" content={seo.description} />
+          <meta name="twitter:image" content={`${config.baseURL}/static/img/social/banner.jpg`} />
 
-          <meta property="og:title" content={seo.comingSoon.title} />
+          <meta property="og:title" content={seo.title} />
           <meta property="og:type" content="article" />
-          <meta property="og:image" content="/static/img/social/banner.jpg" />
-          <meta property="og:description" content={seo.comingSoon.description} />
+          <meta property="og:image" content={`${config.baseURL}/static/img/social/banner.jpg`} />
+          <meta property="og:description" content={seo.description} />
           <meta property="og:site_name" content="Young Webmaster Camp 15" />
-
-          <link rel="stylesheet" href="/static/libs/bulma/bulma.min.css" />
-          <link rel="stylesheet" href="/static/libs/font-awesome/css/font-awesome.min.css" />
-          <link href="https://fonts.googleapis.com/css?family=Rajdhani:300" rel="stylesheet" />
 
           <link rel="apple-touch-icon" sizes="57x57" href="/static/favicon/apple-icon-57x57.png" />
           <link rel="apple-touch-icon" sizes="60x60" href="/static/favicon/apple-icon-60x60.png" />
@@ -50,13 +56,13 @@ export default class MyDocument extends Document {
           <link rel="icon" type="image/png" sizes="96x96" href="/static/favicon/favicon-96x96.png" />
           <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png" />
           <link rel="manifest" href="/static/favicon/manifest.json" />
-          <meta name="msapplication-TileColor" content="#ffffff" />
+          <meta name="msapplication-TileColor" content="#1f2833" />
           <meta name="msapplication-TileImage" content="/static/favicon/ms-icon-144x144.png" />
-          <meta name="theme-color" content="#ffffff" />
-
+          <meta name="theme-color" content="#1f2833" />
+          {styleTags}
         </Head>
-        <body style={{ width: '100%', height: '100%' }}>
-          <Main />
+        <body style={{ width: '100%', height: '100%', backgroundColor: colors.theme, color: colors.white, backgroundImage: "url('/static/img/bg/bg.png')", backgroundRepeat: 'repeat', backgroundSize: '70%' }}>
+          {main}
           <NextScript />
           <script
             dangerouslySetInnerHTML={{

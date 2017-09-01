@@ -1,35 +1,32 @@
-// import fetch from 'whatwg-fetch';
 import axios from 'axios';
-import config from '../config';
 
-let apiInstance;
-if (process.browser) {
-  apiInstance = axios.create({
+const createApiInstance = () => (
+  axios.create({
     baseURL: '/api',
     headers: {
       'x-access-token': window.localStorage.getItem('ywc15Token') || ''
     }
-  });
-}
+  })
+);
 
-function handleResponse(response) {
-  if (response.statusText === 'OK' && response.data) {
-    return response.data;
+const handleResponse = (response) => {
+  if (response.data) {
+    return Promise.resolve(response);
   }
-}
+  return Promise.reject(response);
+};
 
-function catchError(e) {
-  throw new Error(e);
-}
+const catchError = e => Promise.reject(e.response.data);
 
 export default {
   get: path => (
-    apiInstance.get(path)
+    createApiInstance()
+      .get(path)
       .then(handleResponse)
       .catch(catchError)
   ),
   post: (path, body = {}, headers = {}) => (
-    apiInstance
+    createApiInstance()
       .request({
         url: path,
         method: 'POST',
@@ -39,4 +36,14 @@ export default {
       .then(handleResponse)
       .catch(catchError)
   ),
-}
+  put: (path, body = {}) => (
+    createApiInstance()
+      .request({
+        url: path,
+        method: 'PUT',
+        data: body,
+      })
+      .then(handleResponse)
+      .catch(catchError)
+  ),
+};

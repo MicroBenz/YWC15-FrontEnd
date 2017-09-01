@@ -95,7 +95,7 @@ class Gallery extends React.Component {
   componentDidMount() {
     this.interval = window.setInterval(() => {
       let newIdx = this.state.ctx + 1;
-      if (newIdx >= 52) {
+      if (newIdx >= 18) {
         newIdx = 0;
       }
       this.setState({ ctx: newIdx });

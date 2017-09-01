@@ -30,7 +30,7 @@
   {
     "name": "จักรกฤษณ์ ตาฬวัฒน์",
     "nickname": "พี่เม่น",
-    "jobPosition": "กรรมการผู้จัดการบริษัท ซี้ด ธีมส์ จำกัด (SeedThemes.com)",
+    "jobPosition": "กรรมการผู้จัดการบริษัท ซี้ด ธีมส์ จำกัด\n(SeedThemes.com)",
     "major": "designer",
     "image": "/static/img/landing/guru/men-design.jpg"
   },
@@ -44,7 +44,7 @@
   {
     "name": "คนที่หนึ่ง แสงหิรัญ",
     "nickname": "พี่หนึ่ง",
-    "jobPosition": "อาจารย์ประจำภาควิชาออกแบบนิเทศศิลป์\nคณะนิเทศศาสตร์ มหาวิทยาลัยอัสสัมชัญ / นักออกแบบ",
+    "jobPosition": "อาจารย์ประจำภาควิชาออกแบบนิเทศศิลป์\nคณะนิเทศศาสตร์ มหาวิทยาลัยอัสสัมชัญ",
     "major": "designer",
     "image": "/static/img/landing/guru/neung-design.jpg"
   },
@@ -65,7 +65,7 @@
   {
     "name": "อภิศิลป์ ตรุงกานนท์",
     "nickname": "พี่บอย",
-    "jobPosition": "Co-founder & Chief Technology Officer บริษัท อินเตอร์เน็ตมาร์เก็ตติ้ง จำกัด",
+    "jobPosition": "Co-founder & Chief Technology Officer\nบริษัท อินเตอร์เน็ตมาร์เก็ตติ้ง จำกัด",
     "major": "content",
     "image": "/static/img/landing/guru/boy-content.jpg"
   }

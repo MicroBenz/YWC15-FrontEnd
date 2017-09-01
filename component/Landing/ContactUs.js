@@ -45,7 +45,7 @@ const ContactUs = () => (
     <div className="contact">
       <Header>CONTACT US</Header>
       {content.contact.map((item, idx) => <Info key={`${item}-${idx}`}>{item}</Info>)}
-      <Info small>Email: ywc@webmaster.or.th</Info>
+      <Info small>Email: <a href="mailto:ywc@webmaster.or.th">ywc@webmaster.or.th</a></Info>
     </div>
   </ContactUsWarpper>
 );

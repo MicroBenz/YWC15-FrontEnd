@@ -1,6 +1,6 @@
 const commonConfig = {
   isProduction: false,
-  apiPath: 'http://staging.api.ywc15.ywc.in.th',
+  apiPath: 'https://staging.api.ywc15.ywc.in.th',
   facebookAppsID: '134784707110171',
   gaTrackingID: 'UA-103240510-1',
   port: 3000,

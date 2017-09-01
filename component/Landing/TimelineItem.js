@@ -10,6 +10,9 @@ const Container = styled.div`
 
 const TimelineBox = styled(FrameBox)`
   width: 100% !important;
+  img {
+    display: block;
+  }
 `;
 
 const Title = styled.h3`

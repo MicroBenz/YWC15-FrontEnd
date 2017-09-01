@@ -62,6 +62,7 @@ const AnswerBox = styled(FrameBox)`
     font-size: 20px;
     letter-spacing: .2px;
     text-indent: 15px;
+    white-space: pre-line;
   }
 
   @media(max-width: 768px) {

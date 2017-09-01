@@ -73,7 +73,7 @@ const ContentContainer = styled.div.attrs({
 
 const WhatIsYWC = () => (
   <Container>
-    <Parallax speed={0.1}>
+    <Parallax speed={0.15}>
       <img src="/static/img/landing/materials/bg_whatis.png" alt="" />
     </Parallax>
     <Header>

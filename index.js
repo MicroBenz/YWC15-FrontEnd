@@ -1,11 +1,38 @@
 const express = require('express');
 const next = require('next');
 const httpProxy = require('http-proxy');
+const LRUCache = require('lru-cache');
 const config = require('./config');
 
 const dev = !config.isProduction;
 const app = next({ dev });
 const handle = app.getRequestHandler();
+
+const ssrCache = new LRUCache({
+  max: 100,
+  maxAge: 1000 * 60 * 60
+});
+
+function renderAndCache(req, res, pagePath, queryParams) {
+  if (dev) {
+    return app.render(req, res, pagePath, queryParams);
+  }
+  const key = req.url;
+  if (ssrCache.has(key)) {
+    console.log(`CACHE HIT: ${key}`);
+    res.send(ssrCache.get(key));
+    return; // eslint-disable-line
+  }
+
+  return app.renderToHTML(req, res, pagePath, queryParams)
+    .then((html) => {
+      console.log(`CACHE MISS: ${key}`);
+      ssrCache.set(key, html);
+      res.send(html);
+    })
+    .catch(err => app.renderError(err, req, res, pagePath, queryParams));
+}
+
 const proxy = httpProxy.createProxyServer({
   target: config.apiPath,
   secure: false,
@@ -22,7 +49,7 @@ app.prepare().then(() => {
     });
   });
 
-  server.get('/', (req, res) => app.render(req, res, '/landing'));
+  server.get('/', (req, res) => renderAndCache(req, res, '/landing'));
   // server.get('/register', (req, res) => res.redirect('/register/step1'));
   // server.get('/register/step1', (req, res) => app.render(req, res, '/registration', { step: 1 }));
   // server.get('/register/step2', (req, res) => app.render(req, res, '/registration', { step: 2 }));

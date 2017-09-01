@@ -11,6 +11,7 @@ const GalleryContainer = styled.div.attrs({
   className: 'container'
 })`
   padding: 40px 0;
+  padding-top: 0px;
   @media(max-width: 768px) {
     padding: 20px 0;
   }
@@ -40,7 +41,7 @@ const GalleryItem = styled(FrameBox)`
 const GalleryHero = styled(FrameBox)`
   width: 100% !important;
   padding: 50px;
-  height: 500px;
+  height: 580px;
   background-image: url(${props => props.img});
   background-size: cover;
   background-position: 50% 50%;

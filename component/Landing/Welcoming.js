@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import Typist from 'react-typist';
+import { Link, Events, scrollSpy, scroller } from 'react-scroll';
 
 import colors from '../../utils/colors';
 
@@ -194,7 +195,8 @@ class Welcoming extends React.Component {
     this.state = {
       x: 0,
       y: 0,
-      z: 0
+      z: 0,
+      timer: 10
     };
     this.handleScroll = this.handleScroll.bind(this);
   }
@@ -202,6 +204,7 @@ class Welcoming extends React.Component {
   componentDidMount() {
     window.addEventListener('mousemove', this.handleScroll);
   }
+
 
   componentWillUnmount() {
     window.removeEventListener('mousemove', this.handleScroll);
@@ -241,6 +244,7 @@ class Welcoming extends React.Component {
                       show: false
                     }}
                   >4-7 JANUARY 2018</Typist>
+                  {this.state.timer}
                 </CampDate>
                 <CampLocation className="camp-location">
                   <Typist

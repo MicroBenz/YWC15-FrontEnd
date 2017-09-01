@@ -56,6 +56,27 @@ const FreeContainer = styled.div`
 
   .circle-1 { animation: ${rolling} 2s infinite linear; }
   .circle-3 { animation: ${reverseRolling} 2.5s infinite linear; }
+
+  @media(max-width: 768px) {
+    position: absolute;
+    position: absolute;
+    height: 120px;
+    width: 120px;
+    left: 5px;
+
+    h1 {
+      font-size: 36px;
+      padding-top: 36px;
+      line-height: 1;
+    }
+  
+    h2 {
+      line-height: 1;
+      font-size: 16px;
+      margin-top: -8px;
+    }
+
+  }
 `;
 
 const FreeAll = () => {

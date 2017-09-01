@@ -177,6 +177,7 @@ const GuruName = styled.h2`
 `;
 
 const GuruJobPosition = styled.h3`
+  white-space: pre-line;
   font-size: 24px;
   padding-top: 10px;
   @media(max-width: 768px) {

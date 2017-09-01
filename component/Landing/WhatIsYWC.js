@@ -66,6 +66,9 @@ const ContentContainer = styled.div.attrs({
   @media(max-width: 768px) {
     padding: 30px 0;
   }
+  h2 {
+    white-space: pre-line;
+  }
 `;
 
 const WhatIsYWC = () => (

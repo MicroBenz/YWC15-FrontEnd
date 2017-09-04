@@ -97,7 +97,7 @@ const StepOne = props => (
           <div className="column">
             <TextInput
               field="university"
-              label="มหาวิทยาลัย"
+              label="สถานศึกษา"
               value={props.university}
             />
           </div>

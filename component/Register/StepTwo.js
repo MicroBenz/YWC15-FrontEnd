@@ -98,7 +98,7 @@ export default class StepTwo extends Component {
               </div>
             </div>
             <TextInput label="Email" field="email" value={props.email} />
-            <TextInput label="เบอร์ติดต่อ" field="phone" value={props.phone} />
+            <TextInput label="เบอร์ติดต่อ (08x-xxx-xxxx)" field="phone" value={props.phone} />
             <div className="columns">
               <div className="column">
                 <TextInput label="เบอร์ติดต่อฉุกเฉิน" field="emergencyPhone" value={props.emergencyPhone} />

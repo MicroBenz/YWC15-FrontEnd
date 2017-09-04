@@ -262,6 +262,7 @@ export default class MainRegistration extends Component {
             <LoaderWrapper error={error}>
               <FullAreaLoader />
               {error && <p><b>Error:</b> {error.message}</p>}
+              {error && <a onClick={this.props.dismissErrorPopup}>ปิดหน้าต่างนี้</a>}
             </LoaderWrapper>
           )}
         </StepWrapper>

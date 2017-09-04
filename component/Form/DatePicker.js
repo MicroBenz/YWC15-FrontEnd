@@ -65,6 +65,13 @@ const Input = styled.input.attrs({
   &::-webkit-input-placeholder {
     color: ${colors.white};
   }
+  ${props => props.error && `
+    border-color: ${colors.red};
+    &:hover, &:focus {
+      border-color: ${colors.red};
+      box-shadow: 0 0 5px ${colors.red};
+    }
+  `}
 `;
 
 const Label = styled.label`
@@ -85,15 +92,24 @@ const Label = styled.label`
   }
 `;
 
+const ErrorLabel = styled.label`
+  font-family: 'Cordia New';
+  font-weight: 600;
+  font-size: 22px;
+  color: ${colors.red};
+`;
+
 @connect(
-  () => ({}),
+  state => ({
+    errorValidation: state.register.errorValidation
+  }),
   { setField: registerActions.setField }
 )
 export default class DatePicker extends Component {
   componentDidMount() {
     flatpickr(`#${this.props.id}`, {
       locale: th,
-      defaultDate: this.props.value || '1995-01-01',
+      defaultDate: this.props.value || '01/01/1995',
       dateFormat: 'j F Y',
       onChange: (date) => {
         const dateStr = moment(date[0]).format('YYYY-MM-DD');
@@ -103,12 +119,13 @@ export default class DatePicker extends Component {
   }
 
   render() {
-    const { label, value } = this.props;
+    const { label, value, errorValidation, field } = this.props;
     return (
       <Container>
         <div className="control">
-          <Input id={this.props.id} placeholder={label} />
+          <Input id={this.props.id} placeholder={label} error={errorValidation.indexOf(field) !== -1} />
           <Label active={value !== ''}>{label}</Label>
+          {errorValidation.indexOf(field) !== -1 && <ErrorLabel>โปรดกรอกข้อมูลให้ครบถ้วน</ErrorLabel>}
         </div>
       </Container>
     );

@@ -121,7 +121,7 @@ const StepOne = props => (
       </div>
     </div>
     <ActionContainer>
-      <FormButton title="Next" right onClick={() => props.onSubmit()} />
+      <FormButton style={{ width: '140px' }} title="Save & Next" right onClick={() => props.onSubmit()} />
     </ActionContainer>
   </form>
 );

@@ -13,6 +13,7 @@ const SAVE_STEP_THREE = registerAction('SAVE_STEP_THREE', true);
 const SAVE_STEP_FOUR = registerAction('SAVE_STEP_FOUR', true);
 const SAVE_STEP_FIVE = registerAction('SAVE_STEP_FIVE', true);
 const CONFIRM_REGISTER = registerAction('CONFIRM_REGISTER', true);
+const DISMISS_ERROR_POPUP = registerAction('DISMISS_ERROR_POPUP');
 
 const initialState = {
   saving: false,
@@ -149,6 +150,12 @@ export default (state = initialState, action) => {
         saving: false,
         isShowCompletedModal: true
       };
+    case DISMISS_ERROR_POPUP:
+      return {
+        ...state,
+        error: {},
+        errorValidation: []
+      }
     default: return state;
   }
 };
@@ -309,5 +316,8 @@ export const actions = {
   navigateStep: step => ({
     type: SET_STEP,
     step
+  }),
+  dismissErrorPopup: () => ({
+    type: DISMISS_ERROR_POPUP
   })
 };

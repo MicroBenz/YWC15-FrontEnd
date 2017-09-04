@@ -160,7 +160,14 @@ const Stepper = ({ step, major }) => (
       </Step>
     </StepWrapper>
     <StepperTextWrapper>
-      <h1 className="step-title">STEP {step}</h1>
+      <h1 className="step-title">{
+        (() => {
+          if (step >= 1 && step <= 5) {
+            return `STEP ${step}`;
+          }
+          return 'Confirm';
+        })()}
+      </h1>
       <h2 className="step-label">{
         (() => {
           switch (step) {

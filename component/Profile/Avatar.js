@@ -6,12 +6,13 @@ import colors from '../../utils/colors';
 import FrameBox from '../../component/Core/FrameBox';
 import content from '../Landing/content.json';
 
-const UserAvatar = styled.img.attrs({
-  src: props => getImagePath(props.picture),
-  alt: 'Avatar'
-})`
+const UserAvatar = styled.div`
   display: block;
   width: 200px;
+  height: 200px;
+  background-image: url('${props => getImagePath(props.picture)}');
+  background-position: center;
+  background-size: cover;
 `;
 
 const CompletedRegisText = styled.h2`

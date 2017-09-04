@@ -11,13 +11,13 @@
         "name": "frontend-staging",
         "NODE_ENV": "staging",
         "exec_mode": "cluster",
-        "instance": 2
+        "instances": 2
       },
       "env_production" : {
         "name": "frontend-production",
         "NODE_ENV": "production",
         "exec_mode": "cluster",
-        "instance": "max"
+        "instances": "max"
       },
       "log_date_format"  : "YYYY-MM-DD HH:mm Z"
     }

@@ -93,7 +93,7 @@ export default class DatePicker extends Component {
   componentDidMount() {
     flatpickr(`#${this.props.id}`, {
       locale: th,
-      defaultDate: this.props.value,
+      defaultDate: this.props.value || '1995-01-01',
       dateFormat: 'j F Y',
       onChange: (date) => {
         const dateStr = moment(date[0]).format('YYYY-MM-DD');

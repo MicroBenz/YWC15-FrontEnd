@@ -37,7 +37,7 @@
   {
     "name": "ปกรณ์ สันติสุนทรกุล",
     "nickname": "พี่ปอนด์",
-    "jobPosition": "COO Dek-D Interactive co.,ltd.",
+    "jobPosition": "COO Dek-D Interactive Co.,Ltd.",
     "major": "content",
     "image": "/static/img/landing/guru/pond-design.jpg"
   },
@@ -51,7 +51,7 @@
   {
     "name": "ขจร เจียรนัยพานิชย์",
     "nickname": "พี่เอ็ม",
-    "jobPosition": "Founder, Blogger The Zero Publishing Co., Ltd.",
+    "jobPosition": "Founder, Blogger | The Zero Publishing Co., Ltd.",
     "major": "content",
     "image": "/static/img/landing/guru/m-content.jpg"
   },
@@ -72,7 +72,7 @@
   {
     "name": "ผรินทร์ สงฆ์ประชา",
     "nickname": "พี่อ๋อง",
-    "jobPosition": "Nasket Retail, Chief Executive",
+    "jobPosition": "Chief Executive Nasket Retail",
     "major": "marketing",
     "image": "/static/img/landing/guru/ong-marketing.jpg"
   },
@@ -86,7 +86,7 @@
   {
     "name": "เจริญ ลักษณ์เลิศกุล",
     "nickname": "พี่เจ",
-    "jobPosition": "ผู้ช่วยผู้อำนวยการ ฝ่ายกลยุทธ์และปฏิบัติการ ออนไลน์สเตชั่น บริษัททรูมีเดีย",
+    "jobPosition": "ผู้ช่วยผู้อำนวยการ ฝ่ายกลยุทธ์และปฏิบัติการ\nออนไลน์สเตชั่น บริษัททรูมีเดีย",
     "major": "marketing",
     "image": "/static/img/landing/guru/j-marketing.jpg"
   },

@@ -12,6 +12,7 @@ const TimelineBox = styled(FrameBox)`
   width: 100% !important;
   img {
     display: block;
+    margin: 0 auto;
   }
 `;
 

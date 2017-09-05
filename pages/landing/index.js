@@ -20,6 +20,7 @@ import Pr from '../../component/Landing/Pr';
 import Footer from '../../component/Landing/Footer';
 import Navbar from '../../component/Landing/Navbar';
 import MajorModal from '../../component/Landing/MajorModal';
+import Social from '../../component/Landing/Social';
 
 /* eslint-disable */
 injectGlobal`
@@ -44,12 +45,12 @@ injectGlobal`
 /* eslint-enable */
 
 const Section = styled(Element)`
-  padding: 80px 0px;
+  padding: 100px 0px;
   text-align: center;
   position: relative;
 
   @media(max-width: 768px) {
-    padding: 40px 0;
+    padding: 50px 0;
   }
 `;
 
@@ -133,6 +134,9 @@ export default class LandingPage extends Component {
         {false && <Section name="pr" className="pr">
           <Pr />
         </Section>}
+        <Section name="social">
+          <Social />
+        </Section>
         <ContactSection name="contactus" className="contactus">
           <ContactUs />
         </ContactSection>

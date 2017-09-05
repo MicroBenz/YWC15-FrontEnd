@@ -37,6 +37,12 @@ const Info = styled.p`
     font-size: 18px;
     ${props => props.small && 'font-size: 16px;'}
   }
+
+   a {
+     &:hover {
+      color: ${colors.cyan};
+     }
+   }
 `;
 
 const ContactUs = () => (
@@ -44,7 +50,12 @@ const ContactUs = () => (
     <img src="/static/img/landing/materials/contact.png" alt="" />
     <div className="contact">
       <Header>CONTACT US</Header>
-      {content.contact.map((item, idx) => <Info key={`${item}-${idx}`}>{item}</Info>)}
+      <Info>
+        <a href="+66924587067">092-458-7067</a> (พี่ฟง)
+      </Info>
+      <Info>
+        <a href="+6656667571">085-666-7571</a> (พี่เบนซ์)
+      </Info>
       <Info small>Email: <a href="mailto:ywc@webmaster.or.th">ywc@webmaster.or.th</a></Info>
     </div>
   </ContactUsWarpper>

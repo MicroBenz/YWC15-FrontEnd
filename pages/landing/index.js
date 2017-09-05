@@ -45,12 +45,12 @@ injectGlobal`
 /* eslint-enable */
 
 const Section = styled(Element)`
-  padding: 80px 0px;
+  padding: 100px 0px;
   text-align: center;
   position: relative;
 
   @media(max-width: 768px) {
-    padding: 40px 0;
+    padding: 50px 0;
   }
 `;
 
@@ -134,7 +134,7 @@ export default class LandingPage extends Component {
         {false && <Section name="pr" className="pr">
           <Pr />
         </Section>}
-        <Section name="social-section">
+        <Section name="social">
           <Social />
         </Section>
         <ContactSection name="contactus" className="contactus">

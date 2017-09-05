@@ -19,7 +19,7 @@ const SocialContainer = styled.div`
     transition: all .4s;
 
     img {
-      height: 150px;
+      height: 140px;
       
       @media(max-width: 768px) {
         height: 75px;

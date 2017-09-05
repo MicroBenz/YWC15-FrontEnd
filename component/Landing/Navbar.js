@@ -93,7 +93,7 @@ const sections = [
   { href: 'map', title: 'LOCATION' },
   { href: 'gallery', title: 'GALLERY' },
   { href: 'faq', title: 'Q&A' },
-  { href: 'sponsor', title: 'SPONSOR' },
+  { href: 'social', title: 'SOCIAL' },
   // { href: 'pr', title: 'PR' },
   { href: 'contactus', title: 'CONTACT US' },
 ];

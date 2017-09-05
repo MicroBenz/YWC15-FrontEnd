@@ -5,7 +5,7 @@ import FrameBox from '../Core/FrameBox';
 import colors from '../../utils/colors';
 
 const Container = styled.div`
-  opacity: ${props => props.active ? '1' : '0.3'};
+  opacity: ${props => props.active ? '1' : '0.6'};
 `;
 
 const TimelineBox = styled(FrameBox)`

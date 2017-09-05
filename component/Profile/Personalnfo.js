@@ -14,7 +14,7 @@ const PersonalInfo = props => (
     <RowData title="เพศ" value={props.sex} />
     <RowData title="กรุ๊ปเลือด" value={props.blood} />
     <RowData title="ศาสนา" value={props.religion} />
-    <RowData title="สถาบันศึกษา" value={props.university} />
+    <RowData title="สถานศึกษา" value={props.university} />
     <RowData title="คณะ/ภาควิชา" value={`${props.faculty} ${props.department}`} />
     <RowData title="ชั้นปี" value={props.academicYear} />
   </div>

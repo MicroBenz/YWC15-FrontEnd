@@ -1,7 +1,7 @@
 const commonConfig = {
   isProduction: false,
   apiPath: 'https://staging.api.ywc15.ywc.in.th',
-  facebookAppsID: '134784707110171',
+  facebookAppsID: '678961585631857',
   gaTrackingID: 'UA-103240510-1',
   port: 3000,
   baseURL: 'https://staging.ywc15.ywc.in.th'
@@ -18,7 +18,7 @@ const environmentConfig = {
     isProduction: true,
     apiPath: 'https://api.ywc15.ywc.in.th',
     facebookAppsID: '715340261988670',
-    gaTrackingID: 'UA-103240510-2',
+    gaTrackingID: 'UA-42284958-1',
     port: 12346,
     baseURL: 'https://ywc15.ywc.in.th'
   }

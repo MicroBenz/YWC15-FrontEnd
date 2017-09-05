@@ -93,12 +93,12 @@ const StepThree = props => (
         </div>
       </div>
       <div className="column">
-        <TextArea label="ความสามารถหรือกิจกรรมที่เคยทำ " field="activities" value={props.activities} />
+        <TextArea label="ความสามารถหรือกิจกรรมที่เคยทำ " field="activities" value={props.activities} large />
       </div>
     </div>
     <ActionContainer>
       <FormButton title="Back" left onClick={props.onBack} />
-      <FormButton title="Next" right onClick={props.onSubmit} />
+      <FormButton style={{ width: '140px' }} title="Save & Next" right onClick={props.onSubmit} />
     </ActionContainer>
   </form>
 );

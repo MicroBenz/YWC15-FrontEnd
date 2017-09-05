@@ -20,6 +20,7 @@ import Pr from '../../component/Landing/Pr';
 import Footer from '../../component/Landing/Footer';
 import Navbar from '../../component/Landing/Navbar';
 import MajorModal from '../../component/Landing/MajorModal';
+import Social from '../../component/Landing/Social';
 
 /* eslint-disable */
 injectGlobal`
@@ -133,6 +134,9 @@ export default class LandingPage extends Component {
         {false && <Section name="pr" className="pr">
           <Pr />
         </Section>}
+        <Section name="social-section">
+          <Social />
+        </Section>
         <ContactSection name="contactus" className="contactus">
           <ContactUs />
         </ContactSection>

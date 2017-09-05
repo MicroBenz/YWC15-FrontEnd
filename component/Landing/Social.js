@@ -40,22 +40,22 @@ const Social = () => {
       <Header>FOLLOW YWCTH ON</Header>
       <SocialContainer>
         <div className="social">
-          <a href="https://fb.com/ywcth">
+          <a href="https://fb.com/ywcth" target="_blank" rel="noopener noreferrer">
             <img src="/static/img/landing/materials/ywc_facebook.png" alt="" />
           </a>
         </div>
         <div className="social">
-          <a href="https://twitter.com/ywcth">
+          <a href="https://twitter.com/ywcth" target="_blank" rel="noopener noreferrer">
             <img src="/static/img/landing/materials/ywc_twitter.png" alt="" />
           </a>
         </div>
         <div className="social">
-          <a href="https://www.instagram.com/ywcth/">
+          <a href="https://www.instagram.com/ywcth/" target="_blank" rel="noopener noreferrer">
             <img src="/static/img/landing/materials/ywc_intragram.png" alt="" />
           </a>
         </div>
         <div className="social">
-          <a href="https://www.youtube.com/user/ywcth">
+          <a href="https://www.youtube.com/user/ywcth" target="_blank" rel="noopener noreferrer">
             <img src="/static/img/landing/materials/ywc_youtube.png" alt="" />
           </a>
         </div>

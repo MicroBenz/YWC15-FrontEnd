@@ -14,7 +14,7 @@ const StepFour = props => (
     <TextArea withLabel label={generalQuestions[2]} value={props.generalQuestions[2]} field="generalQuestions[2]" large />
     <ActionContainer>
       <FormButton title="Back" left onClick={props.onBack} />
-      <FormButton title="Next" right onClick={props.onSubmit} />
+      <FormButton style={{ width: '140px' }} title="Save & Next" right onClick={props.onSubmit} />
     </ActionContainer>
   </form>
 );

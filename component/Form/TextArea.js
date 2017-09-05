@@ -21,14 +21,14 @@ const TextArea = styled.textarea.attrs({
   font-family: 'Cordia New';
   font-size: 22px;
   font-weight: 600;
-  height: 120px;
+  height: ${props => props.large ? '250px' : '120px'};
   color: ${colors.white};
   background-color: ${colors.formBg};
   border: 1px solid ${colors.formBg};
   border-radius: 0px;
   box-shadow: none;
   transition: all 0.30s ease-in-out;
-  resize: none;
+  max-width: 100%;
   &:hover {
     border: 1px solid ${colors.cyan};
     box-shadow: 0 0 5px ${colors.darkCyan};
@@ -74,13 +74,14 @@ const TransformLabel = NormalLabel.extend`
   `}
 `;
 
-const TextInput = ({ label, field, setField, value, withLabel = false, errorValidation }) => (
+const TextInput = ({ label, field, setField, value, withLabel = false, errorValidation, large }) => (
   <InputContainer withLabel={withLabel}>
     <div className="control">
       {withLabel && <NormalLabel>{label}</NormalLabel>}
       <TextArea
         error={errorValidation.indexOf(field) !== -1}
         value={value}
+        large={large}
         onChange={e => setField(field, e.target.value)}
       />
       {!withLabel && <TransformLabel active={value !== ''}>{label}</TransformLabel>}

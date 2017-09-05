@@ -93,7 +93,7 @@ const StepThree = props => (
         </div>
       </div>
       <div className="column">
-        <TextArea label="ความสามารถหรือกิจกรรมที่เคยทำ " field="activities" value={props.activities} />
+        <TextArea label="ความสามารถหรือกิจกรรมที่เคยทำ " field="activities" value={props.activities} large />
       </div>
     </div>
     <ActionContainer>

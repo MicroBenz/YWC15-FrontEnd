@@ -43,6 +43,7 @@ const initialState = {
   email: '',
   phone: '',
   emergencyPhone: '',
+  emergencyName: '',
   emergencyPhoneRelated: '',
   shirtSize: '',
   food: '',
@@ -59,7 +60,7 @@ const initialState = {
   // Step 4
   generalQuestions: ['', '', ''],
   // Step 5
-  specialQuestions: ['', '', ''],
+  specialQuestions: [],
   error: null,
   errorValidation: [],
   isShowCompletedModal: false
@@ -75,7 +76,7 @@ export default (state = initialState, action) => {
         specialQuestions: newState.specialQuestions.slice(0),
       };
     }
-    case GET_REGISTER_DATA.RESOLVED:
+    case GET_REGISTER_DATA.RESOLVED: {
       return {
         ...state,
         ..._.omit(action.data, ['_id', 'facebook', 'status', 'questions']),
@@ -85,6 +86,7 @@ export default (state = initialState, action) => {
         knowCamp: filterKnowCamp(action.data.knowCamp, false), // eslint-disable-line
         knowCampOther: filterKnowCamp(action.data.knowCamp, true) // eslint-disable-line
       };
+    }
     case SAVE_STEP_ONE.PENDING:
     case SAVE_STEP_TWO.PENDING:
     case SAVE_STEP_THREE.PENDING:
@@ -155,7 +157,7 @@ export default (state = initialState, action) => {
         ...state,
         error: {},
         errorValidation: []
-      }
+      };
     default: return state;
   }
 };
@@ -219,6 +221,7 @@ const prepareStepTwoForm = (form) => {
     'phone',
     'emergencyPhone',
     'emergencyPhoneRelated',
+    'emergencyName',
     'shirtSize',
     'food',
     'disease',
@@ -239,7 +242,6 @@ const prepareStepThreeForm = (form) => {
   if (form.knowCampOther !== null) {
     formData.knowCamp.push(form.knowCampOther);
   }
-  console.log(formData);
   return formData;
 };
 

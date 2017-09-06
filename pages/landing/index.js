@@ -134,12 +134,12 @@ export default class LandingPage extends Component {
         {false && <Section name="pr" className="pr">
           <Pr />
         </Section>}
-        <Section name="social">
-          <Social />
-        </Section>
         <ContactSection name="contactus" className="contactus">
           <ContactUs />
         </ContactSection>
+        <Section name="social">
+          <Social />
+        </Section>
         <Section name="footer-section">
           <Footer />
         </Section>
@@ -148,4 +148,3 @@ export default class LandingPage extends Component {
     );
   }
 }
-

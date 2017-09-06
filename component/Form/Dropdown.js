@@ -31,6 +31,8 @@ const FormLabel = NormalLabel.extend`
 
 const ErrorLabel = NormalLabel.extend`
   color: ${colors.red};
+  font-size: 20px;
+  font-style: italic;
 `;
 
 const SelectContainer = styled.div.attrs({

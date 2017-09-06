@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Router from 'next/router';
 import styled, { injectGlobal } from 'styled-components';
 import { animateScroll } from 'react-scroll';
+import { rgba } from 'polished';
 
 import connect from '../../store/connect';
 import colors from '../../utils/colors';
@@ -47,6 +48,7 @@ const RegisterContainer = styled.div.attrs({
 const StepWrapper = styled.div`
   position: relative;
   pointer-events: none;
+  background-color: ${rgba(colors.darkCyan2, 0.3)};
   @media(max-width: 768px) {
     margin: 15px 20px;
   }
@@ -154,7 +156,7 @@ export default class MainRegistration extends Component {
   }
 
   render() {
-    const { proceedStepOne, proceedStepTwo, proceedStepThree, proceedStepFour, proceedStepFive, confirm, registerData, navigateStep, error, errorValidation } = this.props;
+    const { proceedStepOne, proceedStepTwo, proceedStepThree, proceedStepFour, proceedStepFive, confirm, registerData, navigateStep, error, errorValidation, getRegisterData } = this.props;
     const { currentStep, saving, major } = registerData;
     return (
       <RegisterContainer>
@@ -229,6 +231,7 @@ export default class MainRegistration extends Component {
                 {...registerData}
                 onSubmit={() => (
                   proceedStepFive(registerData, major)
+                    .then(() => getRegisterData())
                     .then(() => {
                       routerNavigate(6);
                       animateScroll.scrollToTop();
@@ -244,7 +247,7 @@ export default class MainRegistration extends Component {
             {currentStep === 6 && (
               <StepVerify
                 {...registerData}
-                onSubmit={() => confirm(major)}
+                onSubmit={() => confirm(major).then(() => getRegisterData())}
                 onDismissPopup={() => {
                   routerNavigate(7);
                   animateScroll.scrollToTop();

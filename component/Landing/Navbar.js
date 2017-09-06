@@ -8,7 +8,7 @@ import colors from '../../utils/colors';
 const NavbarWrapper = styled.nav`
   position: fixed;
   top: 50%;
-  right: 15px;
+  right: 10px;
   transform: translateY(-50%);
   z-index: 15;
   transition: all .2s;
@@ -28,6 +28,12 @@ const NavbarWrapper = styled.nav`
 const NavImg = styled.img`
   display: block;
   cursor: pointer;
+  opacity: 0.6;
+  transition: all .2s;
+  
+  &:hover {
+    opacity: 1;
+  }
 `;
 
 const NavLink = styled(Link)`
@@ -55,7 +61,9 @@ const NavLink = styled(Link)`
     right: 2.2em;
     width: 200px;
     justify-content: flex-end;
-
+    font-size: 14px;
+    margin-top: 2px;
+    margin-right: 2px;
   }
 
   &:hover {
@@ -93,9 +101,9 @@ const sections = [
   { href: 'map', title: 'LOCATION' },
   { href: 'gallery', title: 'GALLERY' },
   { href: 'faq', title: 'Q&A' },
-  { href: 'social', title: 'SOCIAL' },
   // { href: 'pr', title: 'PR' },
   { href: 'contactus', title: 'CONTACT US' },
+  // { href: 'social', title: 'SOCIAL' },
 ];
 
 class Navbar extends React.Component {

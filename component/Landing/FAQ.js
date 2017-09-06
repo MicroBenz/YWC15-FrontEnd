@@ -59,10 +59,10 @@ const AnswerBox = styled(FrameBox)`
   }
 
   p {
-    font-size: 20px;
+    font-size: 24px;
     letter-spacing: .2px;
     text-indent: 15px;
-    white-space: pre-line;
+    font-family: 'cordia new';
   }
 
   @media(max-width: 768px) {
@@ -92,6 +92,8 @@ const MobileAnswerCollapse = styled(FrameBox)`
 
   p {
     padding: 10px;
+    font-size: 22px;
+    font-family: 'cordia new';
   }
 
   &.active {

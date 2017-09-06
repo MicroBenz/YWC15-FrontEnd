@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import { transparentize } from 'polished'
 import colors from '../../utils/colors';
 
 const CheckboxLabel = styled.label`
@@ -19,7 +19,7 @@ const CheckboxLabel = styled.label`
 const Input = styled.input`
   -webkit-appearance: none;
   background-color: ${colors.darkGray};
-  border: 2px solid ${colors.cyan};
+  border: 2px solid ${transparentize(0.2, colors.cyan)};
   box-shadow: 0 1px 2px ${colors.darkCyan};
   padding: 9px;
   border-radius: 3px;

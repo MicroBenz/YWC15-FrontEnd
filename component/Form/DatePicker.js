@@ -4,12 +4,18 @@ import flatpickr from 'flatpickr';
 import { th } from 'flatpickr/dist/l10n/th';
 import moment from 'moment';
 import styled, { injectGlobal } from 'styled-components';
+import { lighten } from 'polished';
 
 import { actions as registerActions } from '../../store/reducers/register';
 import colors from '../../utils/colors';
 
 /* eslint-disable */
 injectGlobal`
+  .flatpickr-calendar {
+    background-color: ${colors.formBg} !important;
+    border: 1px solid ${lighten(0.2, colors.formBg)} !important;
+  }
+
   .flatpickr-mobile {
     font-family: 'Cordia New';
     font-size: 22px !important;
@@ -95,7 +101,8 @@ const Label = styled.label`
 const ErrorLabel = styled.label`
   font-family: 'Cordia New';
   font-weight: 600;
-  font-size: 22px;
+  font-size: 20px;
+  font-style: italic;
   color: ${colors.red};
 `;
 

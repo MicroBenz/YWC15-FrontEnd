@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Router from 'next/router';
 import styled, { injectGlobal } from 'styled-components';
 import { animateScroll } from 'react-scroll';
+import { rgba } from 'polished';
 
 import connect from '../../store/connect';
 import colors from '../../utils/colors';
@@ -47,6 +48,7 @@ const RegisterContainer = styled.div.attrs({
 const StepWrapper = styled.div`
   position: relative;
   pointer-events: none;
+  background-color: ${rgba(colors.darkCyan2, 0.3)};
   @media(max-width: 768px) {
     margin: 15px 20px;
   }

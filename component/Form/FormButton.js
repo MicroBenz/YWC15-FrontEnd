@@ -46,6 +46,7 @@ const ButtonContainer = styled.div`
     align-items: center;
   }
   i {
+    margin-top: 4px;
     &.fa-chevron-left {
       margin-right: 5px;
     }

@@ -254,11 +254,12 @@ const prepareStepFiveForm = (form, major) => {
     const answers = form.specialQuestions;
     return { answers, major };
   } else if (major === 'design') {
-    const answers = [form.specialQuestions[0], form.specialQuestions[1]];
-    const file = form.specialQuestions[2];
+    const answers = [form.specialQuestions[0], form.specialQuestions[1], form.specialQuestions[2]];
+    const file = form.specialQuestions[3];
     const data = new FormData();
     data.append('answers[0]', answers[0]);
     data.append('answers[1]', answers[1]);
+    data.append('answers[2]', answers[2]);
     data.append('major', major);
     data.append('file', file);
     return data;

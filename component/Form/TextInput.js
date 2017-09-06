@@ -75,6 +75,11 @@ const FormInfo = styled.div`
   font-size: 20px;
   font-family: 'cordia new';
   font-style: italic;
+
+  @media(max-width: 768px) {
+    top: -30px;
+    font-size: 16px;
+  }
 `
 
 const TextInput = ({ info, label, field, setField, value, errorValidation }) => (

@@ -60,14 +60,14 @@ const ContentContainer = styled.div.attrs({
   className: 'container'
 })`
   width: 100%;
-  padding: 30px 0px;
-  font-size: 18px;
+  padding: 30px 10%;
+  font-size: 24px;
+  font-family: 'cordia new';
   line-height: 29px;
   @media(max-width: 768px) {
     padding: 30px 0;
   }
   h2 {
-    white-space: pre-line;
   }
 `;
 

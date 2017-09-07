@@ -155,8 +155,7 @@ export default (state = initialState, action) => {
     case DISMISS_ERROR_POPUP:
       return {
         ...state,
-        error: {},
-        errorValidation: []
+        error: null
       };
     default: return state;
   }

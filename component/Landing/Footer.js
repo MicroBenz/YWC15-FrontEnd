@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import content from './content.json';
+
 const Columns = styled.div.attrs({
   className: 'columns'
 })`
@@ -80,30 +82,16 @@ max-width: none;
 const Footer = () => (
   <div className="container">
     <SponsorContainer className="columns">
-      <SponsorWrapper>
-        <img className="circle circle-1" src="/static/img/landing/materials/free1.png" alt="" />
-        <img className="circle circle-2" src="/static/img/landing/materials/free2.png" alt="" />
-        <img className="circle circle-3" src="/static/img/landing/materials/free3.png" alt="" />
-        <SponsorLogo src="/static/img/landing/sponsor/TWA.png" alt="" />
-      </SponsorWrapper>
-      <SponsorWrapper>
-        <img className="circle circle-1" src="/static/img/landing/materials/free1.png" alt="" />
-        <img className="circle circle-2" src="/static/img/landing/materials/free2.png" alt="" />
-        <img className="circle circle-3" src="/static/img/landing/materials/free3.png" alt="" />
-        <SponsorLogo src="/static/img/landing/sponsor/SCB.png" alt="" />
-      </SponsorWrapper>
-      <SponsorWrapper>
-        <img className="circle circle-1" src="/static/img/landing/materials/free1.png" alt="" />
-        <img className="circle circle-2" src="/static/img/landing/materials/free2.png" alt="" />
-        <img className="circle circle-3" src="/static/img/landing/materials/free3.png" alt="" />
-        <SponsorLogo src="/static/img/landing/sponsor/CP_ALL.png" alt="" />
-      </SponsorWrapper>
-      <SponsorWrapper>
-        <img className="circle circle-1" src="/static/img/landing/materials/free1.png" alt="" />
-        <img className="circle circle-2" src="/static/img/landing/materials/free2.png" alt="" />
-        <img className="circle circle-3" src="/static/img/landing/materials/free3.png" alt="" />
-        <SponsorLogo src="/static/img/landing/sponsor/ABAC.png" alt="" />
-      </SponsorWrapper>
+      {
+        content.sponsors.map(s => (
+          <SponsorWrapper key={s}>
+            <img className="circle circle-1" src="/static/img/landing/materials/free1.png" alt="" />
+            <img className="circle circle-2" src="/static/img/landing/materials/free2.png" alt="" />
+            <img className="circle circle-3" src="/static/img/landing/materials/free3.png" alt="" />
+            <SponsorLogo src={`/static/img/landing/sponsor/${s}.png`} alt="" />
+          </SponsorWrapper>
+        ))
+      }
     </SponsorContainer>
     <Copyright>
       <i className="fa fa-copyright" aria-hidden="true" /> Copyright 2003-2017

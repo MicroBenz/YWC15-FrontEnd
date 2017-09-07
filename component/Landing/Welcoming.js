@@ -3,6 +3,7 @@ import styled, { css, keyframes } from 'styled-components';
 import Typist from 'react-typist';
 import { Link, Events, scrollSpy, scroller } from 'react-scroll';
 
+import content from './content.json';
 import colors from '../../utils/colors';
 
 const Flash = keyframes`
@@ -309,30 +310,16 @@ class Welcoming extends React.Component {
         <ScrollingBar />
 
         <SponsorContainer className="columns">
-          <SponsorWrapper>
-            <img className="circle circle-1" src="/static/img/landing/materials/free1.png" alt="" />
-            <img className="circle circle-2" src="/static/img/landing/materials/free2.png" alt="" />
-            <img className="circle circle-3" src="/static/img/landing/materials/free3.png" alt="" />
-            <SponsorLogo src="/static/img/landing/sponsor/TWA.png" alt="" />
-          </SponsorWrapper>
-          <SponsorWrapper>
-            <img className="circle circle-1" src="/static/img/landing/materials/free1.png" alt="" />
-            <img className="circle circle-2" src="/static/img/landing/materials/free2.png" alt="" />
-            <img className="circle circle-3" src="/static/img/landing/materials/free3.png" alt="" />
-            <SponsorLogo src="/static/img/landing/sponsor/SCB.png" alt="" />
-          </SponsorWrapper>
-          <SponsorWrapper>
-            <img className="circle circle-1" src="/static/img/landing/materials/free1.png" alt="" />
-            <img className="circle circle-2" src="/static/img/landing/materials/free2.png" alt="" />
-            <img className="circle circle-3" src="/static/img/landing/materials/free3.png" alt="" />
-            <SponsorLogo src="/static/img/landing/sponsor/CP_ALL.png" alt="" />
-          </SponsorWrapper>
-          <SponsorWrapper>
-            <img className="circle circle-1" src="/static/img/landing/materials/free1.png" alt="" />
-            <img className="circle circle-2" src="/static/img/landing/materials/free2.png" alt="" />
-            <img className="circle circle-3" src="/static/img/landing/materials/free3.png" alt="" />
-            <SponsorLogo src="/static/img/landing/sponsor/ABAC.png" alt="" />
-          </SponsorWrapper>
+          {
+            content.sponsors.map(s => (
+              <SponsorWrapper key={s}>
+                <img className="circle circle-1" src="/static/img/landing/materials/free1.png" alt="" />
+                <img className="circle circle-2" src="/static/img/landing/materials/free2.png" alt="" />
+                <img className="circle circle-3" src="/static/img/landing/materials/free3.png" alt="" />
+                <SponsorLogo src={`/static/img/landing/sponsor/${s}.png`} alt="" />
+              </SponsorWrapper>
+            ))
+          }
         </SponsorContainer>
       </Container>
     );

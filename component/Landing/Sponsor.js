@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components'
 import SectionHeader from './SectionHeader';
 
+import content from './content.json'
+
 const SponsorLogo = styled.img`
   width: 180px;
   margin: 15px;
@@ -15,10 +17,11 @@ const Sponsor = () => (
   <SponsorWarpper className="container">
     <SectionHeader title="Sponsor" subtitle="ผู้ใหญ่ใจดี" />
     <div className="sponsors">
-      <SponsorLogo src="/static/img/landing/sponsor/TWA.png" alt="" />
-      <SponsorLogo src="/static/img/landing/sponsor/SCB.png" alt="" />
-      <SponsorLogo src="/static/img/landing/sponsor/CP_ALL.png" alt="" />
-      <SponsorLogo src="/static/img/landing/sponsor/ABAC.png" alt="" />
+      {
+        content.sponsors.map(s => (
+          <SponsorLogo src={`/static/img/landing/sponsor/${s}.png`} alt="" />
+        ))
+      }
     </div>
   </SponsorWarpper>
 );

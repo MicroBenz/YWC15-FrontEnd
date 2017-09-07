@@ -23,7 +23,7 @@
   {
     "name": "อัครวุฒิ ตำราเรียง ",
     "nickname": "พี่บัง",
-    "jobPosition": "กรรมการผู้จัดการ บ.มาร์เวลิค เอ็นจิ้น จก.\nอุปนายกสมาคมศึกษาและพัฒนาโอเพ่นซอร์ส",
+    "jobPosition": "กรรมการผู้จัดการ บ.มาร์เวลิค เอ็นจิ้น จำกัด\nอุปนายกสมาคมศึกษาและพัฒนาโอเพ่นซอร์ส",
     "major": "programming",
     "image": "/static/img/landing/guru/bung-programming.jpg"
   },
@@ -103,5 +103,12 @@
     "jobPosition": "Strategic Planning Director BrandBaker",
     "major": "marketing",
     "image": "/static/img/landing/guru/jib-marketing.jpg"
+  },
+  {
+    "name": "เมธปริยา คํานวนวุฒ",
+    "nickname": "พี่ว่าน",
+    "jobPosition": "Marketing Manager บริษัท แอลเอ็นดับเบิ้ลยู จำกัด",
+    "major": "marketing",
+    "image": "/static/img/landing/guru/wan-marketing.jpg"
   }
 ]

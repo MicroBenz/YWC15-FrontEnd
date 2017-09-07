@@ -4,7 +4,7 @@ import SectionHeader from './SectionHeader';
 
 const SponsorLogo = styled.img`
   width: 180px;
-  margin: 10px;
+  margin: 15px;
 `;
 
 const SponsorWarpper = styled.div`
@@ -15,12 +15,10 @@ const Sponsor = () => (
   <SponsorWarpper className="container">
     <SectionHeader title="Sponsor" subtitle="ผู้ใหญ่ใจดี" />
     <div className="sponsors">
-      {
-        [1,2,3,4,5,6,7,8,9,10,11,12,13].map(e => (
-          <SponsorLogo key={e} src="/static/img/landing/cp-app.jpg" alt="" />
-        ))
-      }
-      
+      <SponsorLogo src="/static/img/landing/sponsor/TWA.png" alt="" />
+      <SponsorLogo src="/static/img/landing/sponsor/SCB.png" alt="" />
+      <SponsorLogo src="/static/img/landing/sponsor/CP_ALL.png" alt="" />
+      <SponsorLogo src="/static/img/landing/sponsor/ABAC.png" alt="" />
     </div>
   </SponsorWarpper>
 );

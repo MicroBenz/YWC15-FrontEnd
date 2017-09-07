@@ -113,7 +113,7 @@ const RegisterMajor = ({ major, count = 0, onClickSeeMore }) => (
       <RegistrantCount><span>{count}</span> คน</RegistrantCount>
       <MajorDescription>{content.major[major].description}</MajorDescription>
       <MajorSeeMore onClick={onClickSeeMore}>[ รายละเอียด ]</MajorSeeMore>
-      {/* <LoginButton major={major} /> */}
+      <LoginButton major={major} />
     </InnerContainer>
   </Container>
 );

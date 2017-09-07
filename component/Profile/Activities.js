@@ -6,7 +6,7 @@ import RowTitle from './RowTitle';
 const Activities = props => (
   <div>
     <RowTitle>กิจกรรมที่เคยทำ</RowTitle>
-    <RowData title="ความสามารถหรือกิจกรรมที่เคยทำ" value={props.activities} />
+    <RowData title="ความสามารถหรือกิจกรรมที่เคยทำ" value={props.activities} newLine />
   </div>
 );
 

@@ -43,6 +43,7 @@ const initialState = {
   email: '',
   phone: '',
   emergencyPhone: '',
+  emergencyName: '',
   emergencyPhoneRelated: '',
   shirtSize: '',
   food: '',
@@ -59,7 +60,7 @@ const initialState = {
   // Step 4
   generalQuestions: ['', '', ''],
   // Step 5
-  specialQuestions: ['', '', ''],
+  specialQuestions: [],
   error: null,
   errorValidation: [],
   isShowCompletedModal: false
@@ -75,7 +76,7 @@ export default (state = initialState, action) => {
         specialQuestions: newState.specialQuestions.slice(0),
       };
     }
-    case GET_REGISTER_DATA.RESOLVED:
+    case GET_REGISTER_DATA.RESOLVED: {
       return {
         ...state,
         ..._.omit(action.data, ['_id', 'facebook', 'status', 'questions']),
@@ -85,6 +86,7 @@ export default (state = initialState, action) => {
         knowCamp: filterKnowCamp(action.data.knowCamp, false), // eslint-disable-line
         knowCampOther: filterKnowCamp(action.data.knowCamp, true) // eslint-disable-line
       };
+    }
     case SAVE_STEP_ONE.PENDING:
     case SAVE_STEP_TWO.PENDING:
     case SAVE_STEP_THREE.PENDING:
@@ -153,9 +155,8 @@ export default (state = initialState, action) => {
     case DISMISS_ERROR_POPUP:
       return {
         ...state,
-        error: {},
-        errorValidation: []
-      }
+        error: null
+      };
     default: return state;
   }
 };
@@ -219,6 +220,7 @@ const prepareStepTwoForm = (form) => {
     'phone',
     'emergencyPhone',
     'emergencyPhoneRelated',
+    'emergencyName',
     'shirtSize',
     'food',
     'disease',
@@ -239,7 +241,6 @@ const prepareStepThreeForm = (form) => {
   if (form.knowCampOther !== null) {
     formData.knowCamp.push(form.knowCampOther);
   }
-  console.log(formData);
   return formData;
 };
 
@@ -252,11 +253,12 @@ const prepareStepFiveForm = (form, major) => {
     const answers = form.specialQuestions;
     return { answers, major };
   } else if (major === 'design') {
-    const answers = [form.specialQuestions[0], form.specialQuestions[1]];
-    const file = form.specialQuestions[2];
+    const answers = [form.specialQuestions[0], form.specialQuestions[1], form.specialQuestions[2]];
+    const file = form.specialQuestions[3];
     const data = new FormData();
     data.append('answers[0]', answers[0]);
     data.append('answers[1]', answers[1]);
+    data.append('answers[2]', answers[2]);
     data.append('major', major);
     data.append('file', file);
     return data;

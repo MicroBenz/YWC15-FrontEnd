@@ -74,18 +74,18 @@ const TransformLabel = NormalLabel.extend`
   `}
 `;
 
-const TextInput = ({ label, field, setField, value, withLabel = false, errorValidation, large }) => (
+const TextInput = ({ label, field, setField, value, withLabel = false, errorValidation, large, error = false }) => (
   <InputContainer withLabel={withLabel}>
     <div className="control">
       {withLabel && <NormalLabel>{label}</NormalLabel>}
       <TextArea
-        error={errorValidation.indexOf(field) !== -1}
+        error={(errorValidation.indexOf(field) !== -1 || error)}
         value={value}
         large={large}
         onChange={e => setField(field, e.target.value)}
       />
       {!withLabel && <TransformLabel active={value !== ''}>{label}</TransformLabel>}
-      {errorValidation.indexOf(field) !== -1 && <ErrorLabel>โปรดกรอกข้อมูลให้ครบถ้วน</ErrorLabel>}
+      {(errorValidation.indexOf(field) !== -1 || error) && <ErrorLabel>โปรดกรอกข้อมูลให้ครบถ้วน</ErrorLabel>}
     </div>
   </InputContainer>
 );

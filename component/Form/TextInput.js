@@ -20,7 +20,7 @@ const FormLabel = styled.label`
   cursor: text;
   pointer-events: none;
   ${props => props.active && `
-    transform: translateY(-47px) scale(1);  
+    transform: translateY(-47px) scale(1);
   `}
 `;
 
@@ -63,13 +63,29 @@ const Input = styled.input.attrs({
 const ErrorLabel = styled.label`
   font-family: 'Cordia New';
   font-weight: 600;
-  font-size: 22px;
+  font-size: 20px;
+  font-style: italic;
   color: ${colors.red};
 `;
 
-const TextInput = ({ label, field, setField, value, errorValidation }) => (
+const FormInfo = styled.div`
+  position: absolute;
+  right: 5px;
+  top: -32px;
+  font-size: 20px;
+  font-family: 'cordia new';
+  font-style: italic;
+
+  @media(max-width: 768px) {
+    top: -30px;
+    font-size: 16px;
+  }
+`
+
+const TextInput = ({ info, label, field, setField, value, errorValidation }) => (
   <InputContainer>
     <div className="control">
+      <FormInfo>{info}</FormInfo>
       <Input
         value={value}
         onChange={e => setField(field, e.target.value)}

@@ -74,6 +74,11 @@ export default class MediaPage extends React.Component {
           </div>
           <div className="columns">
             <div className="column">
+              <Banner src="/static/img/banner/ban728-90v56.gif" alt="" />
+            </div>
+          </div>
+          <div className="columns">
+            <div className="column">
               <Banner src="/static/img/banner/ban960-320v2.jpg" alt="" />
             </div>
           </div>

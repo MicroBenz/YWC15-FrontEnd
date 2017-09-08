@@ -45,7 +45,7 @@ injectGlobal`
 /* eslint-enable */
 
 const Section = styled(Element)`
-  padding: 100px 0px;
+  padding: 80px 0px;
   text-align: center;
   position: relative;
 
@@ -56,7 +56,7 @@ const Section = styled(Element)`
 
 const WelcomingSection = Section.extend`
   min-height: 100vh;
-  padding: 80px 0 0;
+  padding: 20px 0 0;
   @media(max-width: 768px) {
     padding: 50px 0 0;
     min-height: 100%;
@@ -85,6 +85,7 @@ const ContactSection = Section.extend`
 const Foreground = styled.div`
   background-image: url('/static/img/bg-front.png');
   background-size: 100% auto;
+  overflow: hidden;
 `;
 
 @connect(
@@ -125,12 +126,12 @@ export default class LandingPage extends Component {
         <Section name="gallery" className="gallery">
           <Gallery />
         </Section>
+        { true && <Section name="sponsor" className="sponsor">
+          <Sponsor />
+        </Section>}
         <Section name="faq" className="faq">
           <FAQ />
         </Section>
-        {false && <Section name="sponsor" className="sponsor">
-          <Sponsor />
-        </Section>}
         {false && <Section name="pr" className="pr">
           <Pr />
         </Section>}

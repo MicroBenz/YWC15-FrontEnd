@@ -2,9 +2,11 @@ import React from 'react';
 import styled from 'styled-components'
 import SectionHeader from './SectionHeader';
 
+import content from './content.json'
+
 const SponsorLogo = styled.img`
   width: 180px;
-  margin: 10px;
+  margin: 15px;
 `;
 
 const SponsorWarpper = styled.div`
@@ -16,11 +18,10 @@ const Sponsor = () => (
     <SectionHeader title="Sponsor" subtitle="ผู้ใหญ่ใจดี" />
     <div className="sponsors">
       {
-        [1,2,3,4,5,6,7,8,9,10,11,12,13].map(e => (
-          <SponsorLogo key={e} src="/static/img/landing/cp-app.jpg" alt="" />
+        content.sponsors.map(s => (
+          <SponsorLogo src={`/static/img/landing/sponsor/${s}.png`} alt="" />
         ))
       }
-      
     </div>
   </SponsorWarpper>
 );

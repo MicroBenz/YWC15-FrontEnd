@@ -51,6 +51,9 @@ const ContactUs = () => (
     <div className="contact">
       <Header>CONTACT US</Header>
       <Info>
+        <a href="+66641747080">064-174-7080</a> (พี่เบ๊บ)
+      </Info>
+      <Info>
         <a href="+66924587067">092-458-7067</a> (พี่ฟง)
       </Info>
       <Info>

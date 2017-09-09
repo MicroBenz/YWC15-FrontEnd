@@ -100,8 +100,8 @@ const sections = [
   { href: 'timeline', title: 'TIMELINE' },
   { href: 'map', title: 'LOCATION' },
   { href: 'gallery', title: 'GALLERY' },
+  { href: 'sponsor', title: 'SPONSOR' },
   { href: 'faq', title: 'Q&A' },
-  // { href: 'pr', title: 'PR' },
   { href: 'contactus', title: 'CONTACT US' },
   // { href: 'social', title: 'SOCIAL' },
 ];

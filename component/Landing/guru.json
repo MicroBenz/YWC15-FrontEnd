@@ -110,5 +110,12 @@
     "jobPosition": "Marketing Manager บริษัท แอลเอ็นดับเบิ้ลยู จำกัด",
     "major": "marketing",
     "image": "/static/img/landing/guru/wan-marketing.jpg"
+  },
+  {
+    "name": "ศุภเดช สุทธิพงศ์คณาสัย",
+    "nickname": "พี่โก๋",
+    "jobPosition": "Founder บริษัท VR Online จำกัด",
+    "major": "content",
+    "image": "/static/img/landing/guru/go-content.jpg"
   }
 ]

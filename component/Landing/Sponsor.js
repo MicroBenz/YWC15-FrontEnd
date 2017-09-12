@@ -25,6 +25,21 @@ const SponsorLogo = styled.div`
       max-height: 135px;
     `}
     margin: 15px;
+
+    @media(max-width: 860px) {
+      ${props => props.vip && css`
+        max-width: 150px;
+        max-height: 150px;
+      `}
+      ${props => props.gold && css`
+        max-width: 135px;
+        max-height: 135px;
+      `}
+      ${props => props.silver && css`
+        max-width: 110px;
+        max-height: 110px;
+      `}
+    }
   }
   order: ${props => props.desktopOrder};
   

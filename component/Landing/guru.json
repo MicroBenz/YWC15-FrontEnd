@@ -1,26 +1,5 @@
 [
   {
-    "name": "อภิรักษ์ ปนาทกูล",
-    "nickname": "พี่แบงค์",
-    "jobPosition": "UX Evangelist บริษัท Omise payment",
-    "major": "designer",
-    "image": "/static/img/landing/guru/bank-design.jpg"
-  },
-  {
-    "name": "ปัญจมพงศ์ เสริมสวัสดิ์ศรี",
-    "nickname": "พี่ปันเจ",
-    "jobPosition": "CTO บริษัท TakeMeTour",
-    "major": "programming",
-    "image": "/static/img/landing/guru/panj-programming.jpg"
-  },
-  {
-    "name": "วรัทธน์ วงศมณีกิจ",
-    "nickname": "พี่ตั้ง",
-    "jobPosition": "Product Owner บริษัท Thoth Zocial",
-    "major": "programming",
-    "image": "/static/img/landing/guru/thang-programming.jpg"
-  },
-  {
     "name": "อัครวุฒิ ตำราเรียง ",
     "nickname": "พี่บัง",
     "jobPosition": "กรรมการผู้จัดการ บ.มาร์เวลิค เอ็นจิ้น จำกัด\nอุปนายกสมาคมศึกษาและพัฒนาโอเพ่นซอร์ส",
@@ -28,32 +7,18 @@
     "image": "/static/img/landing/guru/bung-programming.jpg"
   },
   {
-    "name": "จักรกฤษณ์ ตาฬวัฒน์",
-    "nickname": "พี่เม่น",
-    "jobPosition": "กรรมการผู้จัดการบริษัท ซี้ด ธีมส์ จำกัด\n(SeedThemes.com)",
-    "major": "designer",
-    "image": "/static/img/landing/guru/men-design.jpg"
+    "name": "ศิระ สัจจินานนท์",
+    "nickname": "พี่ฮันท์",
+    "jobPosition": "CTO & Co-Founder Jitta.com",
+    "major": "programming",
+    "image": "/static/img/landing/guru/hunt-programming.jpg"
   },
   {
-    "name": "ปกรณ์ สันติสุนทรกุล",
-    "nickname": "พี่ปอนด์",
-    "jobPosition": "COO Dek-D Interactive Co.,Ltd.",
-    "major": "content",
-    "image": "/static/img/landing/guru/pond-design.jpg"
-  },
-  {
-    "name": "คนที่หนึ่ง แสงหิรัญ",
-    "nickname": "พี่หนึ่ง",
-    "jobPosition": "อาจารย์ประจำภาควิชาออกแบบนิเทศศิลป์\nคณะนิเทศศาสตร์ มหาวิทยาลัยอัสสัมชัญ",
-    "major": "designer",
-    "image": "/static/img/landing/guru/neung-design.jpg"
-  },
-  {
-    "name": "ขจร เจียรนัยพานิชย์",
-    "nickname": "พี่เอ็ม",
-    "jobPosition": "Founder, Blogger | The Zero Publishing Co., Ltd.",
-    "major": "content",
-    "image": "/static/img/landing/guru/m-content.jpg"
+    "name": "ภาวุธ พงษ์วิทยภานุ",
+    "nickname": "พี่ป้อม",
+    "jobPosition": "CEO TARAD Group",
+    "major": "marketing",
+    "image": "/static/img/landing/guru/pom-marketing.jpg"
   },
   {
     "name": "จักรพงษ์ คงมาลัย",
@@ -61,6 +26,27 @@
     "jobPosition": "กรรมการผู้จัดการ บริษัท Moonshot Digital",
     "major": "content",
     "image": "/static/img/landing/guru/pong-content.jpg"
+  },
+  {
+    "name": "ศุภเดช สุทธิพงศ์คณาสัย",
+    "nickname": "พี่โก๋",
+    "jobPosition": "Founder บริษัท VR Online จำกัด",
+    "major": "content",
+    "image": "/static/img/landing/guru/go-content.jpg"
+  },
+  {
+    "name": "เจริญ ลักษณ์เลิศกุล",
+    "nickname": "พี่เจ",
+    "jobPosition": "ผู้ช่วยผู้อำนวยการ ฝ่ายกลยุทธ์และปฏิบัติการ\nออนไลน์สเตชั่น บริษัททรูมีเดีย",
+    "major": "marketing",
+    "image": "/static/img/landing/guru/j-marketing.jpg"
+  },
+  {
+    "name": "ปกรณ์ สันติสุนทรกุล",
+    "nickname": "พี่ปอนด์",
+    "jobPosition": "COO Dek-D Interactive Co.,Ltd.",
+    "major": "content",
+    "image": "/static/img/landing/guru/pond-design.jpg"
   },
   {
     "name": "อภิศิลป์ ตรุงกานนท์",
@@ -77,32 +63,11 @@
     "image": "/static/img/landing/guru/ong-marketing.jpg"
   },
   {
-    "name": "ศิระ สัจจินานนท์",
-    "nickname": "พี่ฮันท์",
-    "jobPosition": "CTO & Co-Founder Jitta.com",
-    "major": "programming",
-    "image": "/static/img/landing/guru/hunt-programming.jpg"
-  },
-  {
-    "name": "เจริญ ลักษณ์เลิศกุล",
-    "nickname": "พี่เจ",
-    "jobPosition": "ผู้ช่วยผู้อำนวยการ ฝ่ายกลยุทธ์และปฏิบัติการ\nออนไลน์สเตชั่น บริษัททรูมีเดีย",
-    "major": "marketing",
-    "image": "/static/img/landing/guru/j-marketing.jpg"
-  },
-  {
-    "name": "ภาวุธ พงษ์วิทยภานุ",
-    "nickname": "พี่ป้อม",
-    "jobPosition": "CEO TARAD Group",
-    "major": "marketing",
-    "image": "/static/img/landing/guru/pom-marketing.jpg"
-  },
-  {
-    "name": "สุรศักดิ์ เหลืองอุษากุล",
-    "nickname": "พี่จิ๊บ",
-    "jobPosition": "Strategic Planning Director BrandBaker",
-    "major": "marketing",
-    "image": "/static/img/landing/guru/jib-marketing.jpg"
+    "name": "อภิรักษ์ ปนาทกูล",
+    "nickname": "พี่แบงค์",
+    "jobPosition": "UX Evangelist บริษัท Omise payment",
+    "major": "designer",
+    "image": "/static/img/landing/guru/bank-design.jpg"
   },
   {
     "name": "เมธปริยา คํานวนวุฒ",
@@ -112,10 +77,45 @@
     "image": "/static/img/landing/guru/wan-marketing.jpg"
   },
   {
-    "name": "ศุภเดช สุทธิพงศ์คณาสัย",
-    "nickname": "พี่โก๋",
-    "jobPosition": "Founder บริษัท VR Online จำกัด",
+    "name": "สุรศักดิ์ เหลืองอุษากุล",
+    "nickname": "พี่จิ๊บ",
+    "jobPosition": "Strategic Planning Director BrandBaker",
+    "major": "marketing",
+    "image": "/static/img/landing/guru/jib-marketing.jpg"
+  },
+  {
+    "name": "วรัทธน์ วงศมณีกิจ",
+    "nickname": "พี่ตั้ง",
+    "jobPosition": "Product Owner บริษัท Thoth Zocial",
+    "major": "programming",
+    "image": "/static/img/landing/guru/thang-programming.jpg"
+  },
+  {
+    "name": "ปัญจมพงศ์ เสริมสวัสดิ์ศรี",
+    "nickname": "พี่ปันเจ",
+    "jobPosition": "CTO บริษัท TakeMeTour",
+    "major": "programming",
+    "image": "/static/img/landing/guru/panj-programming.jpg"
+  },
+  {
+    "name": "จักรกฤษณ์ ตาฬวัฒน์",
+    "nickname": "พี่เม่น",
+    "jobPosition": "กรรมการผู้จัดการบริษัท ซี้ด ธีมส์ จำกัด\n(SeedThemes.com)",
+    "major": "designer",
+    "image": "/static/img/landing/guru/men-design.jpg"
+  },
+  {
+    "name": "คนที่หนึ่ง แสงหิรัญ",
+    "nickname": "พี่หนึ่ง",
+    "jobPosition": "อาจารย์ประจำภาควิชาออกแบบนิเทศศิลป์\nคณะนิเทศศาสตร์ มหาวิทยาลัยอัสสัมชัญ",
+    "major": "designer",
+    "image": "/static/img/landing/guru/neung-design.jpg"
+  },
+  {
+    "name": "ขจร เจียรนัยพานิชย์",
+    "nickname": "พี่เอ็ม",
+    "jobPosition": "Founder, Blogger | The Zero Publishing Co., Ltd.",
     "major": "content",
-    "image": "/static/img/landing/guru/go-content.jpg"
+    "image": "/static/img/landing/guru/m-content.jpg"
   }
 ]

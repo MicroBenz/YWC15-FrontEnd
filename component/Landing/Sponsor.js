@@ -1,8 +1,8 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled, { css } from 'styled-components';
 import SectionHeader from './SectionHeader';
 
-import content from './content.json'
+import content from './content.json';
 
 const SponsorWarpper = styled.div`
 
@@ -12,8 +12,18 @@ const SponsorLogo = styled.div`
   display: flex;
 
   img {
-    max-width: 180px;
-    max-height: 180px;
+    ${props => props.vip && css`
+      max-width: 175px;
+      max-height: 175px;
+    `}
+    ${props => props.gold && css`
+      max-width: 150px;
+      max-height: 150px;
+    `}
+    ${props => props.silver && css`
+      max-width: 135px;
+      max-height: 135px;
+    `}
     margin: 15px;
   }
   order: ${props => props.desktopOrder};
@@ -29,9 +39,8 @@ const SponsorsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: flex-start;
   justify-content: center;
-`
+`;
 
 const Sponsor = () => (
   <SponsorWarpper className="container">
@@ -39,8 +48,26 @@ const Sponsor = () => (
     <SponsorsContainer>
       {
         content.sponsors.map(s => (
-          <SponsorLogo desktopOrder={s.dOrder} mobileOrder={s.mOrder}>
+          <SponsorLogo key={s.name} desktopOrder={s.dOrder} mobileOrder={s.mOrder} vip>
             <img src={`/static/img/landing/sponsor/${s.name}.png`} alt="" />
+          </SponsorLogo>
+        ))
+      }
+    </SponsorsContainer>
+    <SponsorsContainer>
+      {
+        content.goldSponsors.map(s => (
+          <SponsorLogo key={s.name} desktopOrder={s.dOrder} mobileOrder={s.mOrder} gold>
+            <img src={`/static/img/landing/sponsor/gold/${s.name}.png`} alt="" />
+          </SponsorLogo>
+        ))
+      }
+    </SponsorsContainer>
+    <SponsorsContainer>
+      {
+        content.silverSponsors.map(s => (
+          <SponsorLogo key={s.name} desktopOrder={s.dOrder} mobileOrder={s.mOrder} silver>
+            <img src={`/static/img/landing/sponsor/silver/${s.name}.png`} alt="" />
           </SponsorLogo>
         ))
       }

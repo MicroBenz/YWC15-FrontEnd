@@ -42,40 +42,46 @@ position: relative;
 `;
 
 const SponsorWrapper = styled.div`
-position: relative;
-margin: 25px;
+  position: relative;
+  margin: 25px;
 
-@media(max-width: 768px) {
-  margin: 10px;
-}
-
-img.circle {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0.8;
-  height: 220px;
-  width: 220px;
-  max-width: none;
-  margin: -28px;
-  
-  @media(max-width: 768px) {
-    height: 178px;
-    width: 178px;
-    margin: -24px;
+  display: flex;
+  order: ${props => props.desktopOrder};
+  @media(max-width: 860px) {
+    order: ${props => props.mobileOrder};
   }
-}
+
+  @media(max-width: 768px) {
+    margin: 10px;
+  }
+
+  img.circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.8;
+    height: 220px;
+    width: 220px;
+    max-width: none;
+    margin: -28px;
+    
+    @media(max-width: 768px) {
+      height: 178px;
+      width: 178px;
+      margin: -24px;
+    }
+  }
 `;
 
 const SponsorLogo = styled.img`
-display: flex;
-height: 125px;
-margin: 20px;
-max-width: none;
+  display: flex;
+  height: 125px;
+  margin: 20px;
+  max-width: none;
 
-@media(max-width: 768px) {
-  height: 100px;
-  margin: 15px;
+  @media(max-width: 768px) {
+    height: 100px;
+    margin: 15px;
 }
 `;
 
@@ -84,11 +90,11 @@ const Footer = () => (
     <SponsorContainer className="columns">
       {
         content.sponsors.map(s => (
-          <SponsorWrapper key={s}>
+          <SponsorWrapper key={s.name} desktopOrder={s.dOrder} mobileOrder={s.mOrder} >
             <img className="circle circle-1" src="/static/img/landing/materials/free1.png" alt="" />
             <img className="circle circle-2" src="/static/img/landing/materials/free2.png" alt="" />
             <img className="circle circle-3" src="/static/img/landing/materials/free3.png" alt="" />
-            <SponsorLogo src={`/static/img/landing/sponsor/${s}.png`} alt="" />
+            <SponsorLogo src={`/static/img/landing/sponsor/${s.name}.png`} alt="" />
           </SponsorWrapper>
         ))
       }

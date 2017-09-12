@@ -1,28 +1,77 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled, { css } from 'styled-components';
 import SectionHeader from './SectionHeader';
 
-import content from './content.json'
-
-const SponsorLogo = styled.img`
-  width: 180px;
-  margin: 15px;
-`;
+import content from './content.json';
 
 const SponsorWarpper = styled.div`
-  
+
 `
+
+const SponsorLogo = styled.div`
+  display: flex;
+
+  img {
+    ${props => props.vip && css`
+      max-width: 175px;
+      max-height: 175px;
+    `}
+    ${props => props.gold && css`
+      max-width: 150px;
+      max-height: 150px;
+    `}
+    ${props => props.silver && css`
+      max-width: 135px;
+      max-height: 135px;
+    `}
+    margin: 15px;
+  }
+  order: ${props => props.desktopOrder};
+  
+  @media(max-width: 860px) {
+    flex-basis: 50%;
+    order: ${props => props.mobileOrder};
+    justify-content: ${props => props.mobileOrder % 2 === 0 ? 'flex-start' : 'flex-end'};
+  }
+`;
+
+const SponsorsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+`;
 
 const Sponsor = () => (
   <SponsorWarpper className="container">
     <SectionHeader title="Sponsor" subtitle="ผู้ใหญ่ใจดี" />
-    <div className="sponsors">
+    <SponsorsContainer>
       {
         content.sponsors.map(s => (
-          <SponsorLogo src={`/static/img/landing/sponsor/${s}.png`} alt="" />
+          <SponsorLogo key={s.name} desktopOrder={s.dOrder} mobileOrder={s.mOrder} vip>
+            <img src={`/static/img/landing/sponsor/${s.name}.png`} alt="" />
+          </SponsorLogo>
         ))
       }
-    </div>
+    </SponsorsContainer>
+    <SponsorsContainer>
+      {
+        content.goldSponsors.map(s => (
+          <SponsorLogo key={s.name} desktopOrder={s.dOrder} mobileOrder={s.mOrder} gold>
+            <img src={`/static/img/landing/sponsor/gold/${s.name}.png`} alt="" />
+          </SponsorLogo>
+        ))
+      }
+    </SponsorsContainer>
+    <SponsorsContainer>
+      {
+        content.silverSponsors.map(s => (
+          <SponsorLogo key={s.name} desktopOrder={s.dOrder} mobileOrder={s.mOrder} silver>
+            <img src={`/static/img/landing/sponsor/silver/${s.name}.png`} alt="" />
+          </SponsorLogo>
+        ))
+      }
+    </SponsorsContainer>
   </SponsorWarpper>
 );
 

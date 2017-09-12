@@ -41,9 +41,60 @@
     }
   },
   "contact": [
-    { "text": "092-458-7067 (พี่ฟง)", "tel": "+66924587067"},
-    { "text": "085-666-7571 (พี่เบนซ์)", "tel": "+6656667571"}
+    {
+      "text": "092-458-7067 (พี่ฟง)",
+      "tel": "+66924587067"
+    },
+    {
+      "text": "085-666-7571 (พี่เบนซ์)",
+      "tel": "+6656667571"
+    }
   ],
   "doneRegister": "น้องได้ทำการสมัครค่ายเสร็จเรียบร้อย ติดตามประกาศผลได้เร็วๆ นี้นะคะ",
-  "sponsors": ["s_cpall", "s_twa", "s_abac", "s_scb"]
+  "sponsors": [
+    {
+      "name": "s_cpall",
+      "dOrder": "1",
+      "mOrder": "3"
+    },
+    {
+      "name": "s_twa",
+      "dOrder": "2",
+      "mOrder": "1"
+    },
+    {
+      "name": "s_abac",
+      "dOrder": "3",
+      "mOrder": "2"
+    },
+    {
+      "name": "s_scb",
+      "dOrder": "4",
+      "mOrder": "4"
+    }
+  ],
+  "goldSponsors": [
+    {
+      "name": "com-art",
+      "dOrder": "1",
+      "mOrder": "1"
+    },
+    {
+      "name": "sci-tech",
+      "dOrder": "2",
+      "mOrder": "2"
+    }
+  ],
+  "silverSponsors": [
+    {
+      "name": "mango-zero",
+      "dOrder": "1",
+      "mOrder": "1"
+    },
+    {
+      "name": "pantip",
+      "dOrder": "2",
+      "mOrder": "2"
+    }
+  ]
 }

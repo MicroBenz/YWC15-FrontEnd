@@ -195,7 +195,7 @@ const SponsorContainer = styled.div`
   justify-content: center;
   position: relative;
 
-  @media(max-width: 768px) {
+  @media(max-width: 860px) {
     flex-direction: row;
     flex-wrap: wrap;
   }
@@ -204,6 +204,12 @@ const SponsorContainer = styled.div`
 const SponsorWrapper = styled.div`
   position: relative;
   margin: 25px;
+
+  display: flex;
+  order: ${props => props.desktopOrder};
+  @media(max-width: 860px) {
+    order: ${props => props.mobileOrder};
+  }
 
   @media(max-width: 768px) {
     margin: 10px;
@@ -312,11 +318,11 @@ class Welcoming extends React.Component {
         <SponsorContainer className="columns">
           {
             content.sponsors.map(s => (
-              <SponsorWrapper key={s}>
+              <SponsorWrapper key={s.name} desktopOrder={s.dOrder} mobileOrder={s.mOrder} >
                 <img className="circle circle-1" src="/static/img/landing/materials/free1.png" alt="" />
                 <img className="circle circle-2" src="/static/img/landing/materials/free2.png" alt="" />
                 <img className="circle circle-3" src="/static/img/landing/materials/free3.png" alt="" />
-                <SponsorLogo src={`/static/img/landing/sponsor/${s}.png`} alt="" />
+                <SponsorLogo src={`/static/img/landing/sponsor/${s.name}.png`} alt="" />
               </SponsorWrapper>
             ))
           }

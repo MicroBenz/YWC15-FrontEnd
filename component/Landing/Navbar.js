@@ -59,7 +59,7 @@ const NavLink = styled(Link)`
     display: flex;
     position: absolute;
     right: 2.2em;
-    width: 200px;
+    width: 100px;
     justify-content: flex-end;
     font-size: 14px;
     margin-top: 2px;

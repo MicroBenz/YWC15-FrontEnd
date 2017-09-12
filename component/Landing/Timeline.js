@@ -43,17 +43,17 @@ const Timeline = () => (
         <div className="column">
           <TimelineItem
             item={3}
-            onTime={forceTrue || moment().isSame(moment('2017-11-19'))}
+            onTime={forceTrue || moment().isSame(moment('2017-11-26'))}
             title="สัมภาษณ์"
-            date="19 พฤศจิกายน"
+            date="26 พฤศจิกายน"
           />
         </div>
         <div className="column">
           <TimelineItem
             item={4}
-            onTime={forceTrue || moment().isSame(moment('2017-11-26'))}
+            onTime={forceTrue || moment().isSame(moment('2017-12-3'))}
             title="ประกาศผลสัมภาษณ์"
-            date="26 พฤศจิกายน"
+            date="3 ธันวาคม"
           />
         </div>
         <div className="column">

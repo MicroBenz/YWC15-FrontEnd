@@ -17,7 +17,6 @@ body {
   -webkit-font-smoothing: antialiased;
   margin: 0 !important;
   padding: 0 !important;
-  min-height: 100vh;
   text-align: center;
 }
 

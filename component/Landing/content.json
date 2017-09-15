@@ -63,27 +63,12 @@
       "mOrder": "1"
     },
     {
-      "name": "s_abac",
-      "dOrder": "3",
-      "mOrder": "2"
-    },
-    {
       "name": "s_scb",
       "dOrder": "4",
       "mOrder": "4"
     }
   ],
   "goldSponsors": [
-    {
-      "name": "com-art",
-      "dOrder": "1",
-      "mOrder": "1"
-    },
-    {
-      "name": "sci-tech",
-      "dOrder": "2",
-      "mOrder": "2"
-    }
   ],
   "silverSponsors": [
     {

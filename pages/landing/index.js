@@ -132,7 +132,7 @@ export default class LandingPage extends Component {
         <Section name="faq" className="faq">
           <FAQ />
         </Section>
-        { true && <Section name="pr" className="pr">
+        { false && <Section name="pr" className="pr">
           <Pr />
         </Section>}
         <ContactSection name="contactus" className="contactus">

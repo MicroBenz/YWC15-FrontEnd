@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Router from 'next/router';
 
 import colors from '../../utils/colors';
 import GlowingButton from '../../component/Core/GlowingButton';
@@ -115,7 +116,7 @@ const Column = styled.div.attrs({
   }
 `;
 
-const Pr = () => (
+const Pr = (props) => (
   <PrWarpper className="container">
     <Header>เว็บไซต์ร่วมประชาสัมพันธ์</Header>
     <Container>
@@ -124,44 +125,48 @@ const Pr = () => (
         <Square style={{ marginRight: '5px' }} />
         <Square />
       </div>
-      <div className="slogan-outer-container">
-        <div className="slogan-inner-container">
-          <div className="columns">
-            <Column className="column">
-              <p>JWC.in.th</p>
-              <p>JWC.in.th</p>
-              <p>JWC.in.th</p>
-              <p>JWC.in.th</p>
-              <p>JWC.in.th</p>
-              <p>JWC.in.th</p>
-              <p>JWC.in.th</p>
-              <p>JWC.in.th</p>
-            </Column>
-            <Column className="column">
-              <p>JWC.in.th</p>
-              <p>JWC.in.th</p>
-              <p>JWC.in.th</p>
-              <p>JWC.in.th</p>
-              <p>JWC.in.th</p>
-              <p>JWC.in.th</p>
-              <p>JWC.in.th</p>
-              <p>JWC.in.th</p>
-            </Column>
-            <Column className="column">
-              <p>JWC.in.th</p>
-              <p>JWC.in.th</p>
-              <p>JWC.in.th</p>
-              <p>JWC.in.th</p>
-              <p>JWC.in.th</p>
-              <p>JWC.in.th</p>
-            </Column>
+      { false && (
+        <div className="slogan-outer-container">
+          <div className="slogan-inner-container">
+            <div className="columns">
+              <Column className="column">
+                <p>JWC.in.th</p>
+                <p>JWC.in.th</p>
+                <p>JWC.in.th</p>
+                <p>JWC.in.th</p>
+                <p>JWC.in.th</p>
+                <p>JWC.in.th</p>
+                <p>JWC.in.th</p>
+                <p>JWC.in.th</p>
+              </Column>
+              <Column className="column">
+                <p>JWC.in.th</p>
+                <p>JWC.in.th</p>
+                <p>JWC.in.th</p>
+                <p>JWC.in.th</p>
+                <p>JWC.in.th</p>
+                <p>JWC.in.th</p>
+                <p>JWC.in.th</p>
+                <p>JWC.in.th</p>
+              </Column>
+              <Column className="column">
+                <p>JWC.in.th</p>
+                <p>JWC.in.th</p>
+                <p>JWC.in.th</p>
+                <p>JWC.in.th</p>
+                <p>JWC.in.th</p>
+                <p>JWC.in.th</p>
+              </Column>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </Container>
 
     <PrButton>
-      <GlowingButton>ร่วมประชาสัมพันธ์กับเรา</GlowingButton>
+      <GlowingButton
+        onClick={() => Router.push('/media')}
+      >ร่วมประชาสัมพันธ์กับเรา</GlowingButton>
     </PrButton>
 
   </PrWarpper>

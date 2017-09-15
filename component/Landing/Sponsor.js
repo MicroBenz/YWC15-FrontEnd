@@ -46,7 +46,7 @@ const SponsorLogo = styled.div`
   @media(max-width: 860px) {
     flex-basis: 50%;
     order: ${props => props.mobileOrder};
-    justify-content: ${props => props.mobileOrder % 2 === 0 ? 'flex-start' : 'flex-end'};
+    justify-content: center;
   }
 `;
 

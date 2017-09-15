@@ -1,0 +1,30 @@
+{
+  "120x600": {
+    "title": "120x600",
+    "img": "/static/img/banner/120x600.png"
+  },
+  "160x600": {
+    "title": "160x600",
+    "img": "/static/img/banner/ban160-600.jpg"
+  },
+  "300x250": {
+    "title": "300x250",
+    "img": "/static/img/banner/ban300-250.gif"
+  },
+  "250x250": {
+    "title": "250x250",
+    "img": "/static/img/banner/ban250-250.jpg"
+  },
+  "200x200": {
+    "title": "200x200",
+    "img": "/static/img/banner/ban200-200.jpg"
+  },
+  "468x60": {
+    "title": "468x60",
+    "img": "/static/img/banner/ban468-60.jpg"
+  },
+  "500x329": {
+    "title": "500x329",
+    "img": "/static/img/banner/ban500-329.jpg"
+  }
+}

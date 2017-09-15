@@ -77,15 +77,15 @@ const BannerModal = props => (
           <h1>กรุณากรอกข้อมูล</h1>
           <div className="field">
             <div className="control">
-              <input className="input" type="text" placeholder="ชื่อเว็บไซต์ของคุณ" />
+              <input className="input" type="text" placeholder="ชื่อเว็บไซต์ของคุณ" onChange={e => props.setBannerData('name', e.target.value)} value={props.affiliate.name} />
             </div>
           </div>
           <div className="field">
             <div className="control">
-              <input className="input" type="text" placeholder="ลิงค์เว็บไซต์ของคุณ" />
+              <input className="input" type="text" placeholder="ลิงค์เว็บไซต์ของคุณ" onChange={e => props.setBannerData('url', e.target.value)} value={props.affiliate.url} />
             </div>
           </div>
-          <Button />
+          <Button onClick={props.onClick} />
         </Form>
       </div>
     </Container>

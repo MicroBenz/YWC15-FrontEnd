@@ -1,9 +1,12 @@
 import React from 'react';
 import styled, { injectGlobal } from 'styled-components';
+
+import connect from '../../store/connect';
 import colors from '../../utils/colors';
 import SectionHeader from '../../component/Landing/SectionHeader';
 import BannerModal from '../../component/Media/BannerModal';
 import content from '../../component/Media/banner.json';
+import { actions as affiliateActions } from '../../store/reducers/affiliate';
 
 /* eslint-disable */
 injectGlobal`
@@ -70,14 +73,24 @@ const BannerContainer = styled.div`
   }
 `;
 
+@connect(
+  null,
+  { ...affiliateActions }
+)
 export default class MediaPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       popup: false,
-      banner: {}
+      banner: {},
+      affiliate: {
+        url: '',
+        name: ''
+      }
     };
     this.hideModal = this.hideModal.bind(this);
+    this.setAffiliateData = this.setAffiliateData.bind(this);
+    this.onClickSaveAffiliate = this.onClickSaveAffiliate.bind(this);
   }
 
   componentDidMount() {
@@ -92,6 +105,21 @@ export default class MediaPage extends React.Component {
     });
   }
 
+  onClickSaveAffiliate() {
+    const { name, url } = this.state.affiliate;
+    this.props.saveAffiliate(name, url)
+      .then(() => console.log('successfully save'));
+  }
+
+  setAffiliateData(field, value) {
+    this.setState({
+      affiliate: {
+        ...this.state.affiliate,
+        [field]: value
+      }
+    });
+  }
+
   hideModal() {
     this.setState({
       popup: false,
@@ -102,7 +130,15 @@ export default class MediaPage extends React.Component {
   render() {
     return (
       <Foreground>
-        { this.state.popup && <BannerModal banner={this.state.banner} hideModal={this.hideModal} />}
+        { this.state.popup && (
+          <BannerModal
+            affiliate={this.state.affiliate}
+            banner={this.state.banner}
+            hideModal={this.hideModal}
+            onClick={this.onClickSaveAffiliate}
+            setBannerData={this.setAffiliateData}
+          />
+        )}
         <SectionHeader title="public relations" subtitle="ร่วมประชาสัมพันธ์กับเรา" />
         <BannerContainer className="container-fluid">
           <div className="columns">

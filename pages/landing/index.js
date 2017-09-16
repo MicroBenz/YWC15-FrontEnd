@@ -36,6 +36,7 @@ injectGlobal`
     -webkit-font-smoothing: antialiased;
     margin: 0 !important;
     padding: 0 !important;
+    overflow-y: hidden !important;
   }
 
   h1, h2, h3, h4, h5, h6 {

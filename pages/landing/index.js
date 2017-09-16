@@ -30,6 +30,10 @@ injectGlobal`
       url('static/fonts/supermarket.ttf') format('ttf');
   }
 
+  html {
+    overflow-y: hidden !important; 
+  }
+
   body {
     font-family: 'Supermarket';
     letter-spacing: .02em;

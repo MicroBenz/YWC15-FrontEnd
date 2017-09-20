@@ -147,9 +147,11 @@ const SloganInnerWrapper = styled.div`
 const SloganText = styled.h1`
   font-size: 26px;
   letter-spacing: 1.8px;
+  padding-top: 6px;
 
   @media(max-width: 768px) {
     font-size: 15px;
+    padding-top: 0px;
     letter-spacing: 1.5px;
   }
 
@@ -306,7 +308,7 @@ class Welcoming extends React.Component {
                       show: false
                     }}
                   >
-                    @Assumption University (Bangna)
+                    REGISTER TODAY !
                   </Typist>
                 </CampLocation>
               </div>

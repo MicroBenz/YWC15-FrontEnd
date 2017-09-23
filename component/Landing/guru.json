@@ -84,6 +84,13 @@
     "image": "/static/img/landing/guru/jib-marketing.jpg"
   },
   {
+    "name": "จิรัสย์ พิพัฒน์วศิน",
+    "nickname": "พี่เอิร์ธ",
+    "jobPosition": "กรรมการผู้จัดการ บริษัท โบลด์ บิสเน็ท จำกัด",
+    "major": "designer",
+    "image": "/static/img/landing/guru/earth-design.jpg"
+  },
+  {
     "name": "วรัทธน์ วงศมณีกิจ",
     "nickname": "พี่ตั้ง",
     "jobPosition": "Product Owner บริษัท Thoth Zocial",
@@ -119,3 +126,5 @@
     "image": "/static/img/landing/guru/m-content.jpg"
   }
 ]
+
+ 

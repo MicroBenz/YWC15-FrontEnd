@@ -38,6 +38,7 @@ injectGlobal`
     padding: 0 !important;
     overflow-y: hidden !important;
     min-height: 100vh;
+    filter: grayscale(40%);
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -90,6 +91,14 @@ const Foreground = styled.div`
   overflow: hidden;
 `;
 
+const BlackBow = styled.img`
+  position: fixed;
+  top: 0;
+  right: 0;
+  transform: scaleX(-1);
+  height: 220px;
+`;
+
 @connect(
   state => ({
     isShowSeeMore: state.app.isShowSeeMore,
@@ -105,6 +114,7 @@ export default class LandingPage extends Component {
   render() {
     return (
       <Foreground>
+        <BlackBow src="/static/img/bow-black.png" />
         <Navbar />
         <WelcomingSection name="welcoming-section">
           <FreeAll />

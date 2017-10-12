@@ -79,7 +79,7 @@ export default (state = initialState, action) => {
     case GET_REGISTER_DATA.RESOLVED: {
       return {
         ...state,
-        ..._.omit(action.data, ['_id', 'facebook', 'status', 'questions']),
+        ..._.omit(action.data, ['_id', 'facebook', 'questions']),
         previewPicture: action.data.picture || '',
         generalQuestions: action.data.questions.generalQuestions.map(answer => answer.answer),
         specialQuestions: action.data.questions.specialQuestions[state.major].map(answer => answer.answer),

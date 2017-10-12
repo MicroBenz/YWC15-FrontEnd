@@ -84,7 +84,7 @@ export default connect(
   state => ({
     registerStat: state.app.registerStat,
     isShowSeeMore: state.app.isShowSeeMore,
-    isDone: state.register.status !== 'in progress'
+    isDone: state.register.status !== 'in progress' && state.auth.isLogin
   }),
   { ...appActions }
 )(Register);

@@ -118,10 +118,9 @@ const RegisterMajor = ({ major, count = 0, onClickSeeMore, isDone = false }) => 
       <MajorSeeMore onClick={onClickSeeMore}>[ รายละเอียด ]</MajorSeeMore>
       <LoginButton major={major} />
       {isDone && (
-        <GlowingButton onClick={() => {
-          Router.push('/registration/completed', '/register/completed');
-          animateScroll.scrollToTop();
-        }}
+        <GlowingButton
+          style={{ width: '160px', margin: '0 auto' }}
+          onClick={() => Router.push('/registration/completed', '/register/completed')}
         >ดูข้อมูลใบสมัคร</GlowingButton>
       )}
     </InnerContainer>

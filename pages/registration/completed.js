@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Router from 'next/router';
 import styled, { injectGlobal } from 'styled-components';
+import { animateScroll } from 'react-scroll';
 
 import connect from '../../store/connect';
 import Avatar from '../../component/Profile/Avatar';
@@ -37,32 +38,39 @@ const GoHomeButton = styled(GlowingButton)`
   margin-top: 10px;
 `;
 
-const CompletedRegistration = props => (
-  <Container>
-    <Avatar {...props.registerData} />
-    <PaddingContainer className="columns">
-      <div className="column">
-        <Personalnfo {...props.registerData} />
-      </div>
-      <div className="column">
-        <Contact {...props.registerData} />
-      </div>
-    </PaddingContainer>
-    <PaddingContainer>
-      <Activities {...props.registerData} />
-    </PaddingContainer>
-    <PaddingContainer>
-      <GeneralQuestions {...props.registerData} />
-    </PaddingContainer>
-    <PaddingContainer>
-      <MajorQuestions {...props.registerData} />
-    </PaddingContainer>
-    <GoHomeButton onClick={() => Router.push('/landing', '/')}>กลับสู่หน้าแรก</GoHomeButton>
-  </Container>
-);
-
-export default connect(
+@connect(
   state => ({
     registerData: state.register
   })
-)(CompletedRegistration);
+)
+export default class CompletedRegistration extends Component {
+  componentDidMount() {
+    animateScroll.scrollToTop();
+  }
+  render() {
+    const { props } = this;
+    return (
+      <Container>
+        <Avatar {...props.registerData} />
+        <PaddingContainer className="columns">
+          <div className="column">
+            <Personalnfo {...props.registerData} />
+          </div>
+          <div className="column">
+            <Contact {...props.registerData} />
+          </div>
+        </PaddingContainer>
+        <PaddingContainer>
+          <Activities {...props.registerData} />
+        </PaddingContainer>
+        <PaddingContainer>
+          <GeneralQuestions {...props.registerData} />
+        </PaddingContainer>
+        <PaddingContainer>
+          <MajorQuestions {...props.registerData} />
+        </PaddingContainer>
+        <GoHomeButton onClick={() => Router.push('/landing', '/')}>กลับสู่หน้าแรก</GoHomeButton>
+      </Container>
+    );
+  }
+}

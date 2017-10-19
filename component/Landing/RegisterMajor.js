@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import Router from 'next/router';
+import { animateScroll } from 'react-scroll';
 
 import HeaderArtwork from './HeaderArtwork';
 import GlowingText from '../Core/GlowingText';
+import GlowingButton from '../Core/GlowingButton';
 import LoginButton from '../Login/LoginButton';
 import colors from '../../utils/colors';
 import content from './content.json';
@@ -104,7 +107,7 @@ const InnerContainer = styled.div`
   }
 `;
 
-const RegisterMajor = ({ major, count = 0, onClickSeeMore }) => (
+const RegisterMajor = ({ major, count = 0, onClickSeeMore, isDone = false }) => (
   <Container>
     <InnerContainer>
       <HeaderArtwork />
@@ -114,6 +117,12 @@ const RegisterMajor = ({ major, count = 0, onClickSeeMore }) => (
       <MajorDescription>{content.major[major].description}</MajorDescription>
       <MajorSeeMore onClick={onClickSeeMore}>[ รายละเอียด ]</MajorSeeMore>
       <LoginButton major={major} />
+      {isDone && (
+        <GlowingButton
+          style={{ width: '160px', margin: '0 auto' }}
+          onClick={() => Router.push('/registration/completed', '/register/completed')}
+        >ดูข้อมูลใบสมัคร</GlowingButton>
+      )}
     </InnerContainer>
   </Container>
 );

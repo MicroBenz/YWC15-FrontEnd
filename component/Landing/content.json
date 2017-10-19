@@ -63,6 +63,11 @@
       "mOrder": "1"
     },
     {
+      "name": "s_pim",
+      "dOrder": "3",
+      "mOrder": "2"
+    },
+    {
       "name": "s_scb",
       "dOrder": "4",
       "mOrder": "4"
@@ -88,6 +93,16 @@
     },
     {
       "name": "dek-d",
+      "dOrder": "4",
+      "mOrder": "4"
+    },
+    {
+      "name": "lnw",
+      "dOrder": "4",
+      "mOrder": "4"
+    },
+    {
+      "name": "p_t",
       "dOrder": "4",
       "mOrder": "4"
     }

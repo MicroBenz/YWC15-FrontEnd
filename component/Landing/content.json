@@ -98,13 +98,18 @@
     },
     {
       "name": "lnw",
-      "dOrder": "4",
-      "mOrder": "4"
+      "dOrder": "5",
+      "mOrder": "5"
     },
     {
       "name": "p_t",
-      "dOrder": "4",
-      "mOrder": "4"
+      "dOrder": "6",
+      "mOrder": "6"
+    },
+    {
+      "name": "wongnai",
+      "dOrder": "7",
+      "mOrder": "7"
     }
   ]
 }

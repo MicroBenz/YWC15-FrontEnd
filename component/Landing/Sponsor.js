@@ -42,7 +42,7 @@ const SponsorLogo = styled.div`
     }
   }
   order: ${props => props.desktopOrder};
-  
+
   @media(max-width: 860px) {
     flex-basis: 50%;
     order: ${props => props.mobileOrder};
@@ -55,6 +55,16 @@ const SponsorsContainer = styled.div`
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
+
+  ${props => props.silver && css`
+    margin: 0 auto;
+    padding: 0px 13vw;
+
+    @media(max-width: 860px) {
+      margin: 0 auto;
+      padding: 0px 7vw;
+    }
+  `}
 `;
 
 const Sponsor = () => (
@@ -78,7 +88,7 @@ const Sponsor = () => (
         ))
       }
     </SponsorsContainer>
-    <SponsorsContainer>
+    <SponsorsContainer silver>
       {
         content.silverSponsors.map(s => (
           <SponsorLogo key={s.name} desktopOrder={s.dOrder} mobileOrder={s.mOrder} silver>

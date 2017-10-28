@@ -29,7 +29,7 @@ const MapPhoto = styled.div`
     .icon {
       transition: all .4s;
     }
-    
+
     h1, .icon {
       display: flex;
     }
@@ -41,7 +41,7 @@ const MapPhoto = styled.div`
   }
 
   &:hover {
-    
+
     img {
       opacity: 0.2;
     }
@@ -66,19 +66,19 @@ const LinktoMap = styled.a`
   }
 `
 
-class Map extends React.Component {
+class Map extends React.PureComponent {
   render() {
     return (
       <div>
         <SectionHeader title="Location" subtitle="แผนที่เดินทาง" />
         <div className="container">
-          <LinktoMap href="https://goo.gl/maps/FrvRu2XNg2y" target="_blank" rel="noopener noreferrer">
+          <LinktoMap href="https://goo.gl/maps/HFJEdYAn9xv" target="_blank" rel="noopener noreferrer">
             <MapPhoto>
               <div className="icon">
                 <IconMap src="/static/img/landing/materials/location-ywc.png" />
                 <h1>เปิดแผนที่</h1>
               </div>
-              <img src="/static/img/landing/map_v2.png" alt="" />
+              <img src="/static/img/landing/map-pim.png" alt="" />
             </MapPhoto>
           </LinktoMap>
         </div>

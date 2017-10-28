@@ -132,7 +132,7 @@ export default class LandingPage extends Component {
         <Section name="timeline" className="timeline">
           <Timeline />
         </Section>
-        { false && <MapSection name="map" className="map">
+        { true && <MapSection name="map" className="map">
           <Map />
         </MapSection>}
         <Section name="gallery" className="gallery">

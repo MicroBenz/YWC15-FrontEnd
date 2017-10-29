@@ -123,24 +123,24 @@ export default class LandingPage extends Component {
         <WhatISYWCSection name="what-is-ywc" className="what-is-ywc">
           <WhatIsYWC />
         </WhatISYWCSection>
-        <GuruSection name="guru" className="guru">
-          <Guru />
-        </GuruSection>
         <Section name="register" className="register">
           <Register />
         </Section>
         <Section name="timeline" className="timeline">
           <Timeline />
         </Section>
-        { true && <MapSection name="map" className="map">
+        <MapSection name="map" className="map">
           <Map />
-        </MapSection>}
+        </MapSection>
+        <GuruSection name="guru" className="guru">
+          <Guru />
+        </GuruSection>
         <Section name="gallery" className="gallery">
           <Gallery />
         </Section>
-        { true && <Section name="sponsor" className="sponsor">
+        <Section name="sponsor" className="sponsor">
           <Sponsor />
-        </Section>}
+        </Section>
         <Section name="faq" className="faq">
           <FAQ />
         </Section>

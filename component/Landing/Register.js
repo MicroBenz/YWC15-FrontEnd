@@ -15,7 +15,7 @@ const Container = styled.div.attrs({
 `;
 
 const Register = ({ registerStat, isShowSeeMore, showModal, hideModal, isDone }) => (
-  <div>
+  <div id="register">
     <SectionHeader title="Register" subtitle="สมัครค่าย" />
     <Container>
       <div className="columns">

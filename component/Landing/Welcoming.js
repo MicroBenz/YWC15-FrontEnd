@@ -172,10 +172,10 @@ const CampDate = styled.h2`
 `;
 
 const CampLocation = styled.h2`
-  font-size: 22px;
+  font-size: 18px;
   margin: 0;
   @media(max-width: 768px) {
-    font-size: 13px;
+    font-size: 11px;
   }
 `;
 
@@ -226,7 +226,7 @@ const SponsorWrapper = styled.div`
     width: 220px;
     max-width: none;
     margin: -28px;
-    
+
     @media(max-width: 768px) {
       height: 178px;
       width: 178px;
@@ -308,7 +308,7 @@ class Welcoming extends React.Component {
                       show: false
                     }}
                   >
-                    REGISTER TODAY !
+                    @ Panyapiwat Institute of Management
                   </Typist>
                 </CampLocation>
               </div>

@@ -308,7 +308,7 @@ class Welcoming extends React.Component {
                       show: false
                     }}
                   >
-                    @ Panyapiwat Institute of Management
+                    @ สถาบันการจัดการปัญญาภิวัฒน์
                   </Typist>
                 </CampLocation>
               </div>

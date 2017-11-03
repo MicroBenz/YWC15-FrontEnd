@@ -1,8 +1,9 @@
 import axios from 'axios';
+import config from '../config';
 
 const createApiInstance = () => (
   axios.create({
-    baseURL: '/api',
+    baseURL: config.apiPath,
     headers: {
       'x-access-token': window.localStorage.getItem('ywc15Token') || ''
     }

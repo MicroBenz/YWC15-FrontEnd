@@ -41,13 +41,13 @@ const proxy = httpProxy.createProxyServer({
 app.prepare().then(() => {
   const server = express();
 
-  server.use('/api', (req, res) => {
-    proxy.web(req, res, {
-      target: config.apiPath,
-      prependPath: false,
-      changeOrigin: true,
-    });
-  });
+  // server.use('/api', (req, res) => {
+  //   proxy.web(req, res, {
+  //     target: config.apiPath,
+  //     prependPath: false,
+  //     changeOrigin: true,
+  //   });
+  // });
 
   server.get('/', (req, res) => renderAndCache(req, res, '/landing'));
   // server.get('/media', (req, res) => renderAndCache(req, res, '/media'));

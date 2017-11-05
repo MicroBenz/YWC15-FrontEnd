@@ -30,14 +30,14 @@ const Timeline = () => (
     <Container>
       <div className="columns">
         <div className="column">
-          <TimelineItem item={1} onTime={forceTrue || isBetween('2017-09-07', '2017-11-05')} title="รับสมัคร" date="7 กันยายน - 5 พฤศจิกายน" />
+          <TimelineItem item={1} onTime={forceTrue || isBetween('2017-09-07', '2017-11-12')} title="รับสมัคร" date="7 กันยายน - 12 พฤศจิกายน" />
         </div>
         <div className="column">
           <TimelineItem
             item={2}
-            onTime={forceTrue || isBetween('2017-11-11', '2017-11-19')}
+            onTime={forceTrue || isBetween('2017-11-19', '2017-11-25')}
             title="ประกาศผล"
-            date="11 พฤศจิกายน"
+            date="19 พฤศจิกายน"
           />
         </div>
         <div className="column">

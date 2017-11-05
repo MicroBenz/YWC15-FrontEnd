@@ -35,9 +35,9 @@ const Timeline = () => (
         <div className="column">
           <TimelineItem
             item={2}
-            onTime={forceTrue || isBetween('2017-11-19', '2017-11-25')}
+            onTime={forceTrue || isBetween('2017-11-17', '2017-11-25')}
             title="ประกาศผล"
-            date="19 พฤศจิกายน"
+            date="17 พฤศจิกายน"
           />
         </div>
         <div className="column">

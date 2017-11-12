@@ -38,7 +38,6 @@ injectGlobal`
     padding: 0 !important;
     overflow-y: hidden !important;
     min-height: 100vh;
-    filter: grayscale(40%);
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -114,7 +113,7 @@ export default class LandingPage extends Component {
   render() {
     return (
       <Foreground>
-        <BlackBow src="/static/img/bow-black.png" />
+        {/* <BlackBow src="/static/img/bow-black.png" /> */}
         <Navbar />
         <WelcomingSection name="welcoming-section">
           <FreeAll />
@@ -123,24 +122,24 @@ export default class LandingPage extends Component {
         <WhatISYWCSection name="what-is-ywc" className="what-is-ywc">
           <WhatIsYWC />
         </WhatISYWCSection>
-        <GuruSection name="guru" className="guru">
-          <Guru />
-        </GuruSection>
         <Section name="register" className="register">
           <Register />
         </Section>
         <Section name="timeline" className="timeline">
           <Timeline />
         </Section>
-        { false && <MapSection name="map" className="map">
+        <MapSection name="map" className="map">
           <Map />
-        </MapSection>}
+        </MapSection>
+        <GuruSection name="guru" className="guru">
+          <Guru />
+        </GuruSection>
         <Section name="gallery" className="gallery">
           <Gallery />
         </Section>
-        { true && <Section name="sponsor" className="sponsor">
+        <Section name="sponsor" className="sponsor">
           <Sponsor />
-        </Section>}
+        </Section>
         <Section name="faq" className="faq">
           <FAQ />
         </Section>

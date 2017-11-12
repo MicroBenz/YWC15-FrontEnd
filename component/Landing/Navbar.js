@@ -98,12 +98,11 @@ const sections = [
   { href: 'guru', title: 'GURU' },
   { href: 'register', title: 'REGISTER' },
   { href: 'timeline', title: 'TIMELINE' },
-  // { href: 'map', title: 'LOCATION' },
+  { href: 'map', title: 'LOCATION' },
   { href: 'gallery', title: 'GALLERY' },
   { href: 'sponsor', title: 'SPONSOR' },
   { href: 'faq', title: 'Q&A' },
-  { href: 'contactus', title: 'CONTACT US' },
-  // { href: 'social', title: 'SOCIAL' },
+  { href: 'contactus', title: 'CONTACT US' }
 ];
 
 class Navbar extends React.Component {

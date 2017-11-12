@@ -14,8 +14,8 @@ const Container = styled.div.attrs({
   }
 `;
 
-const Register = ({ registerStat, isShowSeeMore, showModal, hideModal }) => (
-  <div>
+const Register = ({ registerStat, isShowSeeMore, showModal, hideModal, isDone }) => (
+  <div id="register">
     <SectionHeader title="Register" subtitle="สมัครค่าย" />
     <Container>
       <div className="columns">
@@ -30,6 +30,7 @@ const Register = ({ registerStat, isShowSeeMore, showModal, hideModal }) => (
                 hideModal();
               }
             }}
+            isDone={isDone}
           />
         </div>
         <div className="column">
@@ -43,6 +44,7 @@ const Register = ({ registerStat, isShowSeeMore, showModal, hideModal }) => (
                 hideModal();
               }
             }}
+            isDone={isDone}
           />
         </div>
         <div className="column">
@@ -56,6 +58,7 @@ const Register = ({ registerStat, isShowSeeMore, showModal, hideModal }) => (
                 hideModal();
               }
             }}
+            isDone={isDone}
           />
         </div>
         <div className="column">
@@ -69,6 +72,7 @@ const Register = ({ registerStat, isShowSeeMore, showModal, hideModal }) => (
                 hideModal();
               }
             }}
+            isDone={isDone}
           />
         </div>
       </div>
@@ -79,7 +83,8 @@ const Register = ({ registerStat, isShowSeeMore, showModal, hideModal }) => (
 export default connect(
   state => ({
     registerStat: state.app.registerStat,
-    isShowSeeMore: state.app.isShowSeeMore
+    isShowSeeMore: state.app.isShowSeeMore,
+    isDone: state.register.status !== 'in progress' && state.auth.isLogin
   }),
   { ...appActions }
 )(Register);

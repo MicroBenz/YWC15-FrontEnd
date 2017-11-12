@@ -34,13 +34,15 @@ export default class MyDocument extends Document {
           <meta name="twitter:site" content="@ywcth" />
           <meta name="twitter:title" content={seo.title} />
           <meta name="twitter:description" content={seo.description} />
-          <meta name="twitter:image" content={`${config.baseURL}/static/img/social/banner.jpg`} />
+          <meta name="twitter:image" content={`${config.baseURL}/static/img/social/banner_fb.jpg`} />
 
           <meta property="og:title" content={seo.title} />
           <meta property="og:type" content="article" />
-          <meta property="og:image" content={`${config.baseURL}/static/img/social/banner.jpg`} />
+          <meta property="og:image" content={`${config.baseURL}/static/img/social/banner_fb.jpg`} />
           <meta property="og:description" content={seo.description} />
           <meta property="og:site_name" content="Young Webmaster Camp 15" />
+          <meta property="article:published_time" content="2017-10-29T14:10:00+07:00" />
+          <meta property="article:modified_time" content="2017-10-29T14:10:00+07:00" />
 
           <link rel="apple-touch-icon" sizes="57x57" href="/static/favicon/apple-icon-57x57.png" />
           <link rel="apple-touch-icon" sizes="60x60" href="/static/favicon/apple-icon-60x60.png" />

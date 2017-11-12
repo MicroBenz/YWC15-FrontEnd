@@ -110,10 +110,11 @@ const BlackBow = styled.img`
 export default class LandingPage extends Component {
   componentDidMount() {
     this.props.loadRegisterStat();
-    // const url = `${config.baseURL}/api`;
-    const url = config.apiPath;
-    console.log(url);
-    const socket = io(url);
+    const socket = io(config.apiPath, {
+      path: '/socket.io',
+      transports: ['websocket'],
+      secure: true,
+    });
     socket.on('connect', () => console.log('connect la'));
     socket.on('queue', (data) => console.log(data));
   }

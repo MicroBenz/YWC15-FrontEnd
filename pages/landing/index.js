@@ -5,6 +5,7 @@ import io from 'socket.io-client';
 
 import connect from '../../store/connect';
 import { actions as appActions } from '../../store/reducers/app';
+import config from '../../config';
 
 import Welcoming from '../../component/Landing/Welcoming';
 import WhatIsYWC from '../../component/Landing/WhatIsYWC';
@@ -109,7 +110,9 @@ const BlackBow = styled.img`
 export default class LandingPage extends Component {
   componentDidMount() {
     this.props.loadRegisterStat();
-    const socket = io('https://staging.ywc15.ywc.in.th');
+    const url = `${config.baseURL}/api`;
+    console.log(url);
+    const socket = io(url);
     socket.on('connect', () => console.log('connect la'));
     socket.on('queue', (data) => console.log(data));
   }

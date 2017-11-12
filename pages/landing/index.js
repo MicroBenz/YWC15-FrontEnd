@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled, { injectGlobal } from 'styled-components';
 import { Element } from 'react-scroll';
-import io from 'socket.io-client';
 
 import connect from '../../store/connect';
 import { actions as appActions } from '../../store/reducers/app';
@@ -110,13 +109,6 @@ const BlackBow = styled.img`
 export default class LandingPage extends Component {
   componentDidMount() {
     this.props.loadRegisterStat();
-    const socket = io(config.apiPath, {
-      path: '/socket.io',
-      transports: ['websocket'],
-      secure: true,
-    });
-    socket.on('connect', () => console.log('connect la'));
-    socket.on('queue', (data) => console.log(data));
   }
 
   render() {

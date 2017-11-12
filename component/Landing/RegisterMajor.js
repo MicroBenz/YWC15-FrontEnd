@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Router from 'next/router';
-import { animateScroll } from 'react-scroll';
+import moment from 'moment';
+// import { animateScroll } from 'react-scroll';
 
 import HeaderArtwork from './HeaderArtwork';
 import GlowingText from '../Core/GlowingText';
@@ -116,7 +117,7 @@ const RegisterMajor = ({ major, count = 0, onClickSeeMore, isDone = false }) => 
       <RegistrantCount><span>{count}</span> คน</RegistrantCount>
       <MajorDescription>{content.major[major].description}</MajorDescription>
       <MajorSeeMore onClick={onClickSeeMore}>[ รายละเอียด ]</MajorSeeMore>
-      <LoginButton major={major} />
+      {moment().isBefore('2017-11-13T03:01:00') && <LoginButton major={major} />}
       {isDone && (
         <GlowingButton
           style={{ width: '160px', margin: '0 auto' }}

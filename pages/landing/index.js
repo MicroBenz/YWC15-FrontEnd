@@ -4,6 +4,7 @@ import { Element } from 'react-scroll';
 
 import connect from '../../store/connect';
 import { actions as appActions } from '../../store/reducers/app';
+import config from '../../config';
 
 import Welcoming from '../../component/Landing/Welcoming';
 import WhatIsYWC from '../../component/Landing/WhatIsYWC';

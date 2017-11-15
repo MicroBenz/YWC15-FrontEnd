@@ -58,6 +58,7 @@ app.prepare().then(() => {
   server.get('/register/step4', (req, res) => app.render(req, res, '/registration', { step: 4 }));
   server.get('/register/verify', (req, res) => app.render(req, res, '/registration', { step: 5 }));
   server.get('/register/completed', (req, res) => app.render(req, res, '/registration/completed'));
+  server.get('/queue', (req, res) => renderAndCache(req, res, '/queue'));
 
   server.get('*', (req, res) => handle(req, res));
   server.listen(config.port, () => console.log(`YWC15 Registration Front-End is started at port ${config.port}`));

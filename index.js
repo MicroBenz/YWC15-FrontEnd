@@ -51,13 +51,15 @@ app.prepare().then(() => {
 
   server.get('/', (req, res) => renderAndCache(req, res, '/landing'));
   // server.get('/media', (req, res) => renderAndCache(req, res, '/media'));
-  server.get('/register', (req, res) => res.redirect('/register/step1'));
-  server.get('/register/step1', (req, res) => app.render(req, res, '/registration', { step: 1 }));
-  server.get('/register/step2', (req, res) => app.render(req, res, '/registration', { step: 2 }));
-  server.get('/register/step3', (req, res) => app.render(req, res, '/registration', { step: 3 }));
-  server.get('/register/step4', (req, res) => app.render(req, res, '/registration', { step: 4 }));
-  server.get('/register/verify', (req, res) => app.render(req, res, '/registration', { step: 5 }));
-  server.get('/register/completed', (req, res) => app.render(req, res, '/registration/completed'));
+  // server.get('/register', (req, res) => res.redirect('/register/step1'));
+  // server.get('/register/step1', (req, res) => app.render(req, res, '/registration', { step: 1 }));
+  // server.get('/register/step2', (req, res) => app.render(req, res, '/registration', { step: 2 }));
+  // server.get('/register/step3', (req, res) => app.render(req, res, '/registration', { step: 3 }));
+  // server.get('/register/step4', (req, res) => app.render(req, res, '/registration', { step: 4 }));
+  // server.get('/register/verify', (req, res) => app.render(req, res, '/registration', { step: 5 }));
+  // server.get('/register/completed', (req, res) => app.render(req, res, '/registration/completed'));
+
+  server.get('/announce', (req, res) => renderAndCache(req, res, '/announce'));
   server.get('/queue', (req, res) => renderAndCache(req, res, '/queue'));
 
   server.get('*', (req, res) => handle(req, res));

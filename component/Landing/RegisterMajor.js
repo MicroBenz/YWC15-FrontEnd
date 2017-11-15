@@ -117,7 +117,7 @@ const RegisterMajor = ({ major, count = 0, onClickSeeMore, isDone = false }) => 
       <RegistrantCount><span>{count}</span> คน</RegistrantCount>
       <MajorDescription>{content.major[major].description}</MajorDescription>
       <MajorSeeMore onClick={onClickSeeMore}>[ รายละเอียด ]</MajorSeeMore>
-      {moment().isBefore('2017-11-13T03:01:00') && <LoginButton major={major} />}
+      {moment().isBefore('2017-11-13T00:01:00') && <LoginButton major={major} />}
       {isDone && (
         <GlowingButton
           style={{ width: '160px', margin: '0 auto' }}

@@ -2,20 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Header from '../../component/Announce/Header';
-import Major from '../../component/Announce/Major';
+import MajorSection from '../../component/Announce/MajorSection';
+import Announcer from '../../component/Announce/Announcer';
 
 const Container = styled.div.attrs({
   className: 'container'
 })`
-  width: 100%;
-  padding: 30px 10%;
-  font-size: 24px;
-  font-family: 'cordia new';
-  line-height: 29px;
   @media(max-width: 768px) {
-    padding: 30px 0;
-  }
-  h2 {
+    padding: 0 5%;
   }
 `;
 
@@ -29,7 +23,8 @@ const Announce = () => (
   <Foreground>
     <Container>
       <Header />
-      <Major />
+      <MajorSection />
+      <Announcer />
     </Container>
   </Foreground>
 );

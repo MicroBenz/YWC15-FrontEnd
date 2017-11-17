@@ -92,6 +92,10 @@ const Homework = styled.div`
   font-size: 20px;
   border-top: 1px solid rgba(102, 252, 241, 0.7);
   text-align: left;
+
+  p {
+    text-indent: 15px;
+  }
 `;
 
 const Column = styled.div`

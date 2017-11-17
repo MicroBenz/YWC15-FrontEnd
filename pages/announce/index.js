@@ -3,6 +3,7 @@ import styled, { injectGlobal } from 'styled-components';
 
 import Header from '../../component/Announce/Header';
 import MajorSection from '../../component/Announce/MajorSection';
+import Information from '../../component/Announce/Information';
 
 /* eslint-disable */
 injectGlobal`
@@ -48,6 +49,7 @@ const Announce = () => (
     <Container>
       <Header />
       <MajorSection />
+      <Information />
     </Container>
   </Foreground>
 );

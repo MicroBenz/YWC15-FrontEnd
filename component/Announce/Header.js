@@ -7,7 +7,7 @@ import HeaderArtwork from '../Landing/HeaderArtwork';
 const HeaderContainer = styled.div`
   text-align: center;
   margin-bottom: 15px;
-  
+
   .column {
     padding: 0;
   }
@@ -49,8 +49,9 @@ const Subtitle = styled.h2`
 
 const Detail = styled.p`
   margin: 8px 0;
-  font-size: 22px;
+  font-size: 20px;
   text-align: left;
+  letter-spacing: .4px;
 
   &.center {
     text-align: center;
@@ -58,6 +59,10 @@ const Detail = styled.p`
 
   &.head {
     font-size: 26px;
+  }
+
+  &.heading {
+    font-size: 22px;
   }
 
   u,b {
@@ -80,7 +85,7 @@ const Header = () => (
     </Container>
     <div className="columns">
       <div className="column">
-        <Detail className="center">การสัมภาษณ์จะจัดขึ้นใน<u>วันที่ 26 พฤศจิกายน 2560 ณ อาคาร ซี.พี.ทาวเวอร์ 1 (สีลม)</u> <br />ซึ่งจะแบ่งออกเป็น 2 รอบ คือ <u>รอบช่วงเช้าตั้งแต่เวลา 9.00 น. ถึง 12.00 น.</u> และ <u>รอบช่วงบ่ายตั้งแต่เวลา 13.00 น. ถึง 18.00 น.</u></Detail>
+        <Detail className="center heading">การสัมภาษณ์จะจัดขึ้นใน<u>วันที่ 26 พฤศจิกายน 2560 ณ อาคาร ซี.พี.ทาวเวอร์ 1 (สีลม)</u> <br />ซึ่งจะแบ่งออกเป็น 2 รอบ คือ <u>รอบช่วงเช้าตั้งแต่เวลา 9.00 น. ถึง 12.00 น.</u> และ <u>รอบช่วงบ่ายตั้งแต่เวลา 13.00 น. ถึง 18.00 น.</u></Detail>
       </div>
     </div>
     <div className="columns">

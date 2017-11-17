@@ -107,10 +107,10 @@ const Column = styled.div`
 `;
 
 const majorMorningCount = {
-  design: 30,
+  design: 20,
   programming: 23,
-  content: 30,
-  marketing: 30
+  content: 25,
+  marketing: 18
 };
 
 const Announcer = ({ major }) => (

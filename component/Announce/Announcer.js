@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { rgba } from 'polished';
 
+import candidate from './candidate.json';
 import colors from '../../utils/colors';
 import GlowingText from '../Core/GlowingText';
 import SectionHeader from '../Landing/SectionHeader';
@@ -61,7 +62,7 @@ const InnerContainer = styled.div`
 `;
 
 const QueueName = styled.h1`
-  font-size: 32px;
+  font-size: 26px;
   padding: 25px 18px 15px;
   background-color: ${rgba(colors.darkCyan2, 0.4)};
 `;
@@ -73,61 +74,85 @@ const CanditateList = styled.ul`
   li {
     margin: 0;
     padding: 14px 0 8px;
-    border-top: 1px solid ${colors.cyan};
+    border-top: 1px solid rgba(102, 252, 241, 0.7);
     transition: all .2s;
 
     &:hover {
       background-color: ${rgba(colors.darkCyan2, 0.4)};
     }
+    
+    .ref {
+      font-weight: 800;
+    }
   }
 `;
 
-const Homework = styled.p`
+const Homework = styled.div`
   padding: 15px 18px;
   font-size: 20px;
-  border-top: 1px solid ${colors.cyan};
+  border-top: 1px solid rgba(102, 252, 241, 0.7);
+  text-align: left;
+
+  p {
+    text-indent: 15px;
+  }
 `;
 
-const Announcer = () => (
-  <div className="columns">
-    <div className="column">
+const Column = styled.div`
+  order: ${props => props.dOrder ? props.dOrder : 0};
+
+  @media(max-width: 768px) {
+    order: ${props => props.mOrder ? props.mOrder : 0};
+  }
+`;
+
+const majorMorningCount = {
+  design: 20,
+  programming: 23,
+  content: 25,
+  marketing: 18
+};
+
+const Announcer = ({ major }) => (
+  <div className="columns is-mobile is-multiline">
+    <Column className="column is-full-mobile" dOrder={1} mOrder={2}>
       <Container>
         <InnerContainer>
           <QueueName>{'รายชื่อสัมภาษณ์ช่วงเช้า'}</QueueName>
           <CanditateList>
-            {
-              [...Array(40)].map((u, index) => (
-                <li>{`P${index + 1}: Kanisorn Sutham`}</li>
-              ))
-            }
+            {candidate[major.name].slice(0, majorMorningCount[major.name]).map(c => (
+              <li key={c.interviewRef}><span className="ref">{`${c.interviewRef}_ `}</span><span>{`${c.firstName} ${c.lastName}`}</span></li>
+            ))}
           </CanditateList>
         </InnerContainer>
       </Container>
-    </div>
-    <div className="column">
+    </Column>
+    <Column className="column is-full-mobile" dOrder={2} mOrder={3}>
       <Container>
         <InnerContainer>
           <QueueName>{'รายชื่อสัมภาษณ์ช่วงบ่าย'}</QueueName>
           <CanditateList>
-            {
-              [...Array(40)].map((u, index) => (
-                <li>{`P${index + 41}: Kanisorn Sutham`}</li>
-              ))
-            }
+            {candidate[major.name].slice(majorMorningCount[major.name]).map(c => (
+              <li key={c.interviewRef}><span className="ref">{`${c.interviewRef}_ `}</span><span>{`${c.firstName} ${c.lastName}`}</span></li>
+            ))}
           </CanditateList>
         </InnerContainer>
       </Container>
-    </div>
-    <div className="column">
-      <Container>
-        <InnerContainer>
-          <QueueName>{'การบ้านประจำสาขา'}</QueueName>
-          <Homework>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quisquam sed eligendi aperiam esse et blanditiis amet, reprehenderit magni, earum enim debitis mollitia rerum quas nihil voluptas ad non ab!
-          </Homework>
-        </InnerContainer>
-      </Container>
-    </div>
+    </Column>
+    <Column className="column is-full-mobile" dOrder={3} mOrder={1}>
+      <div className="columns">
+        <div className="column">
+          <Container>
+            <InnerContainer>
+              <QueueName>{`การบ้านสาขา${major.thaiName}`}</QueueName>
+              <Homework>
+                <div dangerouslySetInnerHTML={{ __html: major.homework }} />
+              </Homework>
+            </InnerContainer>
+          </Container>
+        </div>
+      </div>
+    </Column>
   </div>
 );
 

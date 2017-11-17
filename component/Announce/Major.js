@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { rgba } from 'polished';
 
 import colors from '../../utils/colors';
 import GlowingText from '../Core/GlowingText';
@@ -10,6 +11,20 @@ const Container = styled.div`
   padding: 18px 15px;
   position: relative;
   text-align: center;
+
+  transition: all .2s;
+  cursor: pointer;
+  opacity: .7;
+  filter: grayscale(20%);
+
+  &:hover,
+  &.active {
+    background-color: ${rgba(colors.darkCyan2, 0.4)};
+    box-shadow: 0.5px 0.5px 12px rgba(102, 252, 241, 0.63);
+    opacity: 1;
+    filter: none;
+  }
+
   &:before {
     display: block;
     content: "";
@@ -60,22 +75,29 @@ const InnerContainer = styled.div`
 `;
 
 const MajorName = GlowingText.extend`
-  font-size: 21px;
+  font-size: 20px;
   @media(max-width: 768px) {
-    font-size: 35px;
+    font-size: 16px;
   }
 `;
 
 const MajorImg = styled.img`
-  height: 110px;
+  height: 150px;
+
+  @media(max-width: 768px) {
+    height: auto;
+  }
 `;
 
-const Major = () => (
-  <Container>
+const Major = ({ name, handleMajor, isActive }) => (
+  <Container
+    className={isActive ? 'active' : ''}
+    onClick={() => handleMajor(name)}
+  >
     <InnerContainer>
       <HeaderArtwork />
-      <MajorImg src={'/static/img/roles/programming.png'} />
-      <MajorName>{'Programming'}</MajorName>
+      <MajorImg src={`/static/img/roles/${name}.png`} />
+      <MajorName>{`web ${name}`}</MajorName>
     </InnerContainer>
   </Container>
 );

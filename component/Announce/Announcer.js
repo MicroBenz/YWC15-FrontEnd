@@ -87,10 +87,11 @@ const CanditateList = styled.ul`
   }
 `;
 
-const Homework = styled.p`
+const Homework = styled.div`
   padding: 15px 18px;
   font-size: 20px;
   border-top: 1px solid rgba(102, 252, 241, 0.7);
+  text-align: left;
 `;
 
 const Column = styled.div`
@@ -101,6 +102,13 @@ const Column = styled.div`
   }
 `;
 
+const majorMorningCount = {
+  design: 30,
+  programming: 23,
+  content: 30,
+  marketing: 30
+};
+
 const Announcer = ({ major }) => (
   <div className="columns is-mobile is-multiline">
     <Column className="column is-full-mobile" dOrder={1} mOrder={2}>
@@ -108,14 +116,9 @@ const Announcer = ({ major }) => (
         <InnerContainer>
           <QueueName>{'รายชื่อสัมภาษณ์ช่วงเช้า'}</QueueName>
           <CanditateList>
-            {
-              candidate[major.name].map((c, index) => {
-                if (index < 30) {
-                  return (<li key={index}><span className="ref">{`${c.interviewRef}_ `}</span><span>{`${c.firstName} ${c.lastName}`}</span></li>);
-                }
-                return null;
-              })
-            }
+            {candidate[major.name].slice(0, majorMorningCount[major.name]).map(c => (
+              <li key={c.interviewRef}><span className="ref">{`${c.interviewRef}_ `}</span><span>{`${c.firstName} ${c.lastName}`}</span></li>
+            ))}
           </CanditateList>
         </InnerContainer>
       </Container>
@@ -125,14 +128,9 @@ const Announcer = ({ major }) => (
         <InnerContainer>
           <QueueName>{'รายชื่อสัมภาษณ์ช่วงบ่าย'}</QueueName>
           <CanditateList>
-            {
-              candidate[major.name].map((c, index) => {
-                if (index >= 30) {
-                  return (<li key={index}><span className="ref">{`${c.interviewRef}_ `}</span><span>{`${c.firstName} ${c.lastName}`}</span></li>);
-                }
-                return null;
-              })
-            }
+            {candidate[major.name].slice(majorMorningCount[major.name]).map(c => (
+              <li key={c.interviewRef}><span className="ref">{`${c.interviewRef}_ `}</span><span>{`${c.firstName} ${c.lastName}`}</span></li>
+            ))}
           </CanditateList>
         </InnerContainer>
       </Container>
@@ -144,7 +142,7 @@ const Announcer = ({ major }) => (
             <InnerContainer>
               <QueueName>{'การบ้านประจำสาขา'}</QueueName>
               <Homework>
-                { major.homework }
+                <p dangerouslySetInnerHTML={{ __html: major.homework }} />
               </Homework>
             </InnerContainer>
           </Container>

@@ -106,6 +106,11 @@ const Header = () => (
         <Detail><b>พี่เบนซ์:</b> 085-666-7571</Detail>
       </div>
     </div>
+    <div className="columns">
+      <div className="column">
+        <Detail><b>หมายเหตุ:</b> สำหรับน้อง ๆ ที่ไม่สะดวกเดินทางมาสัมภาษณ์ที่อาคาร CP Tower สีลม ให้ Inbox มาทาง<a href="https://www.facebook.com/ywcth" target="_blank">เพจเฟสบุ๊ค Young Webmaster Camp</a> ภายในวันที่ 20 พฤศจิกายน 2560</Detail>
+      </div>
+    </div>
   </HeaderContainer>
 );
 

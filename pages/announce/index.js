@@ -32,7 +32,6 @@ injectGlobal`
 const Container = styled.div.attrs({
   className: 'container'
 })`
-  padding-bottom: 80px;
   @media(max-width: 768px) {
     padding: 0 5%;
   }

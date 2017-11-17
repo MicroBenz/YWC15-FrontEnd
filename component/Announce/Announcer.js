@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { rgba } from 'polished';
 
+import candidate from './candidate.json';
 import colors from '../../utils/colors';
 import GlowingText from '../Core/GlowingText';
 import SectionHeader from '../Landing/SectionHeader';
@@ -61,7 +62,7 @@ const InnerContainer = styled.div`
 `;
 
 const QueueName = styled.h1`
-  font-size: 32px;
+  font-size: 26px;
   padding: 25px 18px 15px;
   background-color: ${rgba(colors.darkCyan2, 0.4)};
 `;
@@ -73,11 +74,15 @@ const CanditateList = styled.ul`
   li {
     margin: 0;
     padding: 14px 0 8px;
-    border-top: 1px solid ${colors.cyan};
+    border-top: 1px solid rgba(102, 252, 241, 0.7);
     transition: all .2s;
 
     &:hover {
       background-color: ${rgba(colors.darkCyan2, 0.4)};
+    }
+    
+    .ref {
+      font-weight: 800;
     }
   }
 `;
@@ -85,10 +90,10 @@ const CanditateList = styled.ul`
 const Homework = styled.p`
   padding: 15px 18px;
   font-size: 20px;
-  border-top: 1px solid ${colors.cyan};
+  border-top: 1px solid rgba(102, 252, 241, 0.7);
 `;
 
-const Announcer = () => (
+const Announcer = ({ major }) => (
   <div className="columns">
     <div className="column">
       <Container>
@@ -96,9 +101,12 @@ const Announcer = () => (
           <QueueName>{'รายชื่อสัมภาษณ์ช่วงเช้า'}</QueueName>
           <CanditateList>
             {
-              [...Array(40)].map((u, index) => (
-                <li>{`P${index + 1}: Kanisorn Sutham`}</li>
-              ))
+              candidate[major.name].map((c, index) => {
+                if (index < 30) {
+                  return (<li key={index}><span className="ref">{`${c.interviewRef}_ `}</span><span>{`${c.firstName} ${c.lastName}`}</span></li>);
+                }
+                return null;
+              })
             }
           </CanditateList>
         </InnerContainer>
@@ -110,23 +118,54 @@ const Announcer = () => (
           <QueueName>{'รายชื่อสัมภาษณ์ช่วงบ่าย'}</QueueName>
           <CanditateList>
             {
-              [...Array(40)].map((u, index) => (
-                <li>{`P${index + 41}: Kanisorn Sutham`}</li>
-              ))
+              candidate[major.name].map((c, index) => {
+                if (index >= 30) {
+                  return (<li key={index}><span className="ref">{`${c.interviewRef}_ `}</span><span>{`${c.firstName} ${c.lastName}`}</span></li>);
+                }
+                return null;
+              })
             }
           </CanditateList>
         </InnerContainer>
       </Container>
     </div>
     <div className="column">
-      <Container>
-        <InnerContainer>
-          <QueueName>{'การบ้านประจำสาขา'}</QueueName>
-          <Homework>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quisquam sed eligendi aperiam esse et blanditiis amet, reprehenderit magni, earum enim debitis mollitia rerum quas nihil voluptas ad non ab!
-          </Homework>
-        </InnerContainer>
-      </Container>
+      <div className="columns">
+        <div className="column">
+          <Container>
+            <InnerContainer>
+              <QueueName>{'การบ้านประจำสาขา'}</QueueName>
+              <Homework>
+                { major.homework }
+              </Homework>
+            </InnerContainer>
+          </Container>
+        </div>
+      </div>
+      <div className="columns">
+        <div className="column">
+          <Container>
+            <InnerContainer>
+              <QueueName>{'กำหนดการสัมภาษณ์'}</QueueName>
+              <Homework>
+                { major.homework }
+              </Homework>
+            </InnerContainer>
+          </Container>
+        </div>
+      </div>
+      <div className="columns">
+        <div className="column">
+          <Container>
+            <InnerContainer>
+              <QueueName>{'สิ่งที่ต้องเตรียมมาในวันสัมภาษณ์'}</QueueName>
+              <Homework>
+                { major.homework }
+              </Homework>
+            </InnerContainer>
+          </Container>
+        </div>
+      </div>
     </div>
   </div>
 );

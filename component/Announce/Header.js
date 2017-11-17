@@ -6,6 +6,11 @@ import HeaderArtwork from '../Landing/HeaderArtwork';
 
 const HeaderContainer = styled.div`
   text-align: center;
+  margin-bottom: 15px;
+  
+  .column {
+    padding: 0;
+  }
 `;
 
 const Logo = styled.img`
@@ -43,10 +48,19 @@ const Subtitle = styled.h2`
 `;
 
 const Detail = styled.p`
-  margin: 15px 0 25px;
+  margin: 8px 0;
   font-size: 22px;
+  text-align: left;
 
-  u {
+  &.center {
+    text-align: center;
+  }
+
+  &.head {
+    font-size: 26px;
+  }
+
+  u,b {
     color: ${colors.cyan};
   }
 
@@ -61,10 +75,36 @@ const Header = () => (
     <Logo src="/static/img/logo.png" alt="" />
     <Container>
       <HeaderArtwork />
-      <Title>{`SEMI_FINAL ROUND`}</Title>
-      <Subtitle>{`ประกาศผู้มีสิทธ์เข้าสัมภาษณ์`}</Subtitle>
+      <Title>{'SEMI_FINAL ROUND'}</Title>
+      <Subtitle>{'ประกาศผู้มีสิทธ์เข้าสัมภาษณ์'}</Subtitle>
     </Container>
-    <Detail>การสัมภาษณ์จะจัดขึ้นใน<u>วันที่ 26 พฤศจิกายน 2560 ณ อาคาร ซี.พี.ทาวเวอร์ 1 (สีลม)</u> <br />ซึ่งจะแบ่งออกเป็น 2 รอบ คือ <u>รอบช่วงเช้าตั้งแต่เวลา 9.00 น. ถึง 12.00 น.</u> และ <u>รอบช่วงบ่ายตั้งแต่เวลา 13.00 น. ถึง 18.00 น.</u></Detail>
+    <div className="columns">
+      <div className="column">
+        <Detail className="center">การสัมภาษณ์จะจัดขึ้นใน<u>วันที่ 26 พฤศจิกายน 2560 ณ อาคาร ซี.พี.ทาวเวอร์ 1 (สีลม)</u> <br />ซึ่งจะแบ่งออกเป็น 2 รอบ คือ <u>รอบช่วงเช้าตั้งแต่เวลา 9.00 น. ถึง 12.00 น.</u> และ <u>รอบช่วงบ่ายตั้งแต่เวลา 13.00 น. ถึง 18.00 น.</u></Detail>
+      </div>
+    </div>
+    <div className="columns">
+      <div className="column">
+        <Detail className="head"><b>สิ่งที่ต้องเตรียมมาในวันสัมภาษณ์</b></Detail>
+        <Detail><b>1.</b> <u>บัตรประชาชน</u>สำหรับการแลกบัตรเข้าอาคาร ซี.พี.ทาวเวอร์ 1 (สีลม) และ <u>บัตรนักศึกษา</u>สำหรับการลงทะเบียนสัมภาษณ์ กรุณาแต่งกายด้วยชุดนักศึกษา</Detail>
+        <Detail><b>2.</b> <u>การบ้านและสิ่งที่กรรมการสาขากำหนดไว้</u> กรุณาอ่านรายละเอียดการบ้านและสิ่งที่กรรมการให้เตรียมมาให้ครบถ้วน หากสาขาใดต้องใช้โน๊ตบุ๊ค ควรชาร์ตแบตเตอรี่และเตรียมอินเตอร์เน็ตส่วนตัวมาให้พร้อม เนื่องจากสถานที่ไม่มีบริการอินเตอร์เน็ตให้ใช้</Detail>
+        <Detail><b>3.</b> <u>Portfolio</u> สามารถนำมาประกอบการสัมภาษณ์ได้ สำหรับน้องๆ สาขาดีไซน์จะต้องนำ Portfolio มาด้วยทุกคน</Detail>
+      </div>
+    </div>
+    <div className="columns">
+      <div className="column is-8">
+        <Detail className="head"><b>การเดินทางมาสัมภาษณ์</b></Detail>
+        <Detail><b>1.</b> ด้วยรถไฟฟ้า BTS สามารถลงสถานีศาลาแดง ณ ทางออกที่ 2</Detail>
+        <Detail><b>2.</b> ด้วยรถไฟฟ้า MRT สามารถลงสถานีสีลม ณ ทางออกที่ 2 โดยเดินเรียบฟุตบาทไปตามถนนสีลม</Detail>
+        <Detail><b>3.</b> ด้วยรถประจำทาง สามารถขึ้นใช้บริการสาย 15, 77, 155, 504, 177, 76</Detail>
+      </div>
+      <div className="column">
+        <Detail className="head"><b>สอบถามเพิ่มเติมติดต่อ</b></Detail>
+        <Detail><b>พี่เบ๊บ:</b> 064-174-7080</Detail>
+        <Detail><b>พี่ฟง:</b> 092-458-7067</Detail>
+        <Detail><b>พี่เบนซ์:</b> 085-666-7571</Detail>
+      </div>
+    </div>
   </HeaderContainer>
 );
 

@@ -93,9 +93,17 @@ const Homework = styled.p`
   border-top: 1px solid rgba(102, 252, 241, 0.7);
 `;
 
+const Column = styled.div`
+  order: ${props => props.dOrder ? props.dOrder : 0};
+
+  @media(max-width: 768px) {
+    order: ${props => props.mOrder ? props.mOrder : 0};
+  }
+`;
+
 const Announcer = ({ major }) => (
-  <div className="columns">
-    <div className="column">
+  <div className="columns is-mobile is-multiline">
+    <Column className="column is-full-mobile" dOrder={1} mOrder={2}>
       <Container>
         <InnerContainer>
           <QueueName>{'รายชื่อสัมภาษณ์ช่วงเช้า'}</QueueName>
@@ -111,8 +119,8 @@ const Announcer = ({ major }) => (
           </CanditateList>
         </InnerContainer>
       </Container>
-    </div>
-    <div className="column">
+    </Column>
+    <Column className="column is-full-mobile" dOrder={2} mOrder={3}>
       <Container>
         <InnerContainer>
           <QueueName>{'รายชื่อสัมภาษณ์ช่วงบ่าย'}</QueueName>
@@ -128,8 +136,8 @@ const Announcer = ({ major }) => (
           </CanditateList>
         </InnerContainer>
       </Container>
-    </div>
-    <div className="column">
+    </Column>
+    <Column className="column is-full-mobile" dOrder={3} mOrder={1}>
       <div className="columns">
         <div className="column">
           <Container>
@@ -142,31 +150,7 @@ const Announcer = ({ major }) => (
           </Container>
         </div>
       </div>
-      <div className="columns">
-        <div className="column">
-          <Container>
-            <InnerContainer>
-              <QueueName>{'กำหนดการสัมภาษณ์'}</QueueName>
-              <Homework>
-                { major.homework }
-              </Homework>
-            </InnerContainer>
-          </Container>
-        </div>
-      </div>
-      <div className="columns">
-        <div className="column">
-          <Container>
-            <InnerContainer>
-              <QueueName>{'สิ่งที่ต้องเตรียมมาในวันสัมภาษณ์'}</QueueName>
-              <Homework>
-                { major.homework }
-              </Homework>
-            </InnerContainer>
-          </Container>
-        </div>
-      </div>
-    </div>
+    </Column>
   </div>
 );
 

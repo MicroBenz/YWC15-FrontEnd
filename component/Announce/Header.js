@@ -16,7 +16,7 @@ const Logo = styled.img`
 const Container = styled.div`
   width: fit-content;
   margin: 0 auto;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 `;
 
 const Title = styled.h1`
@@ -42,6 +42,20 @@ const Subtitle = styled.h2`
   }
 `;
 
+const Detail = styled.p`
+  margin: 15px 0 25px;
+  font-size: 22px;
+
+  u {
+    color: ${colors.cyan};
+  }
+
+  @media(max-width: 768px) {
+    font-size: 18px;
+    letter-spacing: .3px;
+  }
+`;
+
 const Header = () => (
   <HeaderContainer>
     <Logo src="/static/img/logo.png" alt="" />
@@ -50,6 +64,7 @@ const Header = () => (
       <Title>{`SEMI_FINAL ROUND`}</Title>
       <Subtitle>{`ประกาศผู้มีสิทธ์เข้าสัมภาษณ์`}</Subtitle>
     </Container>
+    <Detail>การสัมภาษณ์จะจัดขึ้นใน<u>วันที่ 26 พฤศจิกายน 2560 ณ อาคาร ซี.พี.ทาวเวอร์ 1 (สีลม)</u> <br />ซึ่งจะแบ่งออกเป็น 2 รอบ คือ <u>รอบช่วงเช้าตั้งแต่เวลา 9.00 น. ถึง 12.00 น.</u> และ <u>รอบช่วงบ่ายตั้งแต่เวลา 13.00 น. ถึง 18.00 น.</u></Detail>
   </HeaderContainer>
 );
 

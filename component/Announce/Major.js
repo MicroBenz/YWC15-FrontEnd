@@ -14,10 +14,15 @@ const Container = styled.div`
 
   transition: all .2s;
   cursor: pointer;
+  opacity: .7;
+  filter: grayscale(20%);
 
   &:hover,
   &.active {
     background-color: ${rgba(colors.darkCyan2, 0.4)};
+    box-shadow: 0.5px 0.5px 12px rgba(102, 252, 241, 0.63);
+    opacity: 1;
+    filter: none;
   }
 
   &:before {

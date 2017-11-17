@@ -7,10 +7,6 @@ import HeaderArtwork from '../Landing/HeaderArtwork';
 const HeaderContainer = styled.div`
   text-align: center;
   margin-bottom: 15px;
-
-  .column {
-    padding: 0;
-  }
 `;
 
 const Logo = styled.img`

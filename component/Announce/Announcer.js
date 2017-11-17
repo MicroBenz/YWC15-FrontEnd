@@ -144,7 +144,7 @@ const Announcer = ({ major }) => (
         <div className="column">
           <Container>
             <InnerContainer>
-              <QueueName>{'การบ้านประจำสาขา'}</QueueName>
+              <QueueName>{`การบ้านสาขา${major.thaiName}`}</QueueName>
               <Homework>
                 <div dangerouslySetInnerHTML={{ __html: major.homework }} />
               </Homework>

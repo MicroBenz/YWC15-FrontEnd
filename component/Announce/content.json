@@ -1,0 +1,20 @@
+{
+  "majors": [
+    {
+      "name": "content",
+      "homework": "C..Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium numquam sapiente eos velit. Accusamus optio, doloribus quae earum placeat fugit natus eos. Aut quod facere, vitae minima sit reiciendis illum?"
+    },
+    {
+      "name": "design",
+      "homework": "D..Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium numquam sapiente eos velit. Accusamus optio, doloribus quae earum placeat fugit natus eos. Aut quod facere, vitae minima sit reiciendis illum?"
+    },
+    {
+      "name": "marketing",
+      "homework": "M..Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium numquam sapiente eos velit. Accusamus optio, doloribus quae earum placeat fugit natus eos. Aut quod facere, vitae minima sit reiciendis illum?"
+    },
+    {
+      "name": "programming",
+      "homework": "P..Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium numquam sapiente eos velit. Accusamus optio, doloribus quae earum placeat fugit natus eos. Aut quod facere, vitae minima sit reiciendis illum?"
+    }
+  ]
+}

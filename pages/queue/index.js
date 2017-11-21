@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled, { injectGlobal } from 'styled-components';
 import io from 'socket.io-client';
+import _ from 'lodash';
 import config from '../../config';
 
 import _FrameBox from '../../component/Core/FrameBox';
@@ -94,10 +95,10 @@ export default class QueuePage extends Component {
     });
     socket.on('queue', (data) => {
       this.setState({
-        design: `D${data.design}`,
-        programming: `P${data.programming}`,
-        marketing: `M${data.marketing}`,
-        content: `C${data.content}`,
+        design: `D${_.padStart(data.design, 2, '0')}`,
+        programming: `P${_.padStart(data.programming, 2, '0')}`,
+        marketing: `M${_.padStart(data.marketing, 2, '0')}`,
+        content: `C${_.padStart(data.content, 2, '0')}`,
       });
     });
   }

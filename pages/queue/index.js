@@ -108,7 +108,7 @@ export default class QueuePage extends Component {
       <Container>
         <LogoContainer>
           <CampLogo src="/static/img/logo.png" />
-          <Title>Good think take time :)</Title>
+          <Title>Good things take time :)</Title>
         </LogoContainer>
         <Columns className="columns">
           <Column className="column">

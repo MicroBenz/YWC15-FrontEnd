@@ -92,7 +92,6 @@ export default class QueuePage extends Component {
       transports: ['websocket'],
       secure: true,
     });
-    socket.on('connect', () => console.log('connect la'));
     socket.on('queue', (data) => {
       this.setState({
         design: `D${data.design}`,

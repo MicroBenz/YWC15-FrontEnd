@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import HeaderArtwork from '../Landing/HeaderArtwork';
 import _GlowingButton from '../Core/GlowingButton';
+import { TextInput } from '../Form/TextInput';
 import colors from '../../utils/colors';
 import api from '../../utils/api';
 
@@ -68,7 +69,7 @@ const GlowingButton = styled(_GlowingButton)`
 const SubmitButton = styled(_GlowingButton)`
   width: 200px;
   margin: 0 auto;
-  margin-top: 10px;
+  margin-top: 15px;
 `;
 
 const Subtitle = styled.h2`
@@ -84,7 +85,13 @@ const Subtitle = styled.h2`
 export default class SlipUploader extends Component {
   constructor(props) {
     super(props);
-    this.state = { file: null, image: null, doneUpload: false };
+    this.state = {
+      file: null,
+      image: null,
+      doneUpload: false,
+      name: '',
+      amount: ''
+    };
     this.handleUploadFile = this.handleUploadFile.bind(this);
     this.handleSubmitFile = this.handleSubmitFile.bind(this);
   }
@@ -113,14 +120,17 @@ export default class SlipUploader extends Component {
       };
     };
   }
-  handleSubmitFile() {
+  handleSubmitFile(e) {
+    e.preventDefault();
     const data = new FormData();
     data.append('slip', this.state.file);
-    api.post('/finalist/slip', data)
+    data.append('name', this.state.name);
+    data.append('transfer_money', this.state.amount);
+    api.post('/finalists/slip', data)
       .then(() => this.setState({ doneUpload: true }));
   }
   render() {
-    const { image, file, doneUpload } = this.state;
+    const { image, file, doneUpload, name, amount } = this.state;
     return (
       <div>
         <TextContainer>
@@ -134,7 +144,15 @@ export default class SlipUploader extends Component {
               <GlowingButton>อัพโหลดไฟล์สลิป</GlowingButton>
               <Input onChange={this.handleUploadFile} />
             </UploadButtonWrapper>
-            {file && <SubmitButton>ส่งไฟล์สลิป</SubmitButton>}
+            {file && (
+              <div>
+                <TextInput value={name} setField={(_, v) => this.setState({ name: v })} label="ชื่อ-นามสกุล" />
+                <TextInput value={amount} setField={(_, v) => this.setState({ amount: v })} label="จำนวนเงินที่โอน" />
+                <SubmitButton
+                  onClick={name && amount ? this.handleSubmitFile : null}
+                >ส่งไฟล์สลิป</SubmitButton>
+              </div>
+            )}
           </UploadZone>
         )}
         {doneUpload && <Subtitle>อัพโหลดสลิปเสร็จแล้ว (บลาๆๆๆ)</Subtitle>}

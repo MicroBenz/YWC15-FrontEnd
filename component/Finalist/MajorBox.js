@@ -11,19 +11,15 @@ const Container = styled.div`
   padding: 18px 15px;
   position: relative;
   text-align: center;
-
+  margin-bottom: 30px;
   transition: all .2s;
   cursor: pointer;
   opacity: .7;
   filter: grayscale(20%);
-
-  &:hover,
-  &.active {
-    background-color: ${rgba(colors.darkCyan2, 0.4)};
-    box-shadow: 0.5px 0.5px 12px rgba(102, 252, 241, 0.63);
-    opacity: 1;
-    filter: none;
-  }
+  background-color: ${rgba(colors.darkCyan2, 0.4)};
+  box-shadow: 0.5px 0.5px 12px rgba(102, 252, 241, 0.63);
+  opacity: 1;
+  filter: none;
 
   &:before {
     display: block;
@@ -89,11 +85,8 @@ const MajorImg = styled.img`
   }
 `;
 
-const Major = ({ name, handleMajor, isActive }) => (
-  <Container
-    className={isActive ? 'active' : ''}
-    onClick={() => handleMajor(name)}
-  >
+const Major = ({ name }) => (
+  <Container>
     <InnerContainer>
       <HeaderArtwork />
       <MajorImg src={`/static/img/roles/${name}.png`} />

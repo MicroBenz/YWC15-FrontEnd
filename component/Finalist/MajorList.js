@@ -2,29 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import { rgba } from 'polished';
 
+import finalist from './finalist.json';
 import colors from '../../utils/colors';
-import GlowingText from '../Core/GlowingText';
-import HeaderArtwork from '../Landing/HeaderArtwork';
+
 
 const Container = styled.div`
   border: 1px solid ${colors.cyan};
-  padding: 18px 15px;
+  /* padding: 18px 15px; */
   position: relative;
   text-align: center;
-
-  transition: all .2s;
-  cursor: pointer;
-  opacity: .7;
-  filter: grayscale(20%);
-
-  &:hover,
-  &.active {
-    background-color: ${rgba(colors.darkCyan2, 0.4)};
-    box-shadow: 0.5px 0.5px 12px rgba(102, 252, 241, 0.63);
-    opacity: 1;
-    filter: none;
-  }
-
   &:before {
     display: block;
     content: "";
@@ -74,33 +60,36 @@ const InnerContainer = styled.div`
   }
 `;
 
-const MajorName = GlowingText.extend`
-  font-size: 30px;
-  @media(max-width: 768px) {
-    font-size: 18px;
-  }
+const CanditateList = styled.ul`
+  font-size: 20px;
+  padding: 0px;
+  text-align: center;
+  li {
+    margin: 0;
+    padding: 14px 0 8px;
+    border-top: 1px solid rgba(102, 252, 241, 0.7);
+    transition: all .2s;
+    background-color: ${rgba(colors.darkCyan2, 0.4)};
+
+    .ref {
+      font-weight: 800;
+    }
+}
 `;
 
-const MajorImg = styled.img`
-  height: 150px;
+const MajorList = (props) => {
+  const { major } = props;
+  return (
+    <Container>
+      <InnerContainer>
+        <CanditateList>
+          {finalist[major].map(c => (
+            <li key={c.interviewRef}><span className="ref">{`${c.interviewRef}_ `}</span><span>{`${c.firstName} ${c.lastName}`}</span></li>
+          ))}
+        </CanditateList>
+      </InnerContainer>
+    </Container>
+  );
+};
 
-  @media(max-width: 768px) {
-    height: auto;
-  }
-`;
-
-const Major = ({ name, handleMajor, isActive }) => (
-  <Container
-    className={isActive ? 'active' : ''}
-    onClick={() => handleMajor(name)}
-  >
-    <InnerContainer>
-      <HeaderArtwork />
-      <MajorImg src={`/static/img/roles/${name}.png`} />
-      <MajorName>{`web ${name}`}</MajorName>
-    </InnerContainer>
-  </Container>
-);
-
-export default Major
-;
+export default MajorList;

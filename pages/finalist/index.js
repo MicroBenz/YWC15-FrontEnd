@@ -4,6 +4,7 @@ import styled, { injectGlobal } from 'styled-components';
 import FinalistHeader from '../../component/Finalist/FinalistHeader';
 import MajorBox from '../../component/Finalist/MajorBox';
 import MajorList from '../../component/Finalist/MajorList';
+import SlipUploader from '../../component/Finalist/SlipUploader';
 
 /* eslint-disable */
 injectGlobal`
@@ -66,6 +67,7 @@ const FinalistPage = () => (
           <MajorList major="programming" />
         </div>
       </div>
+      <SlipUploader />
     </Container>
   </Foreground>
 );

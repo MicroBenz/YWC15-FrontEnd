@@ -82,7 +82,7 @@ const FormInfo = styled.div`
   }
 `
 
-const TextInput = ({ info, label, field, setField, value, errorValidation }) => (
+export const TextInput = ({ info, label, field, setField, value, errorValidation = [] }) => (
   <InputContainer>
     <div className="control">
       <FormInfo>{info}</FormInfo>

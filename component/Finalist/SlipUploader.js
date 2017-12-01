@@ -30,7 +30,8 @@ const Title = styled.h1`
 const UploadZone = styled.div`
   text-align: center;
   img {
-    max-height: 250px;
+    max-width: 100%;
+    height: auto;
     display: block;
     margin: 0 auto;
     margin-bottom: 20px;
@@ -90,7 +91,8 @@ export default class SlipUploader extends Component {
       image: null,
       doneUpload: false,
       name: '',
-      amount: ''
+      amount: '',
+      date: ''
     };
     this.handleUploadFile = this.handleUploadFile.bind(this);
     this.handleSubmitFile = this.handleSubmitFile.bind(this);
@@ -100,7 +102,7 @@ export default class SlipUploader extends Component {
     tempCanvas.width = img.width;
     tempCanvas.height = img.height;
     const context = tempCanvas.getContext('2d');
-    context.drawImage(img, 0, 0, img.width, img.width);
+    context.drawImage(img, 0, 0, img.width, img.height);
     return tempCanvas.toDataURL();
   }
   handleUploadFile(event) {
@@ -126,13 +128,14 @@ export default class SlipUploader extends Component {
     data.append('slip', this.state.file);
     data.append('name', this.state.name);
     data.append('transfer_money', this.state.amount);
+    data.append('transfer_at', this.state.date);
     api.post('/finalists/slip', data)
       .then(() => this.setState({ doneUpload: true }));
   }
   render() {
-    const { image, file, doneUpload, name, amount } = this.state;
+    const { image, file, doneUpload, name, amount, date } = this.state;
     return (
-      <div>
+      <div id="upload-slip">
         <TextContainer>
           <HeaderArtwork />
           <Title>Upload Slip</Title>
@@ -148,6 +151,7 @@ export default class SlipUploader extends Component {
               <div>
                 <TextInput value={name} setField={(_, v) => this.setState({ name: v })} label="ชื่อ-นามสกุล" />
                 <TextInput value={amount} setField={(_, v) => this.setState({ amount: v })} label="จำนวนเงินที่โอน" />
+                <TextInput value={date} setField={(_, v) => this.setState({ date: v })} label="วัน/เวลาที่โอนโดยประมาณ" />
                 <SubmitButton
                   onClick={name && amount ? this.handleSubmitFile : null}
                 >ส่งไฟล์สลิป</SubmitButton>

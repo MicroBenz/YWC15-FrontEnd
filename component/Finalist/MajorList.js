@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { rgba } from 'polished';
 
 import finalist from './finalist.json';
+import backup from './backup.json';
 import colors from '../../utils/colors';
-
 
 const Container = styled.div`
   border: 1px solid ${colors.cyan};
@@ -35,6 +35,10 @@ const Container = styled.div`
   }
 `;
 
+const BackupContainer = Container.extend`
+  margin-top: 50px;
+`;
+
 const InnerContainer = styled.div`
   &:before {
     display: block;
@@ -60,7 +64,7 @@ const InnerContainer = styled.div`
   }
 `;
 
-const CanditateList = styled.ul`
+const FinalistList = styled.ul`
   font-size: 20px;
   padding: 0px;
   text-align: center;
@@ -70,7 +74,9 @@ const CanditateList = styled.ul`
     border-top: 1px solid rgba(102, 252, 241, 0.7);
     transition: all .2s;
     background-color: ${rgba(colors.darkCyan2, 0.4)};
-
+    &.no-bg {
+      background-color: ${rgba(colors.darkCyan2, 0)};
+    }
     .ref {
       font-weight: 800;
     }
@@ -79,16 +85,41 @@ const CanditateList = styled.ul`
 
 const MajorList = (props) => {
   const { major } = props;
+  let indexPad;
+  if (major === 'content') {
+    indexPad = 1;
+  }
+  if (major === 'design') {
+    indexPad = 21;
+  }
+  if (major === 'marketing') {
+    indexPad = 41;
+  }
+  if (major === 'programming') {
+    indexPad = 61;
+  }
   return (
-    <Container>
-      <InnerContainer>
-        <CanditateList>
-          {finalist[major].map(c => (
-            <li key={c.interviewRef}><span className="ref">{`${c.interviewRef}_ `}</span><span>{`${c.firstName} ${c.lastName}`}</span></li>
-          ))}
-        </CanditateList>
-      </InnerContainer>
-    </Container>
+    <div>
+      <Container>
+        <InnerContainer>
+          <FinalistList>
+            {finalist[major].map((c, idx) => (
+              <li key={c.interviewRef}><span>{`${c.firstName} ${c.lastName}`}</span><span className="ref">{`_500.${indexPad + idx}`}</span></li>
+            ))}
+          </FinalistList>
+        </InnerContainer>
+      </Container>
+      <BackupContainer>
+        <InnerContainer>
+          <FinalistList>
+            <li>รายชื่อสำรองสาขา web {major}</li>
+            {backup[major].map(c => (
+              <li className="no-bg" key={c.interviewRef}><span>{`${c.firstName} ${c.lastName}`}</span></li>
+            ))}
+          </FinalistList>
+        </InnerContainer>
+      </BackupContainer>
+    </div>
   );
 };
 

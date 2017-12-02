@@ -80,6 +80,16 @@ const FinalistList = styled.ul`
     &.no-bg {
       background-color: ${rgba(colors.darkCyan2, 0)};
     }
+    &.col {
+      display: flex;
+      span {
+        flex: 1;
+        &.amount {
+          width: 80px;
+          flex: none;
+        }
+      }
+    }
     .ref {
       font-weight: 800;
     }
@@ -106,8 +116,9 @@ const MajorList = (props) => {
       <Container>
         <InnerContainer>
           <FinalistList>
+            <li>ชื่อ-นามสกุล และยอดเงินที่ต้องโอน</li>
             {finalist[major].map((c, idx) => (
-              <li key={c.interviewRef}><span>{`${c.firstName} ${c.lastName}`}</span><span className="ref">{`_500.${indexPad + idx}`}</span></li>
+              <li className="no-bg col" key={c.interviewRef}><span>{`${c.firstName} ${c.lastName}`}</span><span className="ref amount">{`500.${indexPad + idx}`}</span></li>
             ))}
           </FinalistList>
         </InnerContainer>

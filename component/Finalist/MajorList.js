@@ -37,6 +37,9 @@ const Container = styled.div`
 
 const BackupContainer = Container.extend`
   margin-top: 50px;
+  @media(max-width: 768px) {
+    margin-top: 30px;
+  }
 `;
 
 const InnerContainer = styled.div`

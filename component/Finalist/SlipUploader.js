@@ -159,7 +159,7 @@ export default class SlipUploader extends Component {
             )}
           </UploadZone>
         )}
-        {doneUpload && <Subtitle>อัพโหลดสลิปเสร็จแล้ว (บลาๆๆๆ)</Subtitle>}
+        {doneUpload && <Subtitle>ทางทีมงานจะติดต่อกลับเพื่อยืนยันการโอนเงินภายในวันที่ 7 พฤศจิกายน หากยังไม่ได้รับการติดต่อจากทีมงานในวันดังกล่าวสามารถแจ้งได้ทาง <a href="https://www.facebook.com/ywcth/" target="_blank" rel="noopener noreferrer">Inbox เพจเฟสบุ๊ค</a></Subtitle>}
       </div>
     );
   }

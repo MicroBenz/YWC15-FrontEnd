@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { rgba } from 'polished';
+import _ from 'lodash';
 
 import finalist from './finalist.json';
 import backup from './backup.json';
@@ -118,7 +119,7 @@ const MajorList = (props) => {
           <FinalistList>
             <li>ชื่อ-นามสกุล และยอดเงินที่ต้องโอน</li>
             {finalist[major].map((c, idx) => (
-              <li className="no-bg col" key={c.interviewRef}><span>{`${c.firstName} ${c.lastName}`}</span><span className="ref amount">{`500.${indexPad + idx}`}</span></li>
+              <li className="no-bg col" key={c.interviewRef}><span>{`${c.firstName} ${c.lastName}`}</span><span className="ref amount">{`500.${_.padStart(indexPad + idx, 2, '0')}`}</span></li>
             ))}
           </FinalistList>
         </InnerContainer>

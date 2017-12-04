@@ -9,7 +9,7 @@ const HomeButtom = styled(GlowingButton)`
   text-align: center;
   font-size: 26px;
   width: 65vw;
-  margin: 5px auto 30px;
+  margin: 5px auto 20px;
 `;
 
 const Wrapper = styled.div`

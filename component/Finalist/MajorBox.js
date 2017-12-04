@@ -13,7 +13,6 @@ const Container = styled.div`
   text-align: center;
   margin-bottom: 30px;
   transition: all .2s;
-  cursor: pointer;
   opacity: .7;
   filter: grayscale(20%);
   background-color: ${rgba(colors.darkCyan2, 0.4)};

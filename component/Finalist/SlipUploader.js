@@ -10,7 +10,6 @@ import api from '../../utils/api';
 const TextContainer = styled.div`
   width: fit-content;
   margin: 0 auto;
-  margin-bottom: 20px;
 `;
 
 const Title = styled.h1`
@@ -20,6 +19,7 @@ const Title = styled.h1`
   text-transform: uppercase;
   font-weight: 600;
   padding: 7px 0px;
+  text-algin: text-center;
   @media(max-width: 768px) {
     font-size: 38px;
     padding-top: 18px;
@@ -65,21 +65,27 @@ const Input = styled.input.attrs({
 const GlowingButton = styled(_GlowingButton)`
   text-align: center;
   margin: 0 auto;
+  font-size: 20px;
+  padding: 12px 0 6px;
 `;
 
 const SubmitButton = styled(_GlowingButton)`
   width: 200px;
   margin: 0 auto;
   margin-top: 15px;
+  font-size: 20px;
+  padding: 12px 0 6px;
 `;
 
 const Subtitle = styled.h2`
   text-align: center;
-  font-size: 30px;
+  font-size: 28px;
   line-height: 32px;
   color: ${colors.white};
+  margin-bottom: 20px;
+  
   @media(max-width: 768px) {
-    font-size: 24px;
+    font-size: 22px;
   }
 `;
 
@@ -140,6 +146,7 @@ export default class SlipUploader extends Component {
           <HeaderArtwork />
           <Title>Upload Slip</Title>
         </TextContainer>
+        <Subtitle>อัพโหลดหลักฐานการโอนเงิน</Subtitle>        
         {!doneUpload && (
           <UploadZone>
             {image && <img src={image} alt="slip" />}

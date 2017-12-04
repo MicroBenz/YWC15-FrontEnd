@@ -10,7 +10,6 @@ import api from '../../utils/api';
 const TextContainer = styled.div`
   width: fit-content;
   margin: 0 auto;
-  margin-bottom: 20px;
 `;
 
 const Title = styled.h1`
@@ -20,6 +19,7 @@ const Title = styled.h1`
   text-transform: uppercase;
   font-weight: 600;
   padding: 7px 0px;
+  text-algin: text-center;
   @media(max-width: 768px) {
     font-size: 38px;
     padding-top: 18px;
@@ -30,7 +30,8 @@ const Title = styled.h1`
 const UploadZone = styled.div`
   text-align: center;
   img {
-    max-height: 250px;
+    max-width: 100%;
+    height: auto;
     display: block;
     margin: 0 auto;
     margin-bottom: 20px;
@@ -64,21 +65,27 @@ const Input = styled.input.attrs({
 const GlowingButton = styled(_GlowingButton)`
   text-align: center;
   margin: 0 auto;
+  font-size: 20px;
+  padding: 12px 0 6px;
 `;
 
 const SubmitButton = styled(_GlowingButton)`
   width: 200px;
   margin: 0 auto;
   margin-top: 15px;
+  font-size: 20px;
+  padding: 12px 0 6px;
 `;
 
 const Subtitle = styled.h2`
   text-align: center;
-  font-size: 30px;
+  font-size: 28px;
   line-height: 32px;
   color: ${colors.white};
+  margin-bottom: 20px;
+  
   @media(max-width: 768px) {
-    font-size: 24px;
+    font-size: 22px;
   }
 `;
 
@@ -90,7 +97,8 @@ export default class SlipUploader extends Component {
       image: null,
       doneUpload: false,
       name: '',
-      amount: ''
+      amount: '',
+      date: ''
     };
     this.handleUploadFile = this.handleUploadFile.bind(this);
     this.handleSubmitFile = this.handleSubmitFile.bind(this);
@@ -100,7 +108,7 @@ export default class SlipUploader extends Component {
     tempCanvas.width = img.width;
     tempCanvas.height = img.height;
     const context = tempCanvas.getContext('2d');
-    context.drawImage(img, 0, 0, img.width, img.width);
+    context.drawImage(img, 0, 0, img.width, img.height);
     return tempCanvas.toDataURL();
   }
   handleUploadFile(event) {
@@ -126,17 +134,19 @@ export default class SlipUploader extends Component {
     data.append('slip', this.state.file);
     data.append('name', this.state.name);
     data.append('transfer_money', this.state.amount);
+    data.append('transfer_at', this.state.date);
     api.post('/finalists/slip', data)
       .then(() => this.setState({ doneUpload: true }));
   }
   render() {
-    const { image, file, doneUpload, name, amount } = this.state;
+    const { image, file, doneUpload, name, amount, date } = this.state;
     return (
-      <div>
+      <div id="upload-slip">
         <TextContainer>
           <HeaderArtwork />
           <Title>Upload Slip</Title>
         </TextContainer>
+        <Subtitle>อัพโหลดหลักฐานการโอนเงิน</Subtitle>        
         {!doneUpload && (
           <UploadZone>
             {image && <img src={image} alt="slip" />}
@@ -148,6 +158,7 @@ export default class SlipUploader extends Component {
               <div>
                 <TextInput value={name} setField={(_, v) => this.setState({ name: v })} label="ชื่อ-นามสกุล" />
                 <TextInput value={amount} setField={(_, v) => this.setState({ amount: v })} label="จำนวนเงินที่โอน" />
+                <TextInput value={date} setField={(_, v) => this.setState({ date: v })} label="วัน/เวลาที่โอนโดยประมาณ" />
                 <SubmitButton
                   onClick={name && amount ? this.handleSubmitFile : null}
                 >ส่งไฟล์สลิป</SubmitButton>
@@ -155,7 +166,7 @@ export default class SlipUploader extends Component {
             )}
           </UploadZone>
         )}
-        {doneUpload && <Subtitle>อัพโหลดสลิปเสร็จแล้ว (บลาๆๆๆ)</Subtitle>}
+        {doneUpload && <Subtitle>ทางทีมงานจะติดต่อกลับเพื่อยืนยันการโอนเงินภายในวันที่ 7 ธันวาคม หากยังไม่ได้รับการติดต่อจากทีมงานในวันดังกล่าวสามารถแจ้งได้ทาง <a href="https://www.facebook.com/ywcth/" target="_blank" rel="noopener noreferrer">Inbox เพจเฟสบุ๊ค</a></Subtitle>}
       </div>
     );
   }

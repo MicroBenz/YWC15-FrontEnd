@@ -5,6 +5,7 @@ import FinalistHeader from '../../component/Finalist/FinalistHeader';
 import MajorBox from '../../component/Finalist/MajorBox';
 import MajorList from '../../component/Finalist/MajorList';
 import SlipUploader from '../../component/Finalist/SlipUploader';
+import BackToLanding from '../../component/Announce/Information'
 
 /* eslint-disable */
 injectGlobal`
@@ -68,6 +69,7 @@ const FinalistPage = () => (
         </div>
       </div>
       <SlipUploader />
+      <BackToLanding />
     </Container>
   </Foreground>
 );

@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { rgba } from 'polished';
+import _ from 'lodash';
 
 import finalist from './finalist.json';
+import backup from './backup.json';
 import colors from '../../utils/colors';
-
 
 const Container = styled.div`
   border: 1px solid ${colors.cyan};
@@ -35,6 +36,13 @@ const Container = styled.div`
   }
 `;
 
+const BackupContainer = Container.extend`
+  margin-top: 50px;
+  @media(max-width: 768px) {
+    margin-top: 30px;
+  }
+`;
+
 const InnerContainer = styled.div`
   &:before {
     display: block;
@@ -60,7 +68,7 @@ const InnerContainer = styled.div`
   }
 `;
 
-const CanditateList = styled.ul`
+const FinalistList = styled.ul`
   font-size: 20px;
   padding: 0px;
   text-align: center;
@@ -70,7 +78,19 @@ const CanditateList = styled.ul`
     border-top: 1px solid rgba(102, 252, 241, 0.7);
     transition: all .2s;
     background-color: ${rgba(colors.darkCyan2, 0.4)};
-
+    &.no-bg {
+      background-color: ${rgba(colors.darkCyan2, 0)};
+    }
+    &.col {
+      display: flex;
+      span {
+        flex: 1;
+        &.amount {
+          width: 80px;
+          flex: none;
+        }
+      }
+    }
     .ref {
       font-weight: 800;
     }
@@ -79,16 +99,42 @@ const CanditateList = styled.ul`
 
 const MajorList = (props) => {
   const { major } = props;
+  let indexPad;
+  if (major === 'content') {
+    indexPad = 1;
+  }
+  if (major === 'design') {
+    indexPad = 21;
+  }
+  if (major === 'marketing') {
+    indexPad = 41;
+  }
+  if (major === 'programming') {
+    indexPad = 61;
+  }
   return (
-    <Container>
-      <InnerContainer>
-        <CanditateList>
-          {finalist[major].map(c => (
-            <li key={c.interviewRef}><span className="ref">{`${c.interviewRef}_ `}</span><span>{`${c.firstName} ${c.lastName}`}</span></li>
-          ))}
-        </CanditateList>
-      </InnerContainer>
-    </Container>
+    <div>
+      <Container>
+        <InnerContainer>
+          <FinalistList>
+            <li>ชื่อ-นามสกุล และยอดเงินที่ต้องโอน</li>
+            {finalist[major].map((c, idx) => (
+              <li className="no-bg col" key={c.interviewRef}><span>{`${c.firstName} ${c.lastName}`}</span><span className="ref amount">{`500.${_.padStart(indexPad + idx, 2, '0')}`}</span></li>
+            ))}
+          </FinalistList>
+        </InnerContainer>
+      </Container>
+      <BackupContainer>
+        <InnerContainer>
+          <FinalistList>
+            <li>รายชื่อสำรองสาขา web {major}</li>
+            {backup[major].map(c => (
+              <li className="no-bg" key={c.interviewRef}><span>{`${c.firstName} ${c.lastName}`}</span></li>
+            ))}
+          </FinalistList>
+        </InnerContainer>
+      </BackupContainer>
+    </div>
   );
 };
 

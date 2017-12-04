@@ -5,11 +5,11 @@ import styled from 'styled-components'
 import GlowingButton from '../Core/GlowingButton'
 
 const HomeButtom = styled(GlowingButton)`
-  padding: 12px 18px;
+  padding: 12px 18px 8px;
   text-align: center;
   font-size: 26px;
-  width: 65vw;
   margin: 5px auto 20px;
+  width: 450px;
 `;
 
 const Wrapper = styled.div`

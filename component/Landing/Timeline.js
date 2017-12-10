@@ -30,12 +30,17 @@ const Timeline = () => (
     <Container>
       <div className="columns">
         <div className="column">
-          <TimelineItem item={1} onTime={forceTrue || isBetween('2017-09-07', '2017-11-12')} title="รับสมัคร" date="7 กันยายน - 12 พฤศจิกายน" />
+          <TimelineItem
+            item={1}
+            onTime
+            title="รับสมัคร"
+            date="7 กันยายน - 12 พฤศจิกายน"
+          />
         </div>
         <div className="column">
           <TimelineItem
             item={2}
-            onTime={forceTrue || isBetween('2017-11-17', '2017-11-25')}
+            onTime
             title="ประกาศผล"
             date="17 พฤศจิกายน"
           />
@@ -43,7 +48,7 @@ const Timeline = () => (
         <div className="column">
           <TimelineItem
             item={3}
-            onTime={forceTrue || moment().isSame(moment('2017-11-26'))}
+            onTime
             title="สัมภาษณ์"
             date="26 พฤศจิกายน"
           />
@@ -51,7 +56,7 @@ const Timeline = () => (
         <div className="column">
           <TimelineItem
             item={4}
-            onTime={forceTrue || moment().isSame(moment('2017-12-3'))}
+            onTime
             title="ประกาศผลสัมภาษณ์"
             date="3 ธันวาคม"
           />

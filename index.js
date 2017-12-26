@@ -50,6 +50,7 @@ app.prepare().then(() => {
   });
 
   server.get('/', (req, res) => renderAndCache(req, res, '/landing'));
+  server.get('/score', (req, res) => renderAndCache(req, res, '/score'));
   // server.get('/media', (req, res) => renderAndCache(req, res, '/media'));
   // server.get('/register', (req, res) => res.redirect('/register/step1'));
   // server.get('/register/step1', (req, res) => app.render(req, res, '/registration', { step: 1 }));

@@ -141,7 +141,6 @@ export default class LandingPage extends Component {
       else if (a.score === b.score) return 0;
       return 1;
     });
-    console.log(scores);
     return (
       <div className="container">
         <LogoImage />

@@ -3,8 +3,6 @@ import styled, { injectGlobal } from 'styled-components';
 import io from 'socket.io-client';
 import { rgba } from 'polished';
 
-import connect from '../../store/connect';
-import { actions as appActions } from '../../store/reducers/app';
 import config from '../../config';
 import colors from '../../utils/colors';
 
@@ -39,6 +37,7 @@ const LogoImage = styled.img.attrs({
   width: 250px;
   display: block;
   margin: 0 auto;
+  margin-bottom: 30px;
 `;
 
 
@@ -106,13 +105,30 @@ const ListRow = styled.div`
   border-top: 1px solid rgba(102, 252, 241, 0.7);
   transition: all .2s;
   font-size: 38px;
+  @media(max-width: 768px) {
+    font-size: 20px;
+  }
   ${props => props.isHeader && `
     background-color: ${rgba(colors.darkCyan2, 0.4)};
     ${ListCol} {
       font-weight: bold;
     }
+    @media(max-width: 768px) {
+      font-size: 22px;
+    }
   `}
   display: flex;
+`;
+
+const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  @media(max-width: 768px) {
+    height: inherit;
+    padding: 40px 20px;
+  }
 `;
 
 export default class LandingPage extends Component {
@@ -142,7 +158,7 @@ export default class LandingPage extends Component {
       return 1;
     });
     return (
-      <div className="container">
+      <PageContainer className="container">
         <LogoImage />
         <div className="columns">
           <div className="column is-half">
@@ -182,7 +198,7 @@ export default class LandingPage extends Component {
             </Container>
           </div>
         </div>
-      </div>
+      </PageContainer>
     );
   }
 }

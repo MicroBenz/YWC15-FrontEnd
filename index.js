@@ -63,6 +63,13 @@ app.prepare().then(() => {
   server.get('/annoucement', (req, res) => renderAndCache(req, res, '/finalist'));
   server.get('/semi-final', (req, res) => renderAndCache(req, res, '/announce'));
   server.get('/queue', (req, res) => renderAndCache(req, res, '/queue'));
+  server.get('/workshop-slide/:group', (req, res) => {
+    const redirectPath = config.ggDriveUpload[req.params.group];
+    if (!redirectPath) {
+      return res.redirect('/');
+    }
+    return res.redirect(redirectPath);
+  });
 
   server.get('*', (req, res) => handle(req, res));
   server.listen(config.port, () => console.log(`YWC15 Registration Front-End is started at port ${config.port}`));

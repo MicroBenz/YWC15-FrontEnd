@@ -1,6 +1,6 @@
 const express = require('express');
 const next = require('next');
-const httpProxy = require('http-proxy');
+// const httpProxy = require('http-proxy');
 const LRUCache = require('lru-cache');
 const config = require('./config');
 
@@ -10,7 +10,7 @@ const handle = app.getRequestHandler();
 
 const ssrCache = new LRUCache({
   max: 100,
-  maxAge: 1000 * 60 * 60
+  maxAge: 1000 * 60 * 60 * 24
 });
 
 function renderAndCache(req, res, pagePath, queryParams) {
@@ -33,21 +33,21 @@ function renderAndCache(req, res, pagePath, queryParams) {
     .catch(err => app.renderError(err, req, res, pagePath, queryParams));
 }
 
-const proxy = httpProxy.createProxyServer({
-  target: config.apiPath,
-  secure: false,
-});
+// const proxy = httpProxy.createProxyServer({
+//   target: config.apiPath,
+//   secure: false,
+// });
 
 app.prepare().then(() => {
   const server = express();
 
-  server.use('/api', (req, res) => {
-    proxy.web(req, res, {
-      target: config.apiPath,
-      prependPath: false,
-      changeOrigin: true,
-    });
-  });
+  // server.use('/api', (req, res) => {
+  //   proxy.web(req, res, {
+  //     target: config.apiPath,
+  //     prependPath: false,
+  //     changeOrigin: true,
+  //   });
+  // });
 
   server.get('/', (req, res) => renderAndCache(req, res, '/landing'));
   server.get('/score', (req, res) => renderAndCache(req, res, '/score'));

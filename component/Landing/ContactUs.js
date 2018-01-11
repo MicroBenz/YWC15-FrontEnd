@@ -51,13 +51,13 @@ const ContactUs = () => (
     <div className="contact">
       <Header>CONTACT US</Header>
       <Info>
-        <a href="+66641747080">064-174-7080</a> (พี่เบ๊บ)
+        <a href="tel:+66641747080">064-174-7080</a> (พี่เบ๊บ)
       </Info>
       <Info>
-        <a href="+66924587067">092-458-7067</a> (พี่ฟง)
+        <a href="tel:+66924587067">092-458-7067</a> (พี่ฟง)
       </Info>
       <Info>
-        <a href="+6656667571">085-666-7571</a> (พี่เบนซ์)
+        <a href="tel:+66856667571">085-666-7571</a> (พี่เบนซ์)
       </Info>
       <Info small>Email: <a href="mailto:ywc@webmaster.or.th">ywc@webmaster.or.th</a></Info>
     </div>

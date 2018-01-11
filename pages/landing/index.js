@@ -4,7 +4,7 @@ import { Element } from 'react-scroll';
 
 import connect from '../../store/connect';
 import { actions as appActions } from '../../store/reducers/app';
-import config from '../../config';
+// import config from '../../config';
 
 import Welcoming from '../../component/Landing/Welcoming';
 import WhatIsYWC from '../../component/Landing/WhatIsYWC';
@@ -107,9 +107,9 @@ const BlackBow = styled.img`
   { ...appActions }
 )
 export default class LandingPage extends Component {
-  componentDidMount() {
-    this.props.loadRegisterStat();
-  }
+  // componentDidMount() {
+  //   this.props.loadRegisterStat();
+  // }
 
   render() {
     return (

@@ -23,8 +23,8 @@ export default class MyDocument extends Document {
           <link rel="stylesheet" href="/static/fonts/fonts.css" async />
           <link rel="stylesheet" href="/static/libs/bulma/bulma.min.css" async />
           <link rel="stylesheet" href="/static/libs/font-awesome/css/font-awesome.min.css" async />
-          <link rel="stylesheet" href="/static/libs/flatpickr/flatpickr.css" async />
-          <link rel="stylesheet" href="/static/libs/flatpickr/dark.css" async />
+          {/* <link rel="stylesheet" href="/static/libs/flatpickr/flatpickr.css" async /> */}
+          {/* <link rel="stylesheet" href="/static/libs/flatpickr/dark.css" async /> */}
 
           <meta name="description" content={seo.description} />
           <meta name="keywords" content={seo.keywords} />
@@ -66,7 +66,7 @@ export default class MyDocument extends Document {
         <body style={{ backgroundColor: colors.theme, color: colors.white, backgroundImage: "url('/static/img/bg/bg.png')", backgroundRepeat: 'repeat', backgroundSize: '70%' }}>
           {main}
           <NextScript />
-          <script
+          {/* <script
             dangerouslySetInnerHTML={{
               __html: `
                 window.fbAsyncInit = function() {
@@ -88,8 +88,8 @@ export default class MyDocument extends Document {
                 }(document, 'script', 'facebook-jssdk'));
               `
             }}
-          />
-          <script
+          /> */}
+          {/* <script
             dangerouslySetInnerHTML={{
               __html: `
                 <!-- Facebook Pixel Code -->
@@ -111,7 +111,7 @@ export default class MyDocument extends Document {
                 <!-- End Facebook Pixel Code -->
               `
             }}
-          />
+          /> */}
         </body>
       </html>
     );

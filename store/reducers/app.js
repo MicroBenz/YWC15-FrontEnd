@@ -10,10 +10,10 @@ const HIDE_SEE_MORE = appAction('HIDE_SEE_MORE');
 const initialState = {
   isFirstLoad: true,
   registerStat: {
-    programming: 0,
-    design: 0,
-    content: 0,
-    marketing: 0
+    programming: 357,
+    design: 219,
+    content: 227,
+    marketing: 308
   },
   isShowSeeMore: false,
   seeMoreMajor: ''
